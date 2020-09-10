@@ -50,15 +50,15 @@
 			                	<li class="nav-item">
 			                		<a class="nav-link" href="${contextPath}/common/loginForm.do">로그인</a>
 			                	</li>
-			                	<c:if test="${member.id} != null">
+			                	<c:if test="${member.id != null}">
 			                		<li class="nav-item">
-			                			<c:if test="${member.type == startup}">
+			                			<c:if test="${member.type == 'startup'}">
 			                				<a class="nav-link" href="${contextPath}/startup/logout.do">로그아웃</a>
 			                			</c:if>
-			                			<c:if test="${member.type} == 'manufac'">
+			                			<c:if test="${member.type == 'manufac'}">
 			                				<a class="nav-link" href="${contextPath}/manufac/logout.do">로그아웃</a>
 			                			</c:if>
-			                			<c:if test="${member.type} == 'expert'">
+			                			<c:if test="${member.type == 'expert'}">
 			                				<a class="nav-link" href="${contextPath}/expert/logout.do">로그아웃</a>
 			                			</c:if>
 			                		</li>
