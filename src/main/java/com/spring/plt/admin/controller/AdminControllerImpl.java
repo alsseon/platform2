@@ -28,8 +28,10 @@ public class AdminControllerImpl implements AdminController {
 	@Override
 	@RequestMapping(value="/admin/login.do", method=RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("member") AdminVO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("adminVO: "+member);
 		ModelAndView mav = new ModelAndView();
 		adminVO = adminService.login(member);
+		System.out.println("DB를 거친 후 member: "+adminVO);
 		if(adminVO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", adminVO);
