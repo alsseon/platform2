@@ -44,24 +44,36 @@
 				                        <a class="dropdown-item text-muted text-center" href="#">스크랩 리스트</a>
 				                        <a class="dropdown-item text-muted text-center" href="#">현황 관리</a>
 				                        <a class="dropdown-item text-muted text-center" href="#">내역 관리</a>
-				                        <a class="dropdown-item text-muted text-center" href="#">로그아웃</a>
-				                    </div>
-			                	</li>
-			                	<li class="nav-item">
-			                		<a class="nav-link" href="${contextPath}/common/loginForm.do">로그인</a>
-			                	</li>
-			                	<c:if test="${member.id != null}">
-			                		<li class="nav-item">
-			                			<c:if test="${member.type == 'startup'}">
-			                				<a class="nav-link" href="${contextPath}/startup/logout.do">로그아웃</a>
+				                        <c:if test="${member.type == 'startup'}">
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/logout.do">로그아웃</a>
 			                			</c:if>
 			                			<c:if test="${member.type == 'manufac'}">
-			                				<a class="nav-link" href="${contextPath}/manufac/logout.do">로그아웃</a>
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/logout.do">로그아웃</a>
 			                			</c:if>
 			                			<c:if test="${member.type == 'expert'}">
-			                				<a class="nav-link" href="${contextPath}/expert/logout.do">로그아웃</a>
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/logout.do">로그아웃</a>
 			                			</c:if>
+			                			<c:if test="${member.type == 'admin'}">
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/logout.do">로그아웃</a>
+			                			</c:if>
+				                    </div>
+			                	</li>
+			                	<c:if test="${member.type == 'admin'}">
+			                		<li class="nav-item dropdown">
+			                			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+			                				회원관리
+			                			</a>
+			                			<div class="dropdown-menu">
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpListForm.do">스타트업 목록</a>
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacListForm.do">제조업체 목록</a>
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertListForm.do">전문가 목록</a>
+			                			</div>
 			                		</li>
+			                	</c:if>
+			                	<c:if test="${member.id == null}">
+			                		<li class="nav-item">
+				                		<a class="nav-link" href="${contextPath}/common/loginForm.do">로그인</a>
+				                	</li>	
 			                	</c:if>
 							</ul>
 						</nav>
