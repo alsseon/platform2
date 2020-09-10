@@ -127,7 +127,6 @@ public class MessageControllerImpl implements MessageController{
 	@RequestMapping(value="message/unReadCount.do", method=RequestMethod.GET)
 	@ResponseBody
 	public int unReadCount(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("-----------------");
 		int cnt = 0;
 		try {
 			cnt = messageService.unReadCount(id);

@@ -48,7 +48,7 @@
 		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      	</div>
 		      	<div class="modal-body">
-	                <form class="py-4" method="post" action="${contextPath}/message/send.do">
+	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
 	                	<input type="hidden" name="sendId" value="${member.id}"> 
 	                    <div class="form-group col-sm-10">
 	                        <label for="inputreceiveId">수신자</label>

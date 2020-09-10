@@ -12,6 +12,24 @@
 <head>
 <meta charset="UTF-8">
 <title>헤더</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	var id = '${member.id}';
+	$(function(){
+		unReadCount();
+	});
+	
+	function unReadCount(){
+		$.ajax({
+			url:"${contextPath}/message/unReadCount.do",
+			type:"GET",
+			data:{'id':id},
+			success:function(data){
+				$("#unReadCount").html(data);
+			}
+		});
+	}
+</script>
 </head>
 <body>
 	<div class="container-fluid px-md-5  pt-4 pt-md-5">
@@ -24,6 +42,12 @@
 					<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
 						<nav class="navbar navbar-expand-sm">
 							<ul class="navbar-nav ml-auto">
+								<li class="nav-item dropdown mt-2">
+									<a href="#" id="receivedRequest">받은 요청</a>
+								</li>
+								<li>
+				             		<span class="badge badge-danger mt-3" id="receivedRequest">1</span>
+				             	</li>
 								<li class="nav-item dropdown">
 				                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 				                        	쪽지
@@ -35,6 +59,9 @@
 				                        <a class="dropdown-item text-muted text-center" href="${contextPath}/message/messageList.do?id=${member.id}">쪽지 함</a>
 				                    </div>
 			             		</li>
+			             		<li>
+				             		<span class="badge badge-danger mt-3" id="unReadCount"></span>
+				             	</li>
 			             		<li class="nav-item dropdown">
 			                    	 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 				                        	마이페이지
