@@ -41,7 +41,7 @@
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <div class="text text-center">
-              	<a href="${contextpath}/plt/join/startupForm.do" class="block-20 img" style="background-image: url('${contextPath}/resources/images/image_6.jpg');">
+              	<a href="${contextPath}/startup/startupForm.do" class="block-20 img" style="background-image: url('${contextPath}/resources/images/image_6.jpg');">
 	              </a>
 	              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
                 	<div>
@@ -59,7 +59,7 @@
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <div class="text text-center">
-              	<a href="${contextpath}/plt/join/manufacForm.do" class="block-20 img" style="background-image: url('${contextPath}/resources/images/image_9.jpg');">
+              	<a href="${contextPath}/manufac/manufacForm.do" class="block-20 img" style="background-image: url('${contextPath}/resources/images/image_9.jpg');">
 	              </a>
 	              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
                 	<div>
@@ -78,7 +78,7 @@
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <div class="text text-center">
-              	<a href="${contextpath}/plt/join/expertForm.do" class="block-20 img" style="background-image: url('${contextPath}/resources/images/image_3.jpg');">
+              	<a href="${contextPath}/expert/expertForm.do" class="block-20 img" style="background-image: url('${contextPath}/resources/images/image_3.jpg');">
 	              </a>
 	              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
                 	<div>
@@ -88,9 +88,8 @@
                 	</div>
                 </div>
                 <h3 class="heading mb-3"><a href="#">전문가 회원등록 신청</a mb-3></h3>
-								<p>
-Application for expert membership registration.</p>              
-							</div>
+					<p>Application for expert membership registration.</p>              
+			  </div>
             </div>
           </div>
 

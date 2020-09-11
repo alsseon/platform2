@@ -94,12 +94,16 @@
 			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpListForm.do">스타트업 목록</a>
 			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacListForm.do">제조업체 목록</a>
 			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertListForm.do">전문가 목록</a>
+			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/changeLogForm.do">회원정보수정이력</a>
 			                			</div>
 			                		</li>
 			                	</c:if>
 			                	<c:if test="${member.id == null}">
 			                		<li class="nav-item">
 				                		<a class="nav-link" href="${contextPath}/common/loginForm.do">로그인</a>
+				                	</li>
+				                	<li class="nav-item">
+				             			<a class="nav-link" href="${contextPath}/admin/chooseForm.do">회원가입</a>
 				                	</li>	
 			                	</c:if>
 							</ul>

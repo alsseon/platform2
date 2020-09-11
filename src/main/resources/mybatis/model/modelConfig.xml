@@ -5,6 +5,8 @@
 	<configuration>
 		<typeAliases>
 			<typeAlias type="com.spring.plt.admin.vo.AdminVO" alias="adminVO"/>
+			<typeAlias type="com.spring.plt.admin.vo.EditInfoVO" alias="editInfoVO"/>
+			<typeAlias type="com.spring.plt.admin.vo.LoginLogVO" alias="loginLogVO"/>
 			<typeAlias type="com.spring.plt.adminQnA.vo.AdminQnAVO" alias="adminQnAVO"/>
 			<typeAlias type="com.spring.plt.consulting.vo.ConsultingVO" alias="consultingVO"/>
 			<typeAlias type="com.spring.plt.expert.vo.ExpertVO" alias="expertVO"/>

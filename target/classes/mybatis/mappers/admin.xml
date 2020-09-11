@@ -10,4 +10,24 @@
 	  	where id= #{id} and pwd = #{pwd}
 	  ]]>	
 	</select>
+	<!-- 스타트업 정보변경 리스트 -->
+   <select id="startUpEdit" resultType="EditInfoVO">
+      <![CDATA[
+         select * from EditInfo where type = 'startup'
+      ]]>
+   </select>
+   
+   <!-- 제조업체 정보변경 리스트 -->
+   <select id="manuEdit" resultType="EditInfoVO">
+      <![CDATA[
+         select * from EditInfo where type = 'manufac' 
+      ]]>
+   </select>
+   
+   <!-- 전문가 리스트 -->
+   <select id="expertEdit" resultType="EditInfoVO">
+      <![CDATA[
+         select * from EditInfo where type = 'expert' 
+      ]]>
+   </select>
  </mapper>

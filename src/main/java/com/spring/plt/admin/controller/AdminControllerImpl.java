@@ -1,5 +1,7 @@
 package com.spring.plt.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.plt.admin.service.AdminService;
 import com.spring.plt.admin.vo.AdminVO;
+import com.spring.plt.admin.vo.EditInfoVO;
 
 @Controller("adminController")
 @EnableAspectJAutoProxy
@@ -24,8 +27,32 @@ public class AdminControllerImpl implements AdminController {
 	private AdminService adminService;
 	@Autowired
 	private AdminVO adminVO;
-	
+		
 	@Override
+	@RequestMapping(value= {"/admin/changeLogForm.do","/admin/startchangeLogForm.do","/admin/manuchangeLogForm.do","/admin/expertchangeLogForm.do"}, method = {RequestMethod.GET, RequestMethod.POST})
+	   public ModelAndView changeLog(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	      List<EditInfoVO> startEdit = adminService.startUpEdit();
+	      List<EditInfoVO> manuEdit = adminService.manuEdit();
+	      List<EditInfoVO> expertEdit = adminService.expertEdit();
+	      
+	      String viewName = (String)request.getAttribute("viewName");
+	      ModelAndView mav = new ModelAndView();
+	      
+	      mav.addObject("manufacVO", manuEdit);
+	      mav.addObject("startUpVO", startEdit);
+	      mav.addObject("expertVO", expertEdit);
+	      
+	      mav.setViewName(viewName);
+	      return mav;
+	   }
+	   @RequestMapping(value="admin/*Form.do", method= {RequestMethod.POST, RequestMethod.GET})
+	   public ModelAndView Form(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	      String viewName = (String)request.getAttribute("viewName");
+	      ModelAndView mav = new ModelAndView();
+	      mav.setViewName(viewName);
+	      return mav;
+	   }
+
 	@RequestMapping(value="/admin/login.do", method=RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("member") AdminVO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("adminVO: "+member);
