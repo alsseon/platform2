@@ -23,7 +23,7 @@ import com.spring.plt.admin.vo.LoginLogVO;
 @Controller("adminController")
 @EnableAspectJAutoProxy
 public class AdminControllerImpl implements AdminController {
-	
+
 	@Autowired
 	private AdminService adminService;
 	@Autowired
@@ -49,15 +49,13 @@ public class AdminControllerImpl implements AdminController {
 	   }
 	@RequestMapping(value="/admin/LoginLogForm.do", method= {RequestMethod.GET, RequestMethod.GET})
 	public ModelAndView LoginLog(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
 		List<LoginLogVO> LoginLog = adminService.LoginLog();
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView();
-		System.out.println(LoginLog.toString()+"로그인로그===================================");
-		mav.addObject("LoginLogVO", LoginLog);
 		
+    	mav.addObject("LoginLogVO", LoginLog);
+    		
 		mav.setViewName(viewName);
-		
 		return mav;
 	}
 	   @RequestMapping(value="admin/*Form.do", method= {RequestMethod.POST, RequestMethod.GET})
@@ -74,7 +72,16 @@ public class AdminControllerImpl implements AdminController {
 		ModelAndView mav = new ModelAndView();
 		adminVO = adminService.login(member);
 		System.out.println("DB를 거친 후 member: "+adminVO);
-		if(adminVO != null) {
+		
+		String ip = request.getHeader("X-Forwarded-For");
+
+        if (ip == null) {
+
+            ip = request.getRemoteAddr();
+
+        }
+        System.out.println(ip+"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		if(adminVO != null && ip.equals("127.0.0.1")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", adminVO);
 			session.setAttribute("isLogOn", true);
