@@ -91,7 +91,7 @@
    
    <insert id="insertLoginLog" parameterType="expertVO">
    		<![CDATA[
-   			insert into LoginLog(no , id, Logintime) values(9909999, #{id}, sysdate)
+ 		insert into LoginLog(no , id, Logintime) values(loginlog_seq.NEXTVAL, #{id}, sysdate)   		
    		]]>
    </insert>
 	

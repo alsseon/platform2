@@ -61,7 +61,7 @@
    
    <insert id="insertLoginLog" parameterType="manufacVO">
    	<![CDATA[
-   		insert into loginlog(no,id,logintime) values(1,#{id},sysdate)
+   		insert into loginlog(no,id,logintime) values(loginlog_seq.NEXTVAL,#{id},sysdate)
    	]]>
    </insert>
 	

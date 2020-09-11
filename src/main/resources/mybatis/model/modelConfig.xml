@@ -18,5 +18,6 @@
 			<typeAlias type="com.spring.plt.scrap.vo.ScrapVO" alias="ScrapVO"/>
 			<typeAlias type="com.spring.plt.startup.vo.StartUpVO" alias="startUpVO"/>
 			<typeAlias type="com.spring.plt.expert.vo.ExpImageVO" alias="expImageVO"/>
+			<typeAlias type="com.spring.plt.notice.vo.NoticeVO" alias="noticeVO"/>
 		</typeAliases>
 	</configuration>
