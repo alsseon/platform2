@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spring.plt.admin.dao.AdminDAO;
 import com.spring.plt.admin.vo.AdminVO;
 import com.spring.plt.admin.vo.EditInfoVO;
+import com.spring.plt.admin.vo.LoginLogVO;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService{
@@ -39,4 +40,10 @@ public class AdminServiceImpl implements AdminService{
       return expertEdit;
 
 }
+
+	@Override
+	public List<LoginLogVO> LoginLog() throws Exception {
+		List<LoginLogVO> LoginLog = adminDAO.LoginLog();
+		return LoginLog;
+	}
 }

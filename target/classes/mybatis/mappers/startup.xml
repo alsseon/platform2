@@ -63,5 +63,11 @@
       ]]>
    </insert>
    
+   <insert id="insertLoginLog" parameterType="startUpVO">
+  	<![CDATA[
+  		insert into LoginLog(no, id, logintime) values(12, #{id}, sysdate)
+  	]]> 
+   </insert>
+   
 </mapper>
 

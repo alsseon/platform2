@@ -30,4 +30,9 @@
       <put-attribute name="body" value="/WEB-INF/views/admin/expertchangeLogForm.jsp" />
    </definition>
    
+    <definition name="/admin/LoginLogForm" extends="baseLayout">
+      <put-attribute name="title" value="로그인 로그 내역" />
+      <put-attribute name="body" value="/WEB-INF/views/admin/LoginLogForm.jsp" />
+   </definition>
+   
 </tiles-definitions>

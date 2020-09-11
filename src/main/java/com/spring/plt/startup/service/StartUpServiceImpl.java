@@ -16,8 +16,13 @@ public class StartUpServiceImpl implements StartUpService{
 	@Autowired
 	private StartUpDAO startUpDAO;
 	
-	@Override
-	public StartUpVO login(StartUpVO startUpVO) throws DataAccessException {
+	@Override 
+	public StartUpVO login(StartUpVO startUpVO)  {
+		try {
+			startUpDAO.insertLoginLog(startUpVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return startUpDAO.loginById(startUpVO);
 	}
 	

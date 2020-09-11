@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.plt.admin.service.AdminService;
 import com.spring.plt.admin.vo.AdminVO;
 import com.spring.plt.admin.vo.EditInfoVO;
+import com.spring.plt.admin.vo.LoginLogVO;
 
 @Controller("adminController")
 @EnableAspectJAutoProxy
@@ -27,6 +28,7 @@ public class AdminControllerImpl implements AdminController {
 	private AdminService adminService;
 	@Autowired
 	private AdminVO adminVO;
+	private LoginLogVO loginVO;
 		
 	@Override
 	@RequestMapping(value= {"/admin/changeLogForm.do","/admin/startchangeLogForm.do","/admin/manuchangeLogForm.do","/admin/expertchangeLogForm.do"}, method = {RequestMethod.GET, RequestMethod.POST})
@@ -45,6 +47,19 @@ public class AdminControllerImpl implements AdminController {
 	      mav.setViewName(viewName);
 	      return mav;
 	   }
+	@RequestMapping(value="/admin/LoginLogForm.do", method= {RequestMethod.GET, RequestMethod.GET})
+	public ModelAndView LoginLog(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		List<LoginLogVO> LoginLog = adminService.LoginLog();
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		System.out.println(LoginLog.toString()+"로그인로그===================================");
+		mav.addObject("LoginLogVO", LoginLog);
+		
+		mav.setViewName(viewName);
+		
+		return mav;
+	}
 	   @RequestMapping(value="admin/*Form.do", method= {RequestMethod.POST, RequestMethod.GET})
 	   public ModelAndView Form(HttpServletRequest request, HttpServletResponse response) throws Exception{
 	      String viewName = (String)request.getAttribute("viewName");

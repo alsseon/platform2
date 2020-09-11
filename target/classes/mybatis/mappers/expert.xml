@@ -88,6 +88,12 @@
          insert into editinfo(no, id, pwd, name, email, biztype, tel, career, detail, type, editdate) values(editinfo_seq.NEXTVAL,#{id}, #{pwd}, #{expName}, #{expEmail}, #{expBizField}, #{expTel}, #{expCareer}, #{expDetail}, 'expert' , sysdate)
       ]]>
    </insert>
+   
+   <insert id="insertLoginLog" parameterType="expertVO">
+   		<![CDATA[
+   			insert into LoginLog(no , id, Logintime) values(9909999, #{id}, sysdate)
+   		]]>
+   </insert>
 	
 </mapper>
 

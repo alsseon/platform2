@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class LoginLogVO {
    private int no;
    private String id;
-   private String logtime;
+   private String logintime;
    
    public int getNo() {
       return no;
@@ -20,10 +20,11 @@ public class LoginLogVO {
    public void setId(String id) {
       this.id = id;
    }
-   public String getLogtime() {
-      return logtime;
-   }
-   public void setLogtime(String logtime) {
-      this.logtime = logtime;
-   }
+	public String getLogintime() {
+		return logintime;
+	}
+	public void setLogintime(String logintime) {
+		this.logintime = logintime;
+	}
+
 }

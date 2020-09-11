@@ -70,11 +70,6 @@ function execPostCode() {
 <hr>
 
 
-<div class="row justify-content-center">
-<div class="col-sm-3">
-</div>
-<div class="col-sm-6">
-<div class="card">
 <header class="card-header">
 	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">스타트업 회원가입</h4>
@@ -82,7 +77,6 @@ function execPostCode() {
 <article class="card-body">
 <form method="post" action="${contextPath}/startup/join_startup.do" enctype="multipart/form-data">
 
-	<div class="form-row">
 		<div class="col form-group">
 			<label>아이디 </label>   
 		  	<input type="text" class="form-control" name="id">
@@ -142,9 +136,6 @@ function execPostCode() {
 			<input type="file" class="form-control" name="compImg">
 		</div> 
 		
-	</div> 
-	
-	<div class="form-row">
 		<div class="form-group">
 		  <label>업종</label>
 			  <select id="compBizType" class="form-control" name="compBizType">
@@ -157,7 +148,6 @@ function execPostCode() {
 			  </select>
 		</div>
 		
-	</div> <!-- form-row.// -->
 	
     <div class="form-group">
 		<button type="submit" class="btn btn-primary btn-block">
@@ -168,11 +158,6 @@ function execPostCode() {
 </form>
 </article> <!-- card-body end .// -->
 
-</div> <!-- card.// -->
-</div> <!-- col.//-->
-<div class="col-sm-3">
-</div>
-</div> <!-- row.//-->
 
 
 </div> 

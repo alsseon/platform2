@@ -25,11 +25,6 @@
 <hr>
 
 
-<div class="row justify-content-center">
-<div class="col-sm-3">
-</div>
-<div class="col-sm-6">
-<div class="card">
 <header class="card-header">
 	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">전문가 등록 신청</h4>
@@ -37,7 +32,6 @@
 <article class="card-body">
 <form method="post" action="${contextPath}/expert/join_expert.do" enctype="multipart/form-data">
 
-	<div class="form-row">
 		<div class="col form-group">
 			<label>아이디 </label>   
 		  	<input type="text" class="form-control" name="id">
@@ -84,9 +78,6 @@
 		  	<textarea class="form-control" name="expDetail">어쩌구저쩌구</textarea>
 		</div> 
 		
-	</div> 
-	
-	<div class="form-row">
 		<div class="form-group">
 		  <label>업종</label>
 			  <select id="expBizField" class="form-control" name="expBizField">
@@ -98,7 +89,6 @@
 				  <option selected="">기타</option>
 			  </select>
 		</div>		
-	</div> <!-- form-row.// -->
 	
     <div class="form-group">
 		<button type="submit" class="btn btn-primary btn-block">
@@ -109,11 +99,6 @@
 </form>
 </article> <!-- card-body end .// -->
 
-</div> <!-- card.// -->
-</div> <!-- col.//-->
-<div class="col-sm-3">
-</div>
-</div> <!-- row.//-->
 
 
 </div> 

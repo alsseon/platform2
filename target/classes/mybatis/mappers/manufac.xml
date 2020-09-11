@@ -58,6 +58,12 @@
          insert into editinfo(no, id, pwd, name, ceoname, email, biztype, addr, detailaddr, tel, career, detail,price, type, editdate) values(editinfo_seq.NEXTVAL,#{id}, #{pwd}, #{manuName},#{manuCeoName}, #{manuEmail}, #{manuBizType},#{manuAddr}, #{manuDetailAddr}, #{manuTel}, #{manuStart}, #{manuDetail},#{productPrice}, 'manufac' , sysdate)
       ]]>
    </insert>
+   
+   <insert id="insertLoginLog" parameterType="manufacVO">
+   	<![CDATA[
+   		insert into loginlog(no,id,logintime) values(1,#{id},sysdate)
+   	]]>
+   </insert>
 	
 </mapper>
 

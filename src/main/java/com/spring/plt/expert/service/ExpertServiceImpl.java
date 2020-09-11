@@ -19,7 +19,8 @@ public class ExpertServiceImpl implements ExpertService {
 	private ExpertDAO expertDAO;
 	
 	@Override
-	public ExpertVO login(ExpertVO expertVO) throws DataAccessException {
+	public ExpertVO login(ExpertVO expertVO) throws Exception {
+		expertDAO.insertLoginLog(expertVO);
 		return expertDAO.loginById(expertVO);
 	}	
 		

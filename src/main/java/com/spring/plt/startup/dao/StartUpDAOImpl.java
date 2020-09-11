@@ -55,4 +55,8 @@ public class StartUpDAOImpl implements StartUpDAO {
 	      sqlSession.insert("mapper.startup.insertstartEdit", startup);
 	}
 	
+	public void insertLoginLog(StartUpVO startup) throws Exception{
+		sqlSession.insert("mapper.startup.insertLoginLog", startup);
+	}
+	
 }

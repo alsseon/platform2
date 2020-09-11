@@ -19,4 +19,5 @@ public interface ExpertDAO {
 	public void insertExpImage(Map expertMap) throws DataAccessException;
 	public List<ExpImageVO> selectImageFileList(String id) throws Exception;
 	public void insertExpEdit(ExpertVO expert) throws Exception;
+	public void insertLoginLog(ExpertVO expertVO) throws Exception;
 }

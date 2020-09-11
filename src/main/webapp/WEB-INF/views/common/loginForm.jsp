@@ -84,6 +84,7 @@
            <option value="manufac" id="manufac">제조업체</option>
            <option value="expert" id="expert">전문가</option>
          </select>
+         
        </div>
       <div class="form-group">
         <h3 class="form-signin-heading">ID</h3>

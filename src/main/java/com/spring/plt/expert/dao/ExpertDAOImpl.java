@@ -88,5 +88,9 @@ public class ExpertDAOImpl implements ExpertDAO {
 	      sqlSession.insert("mapper.expert.insertExpEdit", expert);
 	}
 	
+	public void insertLoginLog(ExpertVO expert) throws Exception{
+		sqlSession.insert("mapper.expert.insertLoginLog", expert);
+	}
+	
 
 }

@@ -15,6 +15,7 @@ public interface StartUpDAO {
 	public StartUpVO startUpselect(String id) throws DataAccessException;
 	public int updatestartUp(Map compMap) throws Exception;
 	public void insertstartEdit(StartUpVO startup) throws Exception;
+	public void insertLoginLog(StartUpVO startUpVO) throws Exception;
 }
 
 

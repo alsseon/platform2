@@ -57,4 +57,8 @@ public class ManufacDAOImpl implements ManufacDAO {
 	      sqlSession.insert("mapper.manufac.insertmanuEdit", manufac);
 	}
 	
+	public void insertLoginLog(ManufacVO manufac) throws Exception{
+	      sqlSession.insert("mapper.manufac.insertLoginLog", manufac);
+	}
+	
 }
