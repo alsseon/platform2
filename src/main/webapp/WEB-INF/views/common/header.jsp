@@ -133,7 +133,7 @@
 	        	<li class="nav-item"><a href="#" class="nav-link">제조사 찾기</a></li>
 	        	<li class="nav-item"><a href="#" class="nav-link">전문가 찾기</a></li>
 	        	<li class="nav-item"><a href="${contextPath}/notice/noticeList.do" class="nav-link">공지사항</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">Q&A</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/adminQnA/listArticles.do" class="nav-link">Q&A</a></li>
 	        </ul>
 	      </div>
 	    </div>

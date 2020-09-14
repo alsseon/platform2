@@ -19,5 +19,6 @@
 			<typeAlias type="com.spring.plt.startup.vo.StartUpVO" alias="startUpVO"/>
 			<typeAlias type="com.spring.plt.expert.vo.ExpImageVO" alias="expImageVO"/>
 			<typeAlias type="com.spring.plt.notice.vo.NoticeVO" alias="noticeVO"/>
+			<typeAlias type="com.spring.plt.find.vo.FindVO" alias="findVO"/>
 		</typeAliases>
 	</configuration>

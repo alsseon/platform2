@@ -23,4 +23,19 @@
 		<put-attribute name="body" value="/WEB-INF/views/common/loginForm.jsp" />
 	</definition>
 	
+	<definition name="/common/idForm" extends="baseLayout">
+		<put-attribute name="title" value="아아디 찾기" />
+		<put-attribute name="body" value="/WEB-INF/views/common/idForm.jsp" />
+	</definition>
+	
+	<definition name="/common/pwdForm" extends="baseLayout">
+	    <put-attribute name="title" value="비밀번호 찾기" />
+	    <put-attribute name="body" value="/WEB-INF/views/common/pwdForm.jsp" />
+    </definition>
+    
+    <definition name="/common/showId" extends="baseLayout">
+	    <put-attribute name="title" value="찾는 아이디" />
+	    <put-attribute name="body" value="/WEB-INF/views/common/showId.jsp" />
+    </definition>
+	
 </tiles-definitions>

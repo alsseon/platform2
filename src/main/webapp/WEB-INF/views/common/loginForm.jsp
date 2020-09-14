@@ -1,153 +1,214 @@
-   <%@ page language="java" contentType="text/html; charset=UTF-8"
-       pageEncoding="UTF-8" isELIgnored="false" %>
-  
-   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-   <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-   <c:set var="result" value="${param.result }" />
-   <%
-     request.setCharacterEncoding("UTF-8");
-   %> 
-   <!DOCTYPE html>
-   <html>
-   <head>
-   <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-       <meta name="description" content="">
-       <meta name="author" content="">
-       <link rel="icon" href="../../favicon.ico">
-       <!-- 합쳐지고 최소화된 최신 CSS -->
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-       <!-- 부가적인 테마 -->
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-      
-       
-       <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
 
-   <title>회원 로그인</title>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-   
-   <c:choose>
-     <c:when test="${result =='loginFailed' }">
-       <script>
-          window.onload=function(){
-              alert("아이디나 비밀번호가 틀립니다. 다시 로그인 하세요!");
-          }
-       </script>
-     </c:when>
-   </c:choose>
-   <style>       
-       .container{
-        max-width: 500px;
-        padding: 15px;
-        padding-left: 70px;
-        margin: 0 auto;	 
-        border: solid;
-        border-color: white;
-        border-radius: 10px;
-        background-color: #eee;
-       }
-       .select .form-control{
-        width: 250px;
-        margin-top: 30px;
-       }
-       .form-group .form-control{
-        height: auto;
-     -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-             box-sizing: border-box;
-        padding: 10px;
-        font-size: 16px;
-       }
-       .form-group-2{
-        margin: 0 auto;
-        max-width: 600px;  	 
-        padding-top: 50px;
-       }
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="result" value="${param.result }" />
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<!DOCTYPE html>
+<html lang="en">
 
-   </style>
-   </head>
-   <body>
-   
-   <!-- 로그인 화면 -->
-   <div class="container">
+<head>
+<title>회원 로그인</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-     <form class="form-horizontal" id="login" name="frmLogin" method="post" action="${contextPath }">
-      <div class="select">
-         <select class="form-control input-sm" id="selectid">
-         	<option value="admin" id="admin">회원종류를 선택하세요</option>
-           <option value="startup" id="startup">스타트업</option>
-           <option value="manufac" id="manufac">제조업체</option>
-           <option value="expert" id="expert">전문가</option>
-         </select>
-         
-       </div>
-      <div class="form-group">
-        <h3 class="form-signin-heading">ID</h3>
-        <p></p>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputId3" name="id" placeholder="아이디를 입력하세요">
-        </div>
-      </div>
-      <div class="form-group">
-        <h3 class="form-signin-heading">Password</h3>
-        <p></p>
-         <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" name="pwd" placeholder="비밀번호를 입력하세요">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-         <p><p>
-          <input type="button" value = "로그인" id="loginButton" class="btn btn-lg btn-primary" />
-          &emsp;
-          
-          <button type="reset" class="btn btn-lg btn-danger" >다시입력</button>
-        </div>
-     	  </div>
- 	 	</form>
-      </div> <!-- /container -->
-      <div class="form-group-2">
-        <div class="col-sm-offset-2 col-sm-10">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-          <!-- <input type="submit" class="btn btn-lg btn-success" value="아이디/비밀번호 찾기" formaction="${contextPath}/member/searchForm.do"> -->
-          <a href="${contextPath}/member/searchForm.do" class="btn btn-lg btn-success" >아이디/비밀번호 찾기</a>
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          <!--  <input type="submit" class="btn btn-lg btn-warning" value="회원가입" formaction="${contextPath}/member/joinForm.do">-->
-           <a href="${contextPath}/member/joinForm.do" class="btn btn-lg btn-warning" >회원가입</a>
-        </div>
-      </div>  
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 
-     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<c:choose>
+	<c:when test="${result =='loginFailed' }">
+		<script>
+			window.onload = function() {
+				alert("아이디나 비밀번호가 틀립니다. 다시 로그인 하세요!");
+			}
+		</script>
+	</c:when>
+</c:choose>
+<style>
+.submitting {
+	margin-top: 30px;
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <script>
-     	var loginbutton = document.querySelector("#loginButton");
-     	var formtag = document.querySelector("#login")
-     	loginbutton.addEventListener("click",function(){
-		var select = document.querySelector("#selectid").value
-		if(select === "startup"){
-			console.log("startup 선택")
-			formtag.action+="/startup/login.do"
-			formtag.submit();
-		}else if(select === "manufac"){
-			console.log("manufac 선택 ")
-			formtag.action+="/manufac/login.do"
-			formtag.submit();
-		}else if(select ==="expert"){
-			console.log("expert 선택")
-			formtag.action+="/expert/login.do"
-			formtag.submit();
-		}else{
-			console.log("admin 선택")
-			formtag.action+="/admin/login.do"
-			formtag.submit();
-		}
-     	})
-     </script>
-   </body>
-   </html>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="${contextPath }/resources/css/animate.css">
+
+<link rel="stylesheet"
+	href="${contextPath }/resources/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="${contextPath }/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="${contextPath }/resources/css/magnific-popup.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
+<link rel="stylesheet" href="${contextPath }/resources/css/flaticon.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/style.css">
+</head>
+
+<body>
+
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('${contextPath }/resources/images/bg_5.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate mb-0 text-center">
+					<p class="breadcrumbs mb-0">
+						<span class="mr-2"><a href="index.html">마이페이지 <i
+								class="fa fa-chevron-right"></i></a></span>
+						<!--  	<span> <i class="fa fa-chevron-right"></i></span> -->
+					</p>
+					<h2 class="mb-0 bread">Login</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="wrapper px-md-4">
+
+						<div class="row no-gutters">
+							<div class="col-md-7">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<h3 class="mb-4">로그인</h3>
+									<form method="POST" id="login" name="contactForm"
+										class="contactForm" action="${contextPath }">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<select class="form-control input-sm" id="selectid">
+														<option value="admin" id="admin">회원종류를 선택하세요</option>
+														<option value="startup" id="startup">스타트업</option>
+														<option value="manufac" id="manufac">제조업체</option>
+														<option value="expert" id="expert">전문가</option>
+
+													</select>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="name">ID</label> <input
+														type="text" class="form-control" name="id" id="name"
+														placeholder="아이디를 입력하세요">
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="password">Password</label> <input
+														type="password" class="form-control" name="pwd"
+														id="subject" placeholder="비밀번호를 입력하세요">
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="button" value="로그인" class="btn btn-primary"
+														id="loginButton">
+													<button type="reset" class="btn btn-primary">다시입력</button>
+													<div class="submitting">
+														<a href="${contextPath}/common/idForm.do" class="findId"><h5>아이디
+																찾기</a> &emsp;&emsp;&emsp; <a
+															href="${contextPath}/common/pwdForm.do" class="findPwd">비밀번호
+															찾기</a> &emsp;&emsp;&emsp; <a
+															href="${contextPath}/admin/chooseForm.do"
+															class="joinMember">회원가입
+															</h5>
+														</a>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+	</div>
+
+
+	<script src="${contextPath }/resources/js/jquery.min.js"></script>
+	<script src="${contextPath }/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="${contextPath }/resources/js/popper.min.js"></script>
+	<script src="${contextPath }/resources/js/bootstrap.min.js"></script>
+	<script src="${contextPath }/resources/js/jquery.easing.1.3.js"></script>
+	<script src="${contextPath }/resources/js/jquery.waypoints.min.js"></script>
+	<script src="${contextPath }/resources/js/jquery.stellar.min.js"></script>
+	<script src="${contextPath }/resources/js/owl.carousel.min.js"></script>
+	<script src="${contextPath }/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="${contextPath }/resources/js/jquery.animateNumber.min.js"></script>
+	<script src="${contextPath }/resources/js/scrollax.min.js"></script>
+
+	<script src="${contextPath }/resources/js/main.js"></script>
+	<script>
+		var loginbutton = document.querySelector("#loginButton");
+		var formtag = document.querySelector("#login")
+		loginbutton.addEventListener("click", function() {
+			var select = document.querySelector("#selectid").value
+			if (select === "startup") {
+				console.log("startup 선택")
+				formtag.action += "/startup/login.do"
+				formtag.submit();
+			} else if (select === "manufac") {
+				console.log("manufac 선택 ")
+				formtag.action += "/manufac/login.do"
+				formtag.submit();
+			} else if (select === "expert") {
+				console.log("expert 선택")
+				formtag.action += "/expert/login.do"
+				formtag.submit();
+			} else {
+				console.log("admin 선택")
+				formtag.action += "/admin/login.do"
+				formtag.submit();
+			}
+		})
+	</script>
+</body>
+
+</html>

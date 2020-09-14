@@ -48,7 +48,6 @@
                        var id='${member.id}';
 					   //id가 description인 태그에 ckeditor를 적용시킴
 					   CKEDITOR.replace("description",{
-						   filebrowserImageUploadUrl  : "${contextPath}/qnaBoard/imageUpload.do?id="+id //이미지 업로드 기능을 추가하기위한 코드
 					   });
 					   </script>
                        </td>
