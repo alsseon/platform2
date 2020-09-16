@@ -22,7 +22,7 @@
         <div class="col-sm-8">
             <table class="table table-striped table-hover table-sm table-bordered">
                 <thead align="center">
-                    <tr class="table-active">
+                    <tr class="table-active bg-primary text-white">
                         <th style="width:20%">작성자</th>
                         <th style="width:60%">제목</th>
                         <th style="width:20%">작성일</th>
@@ -72,39 +72,57 @@
                     </c:choose>
                 </tbody>
             </table>
-            <div>
-            	<c:if test="${total != null}">
-            		<c:choose>
-            			<c:when test="${total > 100}">
-            				<c:forEach var="page" begin="1" end="10" step="1">
-            					<c:if test="${section > 1 && page == 1}">
-            						<a href="${contextPath}/adminQnA/listArticles.do?section=${section-1}&pageNum=${(section-1)*10+1}">&nbsp;pre</a>
-            					</c:if>
-            					<a href="${contextPath}/adminQnA/listArticles.do?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
-            					<c:if test="${page==10}">
-            						<a href="${contextPath}/adminQnA/listArticles.do?section=${section+1}&pageNum=${section*10+1}">&nbsp;next</a>
-            					</c:if>
-            				</c:forEach>
-            			</c:when>
-            			<c:when test="${total == 100}">
-            				<c:forEach var="page" begin="1" end="10" step="1">
-            					<a href="#">${page}</a>
-            				</c:forEach>
-            			</c:when>
-            			<c:when test="${total < 100}">
-            				<c:forEach var="page" begin="1" end="${total/10+1}" step="1">
-            					<c:choose>
-            						<c:when test="${page==pageNum}">
-            							<a class="active" href="${contextPath}/adminQnA/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
-            						</c:when>
-            						<c:otherwise>
-            							<a href="${contextPath}/adminQnA/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
-            						</c:otherwise>
-            					</c:choose>
-            				</c:forEach>
-            			</c:when>
-            		</c:choose>
-            	</c:if>
+            <div class="row mt-5">
+	            <div class="col text-center">
+	            	<div class="block-27">
+		            	<c:if test="${total != null}">
+		            		<ul>
+			            		<c:choose>
+			            			<c:when test="${total > 100}">
+			            				<c:forEach var="page" begin="1" end="10" step="1">
+			            					<c:if test="${section > 1 && page == 1}">
+			            						<li>
+				            						<a href="${contextPath}/adminQnA/listArticles.do?section=${section-1}&pageNum=${(section-1)*10+1}">&nbsp;pre</a>
+			            						</li>
+			            					</c:if>
+			            					<li>
+				            					<a href="${contextPath}/adminQnA/listArticles.do?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
+			            					</li>
+			            					<c:if test="${page==10}">
+			            					<li>
+			            						<a href="${contextPath}/adminQnA/listArticles.do?section=${section+1}&pageNum=${section*10+1}">&nbsp;next</a>
+			            					</li>
+			            					</c:if>
+			            				</c:forEach>
+			            			</c:when>
+			            			<c:when test="${total == 100}">
+			            				<c:forEach var="page" begin="1" end="10" step="1">
+			            				<li>
+			            					<a href="#">${page}</a>
+			            				</li>
+			            				</c:forEach>
+			            			</c:when>
+			            			<c:when test="${total < 100}">
+			            				<c:forEach var="page" begin="1" end="${total/10+1}" step="1">
+			            					<c:choose>
+			            						<c:when test="${page==pageNum}">
+			            						<li class="active">
+			            							<a href="${contextPath}/adminQnA/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
+			            						</li>
+			            						</c:when>
+			            						<c:otherwise>
+			            						<li>
+			            							<a href="${contextPath}/adminQnA/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
+			            						</li>
+			            						</c:otherwise>
+			            					</c:choose>
+			            				</c:forEach>
+			            			</c:when>
+			            		</c:choose>
+		            		</ul>
+		            	</c:if>
+	            	</div>
+	            </div>
             </div>
             
             

@@ -30,7 +30,7 @@
 		});
 		if(cnt == 0){
 			alert("선택된 쪽지가 없습니다.");
-		}else{
+		}else if(confirm("정말로 삭제하겠습니까?")){
 			$.ajax({
 				url:"${contextPath}/message/deleteMessage.do",
 				type:"POST",

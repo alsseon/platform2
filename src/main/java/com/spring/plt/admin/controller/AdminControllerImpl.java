@@ -1,5 +1,6 @@
 package com.spring.plt.admin.controller;
 
+import java.net.InetAddress;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,13 @@ public class AdminControllerImpl implements AdminController {
 	@Autowired
 	private AdminVO adminVO;
 	private LoginLogVO loginVO;
-		
+	
+	public static String getClientIp(HttpServletRequest req) {
+	       String ip = req.getHeader("X-Forwarded-For");
+	       if (ip == null) ip = req.getRemoteAddr();
+	       return ip;
+    }
+	
 	@Override
 	@RequestMapping(value= {"/admin/changeLogForm.do","/admin/startchangeLogForm.do","/admin/manuchangeLogForm.do","/admin/expertchangeLogForm.do"}, method = {RequestMethod.GET, RequestMethod.POST})
 	   public ModelAndView changeLog(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -66,32 +73,34 @@ public class AdminControllerImpl implements AdminController {
 	      return mav;
 	   }
 
-	@RequestMapping(value="/admin/login.do", method=RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("member") AdminVO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("adminVO: "+member);
-		ModelAndView mav = new ModelAndView();
-		adminVO = adminService.login(member);
-		System.out.println("DB를 거친 후 member: "+adminVO);
-		
-		String ip = request.getHeader("X-Forwarded-For");
+	   @RequestMapping(value="/admin/login.do", method=RequestMethod.POST)
+	   public ModelAndView login(@ModelAttribute("member") AdminVO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	      System.out.println("adminVO: "+member);
+	      ModelAndView mav = new ModelAndView();
+	      adminVO = adminService.login(member);
+	      
+	      InetAddress local = InetAddress.getLocalHost();
+	      String ip = local.getHostAddress();
+	      
+	      
+	      System.out.println(getClientIp(request)+"++++++++++++++++++++++++++++++++++++++++++++++++++++");        
 
-        if (ip == null) {
 
-            ip = request.getRemoteAddr();
 
-        }
-        System.out.println(ip+"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		if(adminVO != null && ip.equals("127.0.0.1")) {
-			HttpSession session = request.getSession();
-			session.setAttribute("member", adminVO);
-			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/main.do");				
-			} else {
-				rAttr.addAttribute("result", "loginFailed");
-				mav.setViewName("redirect:/common/loginForm.do");
-			}		
-		return mav;
-	}
+
+	      System.out.println("local 이더넷 ip 주소를 가져오기 방법"+ip);
+
+	        if(adminVO != null) {
+	         HttpSession session = request.getSession();
+	         session.setAttribute("member", adminVO);
+	         session.setAttribute("isLogOn", true);
+	         mav.setViewName("redirect:/main.do");            
+	         } else {
+	            rAttr.addAttribute("result", "loginFailed");
+	            mav.setViewName("redirect:/common/loginForm.do");
+	         }      
+	      return mav;
+	   }
 	
 	@Override
 	@RequestMapping(value="/admin/logout.do", method = RequestMethod.GET)

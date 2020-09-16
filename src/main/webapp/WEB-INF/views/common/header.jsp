@@ -42,62 +42,65 @@
 					<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
 						<nav class="navbar navbar-expand-sm">
 							<ul class="navbar-nav ml-auto">
-								<li class="nav-item dropdown mt-2">
-									<a href="#" id="receivedRequest">받은 요청</a>
-								</li>
-								<li>
-				             		<span class="badge badge-danger mt-3" id="receivedRequest">1</span>
-				             	</li>
-								<li class="nav-item dropdown">
-				                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-				                        	쪽지
-				                    </a>
-				                    <div class="dropdown-menu">
-				                        <a class="dropdown-item" href="#">
-				                        	<button class="btn btn-default text-muted" data-target="#mesPop" data-toggle="modal">쪽지 보내기</button>
-				                        </a>
-				                        <a class="dropdown-item text-muted text-center" href="${contextPath}/message/messageList.do?id=${member.id}">쪽지 함</a>
-				                    </div>
-			             		</li>
-			             		<li>
-				             		<span class="badge badge-danger mt-3" id="unReadCount"></span>
-				             	</li>
-			             		<li class="nav-item dropdown">
-			                    	 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-				                        	마이페이지
-				                    </a>
-				                    <div class="dropdown-menu">
-				                        <a class="dropdown-item text-muted text-center" href="#">내 정보 관리</a>
-				                        <a class="dropdown-item text-muted text-center" href="#">스크랩 리스트</a>
-				                        <a class="dropdown-item text-muted text-center" href="#">현황 관리</a>
-				                        <a class="dropdown-item text-muted text-center" href="#">내역 관리</a>
-				                        <c:if test="${member.type == 'startup'}">
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/logout.do">로그아웃</a>
-			                			</c:if>
-			                			<c:if test="${member.type == 'manufac'}">
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/logout.do">로그아웃</a>
-			                			</c:if>
-			                			<c:if test="${member.type == 'expert'}">
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/logout.do">로그아웃</a>
-			                			</c:if>
-			                			<c:if test="${member.type == 'admin'}">
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/logout.do">로그아웃</a>
-			                			</c:if>
-				                    </div>
-			                	</li>
-			                	<c:if test="${member.type == 'admin'}">
-			                		<li class="nav-item dropdown">
-			                			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-			                				회원관리
-			                			</a>
-			                			<div class="dropdown-menu">
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpListForm.do">스타트업 목록</a>
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacListForm.do">제조업체 목록</a>
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertListForm.do">전문가 목록</a>
-			                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/changeLogForm.do">회원정보수정이력</a>
-			                			</div>
-			                		</li>
-			                	</c:if>
+								<c:if test="${member.id != null}">
+									<li class="nav-item dropdown mt-2">
+										<a href="#" id="receivedRequest">받은 요청</a>
+									</li>
+									<li>
+					             		<span class="badge badge-danger mt-3" id="receivedRequest">1</span>
+					             	</li>
+									<li class="nav-item dropdown">
+					                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+					                        	쪽지
+					                    </a>
+					                    <div class="dropdown-menu">
+					                        <a class="dropdown-item" href="#">
+					                        	<button class="btn btn-default text-muted" data-target="#mesPop" data-toggle="modal">쪽지 보내기</button>
+					                        </a>
+					                        <a class="dropdown-item text-muted text-center" href="${contextPath}/message/messageList.do?id=${member.id}">쪽지 함</a>
+					                    </div>
+				             		</li>
+				             		<li>
+					             		<span class="badge badge-danger mt-3" id="unReadCount"></span>
+					             	</li>
+				             		<li class="nav-item dropdown">
+				                    	 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+					                        	마이페이지
+					                    </a>
+					                    <div class="dropdown-menu">
+					                        <a class="dropdown-item text-muted text-center" href="#">내 정보 관리</a>
+					                        <a class="dropdown-item text-muted text-center" href="#">스크랩 리스트</a>
+					                        <a class="dropdown-item text-muted text-center" href="#">현황 관리</a>
+					                        <a class="dropdown-item text-muted text-center" href="#">내역 관리</a>
+					                        <c:if test="${member.type == 'startup'}">
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/logout.do">로그아웃</a>
+				                			</c:if>
+				                			<c:if test="${member.type == 'manufac'}">
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/logout.do">로그아웃</a>
+				                			</c:if>
+				                			<c:if test="${member.type == 'expert'}">
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/logout.do">로그아웃</a>
+				                			</c:if>
+				                			<c:if test="${member.type == 'admin'}">
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/logout.do">로그아웃</a>
+				                			</c:if>
+					                    </div>
+				                	</li>
+				                	<c:if test="${member.type == 'admin'}">
+				                		<li class="nav-item dropdown">
+				                			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+				                				회원관리
+				                			</a>
+				                			<div class="dropdown-menu">
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpListForm.do">스타트업 목록</a>
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacListForm.do">제조업체 목록</a>
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertListForm.do">전문가 목록</a>
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/changeLogForm.do">회원정보수정이력</a>
+				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/admin/LoginLogForm.do">로그인이력</a>
+				                			</div>
+				                		</li>
+				                	</c:if>
+								</c:if>
 			                	<c:if test="${member.id == null}">
 			                		<li class="nav-item">
 				                		<a class="nav-link" href="${contextPath}/common/loginForm.do">로그인</a>
@@ -160,7 +163,7 @@
 	                        <textarea class="form-control" name="content" id="InputContent" rows="5" cols="10" placeholder="내용을 입력하세요."></textarea>
 	                    </div>
 	                    <button type="submit" class="btn btn-primary">전송</button>
-	                    <button type="reset" class="btn btn-warning">다시입력</button>
+	                    <button type="reset" class="btn btn-secondary">다시입력</button>
 	                    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
 	                </form>
 		      	</div>

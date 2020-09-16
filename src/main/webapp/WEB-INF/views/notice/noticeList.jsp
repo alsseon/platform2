@@ -30,7 +30,7 @@
         <div class="col-sm-8">
             <table class="table table-striped table-hover table-sm table-bordered">
                 <thead align="center">
-                    <tr class="table-active bg-primary">
+                    <tr class="table-active bg-primary text-white">
                         <th style="width:10%">글번호</th>
                        <th style="width:10%">작성자</th>
                        <th style="width:50%">제목</th>
@@ -82,7 +82,9 @@
 	                   </c:when>
 	                     </c:choose>
 	                </c:forEach>
-	                   <li><a href="#">&gt;</a></li>
+	                <c:if test="${pageVO.endPage != pageVO.lastPage}">
+	                   <li><a href="${contextPath}/notice/noticeList.do?nowPage=${pageVO.endPage+1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
+	                </c:if>
 	              </ul>
 	            </div>
 	          </div>

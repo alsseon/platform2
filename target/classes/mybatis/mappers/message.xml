@@ -9,8 +9,8 @@
 		<selectKey keyProperty="NO" resultType="int" order="BEFORE">
 	    	select nvl(max(NO), 0) from message
 	    </selectKey>
-		insert into message(NO, sendId, receiveId, content)
-		values(#{NO}+1, #{sendId}, #{receiveId}, #{content})
+		insert into message(NO, sendId, receiveId, content, writeDate, seava, reava, seread, reread)
+		values(#{NO}+1, #{sendId}, #{receiveId}, #{content}, sysdate, 0, 0, 0, 0)
 	</insert>
 	
 	<select id="messageList" resultType="messageVO" parameterType="String">
