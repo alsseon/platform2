@@ -43,13 +43,13 @@ public class StartUpControllerImpl implements StartUpController{
 	@Autowired
 	private StartUpVO startUpVO;
 	
-	@RequestMapping(value= "/main.do", method = RequestMethod.GET)
-	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		return mav;
-	}
+//	@RequestMapping(value= "/main.do", method = RequestMethod.GET)
+//	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
+//		String viewName = (String) request.getAttribute("viewName");
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName(viewName);
+//		return mav;
+//	}
 	
 	@RequestMapping(value="/common/*Form.do", method=RequestMethod.GET)
 	public ModelAndView form(@RequestParam(value="result", required = false) String result, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -70,7 +70,7 @@ public class StartUpControllerImpl implements StartUpController{
 			HttpSession session = request.getSession();
 			session.setAttribute("member", startUpVO);
 			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/main.do");				
+			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
 				mav.setViewName("redirect:/member/loginForm.do");
@@ -85,7 +85,7 @@ public class StartUpControllerImpl implements StartUpController{
 		session.removeAttribute("member");
 		session.removeAttribute("isLogOn");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
 	

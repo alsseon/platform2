@@ -79,22 +79,34 @@ public class AdminControllerImpl implements AdminController {
 	      ModelAndView mav = new ModelAndView();
 	      adminVO = adminService.login(member);
 	      
-	      InetAddress local = InetAddress.getLocalHost();
-	      String ip = local.getHostAddress();
+//	      InetAddress local = InetAddress.getLocalHost();
+//	      String ip = local.getHostAddress();
 	      
 	      
-	      System.out.println(getClientIp(request)+"++++++++++++++++++++++++++++++++++++++++++++++++++++");        
-
-
-
-
-	      System.out.println("local 이더넷 ip 주소를 가져오기 방법"+ip);
-
-	        if(adminVO != null) {
+	      String ip = request.getHeader("X-Forwarded-For");
+	      System.out.println(ip);
+	       if (ip == null) {
+	           ip = request.getHeader("Proxy-Client-IP");
+	       }
+	       if (ip == null) {
+	           ip = request.getHeader("WL-Proxy-Client-IP");
+	       }
+	       if (ip == null) {
+	           ip = request.getHeader("HTTP_CLIENT_IP");
+	       }
+	       if (ip == null) {
+	           ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+	       }
+	       if (ip == null) {
+	           ip = request.getRemoteAddr();
+	       }
+	       
+	        System.out.println(ip+"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	      if(adminVO != null && adminVO.getIpNO().equals(ip)) {
 	         HttpSession session = request.getSession();
 	         session.setAttribute("member", adminVO);
 	         session.setAttribute("isLogOn", true);
-	         mav.setViewName("redirect:/main.do");            
+	         mav.setViewName("redirect:/main/main.do");            
 	         } else {
 	            rAttr.addAttribute("result", "loginFailed");
 	            mav.setViewName("redirect:/common/loginForm.do");
@@ -109,7 +121,7 @@ public class AdminControllerImpl implements AdminController {
 		session.removeAttribute("member");
 		session.removeAttribute("isLogOn");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
 }

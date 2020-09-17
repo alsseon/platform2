@@ -77,6 +77,12 @@
 		]]>
 	</select>
 	
+	<select id="selectAllImageFileList" parameterType="String" resultType="expImageVO">
+		<![CDATA[
+			select * from exp_imagefile order by imagefileNO
+		]]>
+	</select>
+	
 	<select id="selectImageFileNO" parameterType="String" resultType="int">
 		<![CDATA[
 			select imageFileNO from exp_imageFile where imageFileName=#{imageFileName}  

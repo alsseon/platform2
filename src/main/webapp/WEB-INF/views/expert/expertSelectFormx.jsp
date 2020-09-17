@@ -135,7 +135,7 @@ body > form > div.container.signin{
 			
     <label for="psw"><b>세부사항</b></label>
     <input type="hidden" name="expAuth" value="o" >
-   <textarea rows="10px" cols="90px" name="expDetail" placeholder="${expertVO.expDetail}" readonly ></textarea><br>
+   <textarea rows="10px" cols="90px" name="expDetail" readonly >${expertVO.expDetail}</textarea><br>
 
   </div>
 

@@ -54,7 +54,7 @@ public class ExpertControllerImpl implements ExpertController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", expertVO);
 			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/main.do");				
+			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
 				mav.setViewName("redirect:/member/loginForm.do");
@@ -69,7 +69,7 @@ public class ExpertControllerImpl implements ExpertController {
 		session.removeAttribute("member");
 		session.removeAttribute("isLogOn");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
 	

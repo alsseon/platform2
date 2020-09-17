@@ -53,7 +53,7 @@ public class ManufacControllerImpl implements ManufacController{
 			HttpSession session = request.getSession();
 			session.setAttribute("member", manufacVO);
 			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/main.do");				
+			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
 				mav.setViewName("redirect:/member/loginForm.do");
@@ -68,7 +68,7 @@ public class ManufacControllerImpl implements ManufacController{
 		session.removeAttribute("member");
 		session.removeAttribute("isLogOn");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
 	
