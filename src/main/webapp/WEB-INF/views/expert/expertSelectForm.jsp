@@ -187,6 +187,9 @@ span.price {
         <div style="width: 50%; float: left; padding: 60px;">
       		    <button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
+				<a href="${contextPath}/expert/deleteexpert.do?id=${expertVO.id}" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove">
+                </span>삭제</a>
 		</div>
       </form>
     </div>

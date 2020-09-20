@@ -64,6 +64,48 @@
    		insert into loginlog(no,id,logintime) values(loginlog_seq.NEXTVAL,#{id},sysdate)
    	]]>
    </insert>
+   
+   <select id="selectByManuLoc" resultType="manufacVO" parameterType="String">
+		<![CDATA[
+			select * from manufacturer where manuaddr like '%'||#{loc}||'%'
+		]]>
+	</select>
+	
+	<select id="serchByManuType" resultType="manufacVO" parameterType="String">
+		<![CDATA[
+			select * from manufacturer where manubiztype = #{manuType}
+		]]>
+	</select>
+	
+	<select id="serchByManuMinimumPrice" resultType="manufacVO" parameterType="Integer">
+		<![CDATA[
+			select * from manufacturer where productPrice>=#{price}
+		]]>
+	</select>
+	
+	<select id="viewManuFac" resultType="manufacVO" parameterType="String">
+		<![CDATA[
+			select * from manufacturer where id=#{id}
+		]]>
+	</select>
+	
+	<select id="listCount" resultType="int">
+	   <![CDATA[
+	      SELECT COUNT(*)
+	        FROM manufacturer
+	   ]]>
+   </select>
+   
+   <select id="allManuFac" resultType="manufacVO">
+      <![CDATA[
+         SELECT * 
+			FROM ( 
+			  SELECT ROW_NUMBER() OVER(ORDER BY rownum asc) AS RNUM, manufacturer.* 
+			  FROM manufacturer
+			)
+			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY rownum desc
+      ]]>
+   </select> 
 	
 </mapper>
 

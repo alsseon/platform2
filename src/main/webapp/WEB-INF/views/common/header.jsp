@@ -68,8 +68,22 @@
 					                        	마이페이지
 					                    </a>
 					                    <div class="dropdown-menu">
-					                        <a class="dropdown-item text-muted text-center" href="#">내 정보 관리</a>
-					                        <a class="dropdown-item text-muted text-center" href="#">스크랩 리스트</a>
+					                        <c:if test="${member.type=='startup'}">
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpSelectForm.do?id=${member.id}">내 정보 관리</a>
+						                        <a class="dropdown-item text-muted text-center" href="${contextPath}/scrap/printScrapAll.do?compId=${member.id}">스크랩 리스트</a>
+						                        <h5 class="dropdown-header text-center">현황 관리</h5>
+						                    	<a class="dropdown-item text-muted text-center" href="#">견적 현황 관리</a>
+						                    	<a class="dropdown-item text-muted text-center" href="#">컨설팅 현황 관리</a>
+						                    	<h5 class="dropdown-header text-center">내역 관리</h5>
+						                    	<a class="dropdown-item text-muted text-center" href="#">견적 내역 관리</a>
+						                    	<a class="dropdown-item text-muted text-center" href="#">컨설팅 내역 관리</a>
+					                        </c:if>
+					                        <c:if test="${member.type=='manufac'}">
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        </c:if>
+					                        <c:if test="${member.type=='expert'}">
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        </c:if>
 					                        <a class="dropdown-item text-muted text-center" href="#">현황 관리</a>
 					                        <a class="dropdown-item text-muted text-center" href="#">내역 관리</a>
 					                        <c:if test="${member.type == 'startup'}">
@@ -133,8 +147,8 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
 	        	<li class="nav-item"><a href="#" class="nav-link">사이트 소개</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">제조사 찾기</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">전문가 찾기</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/manufacSearch/allManufac.do" class="nav-link">제조사 찾기</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/expSearch/allExpert.do" class="nav-link">전문가 찾기</a></li>
 	        	<li class="nav-item"><a href="${contextPath}/notice/noticeList.do" class="nav-link">공지사항</a></li>
 	        	<li class="nav-item"><a href="${contextPath}/adminQnA/listArticles.do" class="nav-link">Q&A</a></li>
 	        </ul>
@@ -170,5 +184,7 @@
             </div>
         </div>
     </div>
+    <!-- message Modal End
+     -->
 </body>
 </html>

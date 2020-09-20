@@ -216,6 +216,9 @@ body > div > form > div:nth-child(2) > button{
 			<div style="width: 50%; float: left; padding: 40px; padding-left: 120px;" >
       		    <button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
+				<a href="${contextPath}/startup/deletestartUp.do?id=${startUpVO.id}" class="btn btn-danger btn-xs">
+                   <span class="glyphicon glyphicon-remove">
+                </span>삭제</a>
 		</div>
 		</form>
 	</div>
@@ -236,6 +239,7 @@ body > div > form > div:nth-child(2) > button{
 		var enable2 = document.getElementById('i_compImg');
 		enable2.disabled=false;
 	}
+	
 </script>    
 
 	

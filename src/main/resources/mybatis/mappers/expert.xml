@@ -100,6 +100,41 @@
  		insert into LoginLog(no , id, Logintime) values(loginlog_seq.NEXTVAL, #{id}, sysdate)   		
    		]]>
    </insert>
+   
+   <select id="serchByName" resultType="expertVO" parameterType="String">
+		<![CDATA[
+			select * from Expert where expName like '%' || #{name} || '%'
+		]]>
+	</select>
+	
+	<select id="serchByType" resultType="expertVO" parameterType="String">
+		<![CDATA[
+			select * from expert where expbizfield=#{type}
+		]]>
+	</select>
+	
+	<select id="viewExpert" resultType="expertVO" parameterType="String">
+		<![CDATA[
+			select * from expert where id=#{id}
+		]]>
+	</select>
+	
+	<select id="allExpert" resultType="expertVO" parameterType="expertVO">
+		<![CDATA[
+			SELECT * 
+			FROM ( 
+			  SELECT ROW_NUMBER() OVER(ORDER BY rownum asc) AS RNUM, expert.* 
+			  FROM expert
+			)
+			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY rownum desc
+		]]>
+	</select>
+	
+	<select id="listCount" resultType="int">
+		<![CDATA[
+			select count(*) from expert
+		]]>
+	</select>
 	
 </mapper>
 

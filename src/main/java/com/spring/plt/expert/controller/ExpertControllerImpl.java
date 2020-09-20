@@ -37,7 +37,8 @@ import com.spring.plt.expert.vo.ExpertVO;
 @Controller("expertController")
 @EnableAspectJAutoProxy
 public class ExpertControllerImpl implements ExpertController {
-	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage";
+//	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
+	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
 	@Autowired
 	private ExpertService expertService;
 	
@@ -225,13 +226,13 @@ public class ExpertControllerImpl implements ExpertController {
 			expertVO = (ExpertVO) expertService.expertselect(id).get("expertVO");
 			session.setAttribute("expert", expertVO);
 			message = "<script>";
-			message += " alert('수정완료');";
+			message += " alert('�닔�젙�셿猷�');";
 			message += " location.href='"+request.getContextPath()+"/expert/expertListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('수정실패');";
+			message += " alert('�닔�젙�떎�뙣');";
 			message += " location.href='"+request.getContextPath()+"/expert/expertListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

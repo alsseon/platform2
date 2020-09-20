@@ -36,7 +36,8 @@ import com.spring.plt.startup.vo.StartUpVO;
 @Controller("startUpController")
 @EnableAspectJAutoProxy
 public class StartUpControllerImpl implements StartUpController{
-	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage";
+//	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
+	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
 	@Autowired
 	private StartUpService startUpService;
 	
@@ -212,7 +213,7 @@ public class StartUpControllerImpl implements StartUpController{
 				oldFile.delete();
 			}
 			message = "<script>";
-			message += " alert('수정완료');";
+			message += " alert('�닔�젙�셿猷�');";
 			message += " location.href='"+request.getContextPath()+"/';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -220,7 +221,7 @@ public class StartUpControllerImpl implements StartUpController{
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+compImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('입력되지않은 사항이 있습니다.');";
+			message += " alert('�엯�젰�릺吏��븡�� �궗�빆�씠 �엳�뒿�땲�떎.');";
 			message += " location.href='"+request.getContextPath()+"/startup/startUpListForm.do?id="+id+"';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
