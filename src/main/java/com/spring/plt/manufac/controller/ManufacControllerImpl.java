@@ -36,8 +36,8 @@ import com.spring.plt.manufac.vo.ManufacVO;
 @Controller("manufacController")
 @EnableAspectJAutoProxy
 public class ManufacControllerImpl implements ManufacController{
-	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //�븰�썝
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //吏�
 	
 	@Autowired
 	private ManufacService manufacService;
@@ -58,7 +58,7 @@ public class ManufacControllerImpl implements ManufacController{
 			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
-				mav.setViewName("redirect:/member/loginForm.do");
+				mav.setViewName("redirect:/common/loginForm.do");
 			}
 		return mav;
 	}
@@ -199,7 +199,7 @@ public class ManufacControllerImpl implements ManufacController{
 				oldFile.delete();
 			}
 			message = "<script>";
-			message += " alert('�닔�젙�셿猷�');";
+			message += " alert('占쎈땾占쎌젟占쎌끏�뙴占�');";
 			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -207,7 +207,7 @@ public class ManufacControllerImpl implements ManufacController{
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+manuImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('�닔�젙�떎�뙣');";
+			message += " alert('占쎈땾占쎌젟占쎈뼄占쎈솭');";
 			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

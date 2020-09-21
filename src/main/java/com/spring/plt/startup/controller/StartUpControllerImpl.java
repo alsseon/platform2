@@ -36,8 +36,8 @@ import com.spring.plt.startup.vo.StartUpVO;
 @Controller("startUpController")
 @EnableAspectJAutoProxy
 public class StartUpControllerImpl implements StartUpController{
-	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //�븰�썝
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //吏�
 	@Autowired
 	private StartUpService startUpService;
 	
@@ -74,7 +74,7 @@ public class StartUpControllerImpl implements StartUpController{
 			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
-				mav.setViewName("redirect:/member/loginForm.do");
+				mav.setViewName("redirect:/common/loginForm.do");
 			}		
 		return mav;
 	}
@@ -213,7 +213,7 @@ public class StartUpControllerImpl implements StartUpController{
 				oldFile.delete();
 			}
 			message = "<script>";
-			message += " alert('�닔�젙�셿猷�');";
+			message += " alert('占쎈땾占쎌젟占쎌끏�뙴占�');";
 			message += " location.href='"+request.getContextPath()+"/';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -221,7 +221,7 @@ public class StartUpControllerImpl implements StartUpController{
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+compImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('�엯�젰�릺吏��븡�� �궗�빆�씠 �엳�뒿�땲�떎.');";
+			message += " alert('占쎌뿯占쎌젾占쎈┷筌욑옙占쎈륫占쏙옙 占쎄텢占쎈퉮占쎌뵠 占쎌뿳占쎈뮸占쎈빍占쎈뼄.');";
 			message += " location.href='"+request.getContextPath()+"/startup/startUpListForm.do?id="+id+"';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

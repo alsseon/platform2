@@ -37,8 +37,8 @@ import com.spring.plt.expert.vo.ExpertVO;
 @Controller("expertController")
 @EnableAspectJAutoProxy
 public class ExpertControllerImpl implements ExpertController {
-	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //�븰�썝
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //吏�
 	@Autowired
 	private ExpertService expertService;
 	
@@ -58,7 +58,7 @@ public class ExpertControllerImpl implements ExpertController {
 			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
-				mav.setViewName("redirect:/member/loginForm.do");
+				mav.setViewName("redirect:/common/loginForm.do");
 			}		
 		return mav;
 	}
@@ -226,13 +226,13 @@ public class ExpertControllerImpl implements ExpertController {
 			expertVO = (ExpertVO) expertService.expertselect(id).get("expertVO");
 			session.setAttribute("expert", expertVO);
 			message = "<script>";
-			message += " alert('�닔�젙�셿猷�');";
+			message += " alert('占쎈땾占쎌젟占쎌끏�뙴占�');";
 			message += " location.href='"+request.getContextPath()+"/expert/expertListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('�닔�젙�떎�뙣');";
+			message += " alert('占쎈땾占쎌젟占쎈뼄占쎈솭');";
 			message += " location.href='"+request.getContextPath()+"/expert/expertListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
