@@ -26,18 +26,18 @@
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="${contextPath }/resources/css/animate.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/animate.css">
 
-        <link rel="stylesheet" href="${contextPath }/resources/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/magnific-popup.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
 
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
-        <link rel="stylesheet" href="${contextPath }/resources/css/flaticon.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/style.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
     <style>
     .sidebar{
     	position: absolute;
@@ -59,13 +59,33 @@
            </div> <!-- .col-md-8 -->
            <!-- 소개 사진 한칸 -->
            <!-- user정보 -->
-           <div class="col-lg-7 ftco-animate">
-	          		<h3>${user.id }</h3>
-	          		<h3>${user.compName }</h3>
-	          		<h3>${user.compEmail }</h3>
-	          		<h3>${user.compBizType }</h3>
-	          		<h3>${user.compTel }</h3>
-           </div>
+           <c:if test="${user.type=='startup' }">
+	           <div class="col-lg-7 ftco-animate">
+		          		<h3>${user.id }</h3>
+		          		<h3>${user.compName }</h3>
+		          		<h3>${user.compEmail }</h3>
+		          		<h3>${user.compBizType }</h3>
+		          		<h3>${user.compTel }</h3>
+	           </div>
+           </c:if>
+           <c:if test="${user.type=='manufac'}">
+           		<div class="col-lg-7 ftco-animate">
+		          		<h3>${user.id }</h3>
+		          		<h3>${user.manuName }</h3>
+		          		<h3>${user.manuEmail }</h3>
+		          		<h3>${user.manuBizType }</h3>
+		          		<h3>${user.manuTel }</h3>
+	           </div>
+           </c:if>
+           <c:if test="${user.type=='expert'}">
+           		<div class="col-lg-7 ftco-animate">
+		          		<h3>${user.id }</h3>
+		          		<h3>${user.expName }</h3>
+		          		<h3>${user.expEmail }</h3>
+		          		<h3>${user.expBizField }</h3>
+		          		<h3>${user.expTel }</h3>
+	           </div>
+           </c:if>
 
           <!-- user정보 -->
           <!-- user정보가 스타트업 이라면 모두 출력 -->

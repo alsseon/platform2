@@ -26,18 +26,18 @@
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="${contextPath }/resources/css/animate.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/animate.css">
 
-        <link rel="stylesheet" href="${contextPath }/resources/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/magnific-popup.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
 
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
-        <link rel="stylesheet" href="${contextPath }/resources/css/flaticon.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/style.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
+        <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
     </head>
 <body>
 	<section class="ftco-section bg-light">
@@ -102,7 +102,7 @@
 											<div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="label" for="content">내용</label>
-                                                    <textarea class="form-control" name="content" rows="12">"${ConsultingVO.content }"</textarea>
+                                                    <textarea class="form-control" name="content" rows="12">${ConsultingVO.content}</textarea>
                                                 </div>
 											</div>
 											<div class="col-md-1">
@@ -120,7 +120,7 @@
                                                         type="text"
                                                         class="form-control price"
                                                         name="price"
-                                                        value="${ConsultingVO.price }"
+                                                        value="${ConsultingVO.price}"
                                                         placeholder="가격">
                                                 </div>
 											</div>
@@ -131,38 +131,38 @@
 														type="text" 
                                                         name="fileName"
                                                         class="form-control"
-                                                        value="${ConsultingVO.fileName }"  />
+                                                        value="${ConsultingVO.fileName}"  />
                                                 </div>
                                             </div>
                                             <c:if test="${member.type == 'startup'}"><!-- request.getSession에서 user의 타입을 가져온다. -->
                                             	<div class="col-md-12">
 	                                                <div class="form-group">
-	                                                    <input type="submit" value="Consulting withdrawal" class="btn btn-primary">
+	                                                    <input type="submit" value="컨설팅 철회" class="btn btn-primary">
 	                                                    <div class="submitting"></div>
 	                                                </div>
                                             	</div>
                                             </c:if>
-                                            <!--<c:if test="${member.type == 'expert'}"> 로그인 기능 결합 되면 주석 해제-->
-                                            <!--</c:if>-->
-                                           	<div class="col-md-12" >
-                                           		<c:if test="${ConsultingVO.status == 0 }">
-	                                               	<div class="form-group" style="display: inline-block;">
-	                                                   <a href= "${contextPath}/expertpage/updatestatus_y.do?status=${ConsultingVO.status}&no=${ConsultingVO.no}" class="btn btn-info">Consulting accept</a>
+                                            <c:if test="${member.type == 'expert'}">
+	                                           	<div class="col-md-12" >
+	                                           		<c:if test="${ConsultingVO.status == 0 }">
+		                                               	<div class="form-group" style="display: inline-block;">
+		                                                   <a href= "${contextPath}/expertpage/updatestatus_y.do?status=${ConsultingVO.status}&no=${ConsultingVO.no}&expId=${member.id}" class="btn btn-info">컨설팅 수락</a>
+		                                                   <div class="submitting"></div>
+		                                               	</div>
+		                                               	<div class="form-group" style="display: inline-block;">
+		                                                   <a href= "${contextPath}/expertpage/updatestatus_n.do?status=${ConsultingVO.status}&no=${ConsultingVO.no}&expId=${member.id}" class="btn btn-primary">컨설팅 거절</a>
+		                                                   <div class="submitting"></div>
+		                                               </div>
+	                                               </c:if>
+	                                            </div>
+	                                            <c:if test="${ConsultingVO.status == 1 }">
+	                                            	<div class="form-group">
+	                                                   <a href= "${contextPath}/expertpage/updatestatus_y.do?status=${ConsultingVO.status}&no=${ConsultingVO.no}&expId=${member.id}" class="btn btn-primary">컨설팅 완료</a>
 	                                                   <div class="submitting"></div>
 	                                               	</div>
-	                                               	<div class="form-group" style="display: inline-block;">
-	                                                   <a href= "${contextPath}/expertpage/updatestatus_n.do?status=${ConsultingVO.status}&no=${ConsultingVO.no}" class="btn btn-primary">Consulting reject</a>
-	                                                   <div class="submitting"></div>
-	                                               </div>
-                                               </c:if>
-                                            </div>
-                                            <c:if test="${ConsultingVO.status == 1 }">
-                                            	<div class="form-group">
-                                                   <a href= "${contextPath}/expertpage/updatestatus_y.do?status=${ConsultingVO.status}&no=${ConsultingVO.no}" class="btn btn-primary">Consulting complete</a>
-                                                   <div class="submitting"></div>
-                                               	</div>
+	                                            </c:if>
                                             </c:if>
-                                        </div>
+                                       	</div>
                                     </form>
                                 </div>
                             </div>

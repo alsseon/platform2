@@ -102,8 +102,7 @@ public class AdminControllerImpl implements AdminController {
 	       }
 	       
 	        System.out.println(ip+"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-//	      if(adminVO != null && adminVO.getIpNO().equals(ip)) {
-	      if(adminVO != null) {
+	      if(adminVO != null && adminVO.getIpNO().equals(ip)) {
 	         HttpSession session = request.getSession();
 	         session.setAttribute("member", adminVO);
 	         session.setAttribute("isLogOn", true);

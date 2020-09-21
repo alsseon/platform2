@@ -68,24 +68,25 @@
 					                        	마이페이지
 					                    </a>
 					                    <div class="dropdown-menu">
+					                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/common/MyPage.do?userId=${member.id}">마이페이지 가기</a>
 					                        <c:if test="${member.type=='startup'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpSelectForm.do?id=${member.id}">내 정보 관리</a>
 						                        <a class="dropdown-item text-muted text-center" href="${contextPath}/scrap/printScrapAll.do?compId=${member.id}">스크랩 리스트</a>
 						                        <h5 class="dropdown-header text-center">현황 관리</h5>
-						                    	<a class="dropdown-item text-muted text-center" href="#">견적 현황 관리</a>
-						                    	<a class="dropdown-item text-muted text-center" href="#">컨설팅 현황 관리</a>
-						                    	<h5 class="dropdown-header text-center">내역 관리</h5>
-						                    	<a class="dropdown-item text-muted text-center" href="#">견적 내역 관리</a>
-						                    	<a class="dropdown-item text-muted text-center" href="#">컨설팅 내역 관리</a>
+						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/manu_estilist.do?compId=${member.id}">견적 현황 관리</a>
+						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/consultinglist.do?compId=${member.id}">컨설팅 현황 관리</a>
+						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/com_consultinglist.do?compId=${member.id}">완료 내역 관리</a>
 					                        </c:if>
 					                        <c:if test="${member.type=='manufac'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufacpage/estilist.do?manuId=${member.id}">견적 현황 관리</a>
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufacpage/com_estilist.do?manuId=${member.id}">견적 완료 목록</a>
 					                        </c:if>
 					                        <c:if test="${member.type=='expert'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expertpage/consulting.do?expId=${member.id}">컨설팅 현황 관리</a>
+					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expertpage/com_consulting.do?expId=${member.id}">컨설팅 완료 목록</a>
 					                        </c:if>
-					                        <a class="dropdown-item text-muted text-center" href="#">현황 관리</a>
-					                        <a class="dropdown-item text-muted text-center" href="#">내역 관리</a>
 					                        <c:if test="${member.type == 'startup'}">
 				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/logout.do">로그아웃</a>
 				                			</c:if>

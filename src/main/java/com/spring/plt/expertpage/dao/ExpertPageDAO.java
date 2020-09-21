@@ -9,16 +9,16 @@ import com.spring.plt.page.vo.PageVO;
 
 public interface ExpertPageDAO {
 	public int listCount() throws Exception;
-	public int listCount_i() throws Exception;
-	public int listCount_w() throws Exception;
-	public int listCount_c() throws Exception;
-	public int listCount_d() throws Exception;
-	public List<ExpertPageVO> selectAllEstiList(PageVO pagevo) throws DataAccessException;
+	public int listCount_i(String expId) throws Exception;
+	public int listCount_w(String expId) throws Exception;
+	public int listCount_c(String expId) throws Exception;
+	public int listCount_d(String expId) throws Exception;
+//	public List<ExpertPageVO> selectAllEstiList(PageVO pagevo, String expId) throws DataAccessException;
 	public int deleteesti(int no) throws DataAccessException;
-	public List<ExpertPageVO> selectWaitEstiList(PageVO pagevo) throws DataAccessException;
-	public List<ExpertPageVO> selectIngEstiList(PageVO pagevo) throws DataAccessException;
-	public List<ExpertPageVO> selectComEstiList(PageVO pagevo) throws DataAccessException;
-	public List<ExpertPageVO> selectDeEstiList(PageVO pagevo) throws DataAccessException;
+	public List<ExpertPageVO> selectWaitEstiList(PageVO pagevo, String expId) throws DataAccessException;
+	public List<ExpertPageVO> selectIngEstiList(PageVO pagevo, String expId) throws DataAccessException;
+	public List<ExpertPageVO> selectComEstiList(PageVO pagevo, String expId) throws DataAccessException;
+	public List<ExpertPageVO> selectDeEstiList(PageVO pagevo, String expId) throws DataAccessException;
 	public int status_y(int status, int no)throws DataAccessException;
 	public int status_n(int status, int no) throws DataAccessException;
 }

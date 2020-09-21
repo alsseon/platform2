@@ -37,8 +37,8 @@ import com.spring.plt.expert.vo.ExpertVO;
 @Controller("expertController")
 @EnableAspectJAutoProxy
 public class ExpertControllerImpl implements ExpertController {
-//	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
 	@Autowired
 	private ExpertService expertService;
 	

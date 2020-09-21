@@ -25,7 +25,7 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 	private ManufacPageVO manufac;
 	
 	@RequestMapping(value = "/manufacpage/estilist.do", method = RequestMethod.GET)
-	public ModelAndView prodlist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView prodlist(@RequestParam("manuId")String manuId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");
 		String viewName = (String)request.getAttribute("viewName");
@@ -42,33 +42,20 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		System.out.println(nowPage);
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		
-//		List<ManufacPageVO> prodlist = manufacservice.listprod(pagevo);
-		List<ManufacPageVO> estilist = manufacservice.listesti(pagevo);
-		List<ManufacPageVO> w_estiList = manufacservice.w_estiList(pagevo);
-		List<ManufacPageVO> i_estiList = manufacservice.i_estiList(pagevo);
-		List<ManufacPageVO> c_estiList = manufacservice.c_estiList(pagevo);
-		List<ManufacPageVO> d_estiList = manufacservice.d_estiList(pagevo);
-//		List<ManufacPageVO> w_prodlist = manufacservice.w_listprod(pagevo);
-//		List<ManufacPageVO> i_prodlist = manufacservice.i_listprod(pagevo);
-//		List<ManufacPageVO> c_prodlist = manufacservice.c_listprod(pagevo);
-//		List<ManufacPageVO> d_prodlist = manufacservice.d_listprod(pagevo);
-//		List<ManufacPageVO> s_prodlist = manufacservice.s_listprod(pagevo);
-//		List<ManufacPageVO> e_prodlist = manufacservice.e_listprod(pagevo);
+		List<ManufacPageVO> estilist = manufacservice.listesti(pagevo,manuId);
+		List<ManufacPageVO> w_estiList = manufacservice.w_estiList(pagevo,manuId);
+		List<ManufacPageVO> i_estiList = manufacservice.i_estiList(pagevo,manuId);
+		List<ManufacPageVO> c_estiList = manufacservice.c_estiList(pagevo,manuId);
+		List<ManufacPageVO> d_estiList = manufacservice.d_estiList(pagevo,manuId);
+//		
 		
 		ModelAndView mav = new ModelAndView(viewName);
-//		mav.addObject("prodlist",prodlist);
 		mav.addObject("estilist",estilist);
 		mav.addObject("w_estiList", w_estiList);
 		mav.addObject("i_estiList", i_estiList);
 		mav.addObject("c_estiList", c_estiList);
 		mav.addObject("d_estiList", d_estiList);
 		
-//		mav.addObject("w_prodlist", w_prodlist);
-//		mav.addObject("i_prodlist", i_prodlist);
-//		mav.addObject("c_prodlist", c_prodlist);
-//		mav.addObject("d_prodlist", d_prodlist);
-//		mav.addObject("s_prodlist", s_prodlist);
-//		mav.addObject("e_prodlist", e_prodlist);
 		mav.addObject("pagevo",pagevo);
 		
 		System.out.println("estiList: "+estilist);
@@ -107,11 +94,11 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		return mav;
 	}
 	@RequestMapping(value = "/manufacpage/estilist_more_w.do",method = RequestMethod.GET)
-	public ModelAndView prodlist_w(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView prodlist_w(@RequestParam("manuId")String manuId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");
 		String viewName = (String)request.getAttribute("viewName");
-		int total = manufacservice. listCount_w();
+		int total = manufacservice. listCount_w(manuId);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -122,7 +109,7 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		}
 		System.out.println(nowPage);
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		List<ManufacPageVO> w_estiList = manufacservice.w_estiList(pagevo);
+		List<ManufacPageVO> w_estiList = manufacservice.w_estiList(pagevo,manuId);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("w_estiList", w_estiList);
 		mav.addObject("pagevo",pagevo);
@@ -130,11 +117,11 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 	}
 	
 	@RequestMapping(value="manufacpage/estilist_more_ing.do", method=RequestMethod.GET)
-	public ModelAndView prodlist_ing(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView prodlist_ing(@RequestParam("manuId")String manuId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");
 		String viewName = (String)request.getAttribute("viewName");
-		int total = manufacservice. listCount_i();
+		int total = manufacservice. listCount_i(manuId);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -145,18 +132,18 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		}
 		System.out.println(nowPage);
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		List<ManufacPageVO> i_estiList = manufacservice.i_estiList(pagevo);
+		List<ManufacPageVO> i_estiList = manufacservice.i_estiList(pagevo,manuId);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("i_estiList", i_estiList);
 		mav.addObject("pagevo",pagevo);
 		return mav;
 	}
 	@RequestMapping(value="/manufacpage/com_estilist.do", method=RequestMethod.GET)
-	public ModelAndView prodlist_com(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView prodlist_com(@RequestParam("manuId")String manuId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");
 		String viewName = (String)request.getAttribute("viewName");
-		int total = manufacservice. listCount_c();
+		int total = manufacservice. listCount_c(manuId);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -167,18 +154,18 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		}
 		System.out.println(nowPage);
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		List<ManufacPageVO> c_estiList = manufacservice.c_estiList(pagevo);
+		List<ManufacPageVO> c_estiList = manufacservice.c_estiList(pagevo,manuId);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("c_estiList", c_estiList);
 		mav.addObject("pagevo",pagevo);
 		return mav;
 }
 	@RequestMapping(value="/manufacpage/estilist_more_de.do", method=RequestMethod.GET)
-	public ModelAndView prodlist_de(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView prodlist_de(@RequestParam("manuId")String manuId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");
 		String viewName = (String)request.getAttribute("viewName");
-		int total = manufacservice. listCount_d();
+		int total = manufacservice. listCount_d(manuId);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -189,10 +176,11 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		}
 		System.out.println(nowPage);
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		List<ManufacPageVO> d_estiList = manufacservice.d_estiList(pagevo);
+		List<ManufacPageVO> d_estiList = manufacservice.d_estiList(pagevo,manuId);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("d_estiList", d_estiList);
 		mav.addObject("pagevo",pagevo);
 		return mav;
 }
+	
 }

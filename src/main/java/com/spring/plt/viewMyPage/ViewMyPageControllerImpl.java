@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,11 +18,12 @@ import com.spring.plt.consulting.vo.ConsultingVO;
 import com.spring.plt.quotation.vo.QuotationVO;
 import com.spring.plt.scrap.vo.ScrapVO;
 
+@Controller
 public class ViewMyPageControllerImpl {
 	@Autowired
 	SqlSession sqlSession;
 	
-	@RequestMapping("/common/MyPage.do")
+	@RequestMapping(value="/common/MyPage.do", method=RequestMethod.GET)
 	public ModelAndView MyPage(@RequestParam("userId")String userId, HttpServletRequest request, HttpServletResponse response) {
 		String viewName = (String) request.getAttribute("viewName");
 		System.out.println(viewName);
@@ -45,13 +48,13 @@ public class ViewMyPageControllerImpl {
 		String compid = userId;
 		List<ScrapVO> manuScrapList = sqlSession.selectList("mapper.mypage.getManuScrap", compid);
 		List<ScrapVO> expertScrapList = sqlSession.selectList("mapper.mypage.getExpertScrap",compid);
-		mav.addObject("manuList", manuScrapList);//Á¦Á¶¾÷Ã¼ ½ºÅ©·¦ ¸®½ºÆ® 3°³¸¸ ºÒ·¯¿È -- (½ºÅ©·¦¸®½ºÆ® - Á¦Á¶¾÷Ã¼ voÁ¶ÀÎÇÏ¿© Á¦Á¶¾÷Ã¼ vo°¡Á®¿È)
-		mav.addObject("expertList", expertScrapList);//Àü¹®°¡ ½ºÅ©·¦ ¸®½ºÆ® 3°³¸¸ ºÒ·¯¿È -- (½ºÅ©·¦ ¸®½ºÆ® - Àü¹®°¡ voÁ¶ÀÎÇÏ¿© Àü¹®°¡ vo°¡Á®¿È)
+		mav.addObject("manuList", manuScrapList);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® 3ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ -- (ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ voï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ voï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+		mav.addObject("expertList", expertScrapList);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® 3ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ -- (ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ voï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ voï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 		
 		List<ConsultingVO> consultingList = sqlSession.selectList("mapper.mypage.getConsulting",userId);
 		List<QuotationVO> quotationList = sqlSession.selectList("mapper.mypage.getQuotation",userId);
-		mav.addObject("consultingList", consultingList); // ÄÁ¼³ÆÃ ¸®½ºÆ® 5°³¸¸ ºÒ·¯¿È
-		mav.addObject("quotationList", quotationList);  // °ßÀû¸®½ºÆ® 5°³¸¸ ºÒ·¯¿È
+		mav.addObject("consultingList", consultingList); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® 5ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½
+		mav.addObject("quotationList", quotationList);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® 5ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½
 		
 		return mav;
 	}

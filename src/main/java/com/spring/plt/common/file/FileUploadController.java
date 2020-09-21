@@ -20,8 +20,8 @@ import com.google.gson.JsonObject;
 
 @Controller
 public class FileUploadController {
-//	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //ÇÐ¿ø
-	private static final String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //Áý
+	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //ï¿½Ð¿ï¿½
+//	private static final String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //ï¿½ï¿½
 	
 	@RequestMapping(value="/imageUpload.do", method=RequestMethod.POST)
 	public void imageUpload(@RequestParam MultipartFile upload,

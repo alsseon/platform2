@@ -36,8 +36,8 @@ import com.spring.plt.manufac.vo.ManufacVO;
 @Controller("manufacController")
 @EnableAspectJAutoProxy
 public class ManufacControllerImpl implements ManufacController{
-//	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
 	
 	@Autowired
 	private ManufacService manufacService;

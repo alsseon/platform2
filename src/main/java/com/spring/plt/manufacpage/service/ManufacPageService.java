@@ -8,9 +8,9 @@ import com.spring.plt.page.vo.PageVO;
 public interface ManufacPageService {
 	public int listCount();
 
-	public List<ManufacPageVO> listesti(PageVO pagevo);
+	public List<ManufacPageVO> listesti(PageVO pagevo,String manuId);
 
-	public List<ManufacPageVO> listprod(PageVO pagevo);
+	
 
 	public int deleteesti(int no) throws Exception;
 
@@ -18,20 +18,14 @@ public interface ManufacPageService {
 
 	public int updatestatus_de(int quotestatus, int no);
 
-	public List<ManufacPageVO> w_estiList(PageVO pagevo) throws Exception;
-	public List<ManufacPageVO> i_estiList(PageVO pagevo) throws Exception;
-	public List<ManufacPageVO> c_estiList(PageVO pagevo) throws Exception;
-	public List<ManufacPageVO> d_estiList(PageVO pagevo) throws Exception;
+	public List<ManufacPageVO> w_estiList(PageVO pagevo,String manuId) throws Exception;
+	public List<ManufacPageVO> i_estiList(PageVO pagevo,String manuId) throws Exception;
+	public List<ManufacPageVO> c_estiList(PageVO pagevo,String manuId) throws Exception;
+	public List<ManufacPageVO> d_estiList(PageVO pagevo,String manuId) throws Exception;
 
-	public List<ManufacPageVO> d_listprod(PageVO pagevo)throws Exception;
-	public List<ManufacPageVO> w_listprod(PageVO pagevo)throws Exception;
-	public List<ManufacPageVO> i_listprod(PageVO pagevo)throws Exception;
-	public List<ManufacPageVO> c_listprod(PageVO pagevo)throws Exception;
-	public List<ManufacPageVO> s_listprod(PageVO pagevo)throws Exception;
-	public List<ManufacPageVO> e_listprod(PageVO pagevo)throws Exception;
 	
-	public int listCount_d() throws Exception;
-	public int listCount_i() throws Exception;
-	public int listCount_w() throws Exception;
-	public int listCount_c() throws Exception;
+	public int listCount_d(String manuId) throws Exception;
+	public int listCount_i(String manuId) throws Exception;
+	public int listCount_w(String manuId) throws Exception;
+	public int listCount_c(String manuId) throws Exception;
 }

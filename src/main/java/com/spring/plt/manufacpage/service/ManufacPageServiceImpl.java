@@ -15,69 +15,35 @@ public class ManufacPageServiceImpl implements ManufacPageService{
 	@Autowired
 	private ManufacPageDAO manufacdao;
 	
-	public List<ManufacPageVO> listesti(PageVO pagevo) throws DataAccessException{
+	public List<ManufacPageVO> listesti(PageVO pagevo, String manuId) throws DataAccessException{
 		List<ManufacPageVO> estilist = null;
-		estilist = manufacdao.selectAllEstiList(pagevo);
+		estilist = manufacdao.selectAllEstiList(pagevo,manuId);
 		return estilist;
 	}
-	public List<ManufacPageVO> w_estiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> w_estiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estilist = null;
-		estilist = manufacdao.selectWaitingEstiList(pagevo);
+		estilist = manufacdao.selectWaitingEstiList(pagevo,manuId);
 		return estilist;
 	}
-	public List<ManufacPageVO> i_estiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> i_estiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estilist = null;
-		estilist = manufacdao.selectIngEstiList(pagevo);
+		estilist = manufacdao.selectIngEstiList(pagevo,manuId);
 		return estilist;
 	}
-	public List<ManufacPageVO> c_estiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> c_estiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estilist = null;
-		estilist = manufacdao.selectComEstiList(pagevo);
+		estilist = manufacdao.selectComEstiList(pagevo,manuId);
 		return estilist;
 	}
-	public List<ManufacPageVO> d_estiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> d_estiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estilist = null;
-		estilist = manufacdao.selectDeEstiList(pagevo);
+		estilist = manufacdao.selectDeEstiList(pagevo,manuId);
 		return estilist;
 	}
 	public int listCount() throws DataAccessException{
 		return manufacdao.listCount();
 	}
-	public List<ManufacPageVO> listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> prodlist = null;
-		prodlist = manufacdao.selectAllProdList(pagevo);
-		return prodlist;
-	}
-	public List<ManufacPageVO> w_listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> w_prodlist = null;
-		w_prodlist = manufacdao.selectAllProdList(pagevo);
-		return w_prodlist;
-	}
-	public List<ManufacPageVO> i_listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> i_prodlist = null;
-		i_prodlist = manufacdao.selectAllProdList(pagevo);
-		return i_prodlist;
-	}
-	public List<ManufacPageVO> c_listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> c_prodlist = null;
-		c_prodlist = manufacdao.selectAllProdList(pagevo);
-		return c_prodlist;
-	}
-	public List<ManufacPageVO> s_listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> s_prodlist = null;
-		s_prodlist = manufacdao.selectAllProdList(pagevo);
-		return s_prodlist;
-	}
-	public List<ManufacPageVO> e_listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> e_prodlist = null;
-		e_prodlist = manufacdao.selectAllProdList(pagevo);
-		return e_prodlist;
-	}
-	public List<ManufacPageVO> d_listprod(PageVO pagevo) throws DataAccessException{
-		List<ManufacPageVO> d_prodlist = null;
-		d_prodlist = manufacdao.selectAllProdList(pagevo);
-		return d_prodlist;
-	}
+	
 	public int deleteesti(int no) throws Exception {
 		return manufacdao.deleteesti(no);
 	}
@@ -87,16 +53,18 @@ public class ManufacPageServiceImpl implements ManufacPageService{
 	public int updatestatus_de(int quotestatus, int no)throws DataAccessException{
 		return manufacdao.quotestatus_de(quotestatus,no);
 	}
-	public int listCount_i() throws Exception{
-		return manufacdao.estilistCount_i();
+	public int listCount_i(String manuId) throws Exception{
+		return manufacdao.estilistCount_i(manuId);
 	}
-	public int listCount_w() throws Exception{
-		return manufacdao.estilistCount_w();
+	public int listCount_w(String manuId) throws Exception{
+		return manufacdao.estilistCount_w(manuId);
 	}
-	public int listCount_d() throws Exception{
-		return manufacdao.estilistCount_d();
+	public int listCount_d(String manuId) throws Exception{
+		return manufacdao.estilistCount_d(manuId);
 	}
-	public int listCount_c() throws Exception{
-		return manufacdao.estilistCount_c();
+	public int listCount_c(String manuId) throws Exception{
+		return manufacdao.estilistCount_c(manuId);
 	}
+
+
 }

@@ -48,10 +48,10 @@
         
     </style>
 		<script>
-	function del(no) {
+	function del(no, compId) {
 		var chk = confirm("철회하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/startuppage/conlist_del.do?no="+no;
+			location.href="${contextPath}/startuppage/conlist_del.do?no="+no+"&compId="+compId;
 			
 		}
 	}	
@@ -67,12 +67,12 @@
 <body>
    
    <div class="container">
-   <h3>대기중인 견적</h3>
+   <h3>대기중인 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
                 <th>제조업체명</th>
-                <th>견적 신청 날짜</th>
+                <th>컨설팅 신청 날짜</th>
                 <th></th>
             </tr>
           </thead>
@@ -80,21 +80,21 @@
        <tbody>
           <c:forEach var="consulting" begin="0" end="2" items="${w_conlist}" > 
                <tr align="center">
-               <td><a href="${contextPath }/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
+               <td><a href="${contextPath}/consulting/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
+               <td><button type="button" class="btn btn-outline-secondary" onCLick="del(${consulting.no}, ${member.id})">철회</button></td>
           </tr>
         </c:forEach>
    </table>
  	<a href = "${contextPath}/startuppage/consulting_more_w.do">더보기</a>
 </div>
    <div class="container">
-   <h3>진행중인 견적</h3>
+   <h3>진행중인 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
                 <th>전문가명</th>
-                <th>견적 신청 날짜</th>
+                <th>컨설팅 신청 날짜</th>
                 <th></th>
             </tr>
           </thead>
@@ -111,12 +111,12 @@
 	<a href = "${contextPath}/startuppage/consulting_more_i.do">더보기</a>
 </div>
    <div class="container">
-   <h3>거절된 견적</h3>
+   <h3>거절된 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
                 <th>전문가명</th>
-                <th>견적 신청 날짜</th>
+                <th>컨설팅 신청 날짜</th>
                 <th></th>
             </tr>
           </thead>

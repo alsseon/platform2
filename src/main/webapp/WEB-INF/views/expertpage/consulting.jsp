@@ -67,7 +67,7 @@
 <body>
    
    <div class="container">
-   <h3>대기중인 견적</h3>
+   <h3>대기중인 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
@@ -86,7 +86,7 @@
           </tr>
         </c:forEach>   
    </table>
-   <a href = "${contextPath}/expertpage/con_wait.do">더보기</a>
+   <a href = "${contextPath}/expertpage/con_wait.do?expId=${member.id}">더보기</a>
 </div>
  
    <div class="container">
@@ -109,7 +109,7 @@
           </tr>
         </c:forEach>   
    </table>
-   <a href = "${contextPath}/expertpage/con_ing.do">더보기</a>
+   <a href = "${contextPath}/expertpage/con_ing.do?expId=${member.id}">더보기</a>
 </div>
 
    <div class="container">
@@ -132,7 +132,7 @@
     	       </tr>
         </c:forEach>   
    </table>
-   <a href = "${contextPath}/expertpage/con_de.do">더보기</a>
+   <a href = "${contextPath}/expertpage/con_de.do?expId=${member.id}">더보기</a>
 </div> 
 </body>
 </html>

@@ -67,7 +67,28 @@
 <body>
    
    <div class="container">
-   <h3>견적 완료</h3>
+   <h3>컨설팅 완료</h3>
+      <table class="table">
+          <thead id="thead-c">
+            <tr>        
+                <th>스타트업명</th>
+                <th>컨설팅 신청 날짜</th>
+                <th></th>
+            </tr>
+          </thead>
+	       <tbody>
+	          <c:forEach var="start_con" items="${c_conlist}" begin="0" end="4"> 
+	             <tr align="center">
+	               <td>${start_con.expname}</td>
+	               <td><fmt:formatDate value="${start_con.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
+	               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${start_con.no})">삭제</button></td>
+	             </tr>
+	          </c:forEach>
+	        </tbody>
+   		</table>
+   		<a href = "${contextPath}/startuppage/com_consulting_more.do?compId=${member.id}">더보기</a>
+   		<br>
+   	<h3>견적 완료</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
@@ -76,47 +97,19 @@
                 <th></th>
             </tr>
           </thead>
-
-       <tbody>
-          <c:forEach var="manu_esti" items="${c_conlist}" > 
-             <tr align="center">
-               <td>${manu_esti.expname}</td>
-               <td><fmt:formatDate value="${manu_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">삭제</button></td>
-             </tr>
-        </c:forEach>
-   </table>
-  
-</div>
-<div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-              	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/com_startuppage/com_consultinglist.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
-	            </c:if>
-	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
-	            	<c:choose>
-	            	<c:when test="${idx == pagevo.nowPage }">
-	                <li class="active"><span> ${idx} </span></li>
-	                </c:when>
-	                <c:when test="${idx != pagevo.nowPage}">
-	                <li><a href="${contextPath}/com_startuppage/com_consultinglist.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
-	                </c:when>
-	         <%--      
-	                <li><a href="#">3</a></li>
-	                <li><a href="#">4</a></li>
-	                <li><a href="#">5</a></li>--%>
-	                </c:choose>
-	             </c:forEach>
-	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/com_startuppage/com_consultinglist.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
-	              </c:if>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
+	       <tbody>
+	          <c:forEach var="start_esti" items="${c_estiList}" begin="0" end="4"> 
+	             <tr align="center">
+	               <td>${start_esti.manuname}</td>
+	               <td><fmt:formatDate value="${start_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
+	               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${start_esti.no})">삭제</button></td>
+	             </tr>
+	          </c:forEach>
+	        </tbody>
+   		</table>
+   		<a href = "${contextPath}/startuppage/com_esti_more.do?compId=${member.id}">더보기</a>
+	</div>
+	
      <script src="${contextPath}/resources/js/jquery.min.js"></script>
        <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
        <script src="${contextPath}/resources/js/popper.min.js"></script>

@@ -21,50 +21,50 @@ public class ExpertPageServiceImpl implements ExpertPageService{
 		System.out.println("service에서 result 출력"+result);
 		return result;
 	}
-	public int listCount_i() throws Exception{
-		return dao.listCount_i();
+	public int listCount_i(String expId) throws Exception{
+		return dao.listCount_i(expId);
 	}
-	public int listCount_w() throws Exception{
-		return dao.listCount_w();
+	public int listCount_w(String expId) throws Exception{
+		return dao.listCount_w(expId);
 	}
-	public int listCount_d() throws Exception{
-		return dao.listCount_d();
+	public int listCount_d(String expId) throws Exception{
+		return dao.listCount_d(expId);
 	}
-	public int listCount_c() throws Exception{
-		return dao.listCount_c();
+	public int listCount_c(String expId) throws Exception{
+		return dao.listCount_c(expId);
 	}
 	
 	
-	public List<ExpertPageVO> w_listcon(PageVO pagevo) throws DataAccessException{
+	public List<ExpertPageVO> w_listcon(PageVO pagevo, String expId) throws DataAccessException{
 		List<ExpertPageVO> w_conlist = null;
-		w_conlist = dao.selectWaitEstiList(pagevo);
+		w_conlist = dao.selectWaitEstiList(pagevo, expId);
 		System.out.println("service" + w_conlist);
 		return w_conlist;
 	}
-	public List<ExpertPageVO> i_listcon(PageVO pagevo) throws DataAccessException{
+	public List<ExpertPageVO> i_listcon(PageVO pagevo, String expId) throws DataAccessException{
 		List<ExpertPageVO> i_conlist = null;
-		i_conlist = dao.selectIngEstiList(pagevo);
+		i_conlist = dao.selectIngEstiList(pagevo, expId);
 		System.out.println("service" + i_conlist);
 		return i_conlist;
 	}
-	public List<ExpertPageVO> c_listcon(PageVO pagevo) throws DataAccessException{
+	public List<ExpertPageVO> c_listcon(PageVO pagevo, String expId) throws DataAccessException{
 		List<ExpertPageVO> c_conlist = null;
-		c_conlist = dao.selectComEstiList(pagevo);
+		c_conlist = dao.selectComEstiList(pagevo, expId);
 		System.out.println("service" + c_conlist);
 		return c_conlist;
 	}
-	public List<ExpertPageVO> d_listcon(PageVO pagevo) throws DataAccessException{
+	public List<ExpertPageVO> d_listcon(PageVO pagevo, String expId) throws DataAccessException{
 		List<ExpertPageVO> d_conlist = null;
-		d_conlist = dao.selectDeEstiList(pagevo);
+		d_conlist = dao.selectDeEstiList(pagevo, expId);
 		System.out.println("service" + d_conlist);
 		return d_conlist;
 	}
-	public List<ExpertPageVO> listcon(PageVO pagevo) throws DataAccessException{
-		List<ExpertPageVO> conlist = null;
-		conlist = dao.selectAllEstiList(pagevo);
-		System.out.println("service" + conlist);
-		return conlist;
-	}
+//	public List<ExpertPageVO> listcon(PageVO pagevo, String expId) throws DataAccessException{
+//		List<ExpertPageVO> conlist = null;
+//		conlist = dao.selectAllEstiList(pagevo, expId);
+//		System.out.println("service" + conlist);
+//		return conlist;
+//	}
 	public int deleteesti(int no) throws Exception{
 		return dao.deleteesti(no);
 	}

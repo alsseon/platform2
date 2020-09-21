@@ -83,8 +83,9 @@
                                                     <input
                                                         type="text"
                                                         class="form-control"
-                                                        name="compId"
+                                                        name="compName"
                                                         value="${member.compName}" readonly><!--requeset.getSession("userId") 으로 차후 교체-->
+                                                    <input type="hidden" name="compId" value="${member.id}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

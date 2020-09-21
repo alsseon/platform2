@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FileDownloadController {
-//	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //ÇÐ¿ø
-	private static final String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //Áý
+	private static final String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //ï¿½Ð¿ï¿½
+//	private static final String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //ï¿½ï¿½
 	@RequestMapping("/download.do")
 	protected void download(@RequestParam("imageFileName") String imageFileName,
 							@RequestParam("id") String id,

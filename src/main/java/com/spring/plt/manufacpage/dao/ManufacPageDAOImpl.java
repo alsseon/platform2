@@ -1,6 +1,8 @@
 package com.spring.plt.manufacpage.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,87 +23,47 @@ public class ManufacPageDAOImpl implements ManufacPageDAO{
 		return listCount;
 	}
 	@Override
-	public List<ManufacPageVO> selectAllEstiList(PageVO pagevo) throws DataAccessException{
+	public List<ManufacPageVO> selectAllEstiList(PageVO pagevo, String manuId) throws DataAccessException{
 		List<ManufacPageVO> estiList = null;
-		estiList = sqlSession.selectList("mapper.manufacpage.selectAllEstilist",pagevo);
+		Map<String, Object> estilistMap = new HashMap<String,Object>();
+		estilistMap.put("pagevo", pagevo);
+		estilistMap.put("manuId", manuId);
+		estiList = sqlSession.selectList("mapper.manufacpage.selectAllEstilist",estilistMap);
 		return estiList;
 	}
-	public List<ManufacPageVO> selectWaitingEstiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> selectWaitingEstiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estiList = null;
-		estiList = sqlSession.selectList("mapper.manufacpage.selectWaitingEstiList",pagevo);
+		Map<String, Object> estilistMap = new HashMap<String,Object>();
+		estilistMap.put("pagevo", pagevo);
+		estilistMap.put("manuId", manuId);
+		estiList = sqlSession.selectList("mapper.manufacpage.selectWaitingEstiList",estilistMap);
 		return estiList;
 	}
-	public List<ManufacPageVO> selectIngEstiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> selectIngEstiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estiList = null;
-		estiList = sqlSession.selectList("mapper.manufacpage.selectIngEstiList",pagevo);
+		Map<String, Object> estilistMap = new HashMap<String,Object>();
+		estilistMap.put("pagevo", pagevo);
+		estilistMap.put("manuId", manuId);
+		estiList = sqlSession.selectList("mapper.manufacpage.selectIngEstiList",estilistMap);
 		return estiList;
 	}
-	public List<ManufacPageVO> selectComEstiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> selectComEstiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estiList = null;
-		estiList = sqlSession.selectList("mapper.manufacpage.selectComEstiList",pagevo);
+		Map<String, Object> estilistMap = new HashMap<String,Object>();
+		estilistMap.put("pagevo", pagevo);
+		estilistMap.put("manuId", manuId);
+		estiList = sqlSession.selectList("mapper.manufacpage.selectComEstiList",estilistMap);
 		return estiList;
 	}
-	public List<ManufacPageVO> selectDeEstiList(PageVO pagevo) throws Exception{
+	public List<ManufacPageVO> selectDeEstiList(PageVO pagevo, String manuId) throws Exception{
 		List<ManufacPageVO> estiList = null;
-		estiList = sqlSession.selectList("mapper.manufacpage.selectDeEstiList",pagevo);
+		Map<String, Object> estilistMap = new HashMap<String,Object>();
+		estilistMap.put("pagevo", pagevo);
+		estilistMap.put("manuId", manuId);
+		estiList = sqlSession.selectList("mapper.manufacpage.selectDeEstiList",estilistMap);
 		return estiList;
 	}
-	@Override
-	public List<ManufacPageVO> selectAllProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> prodList = null;
-		prodList = sqlSession.selectList("mapper.manufacpage.selectAllProdlist",pagevo);
-		
-		return prodList;
-	}
-	@Override
-	public List<ManufacPageVO> selectWaitProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> w_prodList = null;
-		w_prodList = sqlSession.selectList("mapper.manufacpage.selectWaitProdlist",pagevo);
-		
-		return w_prodList;
-	}
-	@Override
-	public List<ManufacPageVO> selectIngProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> i_prodList = null;
-		i_prodList = sqlSession.selectList("mapper.manufacpage.selectIngProdList",pagevo);
-		
-		return i_prodList;
-	}
-	@Override
-	public List<ManufacPageVO> selectComProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> c_prodList = null;
-		c_prodList = sqlSession.selectList("mapper.manufacpage.selectComProdList",pagevo);
-		
-		return c_prodList;
-	}
-	@Override
-	public List<ManufacPageVO> selectSailProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> s_prodList = null;
-		s_prodList = sqlSession.selectList("mapper.manufacpage.selectSailProdList",pagevo);
-		
-		return s_prodList;
-	}
-	@Override
-	public List<ManufacPageVO> selectEndProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> e_prodList = null;
-		e_prodList = sqlSession.selectList("mapper.manufacpage.selectEndProdList",pagevo);
-		
-		return e_prodList;
-	}
-	@Override
-	public List<ManufacPageVO> selectDeProdList(PageVO pagevo) throws DataAccessException{
-		
-		List<ManufacPageVO> d_prodList = null;
-		d_prodList = sqlSession.selectList("mapper.manufacpage.selectDeProdList",pagevo);
-		
-		return d_prodList;
-	}
+	
 	@Override
 	public int deleteesti(int no) throws DataAccessException {
 		int deleteesti = sqlSession.delete("mapper.manufacpage.deleteesti", no);
@@ -127,24 +89,24 @@ public class ManufacPageDAOImpl implements ManufacPageDAO{
 		return result;
 	}
 	@Override
-	public int estilistCount_i() throws Exception{
-		int estilistCount_i = sqlSession.selectOne("mapper.manufacpage.estilistCount_i");
+	public int estilistCount_i(String manuId) throws Exception{
+		int estilistCount_i = sqlSession.selectOne("mapper.manufacpage.estilistCount_i",manuId);
 		return estilistCount_i;
 	}
 	@Override
-	public int estilistCount_w() throws Exception{
-		int estilistCount_w = sqlSession.selectOne("mapper.manufacpage.estilistCount_w");
+	public int estilistCount_w(String manuId) throws Exception{
+		int estilistCount_w = sqlSession.selectOne("mapper.manufacpage.estilistCount_w",manuId);
 		System.out.println("목록이 없을때 Count값이 어떻게 나오는지 확인"+estilistCount_w);
 		return estilistCount_w;
 	}
 	@Override
-	public int estilistCount_c() throws Exception{
-		int estilistCount_c = sqlSession.selectOne("mapper.manufacpage.estilistCount_c");
+	public int estilistCount_c(String manuId) throws Exception{
+		int estilistCount_c = sqlSession.selectOne("mapper.manufacpage.estilistCount_c",manuId);
 		return estilistCount_c;
 	}
 	@Override
-	public int estilistCount_d() throws Exception{
-		int estilistCount_d = sqlSession.selectOne("mapper.manufacpage.estilistCount_d");
+	public int estilistCount_d(String manuId) throws Exception{
+		int estilistCount_d = sqlSession.selectOne("mapper.manufacpage.estilistCount_d",manuId);
 		return estilistCount_d;
 	}
 }

@@ -9,8 +9,8 @@
 			select expname,status, reqdate, no from 
 			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
 			from consulting c, expert e
-			where e.id = c.expid) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
+			where e.id = c.expId and c.expId={expId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
@@ -23,30 +23,30 @@
 	
 	<select id="listCount_i" resultType="int">
 	<![CDATA[
-		select count(*) from consulting where status = 1
+		select count(*) from consulting where status = 1 and expId=#{expId}
 	]]>
 	</select>
 	
 	<select id="listCount_c" resultType="int">
 	<![CDATA[
-		select count(*) from consulting where status = 2
+		select count(*) from consulting where status = 2 and expId=#{expId}
 	]]>
 	</select>
 	
 	<select id="listCount_w" resultType="int">
 	<![CDATA[
-		select count(*) from consulting where status = 0
+		select count(*) from consulting where status = 0 and expId=#{expId}
 	]]>
 	</select>
 	
 	<select id="listCount_d" resultType="int">
 	<![CDATA[
-		select count(*) from consulting where status = 3
+		select count(*) from consulting where status = 3 and expId=#{expId}
 	]]>
 	</select>
 	
 	<delete id="deleteesti" parameterType="int">
-        delete from consulting q where no=#{no}
+        delete from consulting where no=#{no}
     </delete>
     
     <select id="selectWaitEstiList" resultType="expertPageVO">
@@ -54,8 +54,8 @@
 			select expname,status, reqdate, no from 
 			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
 			from consulting c, expert e
-			where e.id = c.expid and c.status=0) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
+			where e.id = c.expid and c.status=0 and c.expId=#{expId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
@@ -64,8 +64,8 @@
 			select expname,status, reqdate, no from 
 			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
 			from consulting c, expert e
-			where e.id = c.expid and c.status=1) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
+			where e.id = c.expid and c.status=1 and c.expId=#{expId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
@@ -74,8 +74,8 @@
 			select expname,status, reqdate, no from 
 			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
 			from consulting c, expert e
-			where e.id = c.expid and c.status=2) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
+			where e.id = c.expid and c.status=2 and c.expId=#{expId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
@@ -84,8 +84,8 @@
 			select expname,status, reqdate, no from 
 			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
 			from consulting c, expert e
-			where e.id = c.expid and c.status=3) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
+			where e.id = c.expid and c.status=3 and c.expId=#{expId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	

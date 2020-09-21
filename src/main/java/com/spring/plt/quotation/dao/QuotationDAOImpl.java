@@ -16,6 +16,7 @@ public class QuotationDAOImpl implements QuotationDAO{
 	@Override
 	public void insertQuotation(QuotationVO quotationVO) {
 		System.out.println("Quotation DAO");
+		System.out.println("quotationVO가 DAO에서 어떻게 들어오나: "+ quotationVO);
 		sqlSession.delete("mapper.quotation.insertQuotation", quotationVO);
 	}
 	@Override

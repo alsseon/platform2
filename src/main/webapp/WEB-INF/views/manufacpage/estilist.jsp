@@ -87,7 +87,7 @@
         </c:forEach>
         </tbody>   
    </table>
-   <a href = "${contextPath}/manufacpage/estilist_more_w.do">더보기</a>
+   <a href = "${contextPath}/manufacpage/estilist_more_w.do?manuId=${member.id}">더보기</a>
 </div>
  
    <div class="container">
@@ -111,7 +111,7 @@
        	</c:forEach>
        </tbody>   
    </table>
-   <a href = "${contextPath}/manufacpage/estilist_more_ing.do">더보기</a>
+   <a href = "${contextPath}/manufacpage/estilist_more_ing.do?manuId=${member.id}">더보기</a>
 </div>
 
    <div class="container">
@@ -135,7 +135,7 @@
         </c:forEach>
         </tbody>   
    </table>
-   <a href = "${contextPath}/manufacpage/estilist_more_de.do">더보기</a>
+   <a href = "${contextPath}/manufacpage/estilist_more_de.do?manuId=${member.id}">더보기</a>
 </div> 
 </body>
 </html>

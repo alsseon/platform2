@@ -23,29 +23,29 @@ public class StartupPageServiceImpl implements StartupPageService{
 		return startuppagedao.deletecon(no); //컨설팅 견적 철회 삭제 기능
 	}
 	
-	public List<StartupPageVO> listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> estilist = null;
-		estilist = startuppagedao.selectAllEstiList(pagevo);
+		estilist = startuppagedao.selectAllEstiList(pagevo,compId);
 		return estilist; 
 	}
-	public List<StartupPageVO> w_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> w_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> w_estilist = null;
-		w_estilist = startuppagedao.selectWaitEstiList(pagevo);
+		w_estilist = startuppagedao.selectWaitEstiList(pagevo,compId);
 		return w_estilist;
 	}
-	public List<StartupPageVO> c_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> c_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> c_estilist = null;
-		c_estilist = startuppagedao.selectComEstiList(pagevo);
+		c_estilist = startuppagedao.selectComEstiList(pagevo,compId);
 		return c_estilist;
 	}
-	public List<StartupPageVO> i_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> i_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> i_estilist = null;
-		i_estilist = startuppagedao.selectIngEstiList(pagevo);
+		i_estilist = startuppagedao.selectIngEstiList(pagevo,compId);
 		return i_estilist;
 	}
-	public List<StartupPageVO> d_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> d_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> d_estilist = null;
-		d_estilist = startuppagedao.selectDeEstiList(pagevo);
+		d_estilist = startuppagedao.selectDeEstiList(pagevo,compId);
 		return d_estilist;
 	}
 	
@@ -55,55 +55,55 @@ public class StartupPageServiceImpl implements StartupPageService{
 	public int listCount() throws DataAccessException{
 		return startuppagedao.listCount();
 	}
-	public int estilistCount_i() throws Exception{
-		return startuppagedao.estilistCount_i();
+	public int estilistCount_i(String compId) throws Exception{
+		return startuppagedao.estilistCount_i(compId);
 	}
-	public int estilistCount_w() throws Exception{
-		int result = startuppagedao.estilistCount_w();
+	public int estilistCount_w(String compId) throws Exception{
+		int result = startuppagedao.estilistCount_w(compId);
 		System.out.println("service count : " + result);
 		return result;
 	}
-	public int estilistCount_d() throws Exception{
-		return startuppagedao.estilistCount_d();
+	public int estilistCount_d(String compId) throws Exception{
+		return startuppagedao.estilistCount_d(compId);
 	}
-	public int estilistCount_c() throws Exception{
-		return startuppagedao.estilistCount_c();
+	public int estilistCount_c(String compId) throws Exception{
+		return startuppagedao.estilistCount_c(compId);
 	}
 	
 	
 	
-	public List<StartupPageVO> listprod(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> listprod(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> prodlist = null;
-		prodlist = startuppagedao.selectAllProdList(pagevo);
+		prodlist = startuppagedao.selectAllProdList(pagevo,compId);
 		return prodlist;
 	}
 	
 	
 	
 	
-	public List<StartupPageVO> listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> conlist = null;
-		conlist = startuppagedao.selectAllConList(pagevo);
+		conlist = startuppagedao.selectAllConList(pagevo, compId);
 		return conlist;
 	}
-	public List<StartupPageVO> w_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> w_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> w_conlist = null;
-		w_conlist = startuppagedao.selectWaitConList(pagevo);
+		w_conlist = startuppagedao.selectWaitConList(pagevo, compId);
 		return w_conlist;
 	}
-	public List<StartupPageVO> d_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> d_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> d_conlist = null;
-		d_conlist = startuppagedao.selectDeConList(pagevo);
+		d_conlist = startuppagedao.selectDeConList(pagevo, compId);
 		return d_conlist;
 	}
-	public List<StartupPageVO> c_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> c_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> c_conlist = null;
-		c_conlist = startuppagedao.selectComConList(pagevo);
+		c_conlist = startuppagedao.selectComConList(pagevo, compId);
 		return c_conlist;
 	}
-	public List<StartupPageVO> i_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> i_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> i_conlist = null;
-		i_conlist = startuppagedao.selectIngConList(pagevo);
+		i_conlist = startuppagedao.selectIngConList(pagevo, compId);
 		
 		return i_conlist;
 	}
@@ -112,17 +112,17 @@ public class StartupPageServiceImpl implements StartupPageService{
 	
 	
 	
-	public int conlistCount_i() throws Exception{
-		return startuppagedao.conlistCount_i();
+	public int conlistCount_i(String compId) throws Exception{
+		return startuppagedao.conlistCount_i(compId);
 	}
-	public int conlistCount_w() throws Exception{
-		return startuppagedao.conlistCount_w();
+	public int conlistCount_w(String compId) throws Exception{
+		return startuppagedao.conlistCount_w(compId);
 	}
-	public int conlistCount_d() throws Exception{
-		return startuppagedao.conlistCount_d();
+	public int conlistCount_d(String compId) throws Exception{
+		return startuppagedao.conlistCount_d(compId);
 	}
-	public int conlistCount_c() throws Exception{
-		return startuppagedao.conlistCount_c();
+	public int conlistCount_c(String compId) throws Exception{
+		return startuppagedao.conlistCount_c(compId);
 	}
 	
 	
@@ -139,4 +139,6 @@ public class StartupPageServiceImpl implements StartupPageService{
 	public int constatus_n(int status, int no)throws Exception{
 		return startuppagedao.constatus_n(status, no);
 	}
+	
+	
 }

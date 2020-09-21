@@ -11,20 +11,20 @@ public interface StartupPageService {
 	public int deleteesti(int no) throws Exception;
 	public int deletecon(int no) throws Exception;
 	
-	public List<StartupPageVO> listesti(PageVO pagevo) throws DataAccessException;  
+	public List<StartupPageVO> listesti(PageVO pagevo, String compId) throws DataAccessException;  
 	public int listCount() throws DataAccessException;
-	public List<StartupPageVO> listprod(PageVO pagevo) throws DataAccessException;
-	public List<StartupPageVO> listcon(PageVO pagevo) throws DataAccessException;
+	public List<StartupPageVO> listprod(PageVO pagevo, String compId) throws DataAccessException;
+	public List<StartupPageVO> listcon(PageVO pagevo, String compId) throws DataAccessException;
 	
-	public int estilistCount_i() throws Exception;
-	public int estilistCount_w() throws Exception;
-	public int estilistCount_c() throws Exception;
-	public int estilistCount_d() throws Exception;
+	public int estilistCount_i(String compId) throws Exception;
+	public int estilistCount_w(String compId) throws Exception;
+	public int estilistCount_c( String compId) throws Exception;
+	public int estilistCount_d(String compId) throws Exception;
 	
-	public List<StartupPageVO> w_listesti(PageVO pagevo) throws DataAccessException; 
-	public List<StartupPageVO> c_listesti(PageVO pagevo) throws DataAccessException; 
-	public List<StartupPageVO> i_listesti(PageVO pagevo) throws DataAccessException; 
-	public List<StartupPageVO> d_listesti(PageVO pagevo) throws DataAccessException; 
+	public List<StartupPageVO> w_listesti(PageVO pagevo, String compId) throws DataAccessException; 
+	public List<StartupPageVO> c_listesti(PageVO pagevo, String compId) throws DataAccessException; 
+	public List<StartupPageVO> i_listesti(PageVO pagevo, String compId) throws DataAccessException; 
+	public List<StartupPageVO> d_listesti(PageVO pagevo, String compId) throws DataAccessException; 
 	
 	
 	
@@ -34,14 +34,14 @@ public interface StartupPageService {
 	public int constatus_y(int status, int no)throws Exception;
 	
 	
-	public List<StartupPageVO> i_listcon(PageVO pagevo) throws DataAccessException;
-	public List<StartupPageVO> c_listcon(PageVO pagevo) throws DataAccessException;
-	public List<StartupPageVO> w_listcon(PageVO pagevo) throws DataAccessException;
-	public List<StartupPageVO> d_listcon(PageVO pagevo) throws DataAccessException;
+	public List<StartupPageVO> i_listcon(PageVO pagevo, String compId) throws DataAccessException;
+	public List<StartupPageVO> c_listcon(PageVO pagevo, String compId) throws DataAccessException;
+	public List<StartupPageVO> w_listcon(PageVO pagevo, String compId) throws DataAccessException;
+	public List<StartupPageVO> d_listcon(PageVO pagevo, String compId) throws DataAccessException;
 	
 	
-	public int conlistCount_i() throws Exception;
-	public int conlistCount_c() throws Exception;
-	public int conlistCount_w() throws Exception;
-	public int conlistCount_d() throws Exception;
+	public int conlistCount_i(String compId) throws Exception;
+	public int conlistCount_c(String compId) throws Exception;
+	public int conlistCount_w(String compId) throws Exception;
+	public int conlistCount_d(String compId) throws Exception;
 }
