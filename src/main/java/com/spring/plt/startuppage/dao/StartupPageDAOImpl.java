@@ -36,23 +36,23 @@ public class StartupPageDAOImpl implements StartupPageDAO{
 	}
 	@Override
 	public int estilistCount_i(String compId) throws Exception{
-		int EstiListCount_i = sqlSession.selectOne("mapper.startuppage.estilistCount_i");
+		int EstiListCount_i = sqlSession.selectOne("mapper.startuppage.estilistCount_i",compId);
 		return EstiListCount_i;
 	}
 	@Override
 	public int estilistCount_w(String compId) throws Exception{
-		int estilistCount_w = sqlSession.selectOne("mapper.startuppage.estilistCount_w");
+		int estilistCount_w = sqlSession.selectOne("mapper.startuppage.estilistCount_w",compId);
 		System.out.println("dao count" + estilistCount_w);
 		return estilistCount_w;
 	}
 	@Override
 	public int estilistCount_d(String compId) throws Exception{
-		int EstiListCount_d = sqlSession.selectOne("mapper.startuppage.estilistCount_d");
+		int EstiListCount_d = sqlSession.selectOne("mapper.startuppage.estilistCount_d",compId);
 		return EstiListCount_d;
 	}
 	@Override
 	public int estilistCount_c(String compId) throws Exception{
-		int EstiListCount_c = sqlSession.selectOne("mapper.startuppage.estilistCount_c");
+		int EstiListCount_c = sqlSession.selectOne("mapper.startuppage.estilistCount_c",compId);
 		return EstiListCount_c;
 	}
 	@Override
@@ -104,10 +104,10 @@ public class StartupPageDAOImpl implements StartupPageDAO{
 	public int status_y(int status, int no)throws DataAccessException{
 		int result = 0;
 		if (status == 0) {
-			result = sqlSession.update("mapper.startuppage.upstatus_esti_ing",no); //누르면 진행중으로 업데이트
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_ing",no);
 			System.out.println("dao result" + result);
 		}else if(status == 1) {
-			result = sqlSession.update("mapper.startuppage.upstatus_esti_com",no);//완료로 업데이트ㄴ
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_com",no);
 		}
 		return result;
 	}
@@ -125,10 +125,10 @@ public class StartupPageDAOImpl implements StartupPageDAO{
 	public int constatus_y(int status, int no)throws DataAccessException{
 		int result = 0;
 		if (status == 0) {
-			result = sqlSession.update("mapper.startuppage.upstatus_con_ing",no); //누르면 진행중으로 업데이트
+			result = sqlSession.update("mapper.startuppage.upstatus_con_ing",no); //�늻瑜대㈃ 吏꾪뻾以묒쑝濡� �뾽�뜲�씠�듃
 			System.out.println("dao result" + result);
 		}else if(status == 1) {
-			result = sqlSession.update("mapper.startuppage.upstatus_con_com",no);//완료로 업데이트ㄴ
+			result = sqlSession.update("mapper.startuppage.upstatus_con_com",no);//�셿猷뚮줈 �뾽�뜲�씠�듃�꽩
 		}
 		return result;
 	}

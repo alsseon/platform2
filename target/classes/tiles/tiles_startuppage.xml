@@ -30,7 +30,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/startuppage/estilist_more_de.jsp" />
 	</definition>
 	
-	<definition name="/startuppage/estillist_more_ing" extends="baseLayout">
+	<definition name="/startuppage/estilist_more_ing" extends="baseLayout">
 		<put-attribute name="title" value="진행중인 컨설팅 목록" />
 		<put-attribute name="body" value="/WEB-INF/views/startuppage/estilist_more_ing.jsp" />
 	</definition>
