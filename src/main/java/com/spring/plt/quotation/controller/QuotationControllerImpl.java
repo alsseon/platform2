@@ -39,9 +39,9 @@ public class QuotationControllerImpl implements QuotationController{
 		System.out.println("insert Quotation Controller");
 		System.out.println(quotationVO.getManuId());
 		System.out.println(quotationVO);
-		System.out.println("tempSave체크를 안했을때 값이 어떻게 들어오는지 확인 : " + quotationVO.getTempSave());
+		System.out.println("tempSave泥댄겕瑜� �븞�뻽�쓣�븣 媛믪씠 �뼱�뼸寃� �뱾�뼱�삤�뒗吏� �솗�씤 : " + quotationVO.getTempSave());
 		if (quotationVO.getTempSave() == null) quotationVO.setTempSave("false");
-		System.out.println("tempSave 처리 후 quotationVO: "+quotationVO);
+		System.out.println("tempSave 泥섎━ �썑 quotationVO: "+quotationVO);
 		service.insertQuotation(quotationVO);
 		String viewName = "redirect:/manufacSearch/viewManufac.do?id=" + quotationVO.getManuId();
 		ModelAndView mav = new ModelAndView(viewName);
@@ -61,7 +61,7 @@ public class QuotationControllerImpl implements QuotationController{
 	@RequestMapping(value="quotation/viewOneQuotation.do", method = RequestMethod.GET)
 	@Override
 	public ModelAndView viewOneQuotation(@RequestParam("no") String no, HttpServletRequest request, HttpServletResponse response) {
-		//�빐�떦 湲� 踰덊샇濡� vo瑜� 議고쉶 �븯�뿬 �솕硫댁뿉 寃ъ쟻�꽌 , 諛쒖＜�슂泥��꽌, 而⑥꽕�똿 �슂泥��꽌 異쒕젰
+		//占쎈퉸占쎈뼣 疫뀐옙 甕곕뜇�깈嚥∽옙 vo�몴占� 鈺곌퀬�돳 占쎈릭占쎈연 占쎌넅筌롫똻肉� 野꺫딆읅占쎄퐣 , 獄쏆뮇竊쒙옙�뒄筌ｏ옙占쎄퐣, �뚢뫁苑뺧옙�샒 占쎌뒄筌ｏ옙占쎄퐣 �빊�뮆�젾
 		System.out.println("Quotation NO = " + no);
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -73,10 +73,11 @@ public class QuotationControllerImpl implements QuotationController{
 	@RequestMapping(value="/alarmQuotation.do", method = RequestMethod.GET)
 	@Override
 	@ResponseBody
-	public List<QuotationVO> alarmQuotation(@RequestParam("compId") String compId, HttpServletRequest request, HttpServletResponse response){
+	public int alarmQuotation(@RequestParam("compId") String compId, HttpServletRequest request, HttpServletResponse response){
 		System.out.println("Quotation List Controller");
-		List<QuotationVO> list = service.alarmQuotation(compId);
-		System.out.println(list);
-		return list;
+		int count = 0;
+		count = service.alarmQuotation(compId);
+		System.out.println(count);
+		return count;
 	}
 }

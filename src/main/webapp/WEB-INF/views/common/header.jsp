@@ -15,8 +15,12 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 	var id = '${member.id}';
+	var type = '${member.type}';
 	$(function(){
 		unReadCount();
+		if (type == 'startup'){
+			alarmQuotation();
+		};
 	});
 	
 	function unReadCount(){
@@ -29,6 +33,18 @@
 			}
 		});
 	}
+	
+	function alarmQuotation(){
+		$.ajax({
+			url:"${contextPath}/alarmQuotation.do",
+			type:"get",
+			data:{"compId":id},
+			success:function(data){
+				$('#alarmQuotation').html(data);
+			}
+		});
+	}
+	
 </script>
 </head>
 <body>
@@ -43,12 +59,14 @@
 						<nav class="navbar navbar-expand-sm">
 							<ul class="navbar-nav ml-auto">
 								<c:if test="${member.id != null}">
-									<li class="nav-item dropdown mt-2">
-										<a href="#" id="receivedRequest">받은 요청</a>
-									</li>
-									<li>
-					             		<span class="badge badge-danger mt-3" id="receivedRequest">1</span>
-					             	</li>
+									<c:if test="${member.type == 'startup' }">
+										<li class="nav-item dropdown mt-2">
+											<a href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 견적</a>
+										</li>
+										<li>
+						             		<span class="badge badge-danger mt-3" id="alarmQuotation"></span>
+						             	</li>
+									</c:if>
 									<li class="nav-item dropdown">
 					                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 					                        	쪽지

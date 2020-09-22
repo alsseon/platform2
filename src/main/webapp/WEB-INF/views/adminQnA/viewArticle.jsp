@@ -51,11 +51,13 @@
 				  </tr>
                </table>
                <input type="hidden" name="no" value="${article.no}">
-               <button type="submit" class="btn btn-warning">수정</button>
+               <c:if test="${article.writer==member.id}">
+	               <button type="submit" class="btn btn-warning">수정</button>
+	               <button type="button" class="btn btn-danger" onClick="location.href='${contextPath}/adminQnA/deleteArticle.do?no=${article.no}'">삭제</button>
+               </c:if>
                <c:if test="${article.lvl == 1 && member.type == 'admin'}">
                		<button type="button" class="btn btn-info" onClick="location.href='${contextPath}/adminQnA/addReplyForm.do?no=${article.no}'">답글달기</button>
                </c:if>
-               <button type="button" class="btn btn-danger" onClick="location.href='${contextPath}/adminQnA/deleteArticle.do?no=${article.no}'">삭제</button>
                <button class="btn btn-danger" onClick = "backToList(this.form)">목록</button>
            </form>
         </div>
