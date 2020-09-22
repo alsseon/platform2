@@ -34,8 +34,6 @@
                	<c:if test="${member.id==message.receiveId}">
                     <button class="btn btn-info" data-toggle="modal" data-target="#ReplyPop">답장하기</button>                		
                	</c:if>
-                   <button class="btn btn-danger">삭제</button>
-                   <button class="btn btn-warning">의미없는 버튼</button>
             </div>
         </div>
     </div>

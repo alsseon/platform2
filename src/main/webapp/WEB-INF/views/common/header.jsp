@@ -55,9 +55,12 @@
 					                    </a>
 					                    <div class="dropdown-menu">
 					                        <a class="dropdown-item" href="#">
-					                        	<button class="btn btn-default text-muted" data-target="#mesPop" data-toggle="modal">쪽지 보내기</button>
+					                        	<button class="btn btn-default text-muted text-center" data-target="#mesPop" data-toggle="modal">쪽지 보내기</button>
 					                        </a>
 					                        <a class="dropdown-item text-muted text-center" href="${contextPath}/message/messageList.do?id=${member.id}">쪽지 함</a>
+					                        <a class="dropdown-item" href="#">
+					                        	<button class="btn btn-default text-muted text-center" data-target="#adminMesPop" data-toggle="modal">관리자에게 쪽지</button>
+					                        </a>
 					                    </div>
 				             		</li>
 				             		<li>
@@ -185,7 +188,36 @@
             </div>
         </div>
     </div>
-    <!-- message Modal End
-     -->
+    <!-- message Modal End -->
+    <!-- admin message Modal -->
+     <div class="modal fade" id="adminMesPop">
+        <div class="modal-dialog">
+            <div class="modal-content" align="center">
+            	<!-- Modal Header -->
+		        <div class="modal-header">
+		        	<h4 class="modal-title">쪽지 보내기</h4>
+		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		      	</div>
+		      	<div class="modal-body">
+	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
+	                	<input type="hidden" name="sendId" value="${member.id}"> 
+	                    <div class="form-group col-sm-10">
+	                        <label for="inputReceiveId">수신자</label>
+	                        <input type="hidden" name="receiveId" value="admin">
+	                        <input type="text" name="showId" class="form-control" id="inputReceiveId" placeholder="관리자" readonly>
+	                    </div>
+	                    <div class="form-group col-sm-10">
+	                        <label for="InputContent">내용</label>
+	                        <textarea class="form-control" name="content" id="InputContent" rows="5" cols="10" placeholder="내용을 입력하세요."></textarea>
+	                    </div>
+	                    <button type="submit" class="btn btn-primary">전송</button>
+	                    <button type="reset" class="btn btn-secondary">다시입력</button>
+	                    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+	                </form>
+		      	</div>
+            </div>
+        </div>
+    </div>
+    <!-- admin message Modal End -->
 </body>
 </html>
