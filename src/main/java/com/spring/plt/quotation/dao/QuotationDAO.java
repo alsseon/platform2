@@ -9,4 +9,5 @@ public interface QuotationDAO {
 	List<QuotationVO> quotationList();
 	QuotationVO viewOneQuotation(String no);
 	int alarmQuotation(String compId);
+	int alarmManuQuotation(String manuId);
 }

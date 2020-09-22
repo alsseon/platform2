@@ -48,10 +48,11 @@
         
     </style>
 	<script>
+	var compId='${member.id}';
 	function del(no) {
 		var chk = confirm("철회하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/expertpage/estilist_del.do?no="+no;
+			location.href="${contextPath}/expertpage/estilist_del.do?no="+no+"expId="+expId;
 			
 		}
 	}	

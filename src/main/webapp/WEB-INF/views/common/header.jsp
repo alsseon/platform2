@@ -14,13 +14,24 @@
 <title>헤더</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	var id = '${member.id}';
 	var type = '${member.type}';
+	console.log(type);
+	if(type=='startup'){
+		var compId='${member.id}';
+	}else if(type=='manufac'){
+		var manuId='${member.id}';
+	}else if(type=='expert'){
+		var expId='${member.id}';
+	}
+	console.log(compId);
+	console.log(manuId);
+	console.log(expId);
+	var id='${member.id}';
+	
 	$(function(){
 		unReadCount();
-		if (type == 'startup'){
-			alarmQuotation();
-		};
+		alarmQuotation();
+		alarmConsulting();
 	});
 	
 	function unReadCount(){
@@ -38,11 +49,22 @@
 		$.ajax({
 			url:"${contextPath}/alarmQuotation.do",
 			type:"get",
-			data:{"compId":id},
+			data:{"compId":compId, "manuId":manuId},
 			success:function(data){
 				$('#alarmQuotation').html(data);
 			}
 		});
+	}
+	
+	function alarmConsulting(){
+		$.ajax({
+			url:"${contextPath}/alarmConsulting.do",
+			type:"get",
+			data:{"compId":compId, "expId":expId},
+			success:function(data){
+				$('#alarmConsulting').html(data);
+			}
+		})
 	}
 	
 </script>
@@ -59,14 +81,38 @@
 						<nav class="navbar navbar-expand-sm">
 							<ul class="navbar-nav ml-auto">
 								<c:if test="${member.id != null}">
-									<c:if test="${member.type == 'startup' }">
-										<li class="nav-item dropdown mt-2">
-											<a href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 견적</a>
-										</li>
-										<li>
-						             		<span class="badge badge-danger mt-3" id="alarmQuotation"></span>
-						             	</li>
-									</c:if>
+									<c:choose>
+										<c:when test="${member.type=='startup'}">
+											<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 견적</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmQuotation"></span>
+							             	</li>
+							             	<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/startuppage/consulting_more_w?compId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmConsulting"></span>
+							             	</li>
+										</c:when>
+										<c:when test="${member.type=='manufac'}">
+											<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/manufacpage/estilist_more_w?manuId=${member.id}" id="receivedRequest">대기중인 견적</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmQuotation"></span>
+							             	</li>
+										</c:when>
+										<c:when test="${member.type=='expert'}">
+											<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/expertpage/con_wait.do?expId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmConsulting"></span>
+							             	</li>
+										</c:when>
+									</c:choose>
 									<li class="nav-item dropdown">
 					                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 					                        	쪽지
@@ -89,24 +135,33 @@
 					                        	마이페이지
 					                    </a>
 					                    <div class="dropdown-menu">
-					                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/common/MyPage.do?userId=${member.id}">마이페이지 가기</a>
+					                    	<c:if test="${member.type!='admin'}">
+						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/common/MyPage.do?userId=${member.id}">마이페이지 가기</a>
+					                    	</c:if>
 					                        <c:if test="${member.type=='startup'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<div class="dropdown-divider"></div>
 						                        <a class="dropdown-item text-muted text-center" href="${contextPath}/scrap/printScrapAll.do?compId=${member.id}">스크랩 리스트</a>
-						                        <h5 class="dropdown-header text-center">현황 관리</h5>
+						                        <div class="dropdown-divider"></div>
 						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/manu_estilist.do?compId=${member.id}">견적 현황 관리</a>
 						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/consultinglist.do?compId=${member.id}">컨설팅 현황 관리</a>
+						                    	<div class="dropdown-divider"></div>
 						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/com_consultinglist.do?compId=${member.id}">완료 내역 관리</a>
+						                    	<div class="dropdown-divider"></div>
 					                        </c:if>
 					                        <c:if test="${member.type=='manufac'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<div class="dropdown-divider"></div>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufacpage/estilist.do?manuId=${member.id}">견적 현황 관리</a>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufacpage/com_estilist.do?manuId=${member.id}">견적 완료 목록</a>
+					                        	<div class="dropdown-divider"></div>
 					                        </c:if>
 					                        <c:if test="${member.type=='expert'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<div class="dropdown-divider"></div>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expertpage/consulting.do?expId=${member.id}">컨설팅 현황 관리</a>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expertpage/com_consulting.do?expId=${member.id}">컨설팅 완료 목록</a>
+					                        	<div class="dropdown-divider"></div>
 					                        </c:if>
 					                        <c:if test="${member.type == 'startup'}">
 				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/logout.do">로그아웃</a>

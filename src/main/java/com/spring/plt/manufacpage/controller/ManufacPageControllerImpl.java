@@ -62,15 +62,14 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		
 		return mav;
 	}
-	@RequestMapping(value="/manufacpage/estilist_del.do" , method = RequestMethod.GET)
-	public ModelAndView deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+	@RequestMapping(value="/manufacpage/estilist_del.do" , method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView deletestatus(@RequestParam("manuId") String manuId,@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
-		System.out.println("delete NO: "+no);
 		manufacservice.deleteesti(no);
-		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
+		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do?manuId="+manuId);
 		return mav;
 	}
-	@RequestMapping(value="/manufacpage/com_estilist_del.do" , method = RequestMethod.GET)
+	@RequestMapping(value="/manufacpage/com_estilist_del.do" , method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView com_deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("delete NO: "+no);
@@ -78,22 +77,22 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		ModelAndView mav = new ModelAndView("redirect:/manufacpage/com_estilist.do");
 		return mav;
 	}
-	@RequestMapping(value ="/manufacpage/estilist_updatestatus.do", method = RequestMethod.GET)
-	public ModelAndView updatestatus(@RequestParam("quotestatus") int quotestatus, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+	@RequestMapping(value ="/manufacpage/estilist_updatestatus.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView updatestatus(@RequestParam("manuId")String manuId,@RequestParam("quotestatus") int quotestatus, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		manufacservice.updatestatus(quotestatus,no);
-		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
+		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do?manuId="+manuId);
 		return mav;
 	}
 	
-	@RequestMapping(value ="/manufacpage/estilist_updatestatus_de.do", method = RequestMethod.GET)
-	public ModelAndView updatestatus_de(@RequestParam("quotestatus") int quotestatus, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+	@RequestMapping(value ="/manufacpage/estilist_updatestatus_de.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView updatestatus_de(@RequestParam("manuId")String manuId, @RequestParam("quotestatus") int quotestatus, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
-		manufacservice.updatestatus_de(quotestatus,no);
-		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
+		manufacservice.updatestatus_de(quotestatus,no); 
+		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do?manuId="+manuId);
 		return mav;
 	}
-	@RequestMapping(value = "/manufacpage/estilist_more_w.do",method = RequestMethod.GET)
+	@RequestMapping(value = "/manufacpage/estilist_more_w.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView prodlist_w(@RequestParam("manuId")String manuId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");

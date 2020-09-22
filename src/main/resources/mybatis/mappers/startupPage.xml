@@ -158,8 +158,8 @@
 	
 	<select id="selectAllEstilist" resultType="startuppagevo">
 		<![CDATA[
-			select manuname,quotestatus, reqquote, no from 
-			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
+			select manuname,quotestatus, reqquote, no,compId from 
+			(select m.manuname, q.quotestatus, q.reqquote,q.no,q.compId, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
 			where m.id = q.manuid and q.compId=#{compId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
@@ -167,8 +167,8 @@
 	</select>
 	<select id="selectWaitEstilist" resultType="startuppagevo">
 		<![CDATA[
-			select manuname,quotestatus, reqquote,no from 
-			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
+			select manuname,quotestatus, reqquote,no,compId from 
+			(select m.manuname, q.quotestatus, q.reqquote,q.no,q.compId, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
 			where m.id = q.manuid and q.quotestatus = 0 and q.compId=#{compId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
@@ -177,8 +177,8 @@
 	
 	<select id="selectIngEstilist" resultType="startuppagevo">
 		<![CDATA[
-			select manuname,quotestatus, reqquote,no from 
-			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
+			select manuname,quotestatus, reqquote,no,compId from 
+			(select m.manuname, q.quotestatus, q.reqquote,q.no,q.compId, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
 			where m.id = q.manuid and q.quotestatus = 1 and q.compId=#{compId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
@@ -187,8 +187,8 @@
 	
 	<select id="selectComEstilist" resultType="startuppagevo">
 		<![CDATA[
-			select manuname,quotestatus, reqquote,no from 
-			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
+			select manuname,quotestatus, reqquote,no,compId from 
+			(select m.manuname, q.quotestatus, q.reqquote,q.no,q.compId, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
 			where m.id = q.manuid and q.quotestatus = 2 and q.compId=#{compId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
@@ -197,8 +197,8 @@
 	
 	<select id="selectDeEstilist" resultType="startuppagevo">
 		<![CDATA[
-			select manuname,quotestatus, reqquote,no from 
-			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
+			select manuname,quotestatus, reqquote,no,compId from 
+			(select m.manuname, q.quotestatus, q.reqquote,q.no,q.compId, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
 			where m.id = q.manuid and q.quotestatus = 3 and q.compId=#{compId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 

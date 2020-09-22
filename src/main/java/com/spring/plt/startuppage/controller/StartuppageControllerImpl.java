@@ -59,6 +59,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 	
 	@RequestMapping(value = "/startuppage/estilist_more_w.do", method = RequestMethod.GET)
 	public ModelAndView estilist_w(@RequestParam("compId") String compId, PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response, Object expId) throws Exception{
+		String viewName = (String) request.getAttribute("viewName");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
 		int total = startuppageservice.estilistCount_w(compId);
@@ -73,7 +74,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		}
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		List<StartupPageVO> w_estilist = startuppageservice.w_listesti(pagevo, compId);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("w_estilist",w_estilist);
 		mav.addObject("pagevo",pagevo);
 		return mav;
@@ -82,8 +83,8 @@ public class StartuppageControllerImpl implements StartuppageController{
 	public ModelAndView estilist_ing(@RequestParam("compId") String compId, PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
+		String viewName = (String) request.getAttribute("viewName");
 		int total = startuppageservice.estilistCount_i(compId);
-		System.out.println("total : " + total);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -94,7 +95,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		}
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		List<StartupPageVO> i_estilist = startuppageservice.i_listesti(pagevo, compId);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("i_estilist",i_estilist);
 		mav.addObject("pagevo",pagevo);
 		return mav;
@@ -103,6 +104,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 	public ModelAndView estilist_de(@RequestParam("compId") String compId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
+		String viewName = (String) request.getAttribute("viewName");
 		int total = startuppageservice.estilistCount_d(compId);
 		System.out.println("total : " + total);
 		if(nowPage == null && cntPerPage == null) {
@@ -115,7 +117,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		}
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		List<StartupPageVO> d_estilist = startuppageservice.d_listesti(pagevo,compId);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("d_estilist",d_estilist);
 		mav.addObject("pagevo",pagevo);
 		return mav;

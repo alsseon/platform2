@@ -33,4 +33,9 @@ public class QuotationServiceImpl implements QuotationService{
 	public int alarmQuotation(String compId){
 		return dao.alarmQuotation(compId);
 	}
+
+	@Override
+	public int alarmManuQuotation(String manuId) {
+		return dao.alarmManuQuotation(manuId);
+	}
 }
