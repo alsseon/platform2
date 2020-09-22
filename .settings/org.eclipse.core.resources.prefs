@@ -2,4 +2,5 @@ eclipse.preferences.version=1
 encoding//src/main/java/com/spring/plt/adminQnA/controller/AdminQnAControllerImpl.java=UTF-8
 encoding//src/main/java/com/spring/plt/expert/controller/ExpertControllerImpl.java=UTF-8
 encoding//src/main/java/com/spring/plt/manufac/controller/ManufacControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/plt/scrap/controller/ScrapControllerImpl.java=UTF-8
 encoding//src/main/java/com/spring/plt/startup/controller/StartUpControllerImpl.java=UTF-8
