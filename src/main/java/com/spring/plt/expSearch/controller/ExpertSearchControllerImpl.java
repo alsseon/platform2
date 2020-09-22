@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.plt.expSearch.service.ExpertSearchService;
+import com.spring.plt.expert.vo.ExpImageVO;
 import com.spring.plt.expert.vo.ExpertVO;
 import com.spring.plt.page.vo.PageVO;
 
@@ -48,10 +49,13 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 
 		System.out.println(viewName);
 		System.out.println("expert Controller allExpert");
-		List<ExpertVO> expertList = new ArrayList<ExpertVO>();
-		expertList = service.allExpert(pageVO);
+//		List<ExpertVO> expertList = new ArrayList<ExpertVO>();
+		Map<String, Object> expMap = new HashMap<String, Object>();
+		expMap = service.allExpert(pageVO);
+//		expertList = service.allExpert(pageVO);
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("expertList", expertList);
+//		mav.addObject("expertList", expertList);
+		mav.addObject("expMap", expMap);
 		mav.addObject("pageVO", pageVO);
 		return mav;
 	}
@@ -94,11 +98,15 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 		String viewName = (String) request.getAttribute("viewName");
 		System.out.println("expert Controller serchByExpertType");
 		id = request.getParameter("id");
-		System.out.println(id + "  <==id"); 
+		System.out.println(id + "  <==id");
+		Map<String, Object> expMap = new HashMap<String, Object>();
+		List<ExpImageVO> expImageList = service.getExpertImageList(id); 
 		expertVO = service.viewExpert(id);
 		System.out.println(expertVO);
+		expMap.put("expertVO", expertVO);
+		expMap.put("expImageList", expImageList);
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("expertVO", expertVO);
+		mav.addObject("expMap", expMap);
 		System.out.println(mav);
 		return mav;
 	}

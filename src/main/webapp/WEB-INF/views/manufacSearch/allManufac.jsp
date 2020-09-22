@@ -22,7 +22,7 @@
 						<!--한칸-->
 		    			<div class="col-md-4 d-flex">
 		    				<div class="book-wrap">
-		    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/resources/images/book-1.jpg);">
+		    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${manufac.id}&imageFileName=${manufac.manuImg});">
 		    						<div class="in-text">
 		    							<a href="${contextPath}/scrap/scrapManu.do?manuId=${manufac.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="scrap">
 		    								<span id="${manufac.id}" class="flaticon-heart-1"></span>

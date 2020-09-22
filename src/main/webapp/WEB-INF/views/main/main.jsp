@@ -65,7 +65,7 @@
                   <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                      <span class="flaticon-heart-1"></span>
                   </a>
-                  <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                  <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
                   </a>
                </div>
@@ -90,7 +90,7 @@
                   <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                      <span class="flaticon-heart-1"></span>
                   </a>
-                  <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                  <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
                   </a>
                </div>
@@ -126,7 +126,7 @@
                    <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
                   <div class="text">
                   	<div id="detail">
-	                    <p class="mb-4" id="expertDetail"><a href="#">${expert.expDetail}</a></p>
+	                    <p class="mb-4" id="expertDetail"><a href="${contextPath}/expSearch/viewExpert.do?id=${expert.id}">${expert.expDetail}</a></p>
                   	</div>
                     <div class="d-flex align-items-center">
                       <c:forEach var="expImage" items="${expertImgList}">

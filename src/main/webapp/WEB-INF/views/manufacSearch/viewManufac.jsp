@@ -155,7 +155,7 @@
             <div class="col-12" style="font-size: 0;">
               <div class="col-8" style="display: inline-block; vertical-align: middle;">
                 <p>
-                  <img src="${contextPath}/resources/images/image_1.jpg" alt="" class="img-fluid">
+                  <img src="${contextPath}/download.do?id=${manufacVO.id}&imageFileName=${manufacVO.manuImg}" alt="" class="img-fluid" width="500" height="350">
                 </p>
               </div>
               <div style="display: inline-block; vertical-align: middle; font-size: 16px; width: 150px;">

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.plt.expert.vo.ExpImageVO;
 import com.spring.plt.expert.vo.ExpertVO;
 import com.spring.plt.page.vo.PageVO;
 
@@ -39,9 +40,19 @@ public class ExpertSearchDAOImpl implements ExpertSearchDAO{
 		System.out.println("expert DAO all");
 		return sqlSession.selectList("mapper.expert.allExpert",pageVO);
 	}
+	
+	public List<ExpImageVO> allExpertImg() throws Exception{
+		List<ExpImageVO> expertImgList = sqlSession.selectList("mapper.expert.selectAllImageFileList");
+		return expertImgList;
+	}
 
 	@Override
 	public int listCount() {
 		return sqlSession.selectOne("mapper.expert.listCount");
+	}
+
+	@Override
+	public List<ExpImageVO> getExpertImageList(String id) {
+		return sqlSession.selectList("mapper.expert.selectImageFileList", id);
 	}
 }
