@@ -62,8 +62,6 @@ public class QuotationControllerImpl implements QuotationController{
 	@Override
 	public ModelAndView viewOneQuotation(@RequestParam("no") String no, HttpServletRequest request, HttpServletResponse response) {
 
-		//占쎈퉸占쎈뼣 疫뀐옙 甕곕뜇�깈嚥∽옙 vo�몴占� 鈺곌퀬�돳 占쎈릭占쎈연 占쎌넅筌롫똻肉� 野꺫딆읅占쎄퐣 , 獄쏆뮇竊쒙옙�뒄筌ｏ옙占쎄퐣, �뚢뫁苑뺧옙�샒 占쎌뒄筌ｏ옙占쎄퐣 �빊�뮆�젾
-		//占쎈퉸占쎈뼣 疫뀐옙 甕곕뜇�깈嚥∽옙 vo�몴占� 鈺곌퀬�돳 占쎈릭占쎈연 占쎌넅筌롫똻肉� 野꺫딆읅占쎄퐣 , 獄쏆뮇竊쒙옙�뒄筌ｏ옙占쎄퐣, �뚢뫁苑뺧옙�샒 占쎌뒄筌ｏ옙占쎄퐣 �빊�뮆�젾
 		System.out.println("Quotation NO = " + no);
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -75,9 +73,9 @@ public class QuotationControllerImpl implements QuotationController{
 	@RequestMapping(value="/alarmQuotation.do", method = RequestMethod.GET)
 	@Override
 	@ResponseBody
-	public List<QuotationVO> alarmQuotation(@RequestParam("compId") String compId, HttpServletRequest request, HttpServletResponse response){
+	public int alarmQuotation(@RequestParam("compId") String compId, HttpServletRequest request, HttpServletResponse response){
 		System.out.println("Quotation List Controller");
-		List<QuotationVO> list = service.alarmQuotation(compId);
+		int list = service.alarmQuotation(compId);
 		System.out.println(list);
 		return list;
 	}
