@@ -52,7 +52,7 @@
 		function del(no) {
 			var chk = confirm("철회하시겠습니까?");
 			if (chk) {
-				location.href="${contextPath}/startuppage/estilist_del.do?no="+no+"&compId="+compId;
+				location.href="${contextPath}/startuppage/conlist_del.do?no="+no+"&compId="+compId;
 				
 			}
 		}

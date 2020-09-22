@@ -68,7 +68,7 @@
 <body>
    
    <div class="container">
-   <h3>진행중인 견적</h3>
+   <h3>진행중인 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
