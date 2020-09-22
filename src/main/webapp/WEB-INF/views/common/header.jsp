@@ -90,7 +90,7 @@
 							             		<span class="badge badge-danger mt-3 mr-2" id="alarmQuotation"></span>
 							             	</li>
 							             	<li class="nav-item dropdown mt-2">
-												<a class="mr-1" href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
+												<a class="mr-1" href="${contextPath}/startuppage/consulting_more_w?compId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
 											</li>
 											<li>
 							             		<span class="badge badge-danger mt-3 mr-2" id="alarmConsulting"></span>
@@ -98,7 +98,7 @@
 										</c:when>
 										<c:when test="${member.type=='manufac'}">
 											<li class="nav-item dropdown mt-2">
-												<a class="mr-1" href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 견적</a>
+												<a class="mr-1" href="${contextPath}/manufacpage/estilist_more_w?manuId=${member.id}" id="receivedRequest">대기중인 견적</a>
 											</li>
 											<li>
 							             		<span class="badge badge-danger mt-3 mr-2" id="alarmQuotation"></span>
@@ -106,7 +106,7 @@
 										</c:when>
 										<c:when test="${member.type=='expert'}">
 											<li class="nav-item dropdown mt-2">
-												<a class="mr-1" href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
+												<a class="mr-1" href="${contextPath}/expertpage/con_wait.do?expId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
 											</li>
 											<li>
 							             		<span class="badge badge-danger mt-3 mr-2" id="alarmConsulting"></span>
