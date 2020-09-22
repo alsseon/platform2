@@ -134,7 +134,12 @@
 				  <div class="col-md-6">
 					  <div class="col-md-12">
 						  <h1 class="mb-3" style="display: inline-block;">Quotation List</h1>&nbsp;
-						  <a href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}" class="btn btn-primary" >More</a>
+						  <c:if test="${userType eq 'startup' }">
+						  	<a href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
+						  <c:if test="${userType eq 'manu' }">
+						  	<a href="${contextPath }/manufacpage/estilist.do?manuId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
 					  </div>
 					  <ul style="line-height: 55px; list-style: none; font-size: 30px;">
 					  	<c:forEach items="${quotationList }" var="quotation" >
@@ -149,7 +154,12 @@
 				  <div class="col-md-6">
 					  <div class="col-md-12">
 						  <h1 class="mb-3" style="display: inline-block;">Consulting List</h1>&nbsp;
-						  <a href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}" class="btn btn-primary" >More</a>
+						  <c:if test="${userType eq 'startup' }">
+						  	<a href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
+						  <c:if test="${userType eq 'expert }">
+						  	<a href="${contextPath }/expertpage/consulting.do?expId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
 					  </div>
 					  <ul style="line-height: 55px; list-style: none; font-size: 30px;">
 					  	<c:forEach items="${consultingList }" var="consulting" >
@@ -169,10 +179,22 @@
 	       <div class="categories">
 	         <h3>Services</h3>
 	         <ul style="list-style: none;">
-		         <li><a href="${contextPath}/startup/startUpSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	<c:if test="${userType eq 'startup' }">
+			         <li><a href="${contextPath}/startup/startUpSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	</c:if>
+	         	<c:if test="${userType eq 'manu' }">
+	         		 <li><a href="${contextPath}/manufac/manufacSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/manufacpage/estilist.do?manuId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	</c:if>
+	         	<c:if test="${uesrType eq 'expert' }">
+	         		 <li><a href="${contextPath}/expert/expertSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/expertpage/consulting.do?expId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	</c:if>
 	         </ul>
 	       </div>
 	     </div>
@@ -192,7 +214,7 @@
 		
 		var updown = document.querySelector("#sidebar");
 		window.addEventListener("scroll",function(event){
-			  if(scrollper()>= 60){
+			  if(scrollper()>= 70){
 		    	updown.style.position = "fixed";
 			    updown.style.top = "0px";
 			    
@@ -200,6 +222,7 @@
 				  updown.style.position = "absolute";
 				  updown.style.top = "1000px"
 			  }
+			  console.log(updown.style)
 		});
 		
 		
