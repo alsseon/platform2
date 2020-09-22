@@ -29,7 +29,7 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 	ExpertVO expertVO;
 	
 	@RequestMapping(value="/expSearch/allExpert")
-	@Override//전체 출력
+	@Override
 	public ModelAndView allExpert(PageVO pageVO, @RequestParam(value="nowPage",required = false) String nowPage, @RequestParam(value="cntPerPage", required = false) String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		request.setCharacterEncoding("utf-8");
@@ -42,7 +42,7 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
             nowPage = "1";
         }else if(cntPerPage == null) {
             cntPerPage = "9";
-        } //nowPage 현재 페이지, cntPerPage = 한페이지당 글 개수
+        } 
         System.out.println(cntPerPage + " " + nowPage);
         pageVO = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 
@@ -57,7 +57,7 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 	}
 	
 	@RequestMapping(value="/serchByExpertName",method = RequestMethod.GET)
-	@Override//이름검색
+	@Override
 	@ResponseBody
 	public Map<Integer, Map<String, Object>> serchByExpertName(@RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("expert Controller serchByExpertName");
@@ -73,7 +73,7 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 	}
 	
 	@RequestMapping(value="/serchByExpertType", method = RequestMethod.GET)
-	@Override//분야검색
+	@Override
 	@ResponseBody
 	public Map<Integer,Map<String,Object>> serchByExpertType(@RequestParam("type") String type, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("expert Controller serchByExpertType");
@@ -89,15 +89,15 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 	
 	
 	@RequestMapping(value="/expSearch/viewExpert", method = RequestMethod.GET)
-	@Override//뷰
+	@Override
 	public ModelAndView viewExpert(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		System.out.println("expert Controller serchByExpertType");
 		id = request.getParameter("id");
-		System.out.println(id + "  <==id 입니다."); 
+		System.out.println(id + "  <==id"); 
 		expertVO = service.viewExpert(id);
 		System.out.println(expertVO);
-		ModelAndView mav = new ModelAndView(viewName);//뷰 설정 할 것
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("expertVO", expertVO);
 		System.out.println(mav);
 		return mav;

@@ -36,8 +36,8 @@ import com.spring.plt.startup.vo.StartUpVO;
 @Controller("startUpController")
 @EnableAspectJAutoProxy
 public class StartUpControllerImpl implements StartUpController{
-	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //�븰�썝
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //吏�
 	@Autowired
 	private StartUpService startUpService;
 	
@@ -74,7 +74,7 @@ public class StartUpControllerImpl implements StartUpController{
 			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
-				mav.setViewName("redirect:/member/loginForm.do");
+				mav.setViewName("redirect:/common/loginForm.do");
 			}		
 		return mav;
 	}
@@ -113,11 +113,11 @@ public class StartUpControllerImpl implements StartUpController{
 				File destDir = new File(IMAGE_PATH+"\\"+id);
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
-			mav.setViewName("redirect:/startup/startUpListForm.do");
+			mav.setViewName("redirect:/main/main.do");
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 			srcFile.delete();
-			mav.setViewName("redirect:/startup/startUpListForm.do");
+			mav.setViewName("redirect:/main/main.do");
 			e.printStackTrace();
 		}
 		return mav;
@@ -174,7 +174,7 @@ public class StartUpControllerImpl implements StartUpController{
 		startUpService.deletestartUp(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/startup/startUpListForm.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav; 
 	}
 
@@ -213,7 +213,7 @@ public class StartUpControllerImpl implements StartUpController{
 				oldFile.delete();
 			}
 			message = "<script>";
-			message += " alert('�닔�젙�셿猷�');";
+			message += " alert('업데이트 완료');";
 			message += " location.href='"+request.getContextPath()+"/';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -221,7 +221,7 @@ public class StartUpControllerImpl implements StartUpController{
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+compImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('�엯�젰�릺吏��븡�� �궗�빆�씠 �엳�뒿�땲�떎.');";
+			message += " alert('오류 발생');";
 			message += " location.href='"+request.getContextPath()+"/startup/startUpListForm.do?id="+id+"';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

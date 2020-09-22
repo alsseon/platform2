@@ -76,13 +76,13 @@ public class NoticeControllerImpl {
 		try {
 			int result = noticeService.writeNotice(notice);
 			message = "<script>";
-			message += " alert('ê³µì§€ì‚¬í•­ ìž‘ì„± ì™„ë£Œ');";
+			message += " alert('°øÁö»çÇ× ÀÛ¼º ¿Ï·á');";
 			message += " location.href='"+request.getContextPath()+"/notice/noticeList.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('ê³µì§€ì‚¬í•­ ìž‘ì„± ì‹¤íŒ¨');";
+			message += " alert('¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù.');";
 			message += " location.href='"+request.getContextPath()+"/notice/writeNoticeForm.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -117,13 +117,13 @@ public class NoticeControllerImpl {
 		try {
 			int result = noticeService.updateNotice(notice);
 			message = "<script>";
-			message += " alert('ê³µì§€ì‚¬í•­ ìˆ˜ì • ì™„ë£Œ');";
+			message += " alert('°øÁö»çÇ× ¼öÁ¤ ¿Ï·á');";
 			message += " location.href='"+request.getContextPath()+"/notice/viewNotice.do?no="+no+"';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('ê³µì§€ì‚¬í•­ ìˆ˜ì • ì‹¤íŒ¨');";
+			message += " alert('¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù.');";
 			message += " location.href='"+request.getContextPath()+"/notice/noticeList.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -144,13 +144,13 @@ public class NoticeControllerImpl {
 		try {
 			int result = noticeService.deleteNotice(no);
 			message = "<script>";
-			message += " alert('ê³µì§€ì‚¬í•­ ì‚­ì œ ì™„ë£Œ');";
+			message += " alert('°øÁö»çÇ× »èÁ¦ ¿Ï·á');";
 			message += " location.href='"+request.getContextPath()+"/notice/noticeList.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('ê³µì§€ì‚¬í•­ ì‚­ì œ ì‹¤íŒ¨');";
+			message += " alert('¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù.');";
 			message += " location.href='"+request.getContextPath()+"/notice/noticeList.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

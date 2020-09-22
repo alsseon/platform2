@@ -1,2 +1,29 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/java/com/spring/plt/startuppage/dao/StartupPageDAOImpl.java=UTF-8
+=======
+encoding//src/main/java/com/spring/plt/adminQnA/controller/AdminQnAControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/plt/expSearch/controller/ExpertSearchControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/plt/expert/controller/ExpertControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/plt/manufac/controller/ManufacControllerImpl.java=UTF-8
+<<<<<<< HEAD
+<<<<<<< HEAD
+encoding//src/main/java/com/spring/plt/quotation/controller/QuotationControllerImpl.java=UTF-8
+=======
+<<<<<<< HEAD
+encoding//src/main/java/com/spring/plt/quotation/controller/QuotationControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/plt/quotation/dao/QuotationDAOImpl.java=UTF-8
+=======
+encoding//src/main/java/com/spring/plt/scrap/controller/ScrapControllerImpl.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
+=======
+<<<<<<< HEAD
+encoding//src/main/java/com/spring/plt/quotation/controller/QuotationControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/plt/quotation/dao/QuotationDAOImpl.java=UTF-8
+=======
+encoding//src/main/java/com/spring/plt/scrap/controller/ScrapControllerImpl.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
+encoding//src/main/java/com/spring/plt/startup/controller/StartUpControllerImpl.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git

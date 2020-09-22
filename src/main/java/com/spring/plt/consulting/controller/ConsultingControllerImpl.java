@@ -77,10 +77,20 @@ public class ConsultingControllerImpl implements ConsultingController{
 	@RequestMapping(value="/alarmConsulting.do", method = RequestMethod.GET)
 	@Override
 	@ResponseBody
-	public List<QuotationVO> alarmConsulting(@RequestParam("compId") String compId, HttpServletRequest request, HttpServletResponse response){
+	public int alarmConsulting(@RequestParam(value="expId", required=false) String expId,
+			@RequestParam(value="compId", required=false) String compId, HttpServletRequest request, HttpServletResponse response){
 		System.out.println("Quotation List Controller");
-		List<QuotationVO> list = service.alarmConsulting(compId);
-		System.out.println(list);
-		return list;
+		System.out.println("expId: "+expId);
+		System.out.println("compId: "+compId);
+		int count = 0;
+		if(compId!=null && compId.length()!=0) {
+			System.out.println("123123");
+			count = service.alarmConsulting(compId);
+		}else if(expId!=null && expId.length()!=0) {
+			System.out.println("456456");
+			count = service.alarmExpConsulting(expId);
+		}
+		System.out.println(count);
+		return count;
 	}
 }

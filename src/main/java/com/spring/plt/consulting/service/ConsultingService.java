@@ -12,5 +12,7 @@ public interface ConsultingService {
 
 	ConsultingVO viewOneConsulting(String no);
 
-	List<QuotationVO> alarmConsulting(String compId);
+	int alarmConsulting(String compId);
+
+	int alarmExpConsulting(String expId);
 }

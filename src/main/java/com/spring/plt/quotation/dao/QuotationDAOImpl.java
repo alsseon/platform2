@@ -16,7 +16,7 @@ public class QuotationDAOImpl implements QuotationDAO{
 	@Override
 	public void insertQuotation(QuotationVO quotationVO) {
 		System.out.println("Quotation DAO");
-		System.out.println("quotationVO가 DAO에서 어떻게 들어오나: "+ quotationVO);
+		System.out.println("quotationVO媛� DAO�뿉�꽌 �뼱�뼸寃� �뱾�뼱�삤�굹: "+ quotationVO);
 		sqlSession.delete("mapper.quotation.insertQuotation", quotationVO);
 	}
 	@Override
@@ -30,8 +30,14 @@ public class QuotationDAOImpl implements QuotationDAO{
 		return sqlSession.selectOne("mapper.quotation.quotationOne", no);
 	}
 	@Override
-	public List<QuotationVO> alarmQuotation(String compId){
+	public int alarmQuotation(String compId){
 		System.out.println("Quotation status List");
-		return sqlSession.selectList("mapper.quotation.alarmQuotation",compId);
+		int count = sqlSession.selectOne("mapper.quotation.alarmQuotation",compId);
+		return count;
+	}
+	@Override
+	public int alarmManuQuotation(String manuId) {
+		int count = sqlSession.selectOne("mapper.quotation.alarmManuQuotation",manuId);
+		return count;
 	}
 }

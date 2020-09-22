@@ -18,6 +18,7 @@ public class FileDownloadController {
 	protected void download(@RequestParam("imageFileName") String imageFileName,
 							@RequestParam("id") String id,
 							HttpServletResponse response) throws Exception{
+		
 		OutputStream out = response.getOutputStream();
 		
 		String downFile = IMAGE_PATH + "\\" + id + "\\" + imageFileName;

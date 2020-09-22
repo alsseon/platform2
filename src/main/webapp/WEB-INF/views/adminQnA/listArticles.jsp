@@ -128,7 +128,7 @@
             
         </div>
     </div>
-		<c:if test="${member.type == 'startup'}">
+		<c:if test="${member.type != 'admin'}">
 		<div class="text-center">
 			<a href="${contextPath}/adminQnA/articleForm.do">질문작성</a>
 		</div>

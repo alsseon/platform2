@@ -165,9 +165,11 @@
                   <li> ${manufacVO.manuTel}</li>
                   <li> ${manufacVO.manuBizType}</li>
                 </ul>
-                <a href="${contextPath }/quotation/insertQuotationForm.do?manuId=${manufacVO.id}" class="btn btn-primary" style="width: 150px">견적요청</a>
-                <br><br>
-                <a href="${contextPath }/manufacSearch/allManufac.do" class="btn btn-primary" style="width: 150px">목록으로</a>
+                <a href="${contextPath }/quotation/insertQuotationForm.do?manuId=${manufacVO.id}" class="btn btn-primary mb-3" style="width: 150px">견적요청</a>
+                <br>
+                <a href="${contextPath }/manufacSearch/allManufac.do" class="btn btn-primary mb-3" style="width: 150px">목록으로</a>
+                <br>
+                <a data-toggle="modal" href="#messageToManufac" class="btn btn-primary" style="width: 150px">쪽지 보내기</a>
               </div>
             </div>
             <div style="float: left;">
@@ -234,7 +236,35 @@
             </div>
         </div>
     </div>
-
+	<!-- message Modal -->
+     <div class="modal fade" id="messageToManufac">
+        <div class="modal-dialog">
+            <div class="modal-content" align="center">
+            	<!-- Modal Header -->
+		        <div class="modal-header">
+		        	<h4 class="modal-title">쪽지 보내기</h4>
+		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		      	</div>
+		      	<div class="modal-body">
+	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
+	                	<input type="hidden" name="sendId" value="${member.id}"> 
+	                    <div class="form-group col-sm-10">
+	                        <label for="inputReceiveId">수신자</label>
+	                        <input type="hidden" name="receiveId" value="${manufacVO.id}">
+	                        <input type="text" name="manuName" class="form-control" id="inputReceiveId" value="${manufacVO.manuName}" readonly">
+	                    </div>
+	                    <div class="form-group col-sm-10">
+	                        <label for="InputContent">내용</label>
+	                        <textarea class="form-control" name="content" id="InputContent" rows="5" cols="10" placeholder="내용을 입력하세요."></textarea>
+	                    </div>
+	                    <button type="submit" class="btn btn-primary">전송</button>
+	                    <button type="reset" class="btn btn-secondary">다시입력</button>
+	                    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+	                </form>
+		      	</div>
+            </div>
+        </div>
+    </div>
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 

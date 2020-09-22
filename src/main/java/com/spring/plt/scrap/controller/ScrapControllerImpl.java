@@ -31,10 +31,10 @@ public class ScrapControllerImpl implements ScrapController{
 	private ScrapVO scrapVO;
 	
 	
-//	compId�몴? 嚥≪뮄�젃?�뵥 ?�뜎 session?肉�?苑� 獄쏆룇釉�?�궎?�뮉 野껉퍔�몵嚥�? ?�땾?�젟?鍮�?鍮�?鍮�?�빍?�뼄  - parent key ?�궎�몴?
+//	compId占쎈ご? �슖�돦裕꾬옙�쟽?占쎈데 ?占쎈쐩 session?�굢占�?�땻占� �뛾�룇猷뉔뇡占�?占쎄텕?占쎈츎 �뇦猿됲뜑占쎈さ�슖占�? ?占쎈빢?占쎌젧?�뜮占�?�뜮占�?�뜮占�?占쎈퉵?占쎈펲  - parent key ?占쎄텕占쎈ご?
 	
-//	scrap�빊�뮆�젾
-	//?�읈�눧硫�? * �빊�뮆�젾
+//	scrap占쎈퉲占쎈츊占쎌졑
+	//?占쎌쓧占쎈닱筌롳옙? * 占쎈퉲占쎈츊占쎌졑
 	@Override
 	@RequestMapping(value="/scrap/printExpertScrap.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView printExpertScrapAll(PageVO pageVO, @RequestParam(value="nowPage", required = false) String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage,
@@ -55,10 +55,10 @@ public class ScrapControllerImpl implements ScrapController{
 	        nowPage = "1";
 	    }else if(cntPerPage == null) {
 	        cntPerPage = "8";
-	    } //nowPage ?�겱?�삺 ?�읂?�뵠筌�?, cntPerPage = ?釉�?�읂?�뵠筌�??�뼣 疫�? 揶쏆뮇�땾
+	    } //nowPage ?占쎄껑?占쎌궨 ?占쎌쓡?占쎈턄嶺뚳옙?, cntPerPage = ?�뇡占�?占쎌쓡?占쎈턄嶺뚳옙??占쎈샬 �뼨占�? �뤆�룇裕뉛옙�빢
 	    pageVO = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 	    Map compMap = new HashMap();
-	    compMap.put("compId", compId);//�꽭�뀡�뿉�꽌 媛��졇�삱寃�
+	    compMap.put("compId", compId);//占쎄쉭占쎈�∽옙肉됵옙苑� 揶쏉옙占쎌죬占쎌궞野껓옙
 	    compMap.put("pageVO", pageVO);
 		List expertScrapAllList = scrapService.printExpertScrapAll(compMap);
 		ModelAndView mav = new ModelAndView(viewName);
@@ -68,7 +68,7 @@ public class ScrapControllerImpl implements ScrapController{
 	}
 	
 	
-	//?�젫鈺곌퀣毓쏙㎗? * �빊�뮆�젾
+	//?占쎌젷�댖怨뚰�ｆ캆�룞�럸? * 占쎈퉲占쎈츊占쎌졑
 	@Override
 	@RequestMapping(value="/scrap/printManuScrap.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView printManuScrapAll(PageVO pageVO, @RequestParam(value="nowPage", required = false) String nowPage,
@@ -90,7 +90,7 @@ public class ScrapControllerImpl implements ScrapController{
 	        nowPage = "1";
 	    }else if(cntPerPage == null) {
 	        cntPerPage = "8";
-	    } //nowPage ?�겱?�삺 ?�읂?�뵠筌�?, cntPerPage = ?釉�?�읂?�뵠筌�??�뼣 疫�? 揶쏆뮇�땾
+	    } //nowPage ?占쎄껑?占쎌궨 ?占쎌쓡?占쎈턄嶺뚳옙?, cntPerPage = ?�뇡占�?占쎌쓡?占쎈턄嶺뚳옙??占쎈샬 �뼨占�? �뤆�룇裕뉛옙�빢
 	    pageVO = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 	    Map compMap = new HashMap();
 	    compMap.put("compId", compId);
@@ -102,7 +102,7 @@ public class ScrapControllerImpl implements ScrapController{
 		return mav;
 	}
 	
-	//?�젫鈺곌퀣毓쏙㎗?/?�읈�눧硫�? 4揶쏆뮇逾� �빊�뮆�젾
+	//?占쎌젷�댖怨뚰�ｆ캆�룞�럸?/?占쎌쓧占쎈닱筌롳옙? 4�뤆�룇裕뉔�억옙 占쎈퉲占쎈츊占쎌졑
 	@Override
 	@RequestMapping(value="/scrap/printScrapAll.do",method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView printScrapAll(@RequestParam("compId") String compId,
@@ -137,22 +137,22 @@ public class ScrapControllerImpl implements ScrapController{
 				scrapVO.setExpid(expId);
 				scrapService.scrapExpert(scrapVO);
 				message = "<script>";
-				message += " alert('정상적으로 스크랩 되었습니다.');";
+				message += " alert('스크랩 되었습니다.');";
 				message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
 				message += "</script>";
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			}catch(Exception e) {
 				message = "<script>";
-				message += " alert('스크랩 중 오류가 발생하였습니다.');";
+				message += " alert('스크랩하지 못했습니다.');";
 				message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
 				message += "</script>";
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			}
 		}
 		else {
-			System.out.println("===========controller scrapExpert() 餓λ쵎�궗?留� expid?�뿯?�빍?�뼄===========");
+			System.out.println("===========controller scrapExpert() 繞벿살탮占쎄텢?筌랃옙 expid?占쎈엷?占쎈퉵?占쎈펲===========");
 			message = "<script>";
-			message += " alert('이미 스크랩 하셨습니다.');";
+			message += " alert('이미 스크랩된 항목입니다.');";
 			message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -178,23 +178,23 @@ public class ScrapControllerImpl implements ScrapController{
 				scrapVO.setManuid(manuId);
 				scrapService.scrapManu(scrapVO);
 				message = "<script>";
-				message += " alert('정상적으로 스크랩 되었습니다.');";
+				message += " alert('스크랩 되었습니다.');";
 				message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
 				message += "</script>";
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			}catch(Exception e) {
 				message = "<script>";
-				message += " alert('스크랩 중 오류가 발생하였습니다.');";
+				message += " alert('스크랩하지 못했습니다.');";
 				message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
 				message += "</script>";
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			}
 		}
 		else {
-//			餓λ쵎�궗?留� ?�뒄筌�? ?�뻻 alert揶�? ?援�?�궎?猷꾣에? ?�땾?�젟?鍮�?鍮� ?鍮�?�빍?�뼄
-//			System.out.println("===========controller scrapExpert() 餓λ쵎�궗?留� manuid?�뿯?�빍?�뼄===========");
+//			繞벿살탮占쎄텢?筌랃옙 ?占쎈뭵嶺뚳옙? ?占쎈뻣 alert�뤆占�? ?�뤃占�?占쎄텕?�뙴袁ｌ뿉? ?占쎈빢?占쎌젧?�뜮占�?�뜮占� ?�뜮占�?占쎈퉵?占쎈펲
+//			System.out.println("===========controller scrapExpert() 繞벿살탮占쎄텢?筌랃옙 manuid?占쎈엷?占쎈퉵?占쎈펲===========");
 			message = "<script>";
-			message += " alert('이미 스크랩 하셨습니다.');";
+			message += " alert('이미 스크랩된 항목입니다.');";
 			message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -210,7 +210,7 @@ public class ScrapControllerImpl implements ScrapController{
 						HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-//		String compId = (String)session.getAttribute("compId"); �뜝�떥源띿삕�뜝�룞�삕 �뜝�룞�삕�뜝? �뜝�룞�삕�뜝�룞�삕 �뜝�떎紐뚯삕 �뜝�뙃琉꾩삕 �뜝�뙇�눦�삕 �뜝�룞�삕�뜝�룞�삕 �뜝��怨ㅼ삕
+//		String compId = (String)session.getAttribute("compId"); 占쎈쐻占쎈뼢繹먮씮�굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻? 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈뼄筌뤿슣�굲 占쎈쐻占쎈셾筌뚭쑴�굲 占쎈쐻占쎈솂占쎈닰占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쏙옙�ⓦ끉�굲
 		String compId = "compId";
 		scrapService.deleteExpertScrap(no);
 		ModelAndView mav = new ModelAndView("redirect:/scrap/printExpertScrap.do?compId=" + compId);
@@ -226,7 +226,7 @@ public class ScrapControllerImpl implements ScrapController{
 		request.setCharacterEncoding("utf-8");
 		scrapService.deleteManuScrap(no);
 		HttpSession session = request.getSession();
-//		String compId = (String)session.getAttribute("compId"); �뜝�떥源띿삕�뜝�룞�삕 �뜝�룞�삕�뜝? �뜝�룞�삕�뜝�룞�삕 �뜝�떎紐뚯삕 �뜝�뙃琉꾩삕 �뜝�뙇�눦�삕 �뜝�룞�삕�뜝�룞�삕 �뜝��怨ㅼ삕
+//		String compId = (String)session.getAttribute("compId"); 占쎈쐻占쎈뼢繹먮씮�굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻? 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈뼄筌뤿슣�굲 占쎈쐻占쎈셾筌뚭쑴�굲 占쎈쐻占쎈솂占쎈닰占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쏙옙�ⓦ끉�굲
 		String compId = "compId";
 		ModelAndView mav = new ModelAndView("redirect:/scrap/printManuScrap.do?compId=" + compId);
 		return mav;
