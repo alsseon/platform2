@@ -7,15 +7,15 @@ public class QuotationVO {
 	private int no;
 	private String compId;
 	private String manuId;
-	private String item;
-	private int price;
-	private int quantity;
-	private int vat;
-	private String detail;
-	private String fileName;
+	private String item = null;
+	private int price = 0;
+	private int quantity = 0;
+	private int vat = 0;
+	private String detail = null;
+	private String fileName = null;
 	private String tempSave;
-	private String reqQuote;
-	private int quoteStatus;
+	private String reqQuote = null;
+	private int quoteStatus = 0;
 	
 	public int getNo() {
 		return no;
