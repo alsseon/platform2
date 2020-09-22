@@ -39,28 +39,28 @@
 		 
 		<div class="col form-group">
 			<label>비밀번호</label>
-		  	<input type="text" class="form-control" name="pwd" value="password">
+		  	<input type="password" class="form-control" name="pwd" placeholder="password">
 		</div>
 		
 		<div class="col form-group">
-			<label>회사명</label>
-		  	<input type="text" class="form-control" name="expName" value="compname">
+			<label>이름</label>
+		  	<input type="text" class="form-control" name="expName">
 		</div>
 		
 		<div class="col form-group">
 			<label>이메일</label>
-		  	<input type="email" class="form-control" name="expEmail" value="expert@test.com">
+		  	<input type="email" class="form-control" name="expEmail" >
 			<small class="form-text text-muted">정확한 이메일 형식을 지켜주세요.</small>
 		</div>
 		
 		<div class="col form-group">
 			<label>전화번호</label>
-		  	<input type="text" class="form-control" name="expTel" value="010-1234-5667">
+		  	<input type="text" class="form-control" name="expTel">
 		</div> 
 	
 		<div class="col form-group">
 			<label>경력</label>
-		  	<input type="text" class="form-control" name="expCareer" value="15년">
+		  	<input type="text" class="form-control" name="expCareer" >
 		</div> 
 		
 		<div class="col form-group">
@@ -75,7 +75,7 @@
 		
 		<div class="col form-group">
 			<label>상세 설명</label>
-		  	<textarea class="form-control" name="expDetail">어쩌구저쩌구</textarea>
+		  	<textarea class="form-control" name="expDetail"></textarea>
 		</div> 
 		
 		<div class="form-group">

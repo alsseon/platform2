@@ -84,51 +84,51 @@ function execPostCode() {
 		 
 		<div class="col form-group">
 			<label>비밀번호</label>
-		  	<input type="text" class="form-control" name="pwd" value="password">
+		  	<input type="password" class="form-control" name="pwd" placeholder="password">
 		</div>
 		
 		<div class="col form-group">
 			<label>회사명</label>
-		  	<input type="text" class="form-control" name="compName" value="compName">
+		  	<input type="text" class="form-control" name="compName" >
 		</div>
 		
 		<div class="col form-group">
 			<label>대표 이름</label>
-		  	<input type="text" class="form-control" name="compCeoName" value="compCeoName">
+		  	<input type="text" class="form-control" name="compCeoName">
 		</div>
 		
 		<div class="col form-group">
 			<label>이메일</label>
-		  	<input type="email" class="form-control" name="compEmail" value="comp@test.com">
+		  	<input type="email" class="form-control" name="compEmail" >
 			<small class="form-text text-muted">정확한 이메일 형식을 지켜주세요.</small>
 		</div>
 		
 		<div class="col form-group">
 			<label>사업자 번호</label>
-		  	<input type="text" class="form-control" name="compBizNo" value="123-345-6756">
+		  	<input type="text" class="form-control" name="compBizNo" >
 		</div>
 		<!-- 주소입력란  -->
 		<div class="form-group">   
 			<label>회사 주소</label>   
 			<button type="button" class="btn btn-default" onclick="execPostCode();"><i class="fa fa-search"></i> 주소검색</button>                   
 			<input class="form-control"  placeholder="주소 검색을 이용해 주세요" name="compAddr" id="compAddr" type="text" readonly="readonly" ><br>
-    		<input class="form-control"  placeholder="상세주소" name="compDetailAddr" id="compDetailAddr" type="text" value="상세주소"/>
+    		<input class="form-control"  placeholder="상세주소" name="compDetailAddr" id="compDetailAddr" type="text" />
 		</div>
 		<!-- 주소입력 끝 -->
 		
 		<div class="col form-group">
 			<label>전화번호</label>
-		  	<input type="text" class="form-control" name="compTel" value="010-2345-9487">
+		  	<input type="text" class="form-control" name="compTel" >
 		</div> 
 	
 		<div class="col form-group">
 			<label>업력</label>
-		  	<input type="text" class="form-control" name="compStart" value="1개월">
+		  	<input type="text" class="form-control" name="compStart" >
 		</div> 
 		
 		<div class="col form-group">
 			<label>세부사항</label>
-		  	<textarea class="form-control" name="compDetail">세부사항이다</textarea>
+		  	<textarea class="form-control" name="compDetail"></textarea>
 		</div> 
 		
 		<div class="col form-group">
