@@ -39,6 +39,16 @@
         <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
         <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
     </head>
+    <script>
+	var compId='${member.id}';
+	function del(no) {
+		var chk = confirm("철회 하시겠습니까?");
+		if (chk) {
+			location.href="${contextPath}/startuppage/conlist_del.do?no="+no+"&compId="+compId;
+			
+		}
+	}	
+	</script>
 <body>
 	<section class="ftco-section bg-light">
             <div class="container">
@@ -137,7 +147,7 @@
                                             <c:if test="${member.type == 'startup'}"><!-- request.getSession에서 user의 타입을 가져온다. -->
                                             	<div class="col-md-12">
 	                                                <div class="form-group">
-	                                                    <input type="submit" value="컨설팅 철회" class="btn btn-primary">
+	                                                    <input type="button" value="컨설팅 철회" class="btn btn-primary"  onclick="del(${ConsultingVO.no})">
 	                                                    <div class="submitting"></div>
 	                                                </div>
                                             	</div>

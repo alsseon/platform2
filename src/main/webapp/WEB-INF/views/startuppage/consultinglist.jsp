@@ -52,7 +52,7 @@
 		function del(no) {
 			var chk = confirm("철회하시겠습니까?");
 			if (chk) {
-				location.href="${contextPath}/startuppage/estilist_del.do?no="+no+"&compId="+compId;
+				location.href="${contextPath}/startuppage/conlist_del.do?no="+no+"&compId="+compId;
 				
 			}
 		}
@@ -87,7 +87,7 @@
           </tr>
         </c:forEach>
    </table>
- 	<a href = "${contextPath}/startuppage/consulting_more_w.do">더보기</a>
+ 	<a href = "${contextPath}/startuppage/consulting_more_w.do?compId=${member.id}">더보기</a>
 </div>
    <div class="container">
    <h3>진행중인 컨설팅</h3>
@@ -109,7 +109,7 @@
 			</tr>
 		</c:forEach>   
    </table>
-	<a href = "${contextPath}/startuppage/consulting_more_i.do">더보기</a>
+	<a href = "${contextPath}/startuppage/consulting_more_i.do?compId=${member.id}">더보기</a>
 </div>
    <div class="container">
    <h3>거절된 컨설팅</h3>
@@ -131,7 +131,7 @@
           </tr>
         </c:forEach>   
    </table>
-	<a href = "${contextPath}/startuppage/consulting_more_d.do">더보기</a>
+	<a href = "${contextPath}/startuppage/consulting_more_d.do?compId=${member.id}">더보기</a>
 </div>
      <script src="${contextPath}/resources/js/jquery.min.js"></script>
      <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>

@@ -6,6 +6,8 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="expertVO" value="${expMap.expertVO}" />
+<c:set var="expImageList" value="${expMap.expImageList}" />
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -154,7 +156,7 @@
             <div class="col-12" style="font-size: 0;">
               <div class="col-8" style="display: inline-block; vertical-align: middle;">
                 <p>
-                  <img src="${contextPath }/resources/images/image_1.jpg" alt="" class="img-fluid">
+                  <img src="${contextPath}/download.do?id=${expertVO.id}&imageFileName=${expImageList[1].imageFileName}" alt="" class="img-fluid">
                 </p>
               </div>
               <div style="display: inline-block; vertical-align: middle; font-size: 16px; width: 150px" >

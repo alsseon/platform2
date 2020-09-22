@@ -68,7 +68,7 @@
 <body>
    
    <div class="container">
-   <h3>거절된 견적</h3>
+   <h3>거절된 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        

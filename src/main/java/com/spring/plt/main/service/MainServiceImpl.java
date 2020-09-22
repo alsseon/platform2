@@ -34,16 +34,10 @@ public class MainServiceImpl implements MainService{
 	   Map<String, Object> expMap = new HashMap<String, Object>();
 	   List<ExpertVO> expertList = mainDAO.expertmain();
 	   List<ExpImageVO> expertImgList = mainDAO.expertImgMain();
-	   System.out.println("홀수번째 이미지 제거하기 전 이미지 리스트: "+expertImgList);
-//	   for(ExpImageVO expertImg:expertImgList) {
-//		   if(expertImg.getImageFileNO() % 2 == 0)
-//			   expertImgList.remove(expertImg);
-//	   }
 	   for(int i=0; i<expertImgList.size(); i++) {
 		   if(expertImgList.get(i).getImageFileNO() % 2 == 1)
 			   expertImgList.remove(expertImgList.get(i));
 	   }
-	   System.out.println("홀수번째 이미지는 제거한 이미지 리스트: "+expertImgList);
 	   expMap.put("expertList", expertList);
 	   expMap.put("expertImgList", expertImgList);
 	   return expMap;
