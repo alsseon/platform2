@@ -220,6 +220,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 	}
 	@RequestMapping(value = "/startuppage/consulting_more_w.do", method = RequestMethod.GET)
 	public ModelAndView conlist_w(@RequestParam("compId") String compId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String viewName = (String)request.getAttribute("viewName");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
 		int total = startuppageservice.conlistCount_w(compId);
@@ -234,7 +235,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		}
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		List<StartupPageVO> w_conlist = startuppageservice.w_listcon(pagevo,compId);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("w_conlist",w_conlist);
 		mav.addObject("pagevo",pagevo);
 		return mav;
@@ -243,6 +244,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 	public ModelAndView conlist_i(@RequestParam("compId") String compId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
+		String viewName = (String)request.getAttribute("viewName");
 		int total = startuppageservice.conlistCount_i(compId);
 		System.out.println("total : " + total);
 		if(nowPage == null && cntPerPage == null) {
@@ -255,7 +257,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		}
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		List<StartupPageVO> i_conlist = startuppageservice.i_listcon(pagevo,compId);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("i_conlist",i_conlist);
 		mav.addObject("pagevo",pagevo);
 		return mav;
@@ -264,6 +266,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 	public ModelAndView conlist_d(@RequestParam("compId") String compId,PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
+		String viewName = (String)request.getAttribute("viewName");
 		int total = startuppageservice.conlistCount_d(compId);
 		System.out.println("total : " + total);
 		if(nowPage == null && cntPerPage == null) {
@@ -276,7 +279,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		}
 		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		List<StartupPageVO> d_conlist = startuppageservice.d_listcon(pagevo,compId);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("d_conlist",d_conlist);
 		mav.addObject("pagevo",pagevo);
 		return mav;

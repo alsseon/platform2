@@ -80,14 +80,10 @@ public class ConsultingControllerImpl implements ConsultingController{
 	public int alarmConsulting(@RequestParam(value="expId", required=false) String expId,
 			@RequestParam(value="compId", required=false) String compId, HttpServletRequest request, HttpServletResponse response){
 		System.out.println("Quotation List Controller");
-		System.out.println("expId: "+expId);
-		System.out.println("compId: "+compId);
 		int count = 0;
 		if(compId!=null && compId.length()!=0) {
-			System.out.println("123123");
 			count = service.alarmConsulting(compId);
 		}else if(expId!=null && expId.length()!=0) {
-			System.out.println("456456");
 			count = service.alarmExpConsulting(expId);
 		}
 		System.out.println(count);
