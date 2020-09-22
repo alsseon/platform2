@@ -27,4 +27,10 @@
 		]]>
 	</select>
 	
+	<select id="alarmManuQuotation" resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*) from Quotation where QUOTESTATUS=0 and manuId = #{manuId}
+		]]>
+	</select>
+	
 </mapper>

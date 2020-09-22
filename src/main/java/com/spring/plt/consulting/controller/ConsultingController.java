@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.plt.consulting.vo.ConsultingVO;
@@ -19,6 +20,7 @@ public interface ConsultingController {
 
 	ModelAndView viewOneConsulting(String no, HttpServletRequest request, HttpServletResponse response);
 
-	List<QuotationVO> alarmConsulting(String compId, HttpServletRequest request, HttpServletResponse response);
+	public int alarmConsulting(@RequestParam(value="expId", required=false) String expId,
+			@RequestParam(value="compId", required=false) String compId, HttpServletRequest request, HttpServletResponse response);
 
 }

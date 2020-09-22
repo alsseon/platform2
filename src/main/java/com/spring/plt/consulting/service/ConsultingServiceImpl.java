@@ -31,7 +31,12 @@ public class ConsultingServiceImpl implements ConsultingService{
 	}
 
 	@Override
-	public List<QuotationVO> alarmConsulting(String compId) {
+	public int alarmConsulting(String compId) {
 		return dao.alarmConsulting(compId);
+	}
+
+	@Override
+	public int alarmExpConsulting(String expId) {
+		return dao.alarmExpConsulting(expId);
 	}
 }

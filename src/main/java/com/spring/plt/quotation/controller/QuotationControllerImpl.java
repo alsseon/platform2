@@ -73,11 +73,17 @@ public class QuotationControllerImpl implements QuotationController{
 	@RequestMapping(value="/alarmQuotation.do", method = RequestMethod.GET)
 	@Override
 	@ResponseBody
-	public int alarmQuotation(@RequestParam("compId") String compId, HttpServletRequest request, HttpServletResponse response){
+	public int alarmQuotation(@RequestParam(value="compId", required=false) String compId, 
+							  @RequestParam(value="manuId", required=false) String manuId,HttpServletRequest request, HttpServletResponse response){
 		System.out.println("Quotation List Controller");
 		int count = 0;
-		count = service.alarmQuotation(compId);
+		if(compId!=null && compId.length()!=0) {
+			count = service.alarmQuotation(compId);
+		}else if(manuId!=null && manuId.length()!=0) {
+			count = service.alarmManuQuotation(manuId);
+		}
 		System.out.println(count);
 		return count;
 	}
+
 }

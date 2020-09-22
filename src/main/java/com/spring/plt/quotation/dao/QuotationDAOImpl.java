@@ -35,4 +35,9 @@ public class QuotationDAOImpl implements QuotationDAO{
 		int count = sqlSession.selectOne("mapper.quotation.alarmQuotation",compId);
 		return count;
 	}
+	@Override
+	public int alarmManuQuotation(String manuId) {
+		int count = sqlSession.selectOne("mapper.quotation.alarmManuQuotation",manuId);
+		return count;
+	}
 }
