@@ -163,9 +163,11 @@
                   <li> ${expertVO.expEmail }</li>
                   <li> ${expertVO.expBizField }</li>
                 </ul>
-                <a href="${contextPath}/consulting/insertConsultingForm.do?expId=${expertVO.id}" class="btn btn-primary mb-3" style="width: 150px">컨설팅 요청</a>
-                <br>
-                <a href="${contextPath}/allExpert.do" class="btn btn-primary mb-3" style="width: 150px">목록으로</a>
+                <c:if test="${member.type == 'startup'}">
+	                <a href="${contextPath}/consulting/insertConsultingForm.do?expId=${expertVO.id}" class="btn btn-primary mb-3" style="width: 150px">컨설팅 요청</a>
+	                <br>
+                </c:if>
+                <a href="${contextPath}/expSearch/allExpert.do" class="btn btn-primary mb-3" style="width: 150px">목록으로</a>
                 <br>
                 <a data-toggle="modal" href="#messageToExpert" class="btn btn-primary" style="width: 150px">쪽지 보내기</a>
               </div>
