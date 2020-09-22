@@ -28,5 +28,6 @@
 			<typeAlias type="com.spring.plt.expertpage.vo.ExpertPageVO" alias="expertPageVO"/>
 			<typeAlias type="com.spring.plt.page.vo.PageVO" alias="pageVO"/>
 			<typeAlias type="com.spring.plt.allUser.AllUserVO" alias="allUserVO"/>
+			<typeAlias type="com.spring.plt.map.vo.MapVO" alias="mapVO"/>
 		</typeAliases>
 	</configuration>
