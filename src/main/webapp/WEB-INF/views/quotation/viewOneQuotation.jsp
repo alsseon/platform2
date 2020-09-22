@@ -162,17 +162,17 @@
 	                                           	<div class="col-md-12">
 		                                            <c:if test="${quotationVO.quoteStatus == 0 }">
 		                                               	<div class="form-group" style="display: inline-block;">
-		                                                   <a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${quotationVO.quoteStatus}&no=${quotationVO.no}" class="btn btn-info">견적 수락</a>
+		                                                   <a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${quotationVO.quoteStatus}&no=${quotationVO.no}&manuId=${member.id}" class="btn btn-info">견적 수락</a>
 		                                                   <div class="submitting"></div>
 		                                               	</div>
 		                                               	<div class="form-group" style="display: inline-block;">
-		                                                   	<a href= "${contextPath}/manufacpage/estilist_updatestatus_de.do?quotestatus=${quotationVO.quoteStatus}&no=${quotationVO.no}" class="btn btn-primary">견적 거절</a>
+		                                                   	<a href= "${contextPath}/manufacpage/estilist_updatestatus_de.do?quotestatus=${quotationVO.quoteStatus}&no=${quotationVO.no}&manuId=${member.id}" class="btn btn-primary">견적 거절</a>
 		                                                   <div class="submitting"></div>
 		                                               </div>
 		                                            </c:if>
 		                                            <c:if test="${quotationVO.quoteStatus == 1 }">
 		                                               <div class="form-group">
-		                                                   <a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${quotationVO.quoteStatus}&no=${quotationVO.no}" class="btn btn-primary">견적 완료</a>
+		                                                   <a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${quotationVO.quoteStatus}&no=${quotationVO.no}&manuId=${member.id}" class="btn btn-primary">견적 완료</a>
 		                                                   <div class="submitting"></div>
 		                                               </div>
 	                                                </c:if>

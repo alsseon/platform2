@@ -48,13 +48,14 @@
         
     </style>
 		<script>
-	function del(no, compId) {
-		var chk = confirm("철회하시겠습니까?");
-		if (chk) {
-			location.href="${contextPath}/startuppage/conlist_del.do?no="+no+"&compId="+compId;
-			
+		var compId='${member.id}';
+		function del(no) {
+			var chk = confirm("철회하시겠습니까?");
+			if (chk) {
+				location.href="${contextPath}/startuppage/estilist_del.do?no="+no+"&compId="+compId;
+				
+			}
 		}
-	}	
 </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
     
@@ -82,7 +83,7 @@
                <tr align="center">
                <td><a href="${contextPath}/consulting/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onCLick="del(${consulting.no}, ${member.id})">철회</button></td>
+               <td><button type="button" class="btn btn-outline-secondary" onCLick="del(${consulting.no})">철회</button></td>
           </tr>
         </c:forEach>
    </table>

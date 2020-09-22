@@ -47,15 +47,16 @@
         }
         
     </style>
-		<script>
-	function del(no) {
-		var chk = confirm("철회하시겠습니까?");
-		if (chk) {
-			location.href="${contextPath}/startuppage/conlist_del.do?no="+no;
-			
+	<script>
+		var compId='${member.id}';
+		function del(no) {
+			var chk = confirm("철회하시겠습니까?");
+			if (chk) {
+				location.href="${contextPath}/startuppage/estilist_del.do?no="+no+"&compId="+compId;
+				
+			}
 		}
-	}	
-</script>
+	</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
     
     <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">

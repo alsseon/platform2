@@ -37,10 +37,11 @@
         
     </style>
 	<script>
+	var compId='${member.id}';
 	function del(no) {
 		var chk = confirm("철회하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/startuppage/estilist_del.do?no="+no;
+			location.href="${contextPath}/startuppage/estilist_del.do?no="+no+"&compId="+compId;
 			
 		}
 	}	
@@ -75,7 +76,7 @@
             </tr>
         </c:forEach>   
    </table>
-   <a href= "${contextPath}/startuppage/estilist_more_w.do">더보기</a>
+   <a href= "${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}">더보기</a>
 </div>
  
    <div class="container">
@@ -98,7 +99,7 @@
           </tr>
         </c:forEach>   
    </table>
-   <a href = "${contextPath}/startuppage/estilist_more_ing.do">더보기</a>
+   <a href = "${contextPath}/startuppage/estilist_more_ing.do?compId=${member.id}">더보기</a>
 </div>
 
    <div class="container">
@@ -121,7 +122,7 @@
           </tr>
         </c:forEach>   
    </table>
-   <a href = "${contextPath}/startuppage/estilist_more_de.do">더보기</a>
+   <a href = "${contextPath}/startuppage/estilist_more_de.do?compId=${member.id}">더보기</a>
 </div> 
 </body>
 </html>
