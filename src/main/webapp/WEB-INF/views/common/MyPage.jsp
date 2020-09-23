@@ -157,7 +157,7 @@
 						  <c:if test="${userType eq 'startup' }">
 						  	<a href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}" class="btn btn-primary" >More</a>
 						  </c:if>
-						  <c:if test="${userType eq 'expert }">
+						  <c:if test="${userType eq 'expert' }">
 						  	<a href="${contextPath }/expertpage/consulting.do?expId=${user.id}" class="btn btn-primary" >More</a>
 						  </c:if>
 					  </div>
