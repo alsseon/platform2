@@ -37,7 +37,7 @@
              <div class="text w-100">
                <h1 class="mb-4">스타트 업의 고민을 해결하기 위한 사이트</h1>
                <p class="mb-4">작은 고민부터 시제품 제작 까지 전문가와 제조업체가 함께합니다.</p>
-               <p><a href="#" class="btn btn-primary py-3 px-4">전문가 컨설팅 검색</a> <a href="#" class="btn btn-white py-3 px-4">제조 업체 매칭</a></p>
+               <p><a href="${contextPath}/expSearch/allExpert.do" class="btn btn-primary py-3 px-4">전문가 컨설팅 검색</a> <a href="${contextPath}/manufacSearch/allManufac.do" class="btn btn-white py-3 px-4">제조 업체 매칭</a></p>
             </div>
           </div>
         </div>

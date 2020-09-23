@@ -84,6 +84,7 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 		for(int i =0; i<manufacList.size(); i++) {
 			map.put(i,putMapManufac(i,manufacList));
 		}
+		System.out.println(manufacList);
 		return map;
 	}
 	

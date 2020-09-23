@@ -39,9 +39,9 @@ public class QuotationControllerImpl implements QuotationController{
 		System.out.println("insert Quotation Controller");
 		System.out.println(quotationVO.getManuId());
 		System.out.println(quotationVO);
-		System.out.println("tempSave泥댄겕瑜� �븞�뻽�쓣�븣 媛믪씠 �뼱�뼸寃� �뱾�뼱�삤�뒗吏� �솗�씤 : " + quotationVO.getTempSave());
+		System.out.println("tempSave  " + quotationVO.getTempSave());
 		if (quotationVO.getTempSave() == null) quotationVO.setTempSave("false");
-		System.out.println("tempSave 泥섎━ �썑 quotationVO: "+quotationVO);
+		System.out.println("tempSave  quotationVO: "+quotationVO);
 		service.insertQuotation(quotationVO);
 		String viewName = "redirect:/manufacSearch/viewManufac.do?id=" + quotationVO.getManuId();
 		ModelAndView mav = new ModelAndView(viewName);
