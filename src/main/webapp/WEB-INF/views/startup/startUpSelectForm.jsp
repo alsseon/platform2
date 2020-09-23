@@ -154,7 +154,7 @@ body > div > form > div:nth-child(2) > button{
 <body>
 
 <div class="container"
-		style=" margin: 0 auto; padding-left: 30px; width: 50%; height: 940px; ">
+		style=" margin: 0 auto; padding-left: 30px; width: 50%; height: 1200px; margin-bottom:200px;">
 		<form  method="post" action="${contextPath}/startup/updatestartUp.do" enctype="multipart/form-data">
 			<div style="width: 45%; float: left; padding-left: 20px; ">
 				<h3>스타트업 수정창</h3>
@@ -162,7 +162,7 @@ body > div > form > div:nth-child(2) > button{
 				<input type="text" name="id" value="${startUpVO.id}" readonly><br>
 				
 				<label for="fname"><i class="fa fa-user"></i> 사업자 번호</label>
-				<input type="text" name="compBizNo" value="${startUpVO.compBizNo}"><br>
+				<input type="text" name="compBizNo" value="${startUpVO.compBizNo}" readonly><br>
 					
 				<label for="adr"><i class="fa fa-address-card-o"></i> 대표 이름</label>
 				<input type="text" name="compCeoName" value="${startUpVO.compCeoName}"><br>
@@ -187,7 +187,7 @@ body > div > form > div:nth-child(2) > button{
 			<div style="width: 45%; float: left; padding-left: 20px;">
 				<h3>         　</h3>
 				<label for="cname">비밀번호</label>
-				<input type="text" name="pwd" value="새로운 비밀번호 입력"><br>
+				<input type="text" name="pwd" placeholder="새로운 비밀번호 입력"><br>
 				
 				<label for="ccnum">전화번호</label>
 				<input type="text" name="compTel" value="${startUpVO.compTel}"><br>
@@ -216,13 +216,30 @@ body > div > form > div:nth-child(2) > button{
 			<div style="width: 50%; float: left; padding: 40px; padding-left: 120px;" >
       		    <button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
-				<a href="${contextPath}/startup/deletestartUp.do?id=${startUpVO.id}" class="btn btn-danger btn-xs">
-                   <span class="glyphicon glyphicon-remove">
-                </span>삭제</a>
+				<input type="button" value="탈퇴" onclick="delete_button();" class="btn btn-danger btn-xs">
 		</div>
 		</form>
 	</div>
+	
+<script type="text/javascript">
+function delete_button(){
 
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+    location.href="${contextPath}/startup/deletestartUp.do?id=${startUpVO.id}";
+
+}else{   //취소
+
+    return;
+
+}
+}
+</script>	
+<style>
+#content > div > form > div:nth-child(3) > a{
+	width:245px;
+}
+</style>
 <script type="text/javascript">
   
 	function readURL(input){

@@ -136,7 +136,7 @@ span.price {
 <body>
 <div class="row">
   <div class="col-75">
-    <div class="container">
+    <div class="container" style=" height:980px; margin-bottom:200px; ">
       <form  method="post" action="${contextPath}/expert/updateexpert.do" enctype="multipart/form-data">
 
         <div class="row">
@@ -165,7 +165,7 @@ span.price {
           <div class="col-50">
           <h3>         　</h3>
             <label for="cname">비밀번호</label>
-            <input type="text" name="pwd" value="${expertVO.pwd}"><br>
+            <input type="text" name="pwd" placeholder="password"><br>
             <label for="ccnum">전화번호</label>
             <input type="text" name="expTel" value="${expertVO.expTel}"><br>
 
@@ -187,17 +187,38 @@ span.price {
         <div style="width: 50%; float: left; padding: 60px;">
       		    <button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
-				<a href="${contextPath}/expert/deleteexpert.do?id=${expertVO.id}" class="btn btn-danger btn-xs">
-                    <span class="glyphicon glyphicon-remove">
-                </span>삭제</a>
+				<input type="button" value="탈퇴" onclick="delete_button();" class="btn btn-danger btn-xs">
+                
 		</div>
       </form>
     </div>
   </div>
+<script type="text/javascript">
 
+
+function delete_button(){
+
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+    location.href="${contextPath}/expert/deleteexpert.do?id=${expertVO.id}"
+
+}else{   //취소
+
+    return;
+
+}
+
+}
+
+
+</script>
   
 </div>
-
+<style>
+#content > div > div > div > form > div:nth-child(3) > a{
+	width:245px;
+}
+</style>
 		
 			
 			
