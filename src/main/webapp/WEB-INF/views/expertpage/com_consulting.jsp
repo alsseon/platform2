@@ -48,10 +48,11 @@
         
     </style>
 		<script>
-	function del(no) {
+		var expId='${member.id}';
+		function del(no) {
 		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/expertpage/com_estilist_del.do?no="+no;
+			location.href="${contextPath}/expertpage/com_estilist_del.do?no="+no+"&expId="+expId;
 			
 		}
 	}	
@@ -93,7 +94,7 @@
             <div class="block-27">
               <ul>
               	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/com_consulting/com_consulting.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
+	                <li><a href="${contextPath}/expertpage/com_consulting.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}&expId=${member.id}">&lt;</a></li>
 	            </c:if>
 	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
 	            	<c:choose>
@@ -101,7 +102,7 @@
 	                <li class="active"><span> ${idx} </span></li>
 	                </c:when>
 	                <c:when test="${idx != pagevo.nowPage}">
-	                <li><a href="${contextPath}/com_consulting/com_consulting.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
+	                <li><a href="${contextPath}/expertpage/com_consulting.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}&expId=${member.id}"> ${idx} </a></li>
 	                </c:when>
 	         <%--      
 	                <li><a href="#">3</a></li>
@@ -110,7 +111,7 @@
 	                </c:choose>
 	             </c:forEach>
 	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/com_consulting/com_consulting.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
+	                <li><a href="${contextPath}/expertpage/com_consulting.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}&expId=${member.id}">&gt;</a></li>
 	              </c:if>
               </ul>
               

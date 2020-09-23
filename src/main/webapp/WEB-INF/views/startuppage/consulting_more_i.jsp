@@ -52,7 +52,7 @@
 		function del(no) {
 			var chk = confirm("철회하시겠습니까?");
 			if (chk) {
-				location.href="${contextPath}/startuppage/estilist_del.do?no="+no+"&compId="+compId;
+				location.href="${contextPath}/startuppage/conlist_del.do?no="+no+"&compId="+compId;
 				
 			}
 		}
@@ -82,7 +82,7 @@
           <c:forEach var="consulting" items="${i_conlist}" > 
           	 
                <tr align="center">
-               <td><a href="${contextPath }/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
+               <td><a href="${contextPath }/consulting/viewOneConsulting.do?no=${consulting.no}&compId=${member.id}">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
                    
@@ -96,7 +96,7 @@
             <div class="block-27">
               <ul>
               	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/startuppage/consulting_more_i.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
+	                <li><a href="${contextPath}/startuppage/consulting_more_i.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}&compId=${member.id}">&lt;</a></li>
 	            </c:if>
 	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
 	            	<c:choose>
@@ -104,7 +104,7 @@
 	                <li class="active"><span> ${idx} </span></li>
 	                </c:when>
 	                <c:when test="${idx != pagevo.nowPage}">
-	                <li><a href="${contextPath}/startuppage/consulting_more_i.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
+	                <li><a href="${contextPath}/startuppage/consulting_more_i.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}&compId=${member.id}"> ${idx} </a></li>
 	                </c:when>
 	         <%--      
 	                <li><a href="#">3</a></li>
@@ -113,7 +113,7 @@
 	                </c:choose>
 	             </c:forEach>
 	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/startuppage/consulting_more_i.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
+	                <li><a href="${contextPath}/startuppage/consulting_more_i.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}&compId=${member.id}">&gt;</a></li>
 	              </c:if>
               </ul>
               

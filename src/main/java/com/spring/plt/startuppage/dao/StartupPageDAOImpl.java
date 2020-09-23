@@ -90,6 +90,7 @@ public class StartupPageDAOImpl implements StartupPageDAO{
 		estiMap.put("pagevo", pagevo);
 		estiMap.put("compId", compId);
 		c_estiList = sqlSession.selectList("mapper.startuppage.selectComEstilist",estiMap);
+		System.out.println("dao 견적완료 : " + c_estiList);
 		return c_estiList;
 	}
 	@Override

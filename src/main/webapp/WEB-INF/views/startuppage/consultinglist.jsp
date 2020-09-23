@@ -103,7 +103,7 @@
        <tbody>
 		<c:forEach var="consulting" begin="0" end="2" items="${i_conlist}" >     
 			<tr align="center">
-				<td><a href="${contextPath }/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
+				<td><a href="${contextPath }/consulting/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
 				<td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
 				<td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
 			</tr>
@@ -125,7 +125,7 @@
        <tbody>
           <c:forEach var="consulting" begin="0" end="2" items="${d_conlist}" >     
                <tr align="center">
-               <td><a href="${contextPath }/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
+               <td><a href="${contextPath }/consulting/viewOneConsulting.do?no=${consulting.no}">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                 <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">삭제</button></td>
           </tr>

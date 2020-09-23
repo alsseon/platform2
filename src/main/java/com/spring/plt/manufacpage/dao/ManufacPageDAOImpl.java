@@ -74,10 +74,10 @@ public class ManufacPageDAOImpl implements ManufacPageDAO{
 	public int quotestatus(int quotestatus, int no) throws DataAccessException{
 		int result = 0;
 		if (quotestatus == 0) {
-			result = sqlSession.update("mapper.manufacpage.upstatus_esti_ing",no); //�늻瑜대㈃ 吏꾪뻾以묒쑝濡� �뾽�뜲�씠�듃
+			result = sqlSession.update("mapper.manufacpage.upstatus_esti_ing",no); //占쎈듇�몴���늺 筌욊쑵六얌빳臾믪몵嚥∽옙 占쎈씜占쎈쑓占쎌뵠占쎈뱜
 			System.out.println("dao result" + result);
 		}else if(quotestatus == 1) {
-			result = sqlSession.update("mapper.manufacpage.upstatus_esti_com",no);//�셿猷뚮줈 �뾽�뜲�씠�듃�꽩
+			result = sqlSession.update("mapper.manufacpage.upstatus_esti_com",no);//占쎌끏�뙴�슢以� 占쎈씜占쎈쑓占쎌뵠占쎈뱜占쎄쉘
 		}
 		return result;
 	}
@@ -96,7 +96,7 @@ public class ManufacPageDAOImpl implements ManufacPageDAO{
 	@Override
 	public int estilistCount_w(String manuId) throws Exception{
 		int estilistCount_w = sqlSession.selectOne("mapper.manufacpage.estilistCount_w",manuId);
-		System.out.println("목록이 없을때 Count값이 어떻게 나오는지 확인"+estilistCount_w);
+		System.out.println("紐⑸줉�씠 �뾾�쓣�븣 Count媛믪씠 �뼱�뼸寃� �굹�삤�뒗吏� �솗�씤"+estilistCount_w);
 		return estilistCount_w;
 	}
 	@Override
@@ -107,6 +107,7 @@ public class ManufacPageDAOImpl implements ManufacPageDAO{
 	@Override
 	public int estilistCount_d(String manuId) throws Exception{
 		int estilistCount_d = sqlSession.selectOne("mapper.manufacpage.estilistCount_d",manuId);
+		System.out.println("페이징!!!!"+estilistCount_d);
 		return estilistCount_d;
 	}
 }

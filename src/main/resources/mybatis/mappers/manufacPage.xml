@@ -114,7 +114,7 @@
 	
 	<select id="estilistCount_d" resultType="int">
 	<![CDATA[
-		select count(*) from quotation where quotestatus = 3 and manuid = #{manuId}
+		select count(*) from quotation where quotestatus = 4 and manuid = #{manuId}
 	]]>
 	</select>
 	
