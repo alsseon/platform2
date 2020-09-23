@@ -77,12 +77,10 @@ public class MessageControllerImpl implements MessageController{
 				if(arr[i].contains("send")) {
 					String messageNO = arr[i].substring(4);
 					int NO = Integer.parseInt(messageNO);
-					System.out.println("삭제할 쪽지 번호: "+ NO);
 					messageService.deleteSendMessage(NO);
 				}else if(arr[i].contains("receive")) {
 					String messageNO = arr[i].substring(7);
 					int NO = Integer.parseInt(messageNO);
-					System.out.println("삭제할 쪽지 번호: "+ NO);
 					messageService.deleteReceiveMessage(NO);
 				}
 			}			

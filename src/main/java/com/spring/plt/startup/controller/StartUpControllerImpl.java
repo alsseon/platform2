@@ -1,6 +1,7 @@
 package com.spring.plt.startup.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -117,7 +118,7 @@ public class StartUpControllerImpl implements StartUpController{
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 			srcFile.delete();
-			mav.setViewName("redirect:/main/main.do");
+			mav.setViewName("redirect:/startup/startupForm.do");
 			e.printStackTrace();
 		}
 		return mav;
@@ -214,16 +215,16 @@ public class StartUpControllerImpl implements StartUpController{
 			}
 			message = "<script>";
 			message += " alert('업데이트 완료');";
-			message += " location.href='"+request.getContextPath()+"/';";
+			message += " location.href='"+request.getContextPath()+"/main/main.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+compImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('오류 발생');";
-			message += " location.href='"+request.getContextPath()+"/startup/startUpListForm.do?id="+id+"';";
-			message +=" </script>";
+			message += " alert('입력되지 않은 사항이 있습니다.');";
+			message += " location.href='"+request.getContextPath()+"/startup/startUpSelectForm.do?id="+id+"';";
+			message +=" </script>";																
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
 		}

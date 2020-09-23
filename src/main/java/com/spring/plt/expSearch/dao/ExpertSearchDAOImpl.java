@@ -1,6 +1,7 @@
 package com.spring.plt.expSearch.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,13 @@ public class ExpertSearchDAOImpl implements ExpertSearchDAO{
 		System.out.println("expert DAO type");
 		return sqlSession.selectList("mapper.expert.serchByType", type);
 	}
-
+	//아직 작성하지 않은 매퍼
+	@Override
+	public List<ExpImageVO> serchByExpertImgFile(String id) {
+		System.out.println("expert image DAO");
+		return sqlSession.selectList("mapper.expert.selectImageFileList", id);
+	}
+	
 	@Override
 	public ExpertVO viewExpert(String id) {
 		System.out.println("expert DAO view" + id);
@@ -55,4 +62,5 @@ public class ExpertSearchDAOImpl implements ExpertSearchDAO{
 	public List<ExpImageVO> getExpertImageList(String id) {
 		return sqlSession.selectList("mapper.expert.selectImageFileList", id);
 	}
+
 }
