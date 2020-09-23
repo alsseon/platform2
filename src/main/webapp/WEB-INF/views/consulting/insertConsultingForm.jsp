@@ -93,7 +93,7 @@
                                                     <label class="label" for="title">제목</label>
                                                     <input
                                                         type="text"
-                                                        class="form-control"
+                                                        class="form-control title"
                                                         name="title"
                                                         placeholder="title">
                                                 </div>
@@ -101,7 +101,7 @@
 											<div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="label" for="content">내용</label>
-                                                    <textarea class="form-control" name="content" rows="12"></textarea>
+                                                    <textarea class="form-control content" name="content" rows="12"></textarea>
                                                 </div>
 											</div>
 											<div class="col-md-1">
@@ -171,6 +171,9 @@
 			var price = document.querySelector(".price")
 			var vat = document.querySelector(".vat")
 			var rand = document.querySelector(".random")
+			var form = document.querySelector(".contactForm")
+			var content = document.querySelector(".content")
+			var title = document.querySelector(".title")
 			console.log(rand.value)
 			addEventListener("load",function(){
 				console.log(rand.value);
@@ -185,6 +188,23 @@
 					alert("숫자만 입력 가능합니다.")
 					price.value = "";
 					price.focus();
+				}
+			})
+			
+			console.log(form)
+			form.addEventListener("submit",function(e){
+				e.preventDefault();
+				if(content.value ==""){
+					alert("내용을 입력해 주세요")
+					content.focus();
+				}else if(title.value==""){
+					alert("제목을 입력해 주세요")
+					title.focus();
+				}else if(price.value==""){
+					alert("가격을 입력해 주세요")
+					price.focus();
+				}else{
+					form.submit();
 				}
 			})
 		</script>

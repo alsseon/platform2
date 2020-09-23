@@ -22,7 +22,7 @@
 						<!--한칸-->
 		    			<div class="col-md-4 d-flex">
 		    				<div class="book-wrap">
-		    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/resources/images/book-1.jpg);">
+		    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${manufac.id}&imageFileName=${manufac.manuImg});">
 		    						<div class="in-text">
 		    							<a href="${contextPath}/scrap/scrapManu.do?manuId=${manufac.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="scrap">
 		    								<span id="${manufac.id}" class="flaticon-heart-1"></span>
@@ -71,10 +71,6 @@
           <div class="col-lg-3 sidebar pl-lg-3 ftco-animate">
             <div class="sidebar-box">
               <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="fa fa-search"></span>
-                  <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-                </div>
               </form>
           </div>
           <div id="sidebar" class="sidebar-box ftco-animate">
@@ -252,7 +248,7 @@
 				changeHtml +=		'</div>'
 				changeHtml +=		'<div class="text px-4 py-3 w-100">'
 				changeHtml +=			'<p class="mb-2"><span class="price">' +manufac.price  + '</span></p>'
-				changeHtml +=			"<h2><a href=plt/viewManufac?id="+manufac.id+">"+manufac.name+"</a></h2>"
+				changeHtml +=			"<h2><a href=${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}>"+manufac.name+"</a></h2>"
 				changeHtml +=			'<p> ' + manufac.addr + '</p>'
 				changeHtml +=		'</div>'
 				changeHtml +=	'</div>'

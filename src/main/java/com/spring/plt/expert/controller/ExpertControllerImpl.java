@@ -108,7 +108,7 @@ public class ExpertControllerImpl implements ExpertController {
 					File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 					File destDir = new File(IMAGE_PATH+"\\"+id);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-					mav.setViewName("redirect:/expert/expertListForm.do");
+					mav.setViewName("redirect:/main/main.do");
 				}
 			}
 		}catch(Exception e) {
@@ -118,7 +118,7 @@ public class ExpertControllerImpl implements ExpertController {
 					File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 					srcFile.delete();
 					e.printStackTrace();
-					mav.setViewName("redirect:/expert/expertListForm.do");
+					mav.setViewName("redirect:/main/main.do");
 				}
 			}
 		}
@@ -183,7 +183,7 @@ public class ExpertControllerImpl implements ExpertController {
 		expertService.deleteexpert(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/expert/expertListForm.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav; 
 	}
 
@@ -226,14 +226,14 @@ public class ExpertControllerImpl implements ExpertController {
 			expertVO = (ExpertVO) expertService.expertselect(id).get("expertVO");
 			session.setAttribute("expert", expertVO);
 			message = "<script>";
-			message += " alert('占쎈땾占쎌젟占쎌끏�뙴占�');";
-			message += " location.href='"+request.getContextPath()+"/expert/expertListForm.do';";
+			message += " alert('수정 완료');";
+			message += " location.href='"+request.getContextPath()+"redirect:/main/main.do;";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('占쎈땾占쎌젟占쎈뼄占쎈솭');";
-			message += " location.href='"+request.getContextPath()+"/expert/expertListForm.do';";
+			message += " alert('오류 발생');";
+			message += " location.href='"+request.getContextPath()+"redirect:/main/main.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();

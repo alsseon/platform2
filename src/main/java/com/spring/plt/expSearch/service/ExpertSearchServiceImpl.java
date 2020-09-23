@@ -1,11 +1,14 @@
 package com.spring.plt.expSearch.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.plt.expSearch.dao.ExpertSearchDAO;
+import com.spring.plt.expert.vo.ExpImageVO;
 import com.spring.plt.expert.vo.ExpertVO;
 import com.spring.plt.page.vo.PageVO;
 
@@ -33,13 +36,28 @@ public class ExpertSearchServiceImpl implements ExpertSearchService{
 	}
 
 	@Override
-	public List<ExpertVO> allExpert(PageVO pageVO) {
+	public Map<String, Object> allExpert(PageVO pageVO) throws Exception {
 		System.out.println("expert Service all");
-		return dao.allExpert(pageVO);
+		Map<String, Object> expMap = new HashMap<String, Object>();
+		List<ExpertVO> expertList = dao.allExpert(pageVO);
+		List<ExpImageVO> expertImgList = dao.allExpertImg();
+		for(int i=0; i<expertImgList.size(); i++) {
+			if(expertImgList.get(i).getImageFileNO() % 2 ==1) {
+				expertImgList.remove(expertImgList.get(i));
+			}
+		}
+		expMap.put("expertList", expertList);
+		expMap.put("expertImgList", expertImgList);
+		return expMap;
 	}
 
 	@Override
 	public int listCount() {
 		return dao.listCount();
+	}
+
+	@Override
+	public List<ExpImageVO> getExpertImageList(String id) {
+		return dao.getExpertImageList(id);
 	}
 }

@@ -27,7 +27,7 @@ public class ManufacSearchDAOImpl implements ManufacSearchDAO{
 
 	@Override
 	public List<ManufacVO> serchByManuType(String manuType) {
-		System.out.println("ManuFac DAO type");
+		System.out.println("ManuFac DAO type" + "  manuType: " + manuType);
 		return sqlSession.selectList("mapper.manufac.serchByManuType", manuType);
 	}
 
@@ -45,7 +45,7 @@ public class ManufacSearchDAOImpl implements ManufacSearchDAO{
 
 	@Override
 	public List<ManufacVO> allManuFac(PageVO pageVO) {
-		System.out.println("ManuFac DAO all"+" " + pageVO.getStart() +" 현재페이지 "+ pageVO.getEnd());
+		System.out.println("ManuFac DAO all"+" " + pageVO.getStart() +" "+ pageVO.getEnd());
 		return sqlSession.selectList("mapper.manufac.allManuFac",pageVO);
 	}
 

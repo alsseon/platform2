@@ -88,28 +88,28 @@ function execPostCode() {
 		 
 		<div class="col form-group">
 			<label>비밀번호</label>
-		  	<input type="text" class="form-control" name="pwd" value="manuPwd">
+		  	<input type="password" class="form-control" name="pwd" >
 		</div>
 		
 		<div class="col form-group">
-			<label>회사명</label>
-		  	<input type="text" class="form-control" name="manuName" value="manuName">
+			<label>회사 이름</label>
+		  	<input type="text" class="form-control" name="manuName" >
 		</div>
 		
 		<div class="col form-group">
 			<label>대표 이름</label>
-		  	<input type="text" class="form-control" name="manuCeoName" value="manuCeoName">
+		  	<input type="text" class="form-control" name="manuCeoName" >
 		</div>
 		
 		<div class="col form-group">
 			<label>이메일</label>
-		  	<input type="email" class="form-control" name="manuEmail" value="manu@test.com">
+		  	<input type="email" class="form-control" name="manuEmail" >
 			<small class="form-text text-muted">정확한 이메일 형식을 지켜주세요.</small>
 		</div>
 		
 		<div class="col form-group">
 			<label>사업자 번호</label>
-		  	<input type="text" class="form-control" name="manuBizNo" value="222-3455-34345">
+		  	<input type="text" class="form-control" name="manuBizNo" >
 		</div>
 		
 		<!-- 주소입력란  -->
@@ -117,24 +117,24 @@ function execPostCode() {
 			<label>회사 주소</label>   
 			<button type="button" class="btn btn-default" onclick="execPostCode();"><i class="fa fa-search"></i> 주소검색</button>                   
 			<input class="form-control"  placeholder="주소 검색을 이용해 주세요" name="manuAddr" id="manuAddr" type="text" readonly="readonly" ><br>
-    		<input class="form-control"  placeholder="상세주소" name="manuDetailAddr" id="manuDetailAddr" type="text" value="상세주소"/>
+    		<input class="form-control"  placeholder="상세주소" name="manuDetailAddr" id="manuDetailAddr" type="text" />
 		</div>
 		
 		<!-- 주소입력 끝 -->
 		
 		<div class="col form-group">
 			<label>전화번호</label>
-		  	<input type="text" class="form-control" name="manuTel" value="010-3040-5984">
+		  	<input type="text" class="form-control" name="manuTel" >
 		</div> 
 	
 		<div class="col form-group">
 			<label>업력</label>
-		  	<input type="text" class="form-control" name="manuStart" value="25년">
+		  	<input type="text" class="form-control" name="manuStart" >
 		</div> 
 		
 		<div class="col form-group">
 			<label>세부사항</label>
-		  	<textarea class="form-control" name="manuDetail">제조업체입니다 우릴 선택해주십쇼 pick me pick me up</textarea>
+		  	<textarea class="form-control" name="manuDetail"></textarea>
 		</div> 
 		
 		<div class="col form-group">

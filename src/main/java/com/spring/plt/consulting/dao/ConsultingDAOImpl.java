@@ -30,8 +30,16 @@ public class ConsultingDAOImpl implements ConsultingDAO{
 		return sqlSession.selectOne("mapper.consulting.viewOneConsulting",no);
 	}
 	@Override
-	public List<QuotationVO> alarmConsulting(String compId) {
+	public int alarmConsulting(String compId) {
 		System.out.println("Consulting alarm DAO");
-		return sqlSession.selectList("mapper.consulting.alarmConsulting",compId);
+		int count;
+		count = sqlSession.selectOne("mapper.consulting.alarmConsulting",compId);
+		return count;
+	}
+	@Override
+	public int alarmExpConsulting(String expId) {
+		int count;
+		count = sqlSession.selectOne("mapper.consulting.alarmExpConsulting", expId);
+		return count;
 	}
 }

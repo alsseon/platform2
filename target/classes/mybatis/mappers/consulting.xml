@@ -32,9 +32,15 @@
 		]]>
 	</select>
 	
-	<select id="alarmConsulting" resultType="String" parameterType="String">
+	<select id="alarmConsulting" resultType="int" parameterType="String">
 		<![CDATA[
 			select count(*) from Consulting where status= 0 and compId = #{compId}
+		]]>
+	</select>
+	
+	<select id="alarmExpConsulting" resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*) from Consulting where status= 0 and expId = #{expId}
 		]]>
 	</select>
 	

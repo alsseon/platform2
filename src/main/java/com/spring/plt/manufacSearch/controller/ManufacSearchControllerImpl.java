@@ -43,14 +43,14 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 	         nowPage = "1";
 	      }else if(cntPerPage == null) {
 	         cntPerPage = "9";
-	      } //nowPage �쁽�옱 �럹�씠吏�, cntPerPage = �븳�럹�씠吏��떦 湲� 媛쒖닔
-	    System.out.println(cntPerPage+" �븳�럹�씠吏��떦 湲� 媛쒖닔");
+	      } 
+	    System.out.println(cntPerPage+" ����� ǥ���� ������");
 	    pageVO = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 
 		List<ManufacVO> manufacList= new ArrayList<ManufacVO>();
 		manufacList = service.allManuFac(pageVO);
-		System.out.println("allmanufac에서 manufacList가 어떻게 들어오는지 확인: "+manufacList);
-		ModelAndView mav = new ModelAndView(viewName);//酉� �꽕�젙�븷寃� 
+		System.out.println("allmanufac manufacList: "+manufacList);
+		ModelAndView mav = new ModelAndView(viewName); 
 		mav.addObject("manufacList",manufacList);
 		mav.addObject("pageVO", pageVO);
 		return mav;
@@ -58,10 +58,9 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 	
 	
 	@RequestMapping(value="/manufacSearch/serchBymanufacLoc", method = RequestMethod.GET)
-	@Override//�쐞移섍린諛� 寃��깋
+	@Override
 	@ResponseBody
 	public Map<Integer, Map<String, Object>> serchByLoc(@RequestParam("loc") String loc,HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("11212121212");
 		System.out.println(loc);
 		System.out.println("Manufac controller");
 		List<ManufacVO> manufacList= new ArrayList<ManufacVO>();
@@ -74,7 +73,7 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 	}
 	
 	@RequestMapping(value="/manufacSearch/serchByManuType", method = RequestMethod.GET)
-	@Override//�뾽醫낃린諛� 寃��깋
+	@Override
 	@ResponseBody
 	public Map<Integer, Map<String, Object>> serchByManuType(@RequestParam("manuType") String manuType,HttpServletRequest request, HttpServletResponse response) {
 		System.out.println(manuType);
@@ -85,11 +84,12 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 		for(int i =0; i<manufacList.size(); i++) {
 			map.put(i,putMapManufac(i,manufacList));
 		}
-		return map;//由ы꽩�쓣 留듯��엯�쑝濡� �떆�룄 �빐蹂쇨쾬,ajax媛� 由ы꽩 諛쏆쓣�닔 �엳�뒗寃껋� json,xml,text...�씠湲곕븣臾몄뿉 json�쑝濡� 諛섑솚�빐二쇰뒗寃껋씠 留욌떎
+		System.out.println(manufacList);
+		return map;
 	}
 	
 	@RequestMapping(value="/manufacSearch/serchByPrice", method = RequestMethod.GET)
-	@Override//理쒖냼二쇰Ц湲덉븸 湲곕컲 寃��깋
+	@Override
 	@ResponseBody
 	public Map<Integer, Map<String, Object>> serchByManuMinimumPrice(@RequestParam("price") String price,HttpServletRequest request, HttpServletResponse response) {
 //		price += "0000";
@@ -106,7 +106,7 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 	}
 	
 	@RequestMapping(value="/manufacSearch/viewManufac", method= RequestMethod.GET)
-	@Override//酉� 異쒕젰
+	@Override
 	public ModelAndView viewManufac(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println(id);
 		System.out.println("Manufac View");

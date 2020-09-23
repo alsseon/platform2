@@ -97,11 +97,11 @@ public class ManufacControllerImpl implements ManufacController{
 				File destDir = new File(IMAGE_PATH+"\\"+id);
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
-			mav.setViewName("redirect:/manufac/manufacListForm.do");
+			mav.setViewName("redirect:/main/main.do");
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 			srcFile.delete();
-			mav.setViewName("redirect:/manufac/manufacForm.do");
+			mav.setViewName("redirect:/main/main.do");
 			e.printStackTrace();
 		}
 		return mav;
@@ -158,7 +158,7 @@ public class ManufacControllerImpl implements ManufacController{
 		manufacService.deletemanufac(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/manufac/manufacListForm.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav; 
 	}
 
@@ -199,7 +199,7 @@ public class ManufacControllerImpl implements ManufacController{
 				oldFile.delete();
 			}
 			message = "<script>";
-			message += " alert('占쎈땾占쎌젟占쎌끏�뙴占�');";
+			message += " alert('수정 완료');";
 			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -207,7 +207,7 @@ public class ManufacControllerImpl implements ManufacController{
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+manuImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('占쎈땾占쎌젟占쎈뼄占쎈솭');";
+			message += " alert('오류 발생');";
 			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

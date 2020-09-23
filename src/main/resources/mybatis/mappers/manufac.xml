@@ -73,7 +73,7 @@
 	
 	<select id="serchByManuType" resultType="manufacVO" parameterType="String">
 		<![CDATA[
-			select * from manufacturer where manubiztype = #{manuType}
+			select * from  manufacturer where manubiztype like '%'||#{manuType}||'%'
 		]]>
 	</select>
 	

@@ -6,8 +6,10 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="expertList" value="${expMap.expertList}" />
+<c:set var="expertImgList" value="${expMap.expertImgList}" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <title>Publishing Company - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -22,16 +24,20 @@
 						<!--한칸-->
 		    			<div class="col-md-4 d-flex">
 		    				<div class="book-wrap">
-		    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath }/resources/images/book-1.jpg);">
-		    						<div class="in-text">
-		    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="scrap">
-		    								<span id="${expert.id}" class="flaticon-heart-1"></span>
-		    							</a>
-		    							<a href="${contextPath }/expSearch/viewExpert.do?id=${expert.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-		    								<span class="flaticon-search"></span>
-		    							</a>
-		    						</div>
-		    					</div>
+		    				<c:forEach var="expertImg" items="${expertImgList}">
+		    					<c:if test="${expert.id == expertImg.id}">
+			    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${expert.id}&imageFileName=${expertImg.imageFileName});">
+			    						<div class="in-text">
+			    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="scrap">
+			    								<span id="${expert.id}" class="flaticon-heart-1"></span>
+			    							</a>
+			    							<a href="${contextPath }/expSearch/viewExpert.do?id=${expert.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+			    								<span class="flaticon-search"></span>
+			    							</a>
+			    						</div>
+			    					</div>
+		    					</c:if>
+		    				</c:forEach>
 		    					<div class="text px-4 py-3 w-100">
 		    						<h2><a href="${contextPath}/expSearch/viewExpert.do?id=${expert.id}"> ${expert.expName}</a></h2>
 		    						<p> ${expert.expBizField}</p>

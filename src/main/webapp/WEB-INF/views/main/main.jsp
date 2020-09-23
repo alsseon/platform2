@@ -37,7 +37,7 @@
              <div class="text w-100">
                <h1 class="mb-4">스타트 업의 고민을 해결하기 위한 사이트</h1>
                <p class="mb-4">작은 고민부터 시제품 제작 까지 전문가와 제조업체가 함께합니다.</p>
-               <p><a href="#" class="btn btn-primary py-3 px-4">전문가 컨설팅 검색</a> <a href="#" class="btn btn-white py-3 px-4">제조 업체 매칭</a></p>
+               <p><a href="${contextPath}/expSearch/allExpert.do" class="btn btn-primary py-3 px-4">전문가 컨설팅 검색</a> <a href="${contextPath}/manufacSearch/allManufac.do" class="btn btn-white py-3 px-4">제조 업체 매칭</a></p>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
                   <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                      <span class="flaticon-heart-1"></span>
                   </a>
-                  <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                  <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
                   </a>
                </div>
@@ -90,7 +90,7 @@
                   <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                      <span class="flaticon-heart-1"></span>
                   </a>
-                  <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                  <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
                   </a>
                </div>
@@ -126,7 +126,7 @@
                    <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
                   <div class="text">
                   	<div id="detail">
-	                    <p class="mb-4" id="expertDetail"><a href="#">${expert.expDetail}</a></p>
+	                    <p class="mb-4" id="expertDetail"><a href="${contextPath}/expSearch/viewExpert.do?id=${expert.id}">${expert.expDetail}</a></p>
                   	</div>
                     <div class="d-flex align-items-center">
                       <c:forEach var="expImage" items="${expertImgList}">

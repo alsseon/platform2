@@ -30,7 +30,12 @@ public class QuotationServiceImpl implements QuotationService{
 	}
 	
 	@Override
-	public List<QuotationVO> alarmQuotation(String compId){
+	public int alarmQuotation(String compId){
 		return dao.alarmQuotation(compId);
+	}
+
+	@Override
+	public int alarmManuQuotation(String manuId) {
+		return dao.alarmManuQuotation(manuId);
 	}
 }
