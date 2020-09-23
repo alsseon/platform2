@@ -174,8 +174,8 @@
     </section> <!-- .section -->
     
     <!-- side bar -->
-	<div class="col-lg-4 pl-lg-5 ftco-animate" id="sidebar" style="position:absolute; top: 1000px; right:0px; width:500px;">
-	     <div class="sidebar-box ftco-animate">
+	<div class="col-lg-4 pl-lg-5 " id="sidebar" style="position:absolute; top: 800px; right:0px; width:500px;">
+	     <div class="sidebar-box ">
 	       <div class="categories">
 	         <h3>Services</h3>
 	         <ul style="list-style: none;">
@@ -214,7 +214,17 @@
 		
 		var updown = document.querySelector("#sidebar");
 		window.addEventListener("scroll",function(event){
-			  if(scrollper()>= 70){
+			console.log(window.scrollY)
+			if(window.scrollY >= 250){
+				updown.style.top= 0
+				updown.style.position = "fixed"
+			}
+			
+			if(window.scrollY <=250){
+				updown.style.top = "800px"
+				updown.style.position = "absolute"
+			}
+			  /*if(scrollper()>= 50){
 		    	updown.style.position = "fixed";
 			    updown.style.top = "0px";
 			    
@@ -222,7 +232,7 @@
 				  updown.style.position = "absolute";
 				  updown.style.top = "1000px"
 			  }
-			  console.log(updown.style)
+			  console.log(updown.style)*/
 		});
 		
 		
