@@ -28,16 +28,24 @@
                    <h2>게시글 작성</h2>
                    <tr class="col-sm-10">
                        <td align="center">작성자</td>
-                       <td><input name="id" type="text" class="form-control" value="${qnaBoard.id}" readonly></td>
+                       <c:if test="${adminQnAVO.writer=='admin'}">
+						   <td>
+								<input type="hidden" name="writer" value="${adminQnAVO.writer}">
+								<input type="text" class="form-control" value="관리자" readonly>
+						   </td>                       
+                       </c:if>
+                       <c:if test="${adminQnAVO.writer!='admin'}">
+	                       <td><input name="writer" type="text" class="form-control" value="${adminQnAVO.writer}" readonly></td>
+                       </c:if>
                    </tr>
                    <tr class="col-sm-10">
                        <td align="center">제목</td>
-                       <td><input name="title" type="text" class="form-control" value="${qnaBoard.title}"></td>
+                       <td><input name="title" type="text" class="form-control" value="${adminQnAVO.title}"></td>
                    </tr>
                    <tr class="col-sm-10">
                        <td align="center">내용</td>
                        <td>
-                       <textarea id = "description" class="form-group" name = "content" rows = "5" cols = "100">${qnaBoard.content}</textarea>
+                       <textarea id = "description" class="form-group" name = "content" rows = "5" cols = "100">${adminQnAVO.content}</textarea>
                        <script>
                        var id ='${member.id}'
 					   //id가 description인 태그에 ckeditor를 적용시킴
@@ -52,7 +60,7 @@
 				  	<td></td>
 				  </tr>
                </table>
-               <input type="hidden" name="articleNO" value="${qnaBoard.articleNO}">
+               <input type="hidden" name="no" value="${adminQnAVO.no}">
                <button type="submit" class="btn btn-warning">수정완료</button>
                <button class="btn btn-danger" onClick = "backToList(this.form)">취소</button>
            </form>

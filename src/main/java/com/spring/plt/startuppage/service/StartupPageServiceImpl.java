@@ -17,10 +17,10 @@ public class StartupPageServiceImpl implements StartupPageService{
 
 	
 	public int deleteesti(int no) throws Exception{
-		return startuppagedao.deleteesti(no); //제조업ㅊ견적 철회 삭제 기능
+		return startuppagedao.deleteesti(no); 
 	}
 	public int deletecon(int no) throws Exception{
-		return startuppagedao.deletecon(no); //컨설팅 견적 철회 삭제 기능
+		return startuppagedao.deletecon(no); 
 	}
 	
 	public List<StartupPageVO> listesti(PageVO pagevo, String compId) throws DataAccessException{

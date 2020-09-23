@@ -139,11 +139,11 @@ public class ExpertPageControllerImpl implements ExpertPageController{
 	}
 	
 	@RequestMapping(value="/expertpage/estilist_del.do" , method = RequestMethod.GET)
-	public ModelAndView deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public ModelAndView deletestatus(@RequestParam("expId") String expId,@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("delete NO: "+no);
 		expertPageService.deleteesti(no);
-		ModelAndView mav = new ModelAndView("redirect:/expertpage/consulting.do");
+		ModelAndView mav = new ModelAndView("redirect:/expertpage/consulting.do?expId="+expId);
 		return mav;
 	}
 	@RequestMapping(value="/expertpage/com_estilist_del.do" , method = RequestMethod.GET)

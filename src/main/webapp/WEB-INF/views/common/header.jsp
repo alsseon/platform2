@@ -14,9 +14,24 @@
 <title>헤더</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	var id = '${member.id}';
+	var type = '${member.type}';
+	console.log(type);
+	if(type=='startup'){
+		var compId='${member.id}';
+	}else if(type=='manufac'){
+		var manuId='${member.id}';
+	}else if(type=='expert'){
+		var expId='${member.id}';
+	}
+	console.log(compId);
+	console.log(manuId);
+	console.log(expId);
+	var id='${member.id}';
+	
 	$(function(){
 		unReadCount();
+		alarmQuotation();
+		alarmConsulting();
 	});
 	
 	function unReadCount(){
@@ -29,6 +44,29 @@
 			}
 		});
 	}
+	
+	function alarmQuotation(){
+		$.ajax({
+			url:"${contextPath}/alarmQuotation.do",
+			type:"get",
+			data:{"compId":compId, "manuId":manuId},
+			success:function(data){
+				$('#alarmQuotation').html(data);
+			}
+		});
+	}
+	
+	function alarmConsulting(){
+		$.ajax({
+			url:"${contextPath}/alarmConsulting.do",
+			type:"get",
+			data:{"compId":compId, "expId":expId},
+			success:function(data){
+				$('#alarmConsulting').html(data);
+			}
+		})
+	}
+	
 </script>
 </head>
 <body>
@@ -43,21 +81,50 @@
 						<nav class="navbar navbar-expand-sm">
 							<ul class="navbar-nav ml-auto">
 								<c:if test="${member.id != null}">
-									<li class="nav-item dropdown mt-2">
-										<a href="#" id="receivedRequest">받은 요청</a>
-									</li>
-									<li>
-					             		<span class="badge badge-danger mt-3" id="receivedRequest">1</span>
-					             	</li>
+									<c:choose>
+										<c:when test="${member.type=='startup'}">
+											<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/startuppage/estilist_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 견적</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmQuotation"></span>
+							             	</li>
+							             	<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/startuppage/consulting_more_w.do?compId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmConsulting"></span>
+							             	</li>
+										</c:when>
+										<c:when test="${member.type=='manufac'}">
+											<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/manufacpage/estilist_more_w.do?manuId=${member.id}" id="receivedRequest">대기중인 견적</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmQuotation"></span>
+							             	</li>
+										</c:when>
+										<c:when test="${member.type=='expert'}">
+											<li class="nav-item dropdown mt-2">
+												<a class="mr-1" href="${contextPath}/expertpage/con_wait.do?expId=${member.id}" id="receivedRequest">대기중인 컨설팅</a>
+											</li>
+											<li>
+							             		<span class="badge badge-danger mt-3 mr-2" id="alarmConsulting"></span>
+							             	</li>
+										</c:when>
+									</c:choose>
 									<li class="nav-item dropdown">
 					                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 					                        	쪽지
 					                    </a>
 					                    <div class="dropdown-menu">
 					                        <a class="dropdown-item" href="#">
-					                        	<button class="btn btn-default text-muted" data-target="#mesPop" data-toggle="modal">쪽지 보내기</button>
+					                        	<button class="btn btn-default text-muted text-center" data-target="#mesPop" data-toggle="modal">쪽지 보내기</button>
 					                        </a>
 					                        <a class="dropdown-item text-muted text-center" href="${contextPath}/message/messageList.do?id=${member.id}">쪽지 함</a>
+					                        <a class="dropdown-item" href="#">
+					                        	<button class="btn btn-default text-muted text-center" data-target="#adminMesPop" data-toggle="modal">관리자에게 쪽지</button>
+					                        </a>
 					                    </div>
 				             		</li>
 				             		<li>
@@ -68,24 +135,33 @@
 					                        	마이페이지
 					                    </a>
 					                    <div class="dropdown-menu">
-					                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/common/MyPage.do?userId=${member.id}">마이페이지 가기</a>
+					                    	<c:if test="${member.type!='admin'}">
+						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/common/MyPage.do?userId=${member.id}">마이페이지 가기</a>
+					                    	</c:if>
 					                        <c:if test="${member.type=='startup'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/startUpSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<div class="dropdown-divider"></div>
 						                        <a class="dropdown-item text-muted text-center" href="${contextPath}/scrap/printScrapAll.do?compId=${member.id}">스크랩 리스트</a>
-						                        <h5 class="dropdown-header text-center">현황 관리</h5>
+						                        <div class="dropdown-divider"></div>
 						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/manu_estilist.do?compId=${member.id}">견적 현황 관리</a>
 						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/consultinglist.do?compId=${member.id}">컨설팅 현황 관리</a>
+						                    	<div class="dropdown-divider"></div>
 						                    	<a class="dropdown-item text-muted text-center" href="${contextPath}/startuppage/com_consultinglist.do?compId=${member.id}">완료 내역 관리</a>
+						                    	<div class="dropdown-divider"></div>
 					                        </c:if>
 					                        <c:if test="${member.type=='manufac'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufac/manufacSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<div class="dropdown-divider"></div>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufacpage/estilist.do?manuId=${member.id}">견적 현황 관리</a>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/manufacpage/com_estilist.do?manuId=${member.id}">견적 완료 목록</a>
+					                        	<div class="dropdown-divider"></div>
 					                        </c:if>
 					                        <c:if test="${member.type=='expert'}">
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expert/expertSelectForm.do?id=${member.id}">내 정보 관리</a>
+					                        	<div class="dropdown-divider"></div>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expertpage/consulting.do?expId=${member.id}">컨설팅 현황 관리</a>
 					                        	<a class="dropdown-item text-muted text-center" href="${contextPath}/expertpage/com_consulting.do?expId=${member.id}">컨설팅 완료 목록</a>
+					                        	<div class="dropdown-divider"></div>
 					                        </c:if>
 					                        <c:if test="${member.type == 'startup'}">
 				                				<a class="dropdown-item text-muted text-center" href="${contextPath}/startup/logout.do">로그아웃</a>
@@ -185,7 +261,36 @@
             </div>
         </div>
     </div>
-    <!-- message Modal End
-     -->
+    <!-- message Modal End -->
+    <!-- admin message Modal -->
+     <div class="modal fade" id="adminMesPop">
+        <div class="modal-dialog">
+            <div class="modal-content" align="center">
+            	<!-- Modal Header -->
+		        <div class="modal-header">
+		        	<h4 class="modal-title">쪽지 보내기</h4>
+		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		      	</div>
+		      	<div class="modal-body">
+	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
+	                	<input type="hidden" name="sendId" value="${member.id}"> 
+	                    <div class="form-group col-sm-10">
+	                        <label for="inputReceiveId">수신자</label>
+	                        <input type="hidden" name="receiveId" value="admin">
+	                        <input type="text" name="showId" class="form-control" id="inputReceiveId" placeholder="관리자" readonly>
+	                    </div>
+	                    <div class="form-group col-sm-10">
+	                        <label for="InputContent">내용</label>
+	                        <textarea class="form-control" name="content" id="InputContent" rows="5" cols="10" placeholder="내용을 입력하세요."></textarea>
+	                    </div>
+	                    <button type="submit" class="btn btn-primary">전송</button>
+	                    <button type="reset" class="btn btn-secondary">다시입력</button>
+	                    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+	                </form>
+		      	</div>
+            </div>
+        </div>
+    </div>
+    <!-- admin message Modal End -->
 </body>
 </html>

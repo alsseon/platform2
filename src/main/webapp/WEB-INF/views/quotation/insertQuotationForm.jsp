@@ -11,33 +11,6 @@
     <head>
         <title>Publishing Company - Free Bootstrap 4 Template by Colorlib</title>
         <meta charset="utf-8">
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet">
-
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <link rel="stylesheet" href="${contextPath}/resources/css/animate.css">
-
-        <link rel="stylesheet" href="${contextPath}/resources/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="${contextPath}/resources/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
-
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
-
-        <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
-        <link rel="stylesheet" href="${contextPath }/resources/css/style.css">
     </head>
     <body>
         <section class="ftco-section bg-light">
@@ -103,7 +76,7 @@
                                                     <label class="label" for="item">견적품목</label>
                                                     <input
                                                         type="text"
-                                                        class="form-control"
+                                                        class="form-control item"
                                                         name="item"
                                                         placeholder="item">
                                                 </div>
@@ -113,7 +86,7 @@
                                                     <label class="label" for="quantity">수량</label>
                                                     <input
                                                         type="text"
-                                                        class="form-control"
+                                                        class="form-control quantity"
                                                         name="quantity"
                                                         placeholder="수량">
                                                 </div>
@@ -160,7 +133,7 @@
 													<input
 														type="text"
                                                         name="detail"
-                                                        class="form-control"
+                                                        class="form-control detail"
                                                         placeholder="내용 상세"  />
                                                 </div>
                                             </div>
@@ -195,24 +168,38 @@
     
         </div>
 
-        <script src="${contextPath }/resources/js/jquery.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="${contextPath }/resources/js/popper.min.js"></script>
-        <script src="${contextPath }/resources/js/bootstrap.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.easing.1.3.js"></script>
-        <script src="${contextPath }/resources/js/jquery.waypoints.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.stellar.min.js"></script>
-        <script src="${contextPath }/resources/js/owl.carousel.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.magnific-popup.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.animateNumber.min.js"></script>
-        <script src="${contextPath }/resources/js/scrollax.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-        <script src="${contextPath }/resources/js/main.js"></script>
 		<script>
 			var price = document.querySelector(".price")
 			var vat = document.querySelector(".vat")
 			var rand = document.querySelector(".random")
+			var form = document.querySelector(".contactForm")
+			var quantity = document.querySelector(".quantity")
+			var detail = document.querySelector(".detail")
+			var item = document.querySelector(".item")
+			console.log(form)
+			
+			form.addEventListener("submit",function(e){
+				e.preventDefault()
+				console.log(quantity.value == "")
+				if(quantity.value == ""){
+					alert("수량을 입력해 주세요")
+					quantity.focus();
+				}else if(detail.value == ""){
+					alert("상세 내용을 입력해 주세요")
+					detail.focus();
+				}else if(item.value==""){
+					alert("품목을 입력해 주세요")
+					detail.focus();
+				}else if(price.value == ""){
+					alert("금액을 입력하세요")
+					price.value="";
+					price.focus();
+				}else{
+					form.submit();
+				}
+			});
+			
+			
 			console.log(rand.value)
 			addEventListener("load",function(){
 				console.log(rand.value);
@@ -220,7 +207,9 @@
 				var max = Math.floor(1000);
 				rand.value = Math.floor(Math.random() * (max - min)) + min;
 			})
-			price.addEventListener("change",function(e){
+			price.addEventListener("focusout",function(e){
+				console.log()
+				
 				if(!isNaN(e.target.value)){
 					vat.value= Math.round(e.target.value/10);
 				}else{
@@ -229,6 +218,9 @@
 					price.focus();
 				}
 			})
+			
+			
+			
 		</script>
     </body>
 </html>

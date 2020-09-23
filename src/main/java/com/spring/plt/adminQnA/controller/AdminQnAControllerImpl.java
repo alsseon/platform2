@@ -78,13 +78,13 @@ public class AdminQnAControllerImpl implements AdminQnAController{
 		try {
 			adminQnAService.addNewArticle(adminQnAVO);
 			message = "<script>";
-			message += " alert('글이 등록되었습니다.');";
+			message += " alert('질문이 정상적으로 등록되었습니다.');";
 			message += " location.href='"+request.getContextPath()+"/adminQnA/listArticles.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = " <script>";
-			message += " alert('오류가 발생했습니다.');";
+			message += " alert('오류가 발생했습니다..');";
 			message += " location.href='"+request.getContextPath()+"/adminQnA/articleForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -108,7 +108,7 @@ public class AdminQnAControllerImpl implements AdminQnAController{
 		try {
 			adminQnAService.addNewArticle(adminQnAVO);
 			message = "<script>";
-			message += " alert('글이 등록되었습니다.');";
+			message += " alert('답변이 정상적으로 등록되었습니다.');";
 			message += " location.href='"+request.getContextPath()+"/adminQnA/listArticles.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -135,7 +135,7 @@ public class AdminQnAControllerImpl implements AdminQnAController{
 		try {
 			adminQnAService.updateArticle(adminQnAVO);
 			message = "<script>";
-			message += " alert('글이 수정되었습니다.');";
+			message += " alert('글이 정상적으로 수정되었습니다.');";
 			message += " location.href='"+request.getContextPath()+"/adminQnA/listArticles.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -162,7 +162,7 @@ public class AdminQnAControllerImpl implements AdminQnAController{
 		try {
 			adminQnAService.deleteArticle(no);
 			message = "<script>";
-			message += " alert('글이 삭제되었습니다.');";
+			message += " alert('글이 정상적으로 삭제되었습니다.');";
 			message += " location.href='"+request.getContextPath()+"/adminQnA/listArticles.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

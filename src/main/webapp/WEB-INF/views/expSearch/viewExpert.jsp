@@ -6,6 +6,8 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="expertVO" value="${expMap.expertVO}" />
+<c:set var="expImageList" value="${expMap.expImageList}" />
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -154,7 +156,7 @@
             <div class="col-12" style="font-size: 0;">
               <div class="col-8" style="display: inline-block; vertical-align: middle;">
                 <p>
-                  <img src="${contextPath }/resources/images/image_1.jpg" alt="" class="img-fluid">
+                  <img src="${contextPath}/download.do?id=${expertVO.id}&imageFileName=${expImageList[1].imageFileName}" alt="" class="img-fluid">
                 </p>
               </div>
               <div style="display: inline-block; vertical-align: middle; font-size: 16px; width: 150px" >
@@ -163,9 +165,13 @@
                   <li> ${expertVO.expEmail }</li>
                   <li> ${expertVO.expBizField }</li>
                 </ul>
-                <a href="${contextPath}/consulting/insertConsultingForm.do?expId=${expertVO.id}" class="btn btn-primary" style="width: 150px">컨설팅 요청</a>
-                <br><br>
-                <a href="${contextPath}/allExpert.do" class="btn btn-primary" style="width: 150px">목록으로</a>
+                <c:if test="${member.type == 'startup'}">
+	                <a href="${contextPath}/consulting/insertConsultingForm.do?expId=${expertVO.id}" class="btn btn-primary mb-3" style="width: 150px">컨설팅 요청</a>
+	                <br>
+                </c:if>
+                <a href="${contextPath}/expSearch/allExpert.do" class="btn btn-primary mb-3" style="width: 150px">목록으로</a>
+                <br>
+                <a data-toggle="modal" href="#messageToExpert" class="btn btn-primary" style="width: 150px">쪽지 보내기</a>
               </div>
             </div>
             <div style="float: left;">
@@ -230,7 +236,35 @@
             </div>
         </div>
     </div>
-
+	<!-- message Modal -->
+     <div class="modal fade" id="messageToExpert">
+        <div class="modal-dialog">
+            <div class="modal-content" align="center">
+            	<!-- Modal Header -->
+		        <div class="modal-header">
+		        	<h4 class="modal-title">쪽지 보내기</h4>
+		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		      	</div>
+		      	<div class="modal-body">
+	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
+	                	<input type="hidden" name="sendId" value="${member.id}"> 
+	                    <div class="form-group col-sm-10">
+	                        <label for="inputReceiveId">수신자</label>
+	                        <input type="hidden" name="receiveId" value="${expertVO.id}">
+	                        <input type="text" name="manuName" class="form-control" id="inputReceiveId" value="${expertVO.expName}" readonly">
+	                    </div>
+	                    <div class="form-group col-sm-10">
+	                        <label for="InputContent">내용</label>
+	                        <textarea class="form-control" name="content" id="InputContent" rows="5" cols="10" placeholder="내용을 입력하세요."></textarea>
+	                    </div>
+	                    <button type="submit" class="btn btn-primary">전송</button>
+	                    <button type="reset" class="btn btn-secondary">다시입력</button>
+	                    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+	                </form>
+		      	</div>
+            </div>
+        </div>
+    </div>
 
     
   

@@ -36,8 +36,8 @@ import com.spring.plt.manufac.vo.ManufacVO;
 @Controller("manufacController")
 @EnableAspectJAutoProxy
 public class ManufacControllerImpl implements ManufacController{
-	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //학원
-//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //집
+	private static String IMAGE_PATH = "C:/workspace/platform/src/main/webapp/resources/pltImage"; //�븰�썝
+//	private static String IMAGE_PATH = "C:/JSP/projects/platform/src/main/webapp/resources/pltImage"; //吏�
 	
 	@Autowired
 	private ManufacService manufacService;
@@ -58,7 +58,7 @@ public class ManufacControllerImpl implements ManufacController{
 			mav.setViewName("redirect:/main/main.do");				
 			} else {
 				rAttr.addAttribute("result", "loginFailed");
-				mav.setViewName("redirect:/member/loginForm.do");
+				mav.setViewName("redirect:/common/loginForm.do");
 			}
 		return mav;
 	}
@@ -97,11 +97,11 @@ public class ManufacControllerImpl implements ManufacController{
 				File destDir = new File(IMAGE_PATH+"\\"+id);
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
-			mav.setViewName("redirect:/manufac/manufacListForm.do");
+			mav.setViewName("redirect:/main/main.do");
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 			srcFile.delete();
-			mav.setViewName("redirect:/manufac/manufacForm.do");
+			mav.setViewName("redirect:/main/main.do");
 			e.printStackTrace();
 		}
 		return mav;
@@ -158,7 +158,7 @@ public class ManufacControllerImpl implements ManufacController{
 		manufacService.deletemanufac(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/manufac/manufacListForm.do");
+		mav.setViewName("redirect:/main/main.do");
 		return mav; 
 	}
 
@@ -199,7 +199,7 @@ public class ManufacControllerImpl implements ManufacController{
 				oldFile.delete();
 			}
 			message = "<script>";
-			message += " alert('�닔�젙�셿猷�');";
+			message += " alert('수정 완료');";
 			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -207,7 +207,7 @@ public class ManufacControllerImpl implements ManufacController{
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+manuImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('�닔�젙�떎�뙣');";
+			message += " alert('오류 발생');";
 			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

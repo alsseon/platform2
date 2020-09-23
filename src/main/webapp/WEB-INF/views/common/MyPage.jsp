@@ -11,33 +11,6 @@
 <head>
     <title>Publishing Company - Free Bootstrap 4 Template by Colorlib</title>
         <meta charset="utf-8">
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet">
-
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <link rel="stylesheet" href="${contextPath}/resources/css/animate.css">
-
-        <link rel="stylesheet" href="${contextPath}/resources/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="${contextPath}/resources/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
-
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
-
-        <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
-        <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
     <style>
     .sidebar{
     	position: absolute;
@@ -45,6 +18,12 @@
 		right:-150px;
 		width:130px;
     }
+    
+	  .down{
+	    position: fixed;
+	    top: 0;
+	  }
+	  
     </style>
   </head>
   <body>
@@ -98,7 +77,7 @@
 	          <div class="col-md-12">
 	          <div>
 		          <h3 style="display: inline-block;">전문가 스크랩 리스트</h3>&nbsp;
-		          <a href="${contextPath }/scrap/printExpertScrap.do" class="btn btn-primary" >More</a>
+		          <a href="${contextPath }/scrap/printScrapAll.do?compId=${user.id }" class="btn btn-primary" >More</a>
 	          </div>
 	          <c:forEach items="${expertList }" var="expert">
 		        <div class="col-md-3 ftco-animate" style="display: inline-block;">
@@ -110,7 +89,7 @@
 							<h3>${expert.expName }</h3>
 							<div class="faded">
 								<p>${expert.expBizField }</p>
-								<a href="${contextPath }/viewExpert?id=${expert.id }" class="btn btn-primary">상세페이지</a>
+								<a href="${contextPath }/expSearch/viewExpert.do?id=${expert.id }" class="btn btn-primary">상세페이지</a>
 		            		</div>
 						</div>
 					</div>
@@ -124,19 +103,19 @@
 			  <div class="col-md-12">
 			  <div>
 				  <h3 style="display: inline-block;">제조업체 스크랩 리스트</h3>
-				  <a href="${contextPath }/scrap/printManuScrap.do" class="btn btn-primary" >More</a>
+				  <a href="${contextPath }/scrap/printScrapAll.do?compId=${user.id }" class="btn btn-primary" >More</a>
 			  </div>
 			  <c:forEach items="${manuList }" var="manu">
 				  <div class="col-md-3 ftco-animate" style="display: inline-block;">
 		 				<div class="book-wrap">
 		 					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/resources/images/book-1.jpg);">
 		 						<div class="in-text">
-									<a href="${contextPath }/viewManufac?id=${manu.id }" class="btn btn-primary">상세페이지</a>
+									<a href="${contextPath }/manufacSearch/viewManufac.do?id=${manu.id }" class="btn btn-primary">상세페이지</a>
 		 						</div>
 		 					</div>
 		 					<div class="text px-4 py-3 w-100">
 		 						<p class="mb-2"><span class="price">${manu.productPrice }</span></p>
-		 						<h2><a href="${contextPath }/viewManufac?id=${manu.id }">${manu.manuName }</a></h2>
+		 						<h2><a href="${contextPath }/manufacSearch/viewManufac.do?id=${manu.id }">${manu.manuName }</a></h2>
 		 						<p>${manu.manuBizType }</p>
 		 					</div>
 		 				</div>
@@ -155,11 +134,16 @@
 				  <div class="col-md-6">
 					  <div class="col-md-12">
 						  <h1 class="mb-3" style="display: inline-block;">Quotation List</h1>&nbsp;
-						  <a href="${contextPat }/startuppage/consultinglist.do" class="btn btn-primary" >More</a>
+						  <c:if test="${userType eq 'startup' }">
+						  	<a href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
+						  <c:if test="${userType eq 'manu' }">
+						  	<a href="${contextPath }/manufacpage/estilist.do?manuId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
 					  </div>
-					  <ul style="line-height: 55px; list-style: none; font-size: 40px;">
+					  <ul style="line-height: 55px; list-style: none; font-size: 30px;">
 					  	<c:forEach items="${quotationList }" var="quotation" >
-					  		<li>${quotation.item } / ${quotation.quantity }</li>
+					  		<li><a style="text-decoration: none;" href="${contextPath}/quotation/viewOneQuotation.do?no=${quotation.no}">${quotation.manuId} / ${quotation.item } / ${quotation.quantity }</a></li>
 					  	</c:forEach>
 					  </ul>
 				  </div>
@@ -170,11 +154,16 @@
 				  <div class="col-md-6">
 					  <div class="col-md-12">
 						  <h1 class="mb-3" style="display: inline-block;">Consulting List</h1>&nbsp;
-						  <a href="${contextPat }/startuppage/consultinglist.do" class="btn btn-primary" >More</a>
+						  <c:if test="${userType eq 'startup' }">
+						  	<a href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
+						  <c:if test="${userType eq 'expert }">
+						  	<a href="${contextPath }/expertpage/consulting.do?expId=${user.id}" class="btn btn-primary" >More</a>
+						  </c:if>
 					  </div>
-					  <ul style="line-height: 55px; list-style: none; font-size: 40px;">
+					  <ul style="line-height: 55px; list-style: none; font-size: 30px;">
 					  	<c:forEach items="${consultingList }" var="consulting" >
-					  		<li>${consulting.title }</li>
+					  		<li><a style="text-decoration: none;" href="${contextPath}/consulting/viewOneConsulting.do?no=${consulting.no}">${consulting.title }</a></li>
 					  	</c:forEach>
 					  </ul>
 		        </div>
@@ -185,18 +174,27 @@
     </section> <!-- .section -->
     
     <!-- side bar -->
-	<div class="col-lg-4 sidebar pl-lg-5 ftco-animate" style="position:absolute; top: 1000px; right:0px; width:500px;">
+	<div class="col-lg-4 pl-lg-5 ftco-animate" id="sidebar" style="position:absolute; top: 1000px; right:0px; width:500px;">
 	     <div class="sidebar-box ftco-animate">
 	       <div class="categories">
 	         <h3>Services</h3>
 	         <ul style="list-style: none;">
-		         <li><a href="${contextPath}/">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/startuppage/manu_estilist.do">견적 관리<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/startuppage/consultinglist.do">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/com_startuppage/com_estlist.do">견적 완료 내역 관리<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/com_startuppage/com_consultinglis">컨설팅 완료 내역 관리<span class="fa fa-chevron-right"></span></a></li>
-		         <li><a  href="${contextPath}/">로그아웃<span class="fa fa-chevron-right"></span></a></li>
+	         	<c:if test="${userType eq 'startup' }">
+			         <li><a href="${contextPath}/startup/startUpSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	</c:if>
+	         	<c:if test="${userType eq 'manu' }">
+	         		 <li><a href="${contextPath}/manufac/manufacSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/manufacpage/estilist.do?manuId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	</c:if>
+	         	<c:if test="${uesrType eq 'expert' }">
+	         		 <li><a href="${contextPath}/expert/expertSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath }/expertpage/consulting.do?expId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
+	         	</c:if>
 	         </ul>
 	       </div>
 	     </div>
@@ -209,42 +207,25 @@
 	  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 	
 	
-	  <script src="${contextPath }/resources/js/jquery.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="${contextPath }/resources/js/popper.min.js"></script>
-        <script src="${contextPath }/resources/js/bootstrap.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.easing.1.3.js"></script>
-        <script src="${contextPath }/resources/js/jquery.waypoints.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.stellar.min.js"></script>
-        <script src="${contextPath }/resources/js/owl.carousel.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.magnific-popup.min.js"></script>
-        <script src="${contextPath }/resources/js/jquery.animateNumber.min.js"></script>
-        <script src="${contextPath }/resources/js/scrollax.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-        <script src="${contextPath }/resources/js/main.js"></script>
 	  <script>
-	  $(function(){
-	
-			//사이드바 스크롤
-			const scrollHeight = 62;
-	
-			function sidebar(){
-				if($(window).scrollTop() > scrollHeight){
-					let top = $(window).scrollTop() - scrollHeight + 20;
-					document.querySelector('.sidebar').style.top = top+'px';
-				}else{
-					document.querySelector('.sidebar').style.top = '20px';
-				}
-			}
-	
-			sidebar();
-	
-			$(window).scroll(()=>{
-				sidebar();
-			});
-	
+		var scrollper = function getCurrentScrollPercentage(){
+			return (window.scrollY + window.innerHeight) / document.body.clientHeight * 100
+			};
+		
+		var updown = document.querySelector("#sidebar");
+		window.addEventListener("scroll",function(event){
+			  if(scrollper()>= 70){
+		    	updown.style.position = "fixed";
+			    updown.style.top = "0px";
+			    
+			  }else{
+				  updown.style.position = "absolute";
+				  updown.style.top = "1000px"
+			  }
+			  console.log(updown.style)
 		});
+		
+		
 	  </script>
   </body>
 </html>
