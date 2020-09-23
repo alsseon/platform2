@@ -200,15 +200,15 @@ public class ManufacControllerImpl implements ManufacController{
 			}
 			message = "<script>";
 			message += " alert('수정 완료');";
-			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
+			message += " location.href='"+request.getContextPath()+"/main/main.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+manuImg);
 			srcFile.delete();
 			message = "<script>";
-			message += " alert('오류 발생');";
-			message += " location.href='"+request.getContextPath()+"/manufac/manufacListForm.do';";
+			message += " alert('입력되지 않은 사항이 있습니다');";
+			message += " location.href='"+request.getContextPath()+"/manufac/manufacSelectForm.do?id="+id+"';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();

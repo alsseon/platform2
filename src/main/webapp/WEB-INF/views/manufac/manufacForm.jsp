@@ -65,9 +65,21 @@ function execPostCode() {
 }
 </script>
 <head>
+<script type="text/javascript">
+	function joinCheck(){
+		var joinForm = document.joinForm;
+		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.manuName.value==""||joinForm.manuCeoName.value==""||joinForm.manuEmail.value==""
+				||joinForm.manuBizNo.value==""||joinForm.maunAddr.value==""||joinForm.maunDetailAddr.value==""||joinForm.manuTel.value==""||joinForm.manuStart.value==""
+				||joinForm.manuDetail.value==""||joinForm.manuBizType.value==""){
+			alert('입력되지 않은 사항이 있습니다.');
+			return false;
+		}
+	}
+</script>
 <meta charset="UTF-8">
 <title>제조업체 회원가입 폼</title>
 </head>
+
 <body>
 <div class="container">
 <br> 
@@ -79,7 +91,7 @@ function execPostCode() {
 	<h4 class="card-title mt-2">제조업체 등록 신청</h4>
 </header>
 <article class="card-body">
-<form method="post" action="${contextPath}/manufac/join_manufac.do" enctype="multipart/form-data">
+<form method="post" name="joinForm" action="${contextPath}/manufac/join_manufac.do" enctype="multipart/form-data" onsubmit="joinCheck();">
 
 		<div class="col form-group">
 			<label>아이디 </label>   
@@ -88,7 +100,7 @@ function execPostCode() {
 		 
 		<div class="col form-group">
 			<label>비밀번호</label>
-		  	<input type="password" class="form-control" name="pwd" >
+		  	<input type="password" class="form-control" name="pwd" placeholder="password">
 		</div>
 		
 		<div class="col form-group">
@@ -163,10 +175,10 @@ function execPostCode() {
 		<div class="form-group">
 		  <label>업종</label>
 			  <select id="manuBizType" class="form-control" name="manuBizType">
-			      <option>가전 / 디지털</option>
-			      <option>패션의류 / 잡화</option>
+			      <option>가전</option>
+			      <option>패션의류</option>
 			      <option>홈인테리어</option>
-			      <option>도서 / 음반</option>
+			      <option>도서</option>
 			      <option>식품</option>
 				  <option selected="">기타</option>
 			  </select>
