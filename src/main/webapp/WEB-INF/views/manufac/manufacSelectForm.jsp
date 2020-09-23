@@ -149,7 +149,7 @@ body > div > form > div:nth-child(2) > button{
 </head>
 <body>
 	<div class="container"
-		style=" margin: 0 auto; padding-left: 30px; width: 50%; height: 940px; ">
+		style=" margin: 0 auto; padding-left: 30px; width: 50%; height: 1200px; margin-bottom:200px; ">
 		<form method="post" action="${contextPath}/manufac/updatemanufac.do"
 			enctype="multipart/form-data">
 
@@ -203,7 +203,7 @@ body > div > form > div:nth-child(2) > button{
 
     
 				<label for="cname">상세정보</label>
-				<textarea cols=45px; rows=7px; name="manuDetail">${manufacVO.manuDetail}</textarea><br>
+				<textarea cols=45px; rows=2px; name="manuDetail">${manufacVO.manuDetail}</textarea><br>
 				
 				<input type="hidden" name="manuAuth" value="o">
 				
@@ -223,13 +223,28 @@ body > div > form > div:nth-child(2) > button{
 			  	</script>
 				
 			</div>
-			<div style="width: 30%; padding-left : 350px; padding-top:100px; "> 
+			<div style="width: 30%; padding-left=20px;"> 
 				<button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
+				<input type="button" value="탈퇴" onclick="delete_button();" class="btn btn-danger btn-xs">
 			</div>
 		</form>
 	</div>
+<script type="text/javascript">
+function delete_button(){
 
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+    location.href="${contextPath}/manufac/deletemanufac.do?id=${manufacVO.id}";
+
+}else{   //취소
+
+    return;
+
+}
+}
+</script>	
+	
 <script type="text/javascript">
   
 	function readURL(input){

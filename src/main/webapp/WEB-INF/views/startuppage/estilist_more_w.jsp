@@ -81,7 +81,7 @@
        <tbody>
           <c:forEach var="manu_esti" items="${w_estilist}" >     
             <tr align="center">
-               <td><a href = "${contextPath }/viewOneQuotation.do?no=${manu_esti.no}">${manu_esti.manuname}</a></td>
+               <td><a href = "${contextPath }/quotation/viewOneQuotation.do?no=${manu_esti.no}">${manu_esti.manuname}</a></td>
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">철회</button></td>
             </tr>

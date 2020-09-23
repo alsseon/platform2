@@ -65,7 +65,7 @@
 
 											<div class="col-md-12">
 												<div class="form-group">
-													<label class="label">${showId.id }</label> 
+													<p><font color="skyblue">${showId.id }</font></p> 
 												</div>
 											</div>
 
