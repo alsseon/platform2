@@ -67,6 +67,29 @@
 		})
 	}
 	
+	function messageCheck(){
+		var message = document.message;
+		if(message.receiveId.value==""){
+			alert("수신자를 입력해주세요");
+			message.receiveId.focus();
+			return false;
+		}
+		if(message.content.value==""){
+			alert("내용을 입력해주세요");
+			message.content.focus();
+			return false;
+		}
+	}
+	
+	function adminMessageCheck(){
+		var adminMessage = document.adminMessage
+		if(message.content.value==""){
+			alert("내용을 입력해주세요");
+			message.content.focus();
+			return false;
+		}
+	}
+	
 </script>
 </head>
 <body>
@@ -243,7 +266,7 @@
 		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      	</div>
 		      	<div class="modal-body">
-	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
+	                <form name="message" class="py-4" method="post" action="${contextPath}/message/sendMessage.do" onsubmit="return messageCheck()">
 	                	<input type="hidden" name="sendId" value="${member.id}"> 
 	                    <div class="form-group col-sm-10">
 	                        <label for="inputReceiveId">수신자</label>
@@ -272,7 +295,7 @@
 		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      	</div>
 		      	<div class="modal-body">
-	                <form class="py-4" method="post" action="${contextPath}/message/sendMessage.do">
+	                <form name="adminMessage" class="py-4" method="post" action="${contextPath}/message/sendMessage.do" onsubmit="return adminMessageCheck()">
 	                	<input type="hidden" name="sendId" value="${member.id}"> 
 	                    <div class="form-group col-sm-10">
 	                        <label for="inputReceiveId">수신자</label>

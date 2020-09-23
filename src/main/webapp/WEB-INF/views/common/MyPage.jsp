@@ -148,16 +148,16 @@
 					  </ul>
 				  </div>
 			</c:if>
-			<c:if test="${userType eq 'startup'||userType eq 'expert' }">
+			<c:if test="${userType eq 'startup'||userType eq 'expert'}">
 			  <!-- 요청 컨설팅 리스트 -->
 			  <!-- 더보기 버튼 필요 -->
 				  <div class="col-md-6">
 					  <div class="col-md-12">
 						  <h1 class="mb-3" style="display: inline-block;">Consulting List</h1>&nbsp;
-						  <c:if test="${userType eq 'startup' }">
+						  <c:if test="${userType eq 'startup'}">
 						  	<a href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}" class="btn btn-primary" >More</a>
 						  </c:if>
-						  <c:if test="${userType eq 'expert }">
+						  <c:if test="${userType eq 'expert'}">
 						  	<a href="${contextPath }/expertpage/consulting.do?expId=${user.id}" class="btn btn-primary" >More</a>
 						  </c:if>
 					  </div>
