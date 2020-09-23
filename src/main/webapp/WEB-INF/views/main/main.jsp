@@ -62,8 +62,8 @@
          <div class="book-wrap d-lg-flex">
             <div class="img d-flex justify-content-end" style="background-image: url(${contextPath}/download.do?id=${manufac.id}&imageFileName=${manufac.manuImg});">
                <div class="in-text">
-                  <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                     <span class="flaticon-heart-1"></span>
+                  <a href="${contextPath}/scrap/scrapManu.do?manuId=${manufac.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapManuClass" data-toggle="tooltip" data-placement="left" title="Scrap">
+                     <span id="${manufac.id}" class="flaticon-heart-1"></span>
                   </a>
                   <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
@@ -87,8 +87,8 @@
          <div class="book-wrap d-lg-flex">
             <div class="img d-flex justify-content-end" style="background-image: url(${contextPath}/download.do?id=${manufac.id}&imageFileName=${manufac.manuImg});">
                <div class="in-text">
-                  <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                     <span class="flaticon-heart-1"></span>
+                  <a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapExpClass" data-toggle="tooltip" data-placement="left" title="Scrap">
+                     <span id="${expert.id}" class="flaticon-heart-1"></span>
                   </a>
                   <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
@@ -151,5 +151,43 @@
       </div><!--전문가 진짜 끝-->
     </section>
     
+    <script>
+    var scrapArray = document.querySelectorAll(".scrapManuClass")
+	  console.log(scrapArray)
+	  
+	  for(var i = 0 ; i<scrapArray.length; i++){
+			
+			scrapArray[i].addEventListener("click",function(e){
+				console.log(e.target.id)
+				var manuId = e.target.id
+				$.ajax({
+	          	url:"${contextPath}/scrap/scrapManu.do",
+	          	type:"GET",
+	          	data:{"id":manuId},
+	          	success:function(data){
+	          		console.log("success")
+	          	}
+	          });
+			})
+		}
+    
+    var scrapArray = document.querySelectorAll(".scrapExpClass")
+	  
+	  for(var i = 0 ; i<scrapArray.length; i++){
+			
+			scrapArray[i].addEventListener("click",function(e){
+				var expertId = e.target.id
+				$.ajax({
+	          	url:"${contextPath}/scrap/scrapExpert.do",
+	          	type:"GET",
+	          	data:{"id":expertId},
+	          	dataType:"json",
+	          	success:function(data){
+	          		alert("스크랩에 추가하였습니다.")
+	          	}
+	          })
+			})
+		}
+    </script>
   </body>
 </html>

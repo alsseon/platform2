@@ -11,10 +11,10 @@ import com.spring.plt.page.vo.PageVO;
 
 public interface ScrapController {
 
-	public ModelAndView deleteExpertScrap(@RequestParam("no") int no, 
+	public ResponseEntity deleteExpertScrap(@RequestParam("compId")String compId, @RequestParam("no") int no, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-	public ModelAndView deleteManuScrap(@RequestParam("no") int no, 
+	public ResponseEntity deleteManuScrap(@RequestParam("compId")String compId, @RequestParam("no") int no, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 //	public void scrapExpert(String expId, HttpServletRequest request, HttpServletResponse response) throws Exception;
