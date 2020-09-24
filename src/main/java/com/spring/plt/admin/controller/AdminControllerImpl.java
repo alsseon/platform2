@@ -54,6 +54,7 @@ public class AdminControllerImpl implements AdminController {
 	      mav.setViewName(viewName);
 	      return mav;
 	   }
+	
 	@RequestMapping(value="/admin/LoginLogForm.do", method= {RequestMethod.GET, RequestMethod.GET})
 	public ModelAndView LoginLog(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		List<LoginLogVO> LoginLog = adminService.LoginLog();

@@ -43,13 +43,13 @@ public class MessageControllerImpl implements MessageController{
 		try {
 			messageService.sendMessage(message);
 			complete = "<script>";
-			complete += " alert('ìª½ì§€ê°€ ì •ìƒì ìœ¼ë¡œ ë³´ë‚´ì¡ŒìŠµë‹ˆë‹¤.');";
+			complete += " alert('ÂÊÁö°¡ Á¤»óÀûÀ¸·Î ¹ß¼ÛµÇ¾ú½À´Ï´Ù.');";
 			complete += " location.href='"+request.getContextPath()+"/message/messageList.do?id="+message.getSendId()+"';";
 			complete +=" </script>";
 			resEnt = new ResponseEntity(complete, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			complete = "<script>";
-			complete += " alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');";
+			complete += " alert('Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù.');";
 			complete += " location.href='"+request.getContextPath()+"/message/messageList.do?id="+message.getSendId()+"';";
 			complete +=" </script>";
 			resEnt = new ResponseEntity(complete, responseHeaders, HttpStatus.CREATED);
