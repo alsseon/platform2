@@ -81,7 +81,7 @@
        <tbody>
           <c:forEach var="manu_esti" items="${c_conlist}" > 
              <tr align="center">
-               <td>${manu_esti.expname}</td>
+               <td>${manu_esti.compname}</td>
                <td><fmt:formatDate value="${manu_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">삭제</button></td>
              </tr>

@@ -6,10 +6,10 @@
 <mapper namespace = "mapper.expertpage">
 	<select id="selectAllEstilist" resultType="expertPageVO">
 		<![CDATA[
-			select expname,status, reqdate, no from 
-			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
-			from consulting c, expert e
-			where e.id = c.expId and c.expId={expId}) MP 
+			select compname,status, reqdate, no from 
+			(select s.compname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
+			from consulting c, startup s
+			where s.id = c.compId and c.expId={expId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
@@ -51,40 +51,40 @@
     
     <select id="selectWaitEstiList" resultType="expertPageVO">
 		<![CDATA[
-			select expname,status, reqdate, no from 
-			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
-			from consulting c, expert e
-			where e.id = c.expid and c.status=0 and c.expId=#{expId}) MP 
+			select compname,status, reqdate, no from 
+			(select s.compname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
+			from consulting c, startup s
+			where s.id = c.compId and c.status=0 and c.expId=#{expId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
 	<select id="selectIngEstiList" resultType="expertPageVO">
 		<![CDATA[
-			select expname,status, reqdate, no from 
-			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
-			from consulting c, expert e
-			where e.id = c.expid and c.status=1 and c.expId=#{expId}) MP 
+			select compname,status, reqdate, no from 
+			(select s.compname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
+			from consulting c, startup s
+			where s.id = c.compId and c.status=1 and c.expId=#{expId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
 	<select id="selectComEstilist" resultType="expertPageVO">
 		<![CDATA[
-			select expname,status, reqdate, no from 
-			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
-			from consulting c, expert e
-			where e.id = c.expid and c.status=2 and c.expId=#{expId}) MP 
+			select compname,status, reqdate, no from 
+			(select s.compname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
+			from consulting c, startup s
+			where s.id = c.compId and c.status=2 and c.expId=#{expId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
 	
 	<select id="selectDeEstilist" resultType="expertPageVO">
 		<![CDATA[
-			select expname,status, reqdate, no from 
-			(select e.expname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
-			from consulting c, expert e
-			where e.id = c.expid and c.status=3 and c.expId=#{expId}) MP 
+			select compname,status, reqdate, no from 
+			(select s.compname, c.status, c.reqdate, c.no, row_number() over(order by c.reqdate desc) as rnum 
+			from consulting c, startup s
+			where s.id = c.compId and c.status=3 and c.expId=#{expId}) MP 
 			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqdate DESC 
 		]]>
 	</select>
