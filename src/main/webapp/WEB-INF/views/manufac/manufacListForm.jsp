@@ -6,7 +6,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,7 +121,7 @@ thead, tbody tr {
 									<td class="text-center">
 									<a class='btn btn-info btn-xs' href="${contextPath}/manufac/manufacSelectForm.do?id=${manufacVO.id}">
 									<span class="glyphicon glyphicon-edit"></span>수정</a> 
-									<a href="${contextpath}/plt/list/deletemanufac.do?id=${manufacVO.id}" class="btn btn-danger btn-xs">
+									<a href="${contextPath}/manufac/deletemanufac.do?id=${manufacVO.id}" class="btn btn-danger btn-xs">
 									<span class="glyphicon glyphicon-remove">
 									</span>삭제</a></td>
 									

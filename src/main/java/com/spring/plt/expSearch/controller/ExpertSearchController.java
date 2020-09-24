@@ -15,4 +15,5 @@ public interface ExpertSearchController {
 	public Map<Integer, Map<String, Object>> serchByExpertName(@RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response);
 	public Map<Integer,Map<String,Object>> serchByExpertType(@RequestParam("type") String type, HttpServletRequest request, HttpServletResponse response);
 	public ModelAndView viewExpert(String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	String serchByExpertImgFile(String expertId, HttpServletRequest request, HttpServletResponse response);
 }

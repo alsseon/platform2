@@ -16,6 +16,19 @@
 		obj.action = "${contextPath}/adminQnA/listArticles.do";
 		obj.submit();
 	}
+	function adminQnACheck(){
+		var writeForm = document.writeForm;
+		if(writeForm.title.value==""){
+			alert("제목을 입력해주세요");
+			writeForm.title.focus();
+			return false;
+		}
+		if(writeForm.content.value==""){
+			alert("내용을 입력해주세요");
+			writeForm.content.focus();
+			return false;
+		}
+	}
 </script>
 <meta charset="UTF-8">
 <title>게시글 보기</title>
@@ -23,7 +36,7 @@
 <body>
 	<div class="container" align="center">
 		<div class="col-sm-8">
-           <form name="writeForm" class="py-4" method="post" action="${contextPath}/adminQnA/updateArticle.do">
+           <form name="writeForm" class="py-4" method="post" action="${contextPath}/adminQnA/updateArticle.do" onsubmit="return adminQnACheck()">
                <table class="table">
                    <h2>게시글 작성</h2>
                    <tr class="col-sm-10">

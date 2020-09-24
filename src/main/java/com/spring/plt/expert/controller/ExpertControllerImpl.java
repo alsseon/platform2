@@ -227,13 +227,13 @@ public class ExpertControllerImpl implements ExpertController {
 			session.setAttribute("expert", expertVO);
 			message = "<script>";
 			message += " alert('수정 완료');";
-			message += " location.href='"+request.getContextPath()+"redirect:/main/main.do;";
+			message += " location.href='"+request.getContextPath()+"/main/main.do';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
-			message += " alert('오류 발생');";
-			message += " location.href='"+request.getContextPath()+"redirect:/main/main.do';";
+			message += " alert('채우지 않은 사항이 있습니다.');";
+			message += " location.href='"+request.getContextPath()+"/expert/expertSelectForm.do?id="+id+"';";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();

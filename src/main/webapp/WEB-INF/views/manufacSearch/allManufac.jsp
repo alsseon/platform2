@@ -78,13 +78,13 @@
               <!-- <h5>업종별 검색</h5> -->
               <select id="manufacType" class="custom-select" style="width:75%">
                 <option value="box">업종</option>
-                <option value="도서/음반">도서/음반</option>
-                <option value="가전/디지털">가전/디지털</option>
+                <option value="도서">도서</option>
+                <option value="가전">가전</option>
                 <option value="홈인테리어">홈인테리어</option>
-                <option value="패션의류/잡화">패션의류/잡화</option>
+                <option value="패션의류">패션의류</option>
                 <option value="기타">기타</option>
               </select>
-              <button id="serchByTypebtn" class="btn btn-primary">검색</button>
+              <button id="serchByTypebtn" class="btn btn-primary search">검색</button>
               <!-- id기준으로 자바스크립트에서 button선택 하여 onClick메서드 이용하여 ajax작동 -->
               <hr>
               <!-- <h5>지역별 검색</h5> -->
@@ -96,17 +96,17 @@
                 <option value="인천">인천</option>
                 <option value="광주">광주</option>
                 <option value="대전">대전</option>
-                <option value="경기도">경기도</option>
-                <option value="강원도">강원도</option>
-                <option value="경상북도">경상북도</option>
-                <option value="경상북도">경상남도</option>
-                <option value="전라북도">전라북도</option>
-                <option value="전라남도">전라남도</option>
-                <option value="충청북도">충청북도</option>
-                <option value="충청남도">충청남도</option>
+                <option value="경기">경기도</option>
+                <option value="강원">강원도</option>
+                <option value="경북">경상북도</option>
+                <option value="경남">경상남도</option>
+                <option value="전북">전라북도</option>
+                <option value="전남">전라남도</option>
+                <option value="충북">충청북도</option>
+                <option value="충남">충청남도</option>
                 <option value="세종">세종특별자치시</option>
               </select>
-              <button id="serchByLocbtn" class="btn btn-primary">검색</button>
+              <button id="serchByLocbtn" class="btn btn-primary search">검색</button>
               <hr>
               <!-- <h5>최소 발주 금액</h5> -->
 			  <label for="최소발주금액">최소 발주 금액</label><br>
@@ -115,7 +115,7 @@
               <div class="changeRange" style ="width:80%; height:50px;">
               	100만원
               </div>
-              <button style="float:left" id="serchByPricebtn" class="btn btn-primary">검색</button>
+              <button style="float:left" id="serchByPricebtn" class="btn btn-primary search">검색</button>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@
    </section> <!-- .section -->
   <!-- loader -->
   <script>
-	  var serchArray = document.querySelectorAll("button");
+	  var serchArray = document.querySelectorAll(".search");
 	  var changeHtml ="";
 	  console.log(serchArray)
 	  var rangebox = document.querySelector(".form-control-range")
@@ -233,22 +233,24 @@
             });
 		}
 		
+		
+		
 		function fixHtml(manufac){
 				changeHtml += '<div class="col-md-4 d-flex">'        				
 				changeHtml += 	'<div class="book-wrap">'
-				changeHtml +=		'<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath }/resources/images/book-1.jpg);">'
+				changeHtml +=		'<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/resources/pltImage/' + manufac.id + '/' + manufac.img + ');">'
 				changeHtml +=			'<div class="in-text">'
-				changeHtml +=				'<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">'
+				changeHtml +=				'<a href="${contextPath}/scrap/scrapManu.do?manuId='+manufac.id + '&compId='+ compId +'" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">'
 				changeHtml +=						'<span class="flaticon-heart-1"></span>'
 				changeHtml +=				'</a>'
-				changeHtml +=				'<a href="${contextPath}/manufacSearch/viewManufac?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">'
+				changeHtml +=				'<a href="${contextPath}/manufacSearch/viewManufac.do?id=' + manufac.id +  '" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">'
 				changeHtml +=					'<span class="flaticon-search"></span>'
 				changeHtml +=				'</a>'
 				changeHtml +=			'</div>'
 				changeHtml +=		'</div>'
 				changeHtml +=		'<div class="text px-4 py-3 w-100">'
 				changeHtml +=			'<p class="mb-2"><span class="price">' +manufac.price  + '</span></p>'
-				changeHtml +=			"<h2><a href=${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}>"+manufac.name+"</a></h2>"
+				changeHtml +=			"<h2><a href=${contextPath}/manufacSearch/viewManufac.do?id="+ manufac.id +">"+manufac.name+"</a></h2>"
 				changeHtml +=			'<p> ' + manufac.addr + '</p>'
 				changeHtml +=		'</div>'
 				changeHtml +=	'</div>'
