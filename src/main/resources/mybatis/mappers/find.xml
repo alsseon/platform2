@@ -15,7 +15,7 @@
 	<select id="findPwd" resultType="findVO" parameterType="findVO">
 	  <![CDATA[
 	  	select * from alluser
-	  	where id= #{id} and email = #{email}
+	  	where id= #{id} and email = #{email} and type=#{type}
 	  ]]>
 	</select>
 	

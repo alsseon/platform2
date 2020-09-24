@@ -81,10 +81,10 @@
 				<thead align="center">
                     <tr class="table-active">
                     	<th style="width:5%"><input type="checkbox" id="allCheck"></th>
-                        <th style="width:10%">발신자</th>
-                        <th style="width:10%">수신자</th>
+                        <th style="width:12.5%">발신자</th>
+                        <th style="width:12.5%">수신자</th>
                         <th style="width:55%">내용</th>
-                        <th style="width:20%">보낸날짜</th>
+                        <th style="width:15%">보낸날짜</th>
                     </tr>
                 </thead>
                 <tbody id="messageBody">

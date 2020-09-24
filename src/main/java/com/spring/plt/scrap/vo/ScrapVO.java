@@ -14,12 +14,13 @@ public class ScrapVO {
 	private String manuName;
 	private String manuBizType;
 	private String productPrice;
+	private String manuImg;
 
 	@Override
 	public String toString() {
 		return "ScrapVO [no=" + no + ", compid=" + compid + ", expid=" + expid + ", manuid=" + manuid + ", expName="
 				+ expName + ", expBizField=" + expBizField + ", expTel=" + expTel + ", manuName=" + manuName
-				+ ", manuBizType=" + manuBizType + ", productPrice=" + productPrice + "]";
+				+ ", manuBizType=" + manuBizType + ", productPrice=" + productPrice + ", manuImg=" + manuImg + "]";
 	}
 
 	public ScrapVO() {
@@ -104,6 +105,14 @@ public class ScrapVO {
 
 	public void setProductPrice(String productPrice) {
 		this.productPrice = productPrice;
+	}
+
+	public String getManuImg() {
+		return manuImg;
+	}
+
+	public void setManuImg(String manuImg) {
+		this.manuImg = manuImg;
 	}
 	
 }

@@ -28,7 +28,15 @@ public class ExpertSearchServiceImpl implements ExpertSearchService{
 		System.out.println("expert Service type");
 		return dao.serchByExpertType(type);
 	}
-
+	
+	@Override
+	public String serchByExpertImgFile(String expertId) {
+		System.out.println("expert find fileName service");
+		List<ExpImageVO> expImageList = dao.serchByExpertImgFile(expertId);
+		return expImageList.get(1).getImageFileName();
+	}
+	
+	
 	@Override
 	public ExpertVO viewExpert(String id) {
 		System.out.println("expert service view");
@@ -60,4 +68,6 @@ public class ExpertSearchServiceImpl implements ExpertSearchService{
 	public List<ExpImageVO> getExpertImageList(String id) {
 		return dao.getExpertImageList(id);
 	}
+
+	
 }
