@@ -12,9 +12,15 @@
 <head>
 <script src = "${contextPath}/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
+	var no = '${article.no}'
 	function backToList(obj){
 		obj.action = "${contextPath}/adminQnA/listArticles.do";
 		obj.submit();
+	}
+	function deleteArticle(){
+		if(confirm("정말 삭제하겠습니까?")!=0){
+			location.href="${contextPath}/adminQnA/deleteArticle.do?no="+no;
+		}
 	}
 </script>
 <meta charset="UTF-8">
@@ -53,7 +59,7 @@
                <input type="hidden" name="no" value="${article.no}">
                <c:if test="${article.writer==member.id}">
 	               <button type="submit" class="btn btn-warning">수정</button>
-	               <button type="button" class="btn btn-danger" onClick="location.href='${contextPath}/adminQnA/deleteArticle.do?no=${article.no}'">삭제</button>
+	               <button type="button" class="btn btn-danger" onClick="deleteArticle()">삭제</button>
                </c:if>
                <c:if test="${article.lvl == 1 && member.type == 'admin'}">
                		<button type="button" class="btn btn-info" onClick="location.href='${contextPath}/adminQnA/addReplyForm.do?no=${article.no}'">답글달기</button>

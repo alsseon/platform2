@@ -179,7 +179,6 @@ function execPostCode() {
 			      <option>패션의류</option>
 			      <option>홈인테리어</option>
 			      <option>도서</option>
-			      <option>식품</option>
 				  <option selected="">기타</option>
 			  </select>
 		</div>

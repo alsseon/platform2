@@ -101,7 +101,7 @@ public class ManufacControllerImpl implements ManufacController{
 		}catch(Exception e) {
 			File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 			srcFile.delete();
-			mav.setViewName("redirect:/main/main.do");
+			mav.setViewName("redirect:/manufac/manufacForm.do");
 			e.printStackTrace();
 		}
 		return mav;

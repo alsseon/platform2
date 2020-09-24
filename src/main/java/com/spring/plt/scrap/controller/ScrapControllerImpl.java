@@ -96,6 +96,7 @@ public class ScrapControllerImpl implements ScrapController{
 	    compMap.put("compId", compId);
 	    compMap.put("pageVO", pageVO);
 		List manuScrapAllList = scrapService.printManuScrapAll(compMap);
+		System.out.println("manuScrapAllList: "+ manuScrapAllList);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("manuScrapAllList", manuScrapAllList);
 		mav.addObject("pageVO", pageVO);
@@ -111,6 +112,7 @@ public class ScrapControllerImpl implements ScrapController{
 		Map allScrapMap = scrapService.printScrap(compId);
 		List expertScrapList = scrapService.printExpertScrap(compId);
 		List manuScrapList = scrapService.printManuScrap(compId);
+		System.out.println("manuScrapList: "+manuScrapList);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("expertScrapList", expertScrapList);
 		mav.addObject("manuScrapList", manuScrapList);

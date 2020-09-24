@@ -12,7 +12,7 @@
 	
 	<select id="printManuScrap" resultMap="scrapResult" parameterType="String">
 		<![CDATA[
-         SELECT mns.no, mns.compid, mns.manuid, mn.manuname, mn.manubiztype, mn.productprice
+         SELECT mns.no, mns.compid, mns.manuid, mn.manuname, mn.manubiztype, mn.productprice, mn.manuImg
          FROM manuscrap mns, manufacturer mn
          WHERE ROWNUM < 5 and compid = #{compid} and mns.manuid = mn.id
          order by no desc
@@ -21,8 +21,8 @@
 	
 	<select id="printManuScrapAll" resultMap="scrapResult" parameterType="java.util.Map">
 		<![CDATA[
-			 SELECT no, compid, manuid, manuname, manubiztype, productprice 
-	         FROM (SELECT mns.no, mns.compid, mns.manuid, mn.manuname, mn.manubiztype, mn.productprice,ROW_NUMBER() 
+			 SELECT no, compid, manuid, manuname, manubiztype, productprice, manuImg
+	         FROM (SELECT mns.no, mns.compid, mns.manuid, mn.manuname, mn.manubiztype, mn.productprice, mn.manuImg, ROW_NUMBER() 
 	         OVER(ORDER BY mns.no DESC) 
 	         AS RNUM FROM manuscrap mns, manufacturer mn
 	         WHERE compid = #{compId} and mns.manuid = mn.id) MP
