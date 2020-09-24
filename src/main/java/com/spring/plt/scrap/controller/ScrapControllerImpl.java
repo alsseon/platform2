@@ -68,7 +68,6 @@ public class ScrapControllerImpl implements ScrapController{
 	}
 	
 	
-	//?占쎌젷�댖怨뚰�ｆ캆�룞�럸? * 占쎈퉲占쎈츊占쎌졑
 	@Override
 	@RequestMapping(value="/scrap/printManuScrap.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView printManuScrapAll(PageVO pageVO, @RequestParam(value="nowPage", required = false) String nowPage,
@@ -78,8 +77,6 @@ public class ScrapControllerImpl implements ScrapController{
 		String viewName = (String)request.getAttribute("viewName");
 		
 		HttpSession session = request.getSession();
-//		String compId = "op3838";
-//		String compId = (String) session.getAttribute("member");
 		
 //		paging code
 		int total = scrapService.listCount(compId);
@@ -103,7 +100,6 @@ public class ScrapControllerImpl implements ScrapController{
 		return mav;
 	}
 	
-	//?占쎌젷�댖怨뚰�ｆ캆�룞�럸?/?占쎌쓧占쎈닱筌롳옙? 4�뤆�룇裕뉔�억옙 占쎈퉲占쎈츊占쎌졑
 	@Override
 	@RequestMapping(value="/scrap/printScrapAll.do",method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView printScrapAll(@RequestParam("compId") String compId,
@@ -132,32 +128,43 @@ public class ScrapControllerImpl implements ScrapController{
 		ResponseEntity resEnt = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-		int Overlapped = scrapService.isOverlapE(expId);
-		if(Overlapped == 0) {
-			try {
-				scrapVO.setCompid(compId);
-				scrapVO.setExpid(expId);
-				scrapService.scrapExpert(scrapVO);
+		Map overlap = new HashMap();
+		overlap.put("compId", compId);
+		overlap.put("expId", expId);		
+		int Overlapped = scrapService.isOverlapE(overlap);
+		if(compId == null || compId == "") {
+			message = "<script>";
+			message += " alert('로그인 후 이용해주세요.');";
+			message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		}
+		else {
+			if(Overlapped == 0) {
+				try {
+					scrapVO.setCompid(compId);
+					scrapVO.setExpid(expId);
+					scrapService.scrapExpert(scrapVO);
+					message = "<script>";
+					message += " alert('스크랩 되었습니다.');";
+					message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
+					message += "</script>";
+					resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+				}catch(Exception e) {
+					message = "<script>";
+					message += " alert('스크랩하지 못했습니다.');";
+					message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
+					message += "</script>";
+					resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+				}
+			}
+			else {
 				message = "<script>";
-				message += " alert('스크랩 되었습니다.');";
-				message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
-				message += "</script>";
-				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			}catch(Exception e) {
-				message = "<script>";
-				message += " alert('스크랩하지 못했습니다.');";
+				message += " alert('이미 스크랩된 항목입니다.');";
 				message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
 				message += "</script>";
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			}
-		}
-		else {
-			System.out.println("===========controller scrapExpert() 繞벿살탮占쎄텢?筌랃옙 expid?占쎈엷?占쎈퉵?占쎈펲===========");
-			message = "<script>";
-			message += " alert('이미 스크랩된 항목입니다.');";
-			message += " location.href='"+request.getContextPath()+"/expSearch/allExpert.do';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}
 		return resEnt;
 	}
@@ -172,66 +179,93 @@ public class ScrapControllerImpl implements ScrapController{
 		String message;
 		ResponseEntity resEnt = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
+		Map overlap = new HashMap();
+		overlap.put("compId", compId);
+		overlap.put("manuId", manuId);
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-		int Overlapped = scrapService.isOverlapM(manuId);
-		if(Overlapped == 0) {
-			try {
-				scrapVO.setCompid(compId);
-				scrapVO.setManuid(manuId);
-				scrapService.scrapManu(scrapVO);
+		int Overlapped = scrapService.isOverlapM(overlap);
+		if(compId == null || compId == "") {
+			message = "<script>";
+			message += " alert('로그인 후 이용해주세요.');";
+			message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		}
+		else {
+			if(Overlapped == 0) {
+				try {
+					scrapVO.setCompid(compId);
+					scrapVO.setManuid(manuId);
+					scrapService.scrapManu(scrapVO);
+					message = "<script>";
+					message += " alert('스크랩 되었습니다.');";
+					message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
+					message += "</script>";
+					resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+				}catch(Exception e) {
+					message = "<script>";
+					message += " alert('스크랩하지 못했습니다.');";
+					message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
+					message += "</script>";
+					resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+				}
+			}	
+			else {
 				message = "<script>";
-				message += " alert('스크랩 되었습니다.');";
-				message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
-				message += "</script>";
-				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			}catch(Exception e) {
-				message = "<script>";
-				message += " alert('스크랩하지 못했습니다.');";
+				message += " alert('이미 스크랩된 항목입니다.');";
 				message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
 				message += "</script>";
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			}
 		}
-		else {
-//			繞벿살탮占쎄텢?筌랃옙 ?占쎈뭵嶺뚳옙? ?占쎈뻣 alert�뤆占�? ?�뤃占�?占쎄텕?�뙴袁ｌ뿉? ?占쎈빢?占쎌젧?�뜮占�?�뜮占� ?�뜮占�?占쎈퉵?占쎈펲
-//			System.out.println("===========controller scrapExpert() 繞벿살탮占쎄텢?筌랃옙 manuid?占쎈엷?占쎈퉵?占쎈펲===========");
-			message = "<script>";
-			message += " alert('이미 스크랩된 항목입니다.');";
-			message += " location.href='"+request.getContextPath()+"/manufacSearch/allManufac.do';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-		}
 		return resEnt;
 	}
-	
-	
+
+
 	//delete scrap
 	@Override
 	@RequestMapping(value="/scrap/deleteExpertScrap.do", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView deleteExpertScrap(@RequestParam("no") int no,
+	public ResponseEntity deleteExpertScrap(@RequestParam("compId")String compId, @RequestParam("no") int no, 
 						HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-//		String compId = (String)session.getAttribute("compId"); 占쎈쐻占쎈뼢繹먮씮�굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻? 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈뼄筌뤿슣�굲 占쎈쐻占쎈셾筌뚭쑴�굲 占쎈쐻占쎈솂占쎈닰占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쏙옙�ⓦ끉�굲
-		String compId = "compId";
+		String message;
 		scrapService.deleteExpertScrap(no);
-		ModelAndView mav = new ModelAndView("redirect:/scrap/printExpertScrap.do?compId=" + compId);
-		return mav;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		message = "<script>";
+		message += " alert('스크랩 삭제되었습니다.');";
+		message += " location.href='"+request.getContextPath()+"/scrap/printExpertScrap.do?compId="+compId+"';";
+		message += "</script>";
+		
+		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		
+//		String compId = "compId";
+		
+//		ModelAndView mav = new ModelAndView("redirect:/scrap/printExpertScrap.do?compId=" + compId);
+		return resEnt;
 		
 		
 	}
 	
 	@Override
 	@RequestMapping(value="/scrap/deleteManuScrap.do", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView deleteManuScrap(@RequestParam("no") int no, 
+	public ResponseEntity deleteManuScrap(@RequestParam("compId")String compId, @RequestParam("no") int no, 
 						HttpServletRequest request, HttpServletResponse response) throws Exception{
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");		
+		String message;
 		scrapService.deleteManuScrap(no);
-		HttpSession session = request.getSession();
-//		String compId = (String)session.getAttribute("compId"); 占쎈쐻占쎈뼢繹먮씮�굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻? 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈뼄筌뤿슣�굲 占쎈쐻占쎈셾筌뚭쑴�굲 占쎈쐻占쎈솂占쎈닰占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쏙옙�ⓦ끉�굲
-		String compId = "compId";
-		ModelAndView mav = new ModelAndView("redirect:/scrap/printManuScrap.do?compId=" + compId);
-		return mav;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		message = "<script>";
+		message += " alert('스크랩 삭제되었습니다.');";
+		message += " location.href='"+request.getContextPath()+"/scrap/printManuScrap.do?compId="+compId+"';";
+		message += "</script>";
+		
+		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+//		ModelAndView mav = new ModelAndView("redirect:/scrap/printManuScrap.do?compId=" + compId);
+		return resEnt;
 	}
 
 }

@@ -28,7 +28,7 @@
 		    					<c:if test="${expert.id == expertImg.id}">
 			    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${expert.id}&imageFileName=${expertImg.imageFileName});">
 			    						<div class="in-text">
-			    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="scrap">
+			    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="Scrap">
 			    								<span id="${expert.id}" class="flaticon-heart-1"></span>
 			    							</a>
 			    							<a href="${contextPath }/expSearch/viewExpert.do?id=${expert.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">

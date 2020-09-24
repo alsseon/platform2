@@ -32,8 +32,21 @@
 								<h3>${manuScrap.manuName }</h3>
 								<div class="faded">
 									<p>${manuScrap.manuBizType }<br>${manuScrap.productPrice }</p>
+<<<<<<< HEAD
+									<a href="${contextPath }/viewManufac?id=${manuScrap.manuid }" class="btn btn-primary">상세페이지</a>
+									<a href="${contextPath }/scrap/deleteManuScrap.do?no=${manuScrap.no}&compId=${member.id}" class="btn btn-primary">삭제</a>
+	<!-- sns 코드
+									<ul class="ftco-social text-center">
+	  	                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+		             				</ul>
+		             				-->
+=======
 									<a href="${contextPath }/viewManufac?id=${manuScrap.manuid}" class="btn btn-primary">상세페이지</a>
 									<a href="${contextPath }/scrap/deleteManuScrap.do?no=${manuScrap.no}" class="btn btn-primary">삭제</a>
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
 	             				</div>
 							</div>														
 						</div>

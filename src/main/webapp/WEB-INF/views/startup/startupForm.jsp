@@ -75,7 +75,7 @@ function execPostCode() {
 		var joinForm = document.joinForm;
 		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.compName.value==""||joinForm.compCeoName.value==""||joinForm.compEmail.value==""
 				||joinForm.compBizNo.value==""||joinForm.compAddr.value==""||joinForm.compDetailAddr.value==""||joinForm.compTel.value==""||joinForm.compStart.value==""
-				||joinForm.compDetail.value==""||joinForm.compBizType.value==""){
+				||joinForm.compDetail.value==""||joinForm.compBizType.value==""||joinForm.compImg.value==""){
 			alert('입력되지 않은 사항이 있습니다.');
 			return false;
 		}

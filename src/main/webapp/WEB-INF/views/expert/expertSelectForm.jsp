@@ -186,7 +186,7 @@ span.price {
         <input type="hidden" name="expAuth" value="${expertVO.expAuth}" >
         <div style="width: 50%; float: left; padding: 60px;">
       		    <button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
+				<button type="button" class="btn btn-sm btn-primary" id="btnCancel" onclick="history.go(-1);">취소</button>
 				<input type="button" value="탈퇴" onclick="delete_button();" class="btn btn-danger btn-xs">
                 
 		</div>
