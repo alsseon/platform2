@@ -48,10 +48,11 @@
         
     </style>
 		<script>
-	function del(no) {
+		var manuId='${member.id}';
+		function del(no) {
 		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/manufacpage/com_estilist_del.do?no="+no;
+			location.href="${contextPath}/manufacpage/com_estilist_del.do?no="+no+"&manuId="+manuId;
 			
 		}
 	}	
@@ -92,6 +93,35 @@
    </table>
   
 </div>
+<div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+              	<c:if test="${pagevo.startPage != 1}">
+	                <li><a href="${contextPath}/manufacpage/com_estilist.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}&manuId=${member.id}">&lt;</a></li>
+	            </c:if>
+	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
+	            	<c:choose>
+	            	<c:when test="${idx == pagevo.nowPage }">
+	                <li class="active"><span> ${idx} </span></li>
+	                </c:when>
+	                <c:when test="${idx != pagevo.nowPage}">
+	                <li><a href="${contextPath}/manufacpage/com_estilist.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}&manuId=${member.id}"> ${idx} </a></li>
+	                </c:when>
+	         <%--      
+	                <li><a href="#">3</a></li>
+	                <li><a href="#">4</a></li>
+	                <li><a href="#">5</a></li>--%>
+	                </c:choose>
+	             </c:forEach>
+	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
+	                <li><a href="${contextPath}/manufacpage/com_estilist.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}&manuId=${member.id}">&gt;</a></li>
+	              </c:if>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
 
      <script src="${contextPath}/resources/js/jquery.min.js"></script>
        <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>

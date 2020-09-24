@@ -57,8 +57,10 @@
 	<select id="overlap" resultType="int">
 		<![CDATA[
 			select count(*) from expertscrap
-			where expid=#{expid}
+			where expid=#{expId} and compId=#{compId}
 		]]>
 	</select>
+	
+
 </mapper>
    	

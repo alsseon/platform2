@@ -36,39 +36,20 @@
 		</script>
 	</c:when>
 </c:choose>
+
+
 <style>
 .submitting {
 	margin-top: 30px;
 }
 </style>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="${contextPath }/resources/css/animate.css">
-
-<link rel="stylesheet"
-	href="${contextPath }/resources/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="${contextPath }/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet"
-	href="${contextPath }/resources/css/magnific-popup.css">
-
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
-
-<link rel="stylesheet" href="${contextPath }/resources/css/flaticon.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/style.css">
 </head>
 
-<body>
+<body onkeydown="javascript:onEnterLogin();">
 
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('${contextPath }/resources/images/bg_5.jpg');"
+		style="background-image: url('${contextPath}/resources/images/bg_5.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -99,7 +80,7 @@
 								<div class="contact-wrap w-100 p-md-5 p-4">
 									<h3 class="mb-4">로그인</h3>
 									<form method="POST" id="login" name="contactForm"
-										class="contactForm" action="${contextPath }">
+										class="contactForm" action="${contextPath}">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
@@ -130,8 +111,8 @@
 
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="button" value="로그인" class="btn btn-primary"
-														id="loginButton">
+													<input  onKeyPress="EnterCheckEvent();" type="button" value="로그인" class="btn btn-primary"
+														id="loginButton" onClick="loginClick()">
 													<button type="reset" class="btn btn-primary">다시입력</button>
 													<div class="submitting">
 														<a href="${contextPath}/common/idForm.do" class="findId"><h5>아이디
@@ -171,24 +152,16 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-
-	<script src="${contextPath }/resources/js/jquery.min.js"></script>
-	<script src="${contextPath }/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="${contextPath }/resources/js/popper.min.js"></script>
-	<script src="${contextPath }/resources/js/bootstrap.min.js"></script>
-	<script src="${contextPath }/resources/js/jquery.easing.1.3.js"></script>
-	<script src="${contextPath }/resources/js/jquery.waypoints.min.js"></script>
-	<script src="${contextPath }/resources/js/jquery.stellar.min.js"></script>
-	<script src="${contextPath }/resources/js/owl.carousel.min.js"></script>
-	<script src="${contextPath }/resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="${contextPath }/resources/js/jquery.animateNumber.min.js"></script>
-	<script src="${contextPath }/resources/js/scrollax.min.js"></script>
-
-	<script src="${contextPath }/resources/js/main.js"></script>
 	<script>
 		var loginbutton = document.querySelector("#loginButton");
 		var formtag = document.querySelector("#login")
-		loginbutton.addEventListener("click", function() {
+		function onEnterLogin(){
+			var keyCode = window.event.keyCode;
+			if (keyCode == 13) { //엔테키 이면
+				loginClick();
+			}
+		} //onEnterLogin()
+		function loginClick(){
 			var select = document.querySelector("#selectid").value
 			if (select === "startup") {
 				console.log("startup 선택")
@@ -207,7 +180,7 @@
 				formtag.action += "/admin/login.do"
 				formtag.submit();
 			}
-		})
+		}
 	</script>
 </body>
 

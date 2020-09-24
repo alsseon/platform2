@@ -117,8 +117,8 @@ public class ExpertControllerImpl implements ExpertController {
 					imageFileName = expImage.getImageFileName();
 					File srcFile = new File(IMAGE_PATH+"\\temp\\"+imageFileName);
 					srcFile.delete();
+					mav.setViewName("redirect:/expert/expertForm.do");
 					e.printStackTrace();
-					mav.setViewName("redirect:/main/main.do");
 				}
 			}
 		}

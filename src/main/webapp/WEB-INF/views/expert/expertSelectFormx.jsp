@@ -141,7 +141,7 @@ body > form > div.container.signin{
 
   <div class="container signin">
     		<button type="submit" class="btn btn-sm btn-primary" id="btnSignup">등록</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>  
+				<button type="button" class="btn btn-sm btn-primary" id="btnCancel" onclick="history.go(-1);">취소</button>  
   </div>
 </form>
 

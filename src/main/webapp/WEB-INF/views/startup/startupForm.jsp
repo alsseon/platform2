@@ -75,7 +75,7 @@ function execPostCode() {
 		var joinForm = document.joinForm;
 		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.compName.value==""||joinForm.compCeoName.value==""||joinForm.compEmail.value==""
 				||joinForm.compBizNo.value==""||joinForm.compAddr.value==""||joinForm.compDetailAddr.value==""||joinForm.compTel.value==""||joinForm.compStart.value==""
-				||joinForm.compDetail.value==""||joinForm.compBizType.value==""){
+				||joinForm.compDetail.value==""||joinForm.compBizType.value==""||joinForm.compImg.value==""){
 			alert('입력되지 않은 사항이 있습니다.');
 			return false;
 		}
@@ -89,7 +89,7 @@ function execPostCode() {
 
 
 <header class="card-header">
-	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<a href="${contextPath}/common/loginForm.do" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">스타트업 회원가입</h4>
 </header>
 <article class="card-body">

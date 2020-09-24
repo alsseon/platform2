@@ -50,7 +50,7 @@
                 		<span class="yr">Join-us</span>
                 	</div>
                 </div>
-                <h3 class="heading mb-3"><a href="#">스타트 기업 회원가입</a mb-3></h3>
+                <h3 class="heading mb-3"><a href="${contextPath}/startup/startupForm.do">스타트 기업 회원가입</a mb-3></h3>
 								<p>Start company membership registration.</p>              
 							</div>
             </div>
@@ -68,7 +68,7 @@
                 		<span class="yr">Join-us</span>
                 	</div>
                 </div>
-                <h3 class="heading mb-3"><a href="#">제조업체 회원등록 신청</a mb-3></h3>
+                <h3 class="heading mb-3"><a href="${contextPath}/manufac/manufacForm.do" >제조업체 회원등록 신청</a mb-3></h3>
 								<p>Application for manufacturer membership registration.</p>              
 							</div>
             </div>
@@ -87,7 +87,7 @@
                 		<span class="yr">Join-us</span>
                 	</div>
                 </div>
-                <h3 class="heading mb-3"><a href="#">전문가 회원등록 신청</a mb-3></h3>
+                <h3 class="heading mb-3"><a href="${contextPath}/expert/expertForm.do">전문가 회원등록 신청</a mb-3></h3>
 					<p>Application for expert membership registration.</p>              
 			  </div>
             </div>

@@ -43,13 +43,13 @@ public class MessageControllerImpl implements MessageController{
 		try {
 			messageService.sendMessage(message);
 			complete = "<script>";
-			complete += " alert('ÂÊÁö Àü¼Û ¿Ï·áÇß½À´Ï´Ù.');";
+			complete += " alert('ìª½ì§€ê°€ ì •ìƒì ìœ¼ë¡œ ë³´ë‚´ì¡ŒìŠµë‹ˆë‹¤.');";
 			complete += " location.href='"+request.getContextPath()+"/message/messageList.do?id="+message.getSendId()+"';";
 			complete +=" </script>";
 			resEnt = new ResponseEntity(complete, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			complete = "<script>";
-			complete += " alert('¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');";
+			complete += " alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');";
 			complete += " location.href='"+request.getContextPath()+"/message/messageList.do?id="+message.getSendId()+"';";
 			complete +=" </script>";
 			resEnt = new ResponseEntity(complete, responseHeaders, HttpStatus.CREATED);
@@ -71,15 +71,15 @@ public class MessageControllerImpl implements MessageController{
 	@RequestMapping(value="message/deleteMessage.do", method=RequestMethod.POST)
 	@ResponseBody
 	public int deleteMessage(@RequestParam("arr") String[] arr,	HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println(arr);
+		System.out.println(arr.toString());
 		try {
 			for(int i=0; i < arr.length; i++) {
 				if(arr[i].contains("send")) {
-					String messageNO = arr[i].substring(arr[i].length()-1);
+					String messageNO = arr[i].substring(4);
 					int NO = Integer.parseInt(messageNO);
 					messageService.deleteSendMessage(NO);
 				}else if(arr[i].contains("receive")) {
-					String messageNO = arr[i].substring(arr[i].length()-1);
+					String messageNO = arr[i].substring(7);
 					int NO = Integer.parseInt(messageNO);
 					messageService.deleteReceiveMessage(NO);
 				}
@@ -96,11 +96,9 @@ public class MessageControllerImpl implements MessageController{
 		int NO;
 		if(messageNO.contains("send")) {
 			NO = Integer.parseInt(messageNO.substring(4));
-			System.out.println(NO);
 			messageVO = messageService.readSendMessage(NO);
 		}else if(messageNO.contains("receive")) {
 			NO = Integer.parseInt(messageNO.substring(7));
-			System.out.println(NO);
 			messageVO = messageService.readReceiveMessage(NO);
 		}
 		ModelAndView mav = new ModelAndView();

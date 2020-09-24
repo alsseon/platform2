@@ -48,11 +48,11 @@
         
     </style>
 	<script>
-	var compId='${member.id}';
+	var expId='${member.id}';
 	function del(no) {
 		var chk = confirm("철회하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/expertpage/estilist_del.do?no="+no+"expId="+expId;
+			location.href="${contextPath}/expertpage/estilist_del.do?no="+no+"&expId="+expId;
 			
 		}
 	}	
@@ -81,7 +81,7 @@
        <tbody>
           <c:forEach var="cons_esti" items="${w_conlist}" >     
                <tr align="center">
-               <td><a href="${contextPath }/viewOneConsulting.do?no=${cons_esti.no }">${cons_esti.expname}</a></td>
+               <td><a href="${contextPath }/consulting/viewOneConsulting.do?no=${cons_esti.no }">${cons_esti.expname}</a></td>
                <td><fmt:formatDate value="${cons_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">철회</button></td>
           </tr>
@@ -94,7 +94,7 @@
             <div class="block-27">
               <ul>
               	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/expertpage/con_wait.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
+	                <li><a href="${contextPath}/expertpage/con_wait.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}&expId=${member.id}">&lt;</a></li>
 	            </c:if>
 	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
 	            	<c:choose>
@@ -102,7 +102,7 @@
 	                <li class="active"><span> ${idx} </span></li>
 	                </c:when>
 	                <c:when test="${idx != pagevo.nowPage}">
-	                <li><a href="${contextPath}/expertpage/con_wait.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
+	                <li><a href="${contextPath}/expertpage/con_wait.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}&expId=${member.id}"> ${idx} </a></li>
 	                </c:when>
 	         <%--      
 	                <li><a href="#">3</a></li>
@@ -111,7 +111,7 @@
 	                </c:choose>
 	             </c:forEach>
 	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/expertpage/con_wait.do.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
+	                <li><a href="${contextPath}/expertpage/con_wait.do.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}&expId=${member.id}">&gt;</a></li>
 	              </c:if>
               </ul>
               

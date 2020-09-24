@@ -48,10 +48,11 @@
         
     </style>
 		<script>
-	function del(no) {
+		var compId='${member.id}';
+		function del(no) {
 		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/com_startuppage/com.consultinglist.do?no="+no;
+			location.href="${contextPath}/startuppage/com_estilist_del.do?no="+no+"&compId="+compId;
 			
 		}
 	}	
@@ -71,7 +72,7 @@
       <table class="table">
           <thead id="thead-c">
             <tr>        
-                <th>스타트업명</th>
+                <th>전문가명</th>
                 <th>컨설팅 신청 날짜</th>
                 <th></th>
             </tr>
@@ -87,12 +88,12 @@
 	        </tbody>
    		</table>
    		<a href = "${contextPath}/startuppage/com_consulting_more.do?compId=${member.id}">더보기</a>
-   		<br>
+   		<br><br><br><br>
    	<h3>견적 완료</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
-                <th>스타트업명</th>
+                <th>제조업체명</th>
                 <th>견적 신청 날짜</th>
                 <th></th>
             </tr>

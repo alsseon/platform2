@@ -92,6 +92,17 @@ public class ExpertSearchControllerImpl implements ExpertSearchController{
 	}
 	
 	
+	@RequestMapping(value="/serchByExpertImgFile")
+	@Override
+	@ResponseBody
+	public String serchByExpertImgFile(@RequestParam("expertId") String expertId, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("find image file Controller");
+		System.out.println(expertId + "  매개변수 확인 controller");
+		String fileName = service.serchByExpertImgFile(expertId);
+		return fileName;
+	}
+	
+	
 	@RequestMapping(value="/expSearch/viewExpert", method = RequestMethod.GET)
 	@Override
 	public ModelAndView viewExpert(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {

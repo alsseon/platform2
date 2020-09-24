@@ -24,4 +24,9 @@ public interface StartuppageController {
 	public ModelAndView com_consulting(@RequestParam("compId")String compId, PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView deletestatus_con(@RequestParam("compId")String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	public ModelAndView deletestatus(@RequestParam("compId") String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView com_deletestatus_con(@RequestParam("compId")String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView com_deletestatus(@RequestParam("compId") String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView com_deletestatus_conmore(String compId, int no, HttpServletRequest request,HttpServletResponse response) throws Exception;
+	public ModelAndView com_deletestatus_estimore(@RequestParam("compId")String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
 }

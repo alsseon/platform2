@@ -28,7 +28,7 @@
 		    					<c:if test="${expert.id == expertImg.id}">
 			    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${expert.id}&imageFileName=${expertImg.imageFileName});">
 			    						<div class="in-text">
-			    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="scrap">
+			    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="Scrap">
 			    								<span id="${expert.id}" class="flaticon-heart-1"></span>
 			    							</a>
 			    							<a href="${contextPath }/expSearch/viewExpert.do?id=${expert.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
@@ -76,10 +76,6 @@
           <div class="col-lg-3 sidebar pl-lg-3 ftco-animate">
             <div class="sidebar-box">
               <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="fa fa-search"></span>
-                  <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-                </div>
               </form>
           </div>
           <div id="sidebar" class="sidebar-box ftco-animate">
@@ -87,19 +83,19 @@
               <!-- <h5>업종별 검색</h5> -->
               <select id="expertBizType" class="custom-select" style="width:75%">
                 <option value="box">업종</option>
-                <option value="도서/음반">도서/음반</option>
-                <option value="가전/디지털">가전/디지털</option>
+                <option value="도서">도서</option>
+                <option value="가전">가전</option>
                 <option value="홈인테리어">홈인테리어</option>
-                <option value="패션의류/잡화">패션의류/잡화</option>
+                <option value="패션의류">패션의류</option>
                 <option value="기타">기타</option>
               </select>
-              <button id="serchByTypebtn" class="btn btn-primary">검색</button>
+              <button id="serchByTypebtn" class="btn btn-primary search">검색</button>
               
               <!-- id기준으로 자바스크립트에서 button선택 하여 onClick메서드 이용하여 ajax작동 -->
               <!-- <h5>전문가 이름 검색</h5> -->
               
               <div class="form-group" style="margin-top:10%">
-              	<input type="text" id="expertName" placeholder="전문가 이름 검색"/><span style="margin-left:7%"></span><button id="serchByName" class="btn btn-primary">검색</button>
+              	<input type="text" id="expertName" placeholder="전문가 이름 검색"/><span style="margin-left:7%"></span><button id="serchByName" class="btn btn-primary search">검색</button>
               </div>
               <!-- <h5>전문가 이름 검색</h5> -->
             </div>
@@ -110,7 +106,7 @@
    </section> <!-- .section -->
   <!-- loader -->
   <script>
-	  var serchArray = document.querySelectorAll("button");
+	  var serchArray = document.querySelectorAll(".search");
 	  var changeHtml ="";
 	  console.log(serchArray)
 	  var scrapArray = document.querySelectorAll(".scrapClass")
@@ -170,6 +166,8 @@
                 }
             })
         }
+        var expertImage = "";
+        //html select box에서 가져온 string을 가지고 Controller로 간다.
 		function typeAjax(select){
 			$.ajax({
             	url:"${contextPath}/serchByExpertType",
@@ -177,10 +175,24 @@
             	data:{"type":select},
             	dataType:"json",
             	success:function(data){
+            		//객체가 data로 반환 된다.
+            		//반환 된 객체의 정보를 담아 fixHtml함수를 이용해 화면에 그려낸다.
+            		//data에 담겨져있는 id값으로 이미지 네임을 조회해여 fixHtml로 같이 넘겨준다.
             		for(var i = 0 ; i<Object.keys(data).length; i++){
-                		var manuFac = data[i];
-                		console.log(manuFac);
-          				fixHtml(manuFac);
+                		var expert = data[i];
+                		var expertId = data[i].id
+                		console.log(expertId + " 전문가 아이디");
+                		var expertImgfilename = $.ajax({
+                									url:"${contextPath}/serchByExpertImgFile",
+                									type:"GET",
+                									data:{"expertId": expertId},
+                									success: function(data){
+                										console.log(data +  "   이미지 파일 네임 추출 ")
+                										expertImage = data;
+                										console.log(expertImage)
+								          				fixHtml(expert,expertImage);
+                									}
+                								})		
            			}
             	}
             });
@@ -193,29 +205,41 @@
                 data:{"name":select},
                 success:function(data){
                 	for(var i = 0 ; i<Object.keys(data).length; i++){
-                		var manuFac = data[i];
-                		console.log(manuFac);
-          				fixHtml(manuFac);
+                		var expert = data[i];
+                		var expertId = expert.id
+                		var expertImgfilename = $.ajax({
+						                			url:"${contextPath}/serchByExpertImgFile",
+													type:"GET",
+													data:{"expertId": expertId},
+													success: function(data){
+														console.log(data + "   이미지 파일 네임 추출")
+														expertImage = data;
+														console.log(expertImage)
+														fixHtml(expert,expertImage);
+													}
+                		})		
            			}
                 }
             });
 		}
-		
-		function fixHtml(expert){
+		//조건에 맞는 expert객체를 가져온뒤 expert객체의 id에 해당하는 exp_imagefilename을 가져와서 1번째 값을 꺼내야 한다.
+		function fixHtml(expert, expertImage){
+			console.log(expert.name)
+			console.log(expertImage +  "  전문가 이미지")
 				changeHtml += '<div class="col-md-4 d-flex">'        				
 				changeHtml += 	'<div class="book-wrap">'
-				changeHtml +=		'<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath }/resources/images/book-1.jpg);">'
+				changeHtml +=		'<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/resources/pltImage/' + expert.id + '/' + expertImage + ');">'
 				changeHtml +=			'<div class="in-text">'
-				changeHtml +=				'<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">'
+				changeHtml +=				'<a href="${contextPath}/scrap/scrapManu.do?manuId='+expert.id + '&compId='+ compId +'" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">'
 				changeHtml +=						'<span class="flaticon-heart-1"></span>'
 				changeHtml +=				'</a>'
-				changeHtml +=				'<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">'
+				changeHtml +=				'<a href="${contextPath}/expSearch/viewExpert.do?id=' + expert.id +  '" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">'
 				changeHtml +=					'<span class="flaticon-search"></span>'
 				changeHtml +=				'</a>'
 				changeHtml +=			'</div>'
 				changeHtml +=		'</div>'
 				changeHtml +=		'<div class="text px-4 py-3 w-100">'
-				changeHtml +=			'<h2><a href="#"> '+expert.name+' </a></h2>'
+				changeHtml +=			"<h2><a href=${contextPath}/manufacSearch/viewManufac.do?id="+ expert.id +">"+expert.name+"</a></h2>"
 				changeHtml +=			'<p> ' + expert.type + '</p>'
 				changeHtml +=		'</div>'
 				changeHtml +=	'</div>'

@@ -50,7 +50,7 @@
 	function del(no) {
 		var chk = confirm("철회하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/expertpage/estilist_del.do?no="+no;
+			location.href="${contextPath}/startuppage/com_conlist_del_more.do?no="+no+"&compId="+compId;
 			
 		}
 	}	
@@ -72,7 +72,7 @@
             </tr>
           </thead>
 	       <tbody>
-	          <c:forEach var="start_con" items="${c_conlist}" begin="0" end="4"> 
+	          <c:forEach var="start_con" items="${c_conlist}"> 
 	             <tr align="center">
 	               <td>${start_con.expname}</td>
 	               <td><fmt:formatDate value="${start_con.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
@@ -88,7 +88,7 @@
             <div class="block-27">
               <ul>
               	<c:if test="${pageVO.startPage != 1}">
-	                <li><a href="${contextPath}/com_startuppage/com_consulting_more.do?nowPage=${pageVO.startPage-1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
+	                <li><a href="${contextPath}/com_startuppage/com_consulting_more.do?nowPage=${pageVO.startPage-1}&cntPerPage=${pageVO.cntPerPage}&compId=${member.id}">&lt;</a></li>
 	            </c:if>
 	            <c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
 	            	<c:choose>
@@ -96,16 +96,12 @@
 	                <li class="active"><span> ${idx} </span></li>
 	                </c:when>
 	                <c:when test="${idx != pageVO.nowPage}">
-	                <li><a href="${contextPath}/com_startuppage/com_consulting_more.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
+	                <li><a href="${contextPath}/startuppage/com_consulting_more.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}&compId=${member.id}"> ${idx} </a></li>
 	                </c:when>
-	         <%--      
-	                <li><a href="#">3</a></li>
-	                <li><a href="#">4</a></li>
-	                <li><a href="#">5</a></li>--%>
 	                </c:choose>
 	             </c:forEach>
 	              <c:if test="${pageVO.endPage != pageVO.lastPage}">
-	                <li><a href="${contextPath}/com_startuppage/com_consulting_more.do?nowPage=${pageVO.endPage+1 }&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
+	                <li><a href="${contextPath}/startuppage/com_consulting_more.do?nowPage=${pageVO.endPage+1 }&cntPerPage=${pageVO.cntPerPage}&compId=${member.id}">&gt;</a></li>
 	              </c:if>
               </ul>
               

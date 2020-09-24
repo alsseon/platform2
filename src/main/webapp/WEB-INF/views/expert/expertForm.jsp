@@ -20,7 +20,7 @@
 	function joinCheck(){
 		var joinForm = document.joinForm;
 		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.expName.value==""||joinForm.expEmail.value==""
-				||joinForm.expTel.value==""||joinForm.expDetail.value==""){
+				||joinForm.expTel.value==""||joinForm.expDetail.value==""||joinForm.expCertif.value==""||joinForm.expCareer.value==""){
 			alert('입력되지 않은 사항이 있습니다.');
 			return false;
 		}
@@ -36,7 +36,7 @@
 
 
 <header class="card-header">
-	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<a href="${contextPath}/common/loginForm.do" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">전문가 등록 신청</h4>
 </header>
 <article class="card-body">

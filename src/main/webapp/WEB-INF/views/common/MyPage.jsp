@@ -148,16 +148,16 @@
 					  </ul>
 				  </div>
 			</c:if>
-			<c:if test="${userType eq 'startup'||userType eq 'expert' }">
+			<c:if test="${userType eq 'startup'||userType eq 'expert'}">
 			  <!-- 요청 컨설팅 리스트 -->
 			  <!-- 더보기 버튼 필요 -->
 				  <div class="col-md-6">
 					  <div class="col-md-12">
 						  <h1 class="mb-3" style="display: inline-block;">Consulting List</h1>&nbsp;
-						  <c:if test="${userType eq 'startup' }">
+						  <c:if test="${userType eq 'startup'}">
 						  	<a href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}" class="btn btn-primary" >More</a>
 						  </c:if>
-						  <c:if test="${userType eq 'expert }">
+						  <c:if test="${userType eq 'expert'}">
 						  	<a href="${contextPath }/expertpage/consulting.do?expId=${user.id}" class="btn btn-primary" >More</a>
 						  </c:if>
 					  </div>
@@ -174,8 +174,8 @@
     </section> <!-- .section -->
     
     <!-- side bar -->
-	<div class="col-lg-4 pl-lg-5 ftco-animate" id="sidebar" style="position:absolute; top: 1000px; right:0px; width:500px;">
-	     <div class="sidebar-box ftco-animate">
+	<div class="col-lg-4 pl-lg-5 " id="sidebar" style="position:absolute; top: 800px; right:0px; width:500px;">
+	     <div class="sidebar-box ">
 	       <div class="categories">
 	         <h3>Services</h3>
 	         <ul style="list-style: none;">
@@ -187,12 +187,10 @@
 	         	</c:if>
 	         	<c:if test="${userType eq 'manu' }">
 	         		 <li><a href="${contextPath}/manufac/manufacSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/manufacpage/estilist.do?manuId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
 	         	</c:if>
 	         	<c:if test="${uesrType eq 'expert' }">
 	         		 <li><a href="${contextPath}/expert/expertSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/expertpage/consulting.do?expId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
 	         	</c:if>
 	         </ul>
@@ -214,7 +212,17 @@
 		
 		var updown = document.querySelector("#sidebar");
 		window.addEventListener("scroll",function(event){
-			  if(scrollper()>= 70){
+			console.log(window.scrollY)
+			if(window.scrollY >= 250){
+				updown.style.top= 0
+				updown.style.position = "fixed"
+			}
+			
+			if(window.scrollY <=250){
+				updown.style.top = "800px"
+				updown.style.position = "absolute"
+			}
+			  /*if(scrollper()>= 50){
 		    	updown.style.position = "fixed";
 			    updown.style.top = "0px";
 			    
@@ -222,7 +230,7 @@
 				  updown.style.position = "absolute";
 				  updown.style.top = "1000px"
 			  }
-			  console.log(updown.style)
+			  console.log(updown.style)*/
 		});
 		
 		

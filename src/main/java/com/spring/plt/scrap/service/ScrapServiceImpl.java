@@ -83,11 +83,13 @@ public class ScrapServiceImpl implements ScrapService{
 		return scrapDAO.listExpScrapCount(compId);
 	}
 	
-	public int isOverlapE(String expId) throws Exception{
-		return scrapDAO.isOverlapE(expId);
+	public int isOverlapE(Map overlap) throws Exception{
+		return scrapDAO.isOverlapE(overlap);
 	}
 
-	public int isOverlapM(String expId) throws Exception{
-		return scrapDAO.isOverlapM(expId);
+	public int isOverlapM(Map overlap) throws Exception{
+		return scrapDAO.isOverlapM(overlap);
 	}
+	
+
 }

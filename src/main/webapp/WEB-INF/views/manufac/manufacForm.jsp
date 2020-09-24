@@ -87,7 +87,7 @@ function execPostCode() {
 
 
 <header class="card-header">
-	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<a href="${contextPath}/common/loginForm.do" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">제조업체 등록 신청</h4>
 </header>
 <article class="card-body">
@@ -179,7 +179,6 @@ function execPostCode() {
 			      <option>패션의류</option>
 			      <option>홈인테리어</option>
 			      <option>도서</option>
-			      <option>식품</option>
 				  <option selected="">기타</option>
 			  </select>
 		</div>

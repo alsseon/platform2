@@ -16,6 +16,19 @@
 		obj.action = "${contextPath}/notice/noticeList.do";
 		obj.submit();
 	}
+	function noticeCheck(){
+		var writeForm = document.writeForm;
+		if(writeForm.title.value==""){
+			alert("제목을 입력하세요");
+			writeForm.title.focus();
+			return false;
+		}
+		if(writeForm.content.value==""){
+			alert("내용을 입력하세요");
+			writeForm.content.focus();
+			return false;
+		}
+	}
 </script>
 <meta charset="UTF-8">
 <title>공지사항 작성</title>
@@ -25,7 +38,7 @@
 		<div class="col-sm-10">
 		<c:if test="${notice == null}">
 		</c:if>
-           <form name="writeForm" class="py-4" method="post" action="${contextPath}/notice/writeNotice.do">
+           <form name="writeForm" class="py-4" method="post" action="${contextPath}/notice/writeNotice.do" onsubmit="return noticeCheck()">
                <table class="table">
                    <h2>공지사항 작성</h2>               
                    <tr class="col-sm-12">
