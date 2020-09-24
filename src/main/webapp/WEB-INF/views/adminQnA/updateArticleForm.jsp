@@ -18,13 +18,15 @@
 	}
 	function adminQnACheck(){
 		var writeForm = document.writeForm;
+		var ckeditor = CKEDITOR.instances['description'];
+		console.log(ckeditor.getData());
 		if(writeForm.title.value==""){
-			alert("제목을 입력해주세요");
+			alert("제목을 입력하세요");
 			writeForm.title.focus();
 			return false;
 		}
-		if(writeForm.content.value==""){
-			alert("내용을 입력해주세요");
+		if(ckeditor.getData()==""){
+			alert("내용을 입력하세요");
 			writeForm.content.focus();
 			return false;
 		}

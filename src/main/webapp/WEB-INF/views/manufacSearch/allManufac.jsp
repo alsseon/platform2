@@ -44,30 +44,31 @@
 		    			</div>
 						<!--한칸-->
 					</c:forEach>
-		    		</div>
-    		<div class="row mt-5">
-          		<div class="col text-center">
-            		<div class="block-27">
-              			<ul>
-                 			<c:if test="${pageVO.startPage != 1}">
-                   				<li><a href="${contextPath}/manufacSearch/allManufac.do?nowPage=${pageVO.startPage -1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
-               				</c:if>
-               				<c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
-	                  			<c:choose>
-		                  			<c:when test="${idx == pageVO.nowPage }">
-		                   				<li class="active"><span> ${idx} </span></li>
-		                   			</c:when>
-		                   			<c:when test="${idx != pageVO.nowPage}">
-		                   				<li><a href="${contextPath}/manufacSearch/allManufac.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
-		                  			</c:when>
-	                     		</c:choose>
-                			</c:forEach>
-                			<c:if test="${pageVO.endPage != pageVO.lastPage }">
-	                   			<li><a href="${contextPath }/manufacSearch/allManufac.do?nowPage=${pageVO.endPage + 1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
-                			</c:if>
-              			</ul>
-            		</div>
-          		</div>
+		    		
+	    		<div class="row mt-5">
+	          		<div class="col text-center">
+	            		<div class="block-27">
+	              			<ul>
+	                 			<c:if test="${pageVO.startPage != 1}">
+	                   				<li><a href="${contextPath}/manufacSearch/allManufac.do?nowPage=${pageVO.startPage -1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
+	               				</c:if>
+	               				<c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
+		                  			<c:choose>
+			                  			<c:when test="${idx == pageVO.nowPage }">
+			                   				<li class="active"><span> ${idx} </span></li>
+			                   			</c:when>
+			                   			<c:when test="${idx != pageVO.nowPage}">
+			                   				<li><a href="${contextPath}/manufacSearch/allManufac.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
+			                  			</c:when>
+		                     		</c:choose>
+	                			</c:forEach>
+	                			<c:if test="${pageVO.endPage != pageVO.lastPage }">
+		                   			<li><a href="${contextPath }/manufacSearch/allManufac.do?nowPage=${pageVO.endPage + 1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
+	                			</c:if>
+	              			</ul>
+	            		</div>
+	          		</div>
+	        	</div>
         	</div>
           </div> <!-- .col-md-8 -->
 
@@ -197,9 +198,13 @@
             	data:{"manuType":select},
             	dataType:"json",
             	success:function(data){
+            		if(Object.keys(data).length == 0){
+            			alert("해당 데이터가 없습니다.")
+            		}
             		for(var i = 0 ; i<Object.keys(data).length; i++){
                 		var manufac = data[i];
                 		console.log(manufac);
+                		
           				fixHtml(manufac);
            			}
             	}
@@ -212,6 +217,9 @@
                 url:"${contextPath}/manufacSearch/serchBymanufacLoc.do?loc=" + select,
                 type:"GET",
                 success:function(data){
+                	if(Object.keys(data).length == 0){
+            			alert("해당 데이터가 없습니다.")
+            		}
                 	for(var i = 0 ; i<Object.keys(data).length; i++){
                 		var manufac = data[i];
                 		console.log(manufac);
