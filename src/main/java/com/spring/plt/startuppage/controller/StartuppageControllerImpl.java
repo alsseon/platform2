@@ -143,8 +143,39 @@ public class StartuppageControllerImpl implements StartuppageController{
 		ModelAndView mav = new ModelAndView("redirect:/startuppage/consultinglist.do?compId="+compId);
 		return mav;
 	}
-	
-
+	@Override
+	@RequestMapping(value= "/startuppage/com_conlist_del.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView com_deletestatus_con(@RequestParam("compId")String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		startuppageservice.deletecon(no);
+		ModelAndView mav = new ModelAndView("redirect:/startuppage/com_consultinglist.do?compId="+compId);
+		return mav;
+	}
+	@Override
+	@RequestMapping(value= "/startuppage/com_conlist_del_more.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView com_deletestatus_conmore(@RequestParam("compId")String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		startuppageservice.deletecon(no);
+		ModelAndView mav = new ModelAndView("redirect:/startuppage/com_consulting_more.do?compId="+compId);
+		return mav;
+	}
+	@Override
+	@RequestMapping(value="/startuppage/com_estilist_del.do" , method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView com_deletestatus(@RequestParam("compId") String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("delete NO: "+no);
+		startuppageservice.deleteesti(no);
+		ModelAndView mav = new ModelAndView("redirect:/startuppage/com_consultinglist.do?compId="+compId);
+		return mav;
+	}
+	@Override
+	@RequestMapping(value= "/startuppage/com_estilist_del_more.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView com_deletestatus_estimore(@RequestParam("compId")String compId, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		startuppageservice.deleteesti(no);
+		ModelAndView mav = new ModelAndView("redirect:/startuppage/com_esti_more.do?compId="+compId);
+		return mav;
+	}
 
 	
 	
@@ -303,6 +334,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 		List<StartupPageVO> c_conlist = startuppageservice.c_listcon(pagevo,compId);
 		List<StartupPageVO> c_estiList = startuppageservice.c_listesti(pagevo, compId);
 		ModelAndView mav = new ModelAndView(viewName);
+		System.out.println("이거되는거야?"+c_estiList);
 		mav.addObject("c_conlist",c_conlist);
 		mav.addObject("c_estiList", c_estiList);
 		mav.addObject("pagevo",pagevo);
@@ -335,7 +367,7 @@ public class StartuppageControllerImpl implements StartuppageController{
 	public ModelAndView com_esti_more(@RequestParam("compId") String compId, PageVO pageVO, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage,
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String)request.getAttribute("viewName");
-		int total = startuppageservice.conlistCount_c(compId);
+		int total = startuppageservice.estilistCount_c(compId);
 		System.out.println("total : " + total);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -352,5 +384,6 @@ public class StartuppageControllerImpl implements StartuppageController{
 		mav.addObject("pageVO",pageVO);
 		return mav;
 	}
+	
 
 }

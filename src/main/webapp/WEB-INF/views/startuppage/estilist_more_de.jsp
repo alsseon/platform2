@@ -80,7 +80,7 @@
        <tbody>
           <c:forEach var="manu_esti" items="${d_estilist}" >     
             <tr align="center">
-               <td><a href = "${contextPath }/viewOneQuotation.do?no=${manu_esti.no}">${manu_esti.manuname}</a></td>
+               <td><a href = "${contextPath }/quotation/viewOneQuotation.do?no=${manu_esti.no}&compId=${member.id}">${manu_esti.manuname}</a></td>
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">삭제</button></td>
             </tr>
@@ -93,7 +93,7 @@
             <div class="block-27">
               <ul>
               	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/startuppage/estilist_more_de.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
+	                <li><a href="${contextPath}/startuppage/estilist_more_de.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}&compId=${member.id}">&lt;</a></li>
 	            </c:if>
 	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
 	            	<c:choose>
@@ -101,7 +101,7 @@
 	                <li class="active"><span> ${idx} </span></li>
 	                </c:when>
 	                <c:when test="${idx != pagevo.nowPage}">
-	                <li><a href="${contextPath}/startuppage/estilist_more_de.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
+	                <li><a href="${contextPath}/startuppage/estilist_more_de.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}&compId=${member.id}"> ${idx} </a></li>
 	                </c:when>
 	         <%--      
 	                <li><a href="#">3</a></li>

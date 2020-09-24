@@ -48,10 +48,11 @@
         
     </style>
 	<script>
+	var manuId='${member.id}';
 	function del(no) {
 		var chk = confirm("철회하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/manufacpage/estilist_del.do?no="+no;
+			location.href="${contextPath}/manufacpage/estilist_del.do?no="+no+"&manuId="+manuId;
 			
 		}
 	}	
@@ -94,7 +95,7 @@
             <div class="block-27">
               <ul>
               	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/manufacpage/estilist_more_w.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
+	                <li><a href="${contextPath}/manufacpage/estilist_more_w.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}&manuId=${member.id}">&lt;</a></li>
 	            </c:if>
 	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
 	            	<c:choose>
@@ -102,7 +103,7 @@
 	                <li class="active"><span> ${idx} </span></li>
 	                </c:when>
 	                <c:when test="${idx != pagevo.nowPage}">
-	                <li><a href="${contextPath}/manufacpage/estilist_more_w.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
+	                <li><a href="${contextPath}/manufacpage/estilist_more_w.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}&manuId=${member.id}"> ${idx} </a></li>
 	                </c:when>
 	         <%--      
 	                <li><a href="#">3</a></li>
@@ -111,7 +112,7 @@
 	                </c:choose>
 	             </c:forEach>
 	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/manufacpage/estilist_more_w.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
+	                <li><a href="${contextPath}/manufacpage/estilist_more_w.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}&manuId=${member.id}">&gt;</a></li>
 	              </c:if>
               </ul>
               

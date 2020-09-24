@@ -187,12 +187,10 @@
 	         	</c:if>
 	         	<c:if test="${userType eq 'manu' }">
 	         		 <li><a href="${contextPath}/manufac/manufacSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/manufacpage/estilist.do?manuId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
 	         	</c:if>
 	         	<c:if test="${uesrType eq 'expert' }">
 	         		 <li><a href="${contextPath}/expert/expertSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/expertpage/consulting.do?expId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
 	         	</c:if>
 	         </ul>
