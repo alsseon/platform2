@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,5 +29,11 @@ public class MapController {
 		mav.addObject("manuAddrList", manuAddrList);
 		System.out.println(mav);
 		return mav;
+	}
+	
+	
+	@RequestMapping("/getGeo")
+	public Map<String, Map<String,Integer>> getGeo(HttpServletRequest requset ){
+		return null;
 	}
 }

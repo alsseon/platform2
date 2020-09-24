@@ -138,15 +138,7 @@
 			</div>
 		</div>
 	</section>
-<script type="text/javascript">
 
-		function onEnterLogin(){
-			var keyCode = window.event.keyCode;
-			if (keyCode == 13) { //엔테키 이면
-				loginButton.ex
-			}
-		} //onEnterLogin()
-</script>
 
 
 

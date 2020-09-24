@@ -46,29 +46,29 @@
 		    			</div>
 						<!--한칸-->
 					</c:forEach>
-		    		</div>
-	    		<div class="row mt-5">
-		          <div class="col">
-		            <div class="block-27"><!--페이징처리-->
-		              <ul>
-             			<c:if test="${pageVO.startPage != 1}">
-               				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${pageVO.startPage -1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
-           				</c:if>
-           				<c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
-	               			<c:choose>
-	                			<c:when test="${idx == pageVO.nowPage }">
-	                 				<li class="active"><span> ${idx} </span></li>
-	                 			</c:when>
-	                 			<c:when test="${idx != pageVO.nowPage}">
-	                 				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
-	                			</c:when>
-	                  		</c:choose>
-            			</c:forEach>
-            			<c:if test="${pageVO.endPage != pageVO.lastPage }">
-                			<li><a href="${contextPath }/expSearch/allExpert.do?nowPage=${pageVO.endPage +1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
-            			</c:if>
-        			</ul>
-	            </div><!--페이징처리-->
+		    		<div class="row mt-5">
+			          <div class="col">
+			            <div class="block-27"><!--페이징처리-->
+			              <ul>
+	             			<c:if test="${pageVO.startPage != 1}">
+	               				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${pageVO.startPage -1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
+	           				</c:if>
+	           				<c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
+		               			<c:choose>
+		                			<c:when test="${idx == pageVO.nowPage }">
+		                 				<li class="active"><span> ${idx} </span></li>
+		                 			</c:when>
+		                 			<c:when test="${idx != pageVO.nowPage}">
+		                 				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
+		                			</c:when>
+		                  		</c:choose>
+	            			</c:forEach>
+	            			<c:if test="${pageVO.endPage != pageVO.lastPage }">
+	                			<li><a href="${contextPath }/expSearch/allExpert.do?nowPage=${pageVO.endPage +1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
+	            			</c:if>
+	        			</ul>
+		            </div><!--페이징처리-->
+	            </div>
 	          </div>
 	        </div>
           </div> <!-- .col-md-8 -->
@@ -178,6 +178,9 @@
             		//객체가 data로 반환 된다.
             		//반환 된 객체의 정보를 담아 fixHtml함수를 이용해 화면에 그려낸다.
             		//data에 담겨져있는 id값으로 이미지 네임을 조회해여 fixHtml로 같이 넘겨준다.
+            		if(Object.keys(data).length == 0){
+            			alert("해당 데이터가 없습니다.")
+            		}
             		for(var i = 0 ; i<Object.keys(data).length; i++){
                 		var expert = data[i];
                 		var expertId = data[i].id
@@ -204,6 +207,9 @@
                 type:"GET",
                 data:{"name":select},
                 success:function(data){
+                	if(Object.keys(data).length == 0){
+            			alert("해당 데이터가 없습니다.")
+            		}
                 	for(var i = 0 ; i<Object.keys(data).length; i++){
                 		var expert = data[i];
                 		var expertId = expert.id
