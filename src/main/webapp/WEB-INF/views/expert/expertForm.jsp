@@ -20,7 +20,7 @@
 	function joinCheck(){
 		var joinForm = document.joinForm;
 		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.expName.value==""||joinForm.expEmail.value==""
-				||joinForm.expTel.value==""||joinForm.expDetail.value==""){
+				||joinForm.expTel.value==""||joinForm.expDetail.value==""||joinForm.expCertif.value==""||joinForm.expCareer.value==""){
 			alert('입력되지 않은 사항이 있습니다.');
 			return false;
 		}

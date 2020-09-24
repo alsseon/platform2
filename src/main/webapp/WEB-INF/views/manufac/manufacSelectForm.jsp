@@ -225,7 +225,7 @@ body > div > form > div:nth-child(2) > button{
 			</div>
 			<div style="width: 30%; padding-left=20px;"> 
 				<button type="submit" class="btn btn-sm btn-primary" id="btnSignup">수정완료</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnCancel">취소</button>
+				<button type="button" class="btn btn-sm btn-primary" id="btnCancel" onclick="history.go(-1);">취소</button>
 				<input type="button" value="탈퇴" onclick="delete_button();" class="btn btn-danger btn-xs">
 			</div>
 		</form>
