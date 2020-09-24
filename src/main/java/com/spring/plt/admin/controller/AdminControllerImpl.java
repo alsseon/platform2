@@ -124,4 +124,13 @@ public class AdminControllerImpl implements AdminController {
 		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
+	
+	@RequestMapping(value="/common/about.do", method=RequestMethod.GET)
+	public ModelAndView about(HttpServletRequest request, HttpServletRequest response) throws Exception{
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
 }

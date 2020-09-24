@@ -161,9 +161,9 @@
               </div>
               <div style="display: inline-block; vertical-align: middle; font-size: 16px; width: 150px" >
                 <ul style="list-style: none;">
-                  <li> ${expertVO.expName }</li>
-                  <li> ${expertVO.expEmail }</li>
-                  <li> ${expertVO.expBizField }</li>
+                  <li> ${expertVO.expName}</li>
+                  <li> ${expertVO.expEmail}</li>
+                  <li> ${expertVO.expBizField}</li>
                 </ul>
                 <c:if test="${member.type == 'startup'}">
 	                <a href="${contextPath}/consulting/insertConsultingForm.do?expId=${expertVO.id}" class="btn btn-primary mb-3" style="width: 150px">컨설팅 요청</a>
@@ -171,7 +171,9 @@
                 </c:if>
                 <a href="${contextPath}/expSearch/allExpert.do" class="btn btn-primary mb-3" style="width: 150px">목록으로</a>
                 <br>
-                <a data-toggle="modal" href="#messageToExpert" class="btn btn-primary" style="width: 150px">쪽지 보내기</a>
+                <c:if test="${member.type == 'startup' }">
+	                <a data-toggle="modal" href="#messageToExpert" class="btn btn-primary" style="width: 150px">쪽지 보내기</a>
+                </c:if>
               </div>
             </div>
             <div style="float: left;">
