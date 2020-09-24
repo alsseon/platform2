@@ -181,7 +181,7 @@
 	         <ul style="list-style: none;">
 	         	<c:if test="${userType eq 'startup' }">
 			         <li><a href="${contextPath}/startup/startUpSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do?compId=${user.id}">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
 	         	</c:if>

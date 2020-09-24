@@ -15,12 +15,9 @@
   <body>
 		<section class="ftco-section">
 			<div class="container">
-<<<<<<< HEAD
-				
-				  
-				
-=======
->>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
+
+
+
 				<div class="subtitle">
 					<h2>제조업체</h2>
 				</div>
