@@ -226,8 +226,8 @@
                 </div>
                 <form id="queForm">
                     <div class="modal-body">
-                    	<input type="text" name="id" value="${member.id}">
-                    	<input type="text" name="expId" value="${expertVO.id}">
+                    	<input type="hidden" name="id" value="${member.id}">
+                    	<input type="hidden" name="expId" value="${expertVO.id}">
 						<textarea class="form-control" cols="20" rows="5" name="content"></textarea>
                     </div>
                     <div class="modal-footer">

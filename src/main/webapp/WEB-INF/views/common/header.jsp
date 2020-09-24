@@ -85,7 +85,7 @@
 		var adminMessage = document.adminMessage
 		if(adminMessage.content.value==""){
 			alert("내용을 입력해주세요");
-			message.content.focus();
+			adminMessage.content.focus();
 			return false;
 		}
 	}
