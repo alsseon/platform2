@@ -70,11 +70,11 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		return mav;
 	}
 	@RequestMapping(value="/manufacpage/com_estilist_del.do" , method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView com_deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public ModelAndView com_deletestatus(@RequestParam("manuId") String manuId,@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("delete NO: "+no);
 		manufacservice.deleteesti(no);
-		ModelAndView mav = new ModelAndView("redirect:/manufacpage/com_estilist.do");
+		ModelAndView mav = new ModelAndView("redirect:/manufacpage/com_estilist.do?manuId="+manuId);
 		return mav;
 	}
 	@RequestMapping(value ="/manufacpage/estilist_updatestatus.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -165,6 +165,7 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		response.setContentType("html/text; charset=utf-8");
 		String viewName = (String)request.getAttribute("viewName");
 		int total = manufacservice. listCount_d(manuId);
+		System.out.println("≈‰≈∏∏Æ: " +total);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -181,5 +182,6 @@ public class ManufacPageControllerImpl implements ManufacPageController{
 		mav.addObject("pagevo",pagevo);
 		return mav;
 }
+
 	
 }

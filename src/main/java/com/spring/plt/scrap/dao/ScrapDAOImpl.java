@@ -16,28 +16,28 @@ public class ScrapDAOImpl implements ScrapDAO{
 	private SqlSession sqlSession;
 	
 	//scrap
-	//?쟾臾멸? 4媛쒕쭔 異쒕젰
+	//?�읈�눧硫�? 4揶쏆뮆彛� �빊�뮆�젾
 	@Override
 	public List<ScrapVO> printExpertScrap(String compId) throws DataAccessException{
 		List<ScrapVO> expertScrapList = sqlSession.selectList("mapper.expertScrap.printExpertScrap", compId);
 		return expertScrapList;
 	}
 	
-	//?쟾臾멸? * 異쒕젰
+	//?�읈�눧硫�? * �빊�뮆�젾
 	@Override
 	public List<ScrapVO> printExpertScrapAll(Map compMap) throws DataAccessException{
 		List<ScrapVO> expertScrapAllList = sqlSession.selectList("mapper.expertScrap.printExpertScrapAll", compMap);
 		return expertScrapAllList;
 	}
 	
-	//?젣議곗뾽泥? 4媛쒕쭔 異쒕젰
+	//?�젫鈺곌퀣毓쏙㎗? 4揶쏆뮆彛� �빊�뮆�젾
 	@Override
 	public List<ScrapVO> printManuScrap(String compId) throws DataAccessException{
 		List<ScrapVO> manuScrapList = sqlSession.selectList("mapper.manuScrap.printManuScrap", compId);
 		return manuScrapList;
 	}
 	
-	//?젣議곗뾽泥? * 異쒕젰
+	//?�젫鈺곌퀣毓쏙㎗? * �빊�뮆�젾
 	@Override
 	public List<ScrapVO> printManuScrapAll(Map compMap) throws DataAccessException{
 		List<ScrapVO> manuScrapAllList = sqlSession.selectList("mapper.manuScrap.printManuScrapAll", compMap);
@@ -76,11 +76,13 @@ public class ScrapDAOImpl implements ScrapDAO{
 		return sqlSession.selectOne("mapper.expertScrap.listCount", compId);
 	}
 	
-	public int isOverlapE(String expId) throws Exception{
-		return sqlSession.selectOne("mapper.expertScrap.overlap", expId);
+	public int isOverlapE(Map overlap) throws Exception{
+		return sqlSession.selectOne("mapper.expertScrap.overlap", overlap);
 	}
 	
-	public int isOverlapM(String expId) throws Exception{
-		return sqlSession.selectOne("mapper.manuScrap.overlap", expId);
+	public int isOverlapM(Map overlap) throws Exception{
+		return sqlSession.selectOne("mapper.manuScrap.overlap", overlap);
 	}
+	
+	
 }

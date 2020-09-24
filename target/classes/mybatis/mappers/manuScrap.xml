@@ -55,7 +55,7 @@
 	<select id="overlap" resultType="int">
 		<![CDATA[
 			select count(*) from manuscrap
-			where manuid=#{manuid}
+			where manuid=#{manuId} and compId=#{compId}
 		]]>
 	</select>
 
