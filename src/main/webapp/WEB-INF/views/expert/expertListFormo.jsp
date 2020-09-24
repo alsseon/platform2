@@ -83,7 +83,6 @@ thead, tbody tr {
 </head>
 <body>
 <div class="container">
-	<div class="table-responsive" id="sailorTableArea">
     <table id="sailorTable" class="table table-striped table-bordered" width="100%" >
 				<tr>
 					<th>아이디</th>
@@ -135,7 +134,6 @@ thead, tbody tr {
                     	</c:when>
                     </c:choose>
             </table><!--  등록된 전문가     -->
-            </div>
            
 </div>
      <script src="js/jquery.min.js"></script>

@@ -16,6 +16,16 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <head>
+<script type="text/javascript">
+	function joinCheck(){
+		var joinForm = document.joinForm;
+		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.expName.value==""||joinForm.expEmail.value==""
+				||joinForm.expTel.value==""||joinForm.expDetail.value==""||joinForm.expCertif.value==""||joinForm.expCareer.value==""){
+			alert('입력되지 않은 사항이 있습니다.');
+			return false;
+		}
+	}
+</script>
 <meta charset="UTF-8">
 <title>전문가 등록</title>
 </head>
@@ -30,7 +40,7 @@
 	<h4 class="card-title mt-2">전문가 등록 신청</h4>
 </header>
 <article class="card-body">
-<form method="post" action="${contextPath}/expert/join_expert.do" enctype="multipart/form-data">
+<form method="post" name="joinForm" action="${contextPath}/expert/join_expert.do" enctype="multipart/form-data" onsubmit="joinCheck();">
 
 		<div class="col form-group">
 			<label>아이디 </label>   
@@ -81,10 +91,10 @@
 		<div class="form-group">
 		  <label>업종</label>
 			  <select id="expBizField" class="form-control" name="expBizField">
-			      <option>가전 / 디지털</option>
-			      <option>패션의류 / 잡화</option>
+			      <option>가전</option>
+			      <option>패션의류</option>
 			      <option>홈인테리어</option>
-			      <option>도서 / 음반</option>
+			      <option>도서</option>
 			      <option>식품</option>
 				  <option selected="">기타</option>
 			  </select>

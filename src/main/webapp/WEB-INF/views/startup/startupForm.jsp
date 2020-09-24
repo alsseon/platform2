@@ -61,8 +61,26 @@ function execPostCode() {
 
 </script>
 <head>
+<style>
+#content > div > form > div:nth-child(2) > input[type=password]:nth-child(3){
+	width : 200px;
+	height : 50px;
+}
+</style>
+
 <meta charset="UTF-8">
 <title>스타트업 회원가입 폼</title>
+<script type="text/javascript">
+	function joinCheck(){
+		var joinForm = document.joinForm;
+		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.compName.value==""||joinForm.compCeoName.value==""||joinForm.compEmail.value==""
+				||joinForm.compBizNo.value==""||joinForm.compAddr.value==""||joinForm.compDetailAddr.value==""||joinForm.compTel.value==""||joinForm.compStart.value==""
+				||joinForm.compDetail.value==""||joinForm.compBizType.value==""||joinForm.compImg.value==""){
+			alert('입력되지 않은 사항이 있습니다.');
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <div class="container">
@@ -75,7 +93,7 @@ function execPostCode() {
 	<h4 class="card-title mt-2">스타트업 회원가입</h4>
 </header>
 <article class="card-body">
-<form method="post" action="${contextPath}/startup/join_startup.do" enctype="multipart/form-data">
+<form name="joinForm" method="post" action="${contextPath}/startup/join_startup.do" enctype="multipart/form-data" onsubmit="return joinCheck()">
 
 		<div class="col form-group">
 			<label>아이디 </label>   
@@ -139,10 +157,10 @@ function execPostCode() {
 		<div class="form-group">
 		  <label>업종</label>
 			  <select id="compBizType" class="form-control" name="compBizType">
-			      <option>가전 / 디지털</option>
-			      <option>패션의류 / 잡화</option>
+			      <option>가전 </option>
+			      <option>패션의류</option>
 			      <option>홈인테리어</option>
-			      <option>도서 / 음반</option>
+			      <option>도서</option>
 			      <option>식품</option>
 				  <option selected="">기타</option>
 			  </select>

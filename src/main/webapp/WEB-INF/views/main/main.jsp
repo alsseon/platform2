@@ -72,7 +72,7 @@
             </div>
             <div class="text p-4">
                <p class="mb-2"><span class="price">최소발주금액&nbsp; ${manufac.productPrice}만원</span></p>
-               <h2><a href="#">${manufac.manuName}</a></h2>
+               <h2><a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}">${manufac.manuName}</a></h2>
                <span class="position">${manufac.manuAddr}</span>
                <div>
                		<span class="position">${manufac.manuBizType}</span>
@@ -87,8 +87,13 @@
          <div class="book-wrap d-lg-flex">
             <div class="img d-flex justify-content-end" style="background-image: url(${contextPath}/download.do?id=${manufac.id}&imageFileName=${manufac.manuImg});">
                <div class="in-text">
+<<<<<<< HEAD
                   <a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapExpClass" data-toggle="tooltip" data-placement="left" title="Scrap">
                      <span id="${expert.id}" class="flaticon-heart-1"></span>
+=======
+                  <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                     <span class="flaticon-heart-1"></span>
+>>>>>>> branch 'master' of https://github.com/pltproject/platformmerge.git
                   </a>
                   <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
