@@ -6,7 +6,7 @@
 <%
   request.setCharacterEncoding("UTF-8");
 %> 
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />	
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
 <head>
@@ -246,7 +246,7 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item"><a href="#" class="nav-link">사이트 소개</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/common/about.do" class="nav-link">플랫폼 소개</a></li>
 	        	<li class="nav-item"><a href="${contextPath}/manufacSearch/allManufac.do" class="nav-link">제조사 찾기</a></li>
 	        	<li class="nav-item"><a href="${contextPath}/expSearch/allExpert.do" class="nav-link">전문가 찾기</a></li>
 	        	<li class="nav-item"><a href="${contextPath}/notice/noticeList.do" class="nav-link">공지사항</a></li>
