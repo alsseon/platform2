@@ -21,10 +21,10 @@
           <div class="col-lg-9 ftco-animate">
 					<div class="row con">
 					 
-					 
+					<div class="col-12">
 					<c:forEach var = "expert" items = "${expertList}">
 						<!--한칸-->
-		    			<div class="col-md-4 d-flex">
+		    			<div class="col-md-4 d-flex" style="float:left">
 		    				<div class="book-wrap">
 		    				<c:forEach var="expertImg" items="${expertImgList}">
 		    					<c:if test="${expert.id == expertImg.id}">
@@ -50,6 +50,7 @@
 		    			</div>
 						<!--한칸-->
 					</c:forEach>
+					</div>
 		    		<div class="row mt-5">
 			          <div class="col">
 			            <div class="block-27"><!--페이징처리-->
@@ -99,7 +100,7 @@
               <!-- <h5>전문가 이름 검색</h5> -->
               
               <div class="form-group" style="margin-top:10%">
-              	<input type="text" id="expertName" placeholder="전문가 이름 검색"/><span style="margin-left:7%"></span><button id="serchByName" class="btn btn-primary search">검색</button>
+              	<input type="text" id="expertName" placeholder="전문가 이름 검색" style="float:left; width:180px;"/><span style="margin-left:7%"></span><button id="serchByName" style="padding-left: 10px;" class="btn btn-primary search">검색</button>
               </div>
               <!-- <h5>전문가 이름 검색</h5> -->
             </div>
