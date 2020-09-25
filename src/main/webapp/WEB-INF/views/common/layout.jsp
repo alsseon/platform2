@@ -13,7 +13,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -26,10 +26,12 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
 <title><tiles:insertAttribute name="title" /></title>
-<script>
-	
-</script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	*{
+	font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
 </head>
 <body>
 	<div id="container">

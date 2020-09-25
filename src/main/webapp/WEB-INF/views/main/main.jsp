@@ -27,6 +27,10 @@
 	#introImage{
 		opacity:0.7;
 	}
+	
+	* {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
 </style>
     <meta charset="utf-8">
   </head>
@@ -37,8 +41,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-8 ftco-animate d-flex align-items-end">
-             <div class="text w-100">
-               <h1 id="intro" class="mb-4">스타트 업의 고민을 해결하기 위한 사이트</h1>
+             <div class="text w-100" style="font-family: 'Noto Sans KR', sans-serif;">
+               <h1 id="intro" class="mb-4" style="font-family: 'Noto Sans KR', sans-serif;">스타트 업의 고민을 해결하기 위한 사이트</h1>
                <p id="intro" class="mb-4">작은 고민부터 시제품 제작 까지 전문가와 제조업체가 함께합니다.</p>
                <p><a href="${contextPath}/expSearch/allExpert.do" class="btn btn-primary py-3 px-4">전문가 컨설팅 검색</a> <a href="${contextPath}/manufacSearch/allManufac.do" class="btn btn-white py-3 px-4">제조 업체 매칭</a></p>
             </div>
@@ -54,7 +58,7 @@
       <div class="row justify-content-center pb-5 mb-3">
       <div class="col-md-7 heading-section text-center ftco-animate">
       <span class="subheading">분야별</span>
-      <h2>제조업체 리스트</h2>
+      <h2  style="font-family: 'Noto Sans KR', sans-serif;">제조업체 리스트</h2>
       </div>
       </div>
    </div>
@@ -74,11 +78,11 @@
                </div>
             </div>
             <div class="text p-4">
-               <p class="mb-2"><span class="price">최소발주금액&nbsp; ${manufac.productPrice}만원</span></p>
-               <h2><a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}">${manufac.manuName}</a></h2>
-               <span class="position">${manufac.manuAddr}</span>
+               <p class="mb-2"><span class="price" style="font-family: 'Noto Sans KR', sans-serif;">최소발주금액&nbsp; ${manufac.productPrice}만원</span></p>
+               <h2><a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" style="font-family: 'Noto Sans KR', sans-serif;">${manufac.manuName}</a></h2>
+               <span class="position" style="font-family: 'Noto Sans KR', sans-serif;">${manufac.manuAddr}</span>
                <div>
-               		<span class="position">${manufac.manuBizType}</span>
+               		<span class="position" style="font-family: 'Noto Sans KR', sans-serif;">${manufac.manuBizType}</span>
                </div>
             </div>
          </div>
@@ -92,6 +96,7 @@
                <div class="in-text">
                   <a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapExpClass" data-toggle="tooltip" data-placement="left" title="Scrap">
                      <span id="${expert.id}" class="flaticon-heart-1"></span>
+                  </a>
                   <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                      <span class="flaticon-heart-1"></span>
                   </a>
@@ -101,9 +106,9 @@
                </div>
             </div>
             <div class="text p-4 order-md-first">
-               <p class="mb-2"><span class="price">최소발주금액&nbsp; ${manufac.productPrice}만원</span></p>
-               <h2><a href="#">${manufac.manuName}</a></h2>
-               <span class="position">${manufac.manuAddr}</span>
+               <p class="mb-2"><span class="price" style="font-family: 'Noto Sans KR', sans-serif;">최소발주금액&nbsp; ${manufac.productPrice}만원</span></p>
+               <h2><a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" style="font-family: 'Noto Sans KR', sans-serif;">${manufac.manuName}</a></h2>
+               <span class="position" style="font-family: 'Noto Sans KR', sans-serif;">${manufac.manuAddr}</span>
             </div>
          </div>
       </div>
@@ -117,7 +122,7 @@
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
              <span class="subheading">Testimonial</span>
-            <h2 class="mb-3">Kinds Words From Clients</h2>
+            <h2 class="mb-3" style="font-family: 'Noto Sans KR', sans-serif;">Kinds Words From Clients</h2>
           </div>
         </div>
         <div class="row ftco-animate">

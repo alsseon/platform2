@@ -10,6 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
 <meta charset="UTF-8">
 <title>헤더</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -245,12 +250,12 @@
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item"><a href="${contextPath}/common/about.do" class="nav-link">플랫폼 소개</a></li>
-	        	<li class="nav-item"><a href="${contextPath}/manufacSearch/allManufac.do" class="nav-link">제조사 찾기</a></li>
-	        	<li class="nav-item"><a href="${contextPath}/expSearch/allExpert.do" class="nav-link">전문가 찾기</a></li>
-	        	<li class="nav-item"><a href="${contextPath}/notice/noticeList.do" class="nav-link">공지사항</a></li>
-	        	<li class="nav-item"><a href="${contextPath}/adminQnA/listArticles.do" class="nav-link">Q&A</a></li>
+	        <ul class="navbar-nav m-auto" >
+	        	<li class="nav-item"><a href="${contextPath}/common/about.do" class="nav-link" style="font-family: 'Noto Sans KR', sans-serif;">플랫폼 소개</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/manufacSearch/allManufac.do" class="nav-link" style="font-family: 'Noto Sans KR', sans-serif;">제조사 찾기</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/expSearch/allExpert.do" class="nav-link" style="font-family: 'Noto Sans KR', sans-serif;">전문가 찾기</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/notice/noticeList.do" class="nav-link" style="font-family: 'Noto Sans KR', sans-serif;">공지사항</a></li>
+	        	<li class="nav-item"><a href="${contextPath}/adminQnA/listArticles.do" class="nav-link" style="font-family: 'Noto Sans KR', sans-serif;">Q&A</a></li>
 	        </ul>
 	      </div>
 	    </div>
