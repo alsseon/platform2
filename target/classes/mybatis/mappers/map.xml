@@ -16,5 +16,8 @@
 			select manuname,manuaddr,manudetailaddr,id from manufacturer
 		]]>
 	</select>
-
+	
+	<select id="getGeo" resultMap="mapVO">
+		select manuname, id,manuaddr from manufacturer
+	</select>
 </mapper>

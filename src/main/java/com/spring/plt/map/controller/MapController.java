@@ -1,5 +1,7 @@
 package com.spring.plt.map.controller;
 
+import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.plt.map.vo.MapVO;
@@ -32,8 +35,22 @@ public class MapController {
 	}
 	
 	
-	@RequestMapping("/getGeo")
-	public Map<String, Map<String,Integer>> getGeo(HttpServletRequest requset ){
-		return null;
+	@RequestMapping("/map/getGeo")
+	@ResponseBody
+	public Map<String, String> getGeo(HttpServletRequest requset, HttpServletResponse response ){
+		List<MapVO> mapVO = sqlSession.selectList("mapper.map.getGeo");
+		Map<String, String> manuAddr = new HashMap<String, String>();
+		
+		for(int i = 0 ; i <mapVO.size(); i++) {
+			try {
+				if(mapVO.get(i).getManuAddr() != null) {
+					manuAddr.put(mapVO.get(i).getManuName(), mapVO.get(i).getManuAddr());
+				}
+			} catch (Exception e) {
+				System.out.println(false);
+			}
+		}
+		System.out.println(manuAddr);
+		return manuAddr;
 	}
 }
