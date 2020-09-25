@@ -52,7 +52,7 @@
 								<h3>${expertScrap.expName }</h3>
 								<div class="faded">
 									<p>${expertScrap.expBizField }<br>${expertScrap.expTel }</p>
-									<a href="${contextPath }/viewExpert?id=${expertScrap.expid }" class="btn btn-primary">상세페이지</a>
+									<a href="${contextPath }/expSearch/viewExpert.do?id=${expertScrap.expid }" class="btn btn-primary">상세페이지</a>
 									<a href="${contextPath }/scrap/deleteExpertScrap.do?no=${expertScrap.no}&compId=${member.id}" class="btn btn-primary">삭제</a>
 	<!-- sns 코드
 									<ul class="ftco-social text-center">

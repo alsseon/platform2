@@ -18,7 +18,10 @@ public class ManufacServiceImpl implements ManufacService {
 	
 	@Override
 	public ManufacVO login(ManufacVO manufacVO) throws Exception {
+		ManufacVO manufacMember = manufacDAO.loginById(manufacVO);		
+		if(manufacMember !=null) {			
 		manufacDAO.insertLoginLog(manufacVO);
+		}
 		return manufacDAO.loginById(manufacVO);
 	}
 	

@@ -20,7 +20,10 @@ public class ExpertServiceImpl implements ExpertService {
 	
 	@Override
 	public ExpertVO login(ExpertVO expertVO) throws Exception {
+		ExpertVO expertMember = expertDAO.loginById(expertVO);
+		if(expertMember != null) {
 		expertDAO.insertLoginLog(expertVO);
+		}
 		return expertDAO.loginById(expertVO);
 	}	
 		

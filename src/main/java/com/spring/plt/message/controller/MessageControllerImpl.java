@@ -43,7 +43,7 @@ public class MessageControllerImpl implements MessageController{
 		try {
 			messageService.sendMessage(message);
 			complete = "<script>";
-			complete += " alert('쪽지가 정상적으로 보내졌습니다.');";
+			complete += " alert('쪽지가 정상적으로 발송되었습니다.');";
 			complete += " location.href='"+request.getContextPath()+"/message/messageList.do?id="+message.getSendId()+"';";
 			complete +=" </script>";
 			resEnt = new ResponseEntity(complete, responseHeaders, HttpStatus.CREATED);
