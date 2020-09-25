@@ -97,9 +97,6 @@
                   <a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapExpClass" data-toggle="tooltip" data-placement="left" title="Scrap">
                      <span id="${expert.id}" class="flaticon-heart-1"></span>
                   </a>
-                  <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                     <span class="flaticon-heart-1"></span>
-                  </a>
                   <a href="${contextPath}/manufacSearch/viewManufac.do?id=${manufac.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
                      <span class="flaticon-search"></span>
                   </a>
