@@ -33,7 +33,7 @@
         	<!-- 소개 사진 한칸 -->
           	<div class="col-lg-5 ftco-animate" style="height:500px">
 	          	<p>
-	              <img src="${contextPath }/resources/images/image_1.jpg" alt="" class="img-fluid">
+	              <img src="${contextPath}/download.do?id=${expertVO.id}&imageFileName=${expImageList[1].imageFileName}" alt="" class="img-fluid">
 	            </p>
            </div> <!-- .col-md-8 -->
            <!-- 소개 사진 한칸 -->
