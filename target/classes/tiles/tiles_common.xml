@@ -47,5 +47,10 @@
 	    <put-attribute name="title" value="마이페이지" />
 	    <put-attribute name="body" value="/WEB-INF/views/common/MyPage.jsp" />
     </definition>
+    
+    <definition name="/common/about" extends="baseLayout">
+    	<put-attribute name="title" value="플랫폼 소개" />
+    	<put-attribute name="body" value="/WEB-INF/views/common/about.jsp" />
+    </definition>
 	
 </tiles-definitions>

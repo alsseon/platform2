@@ -126,12 +126,12 @@
                     					<td style="width:10%">${message.receiveId}</td>
                     					<c:if test="${message.seRead == 0}">
                     						<td class="text-right text-info bg-warning" id="messageContent">
-                    							<a class="text-info" href="${contextPath}/message/readMessage.do?NO=${message.NO}">${message.content}</a>
+                    							<a class="text-info" href="${contextPath}/message/readMessage.do?messageNO=send${message.NO}">${message.content}</a>
                     						</td>
                     					</c:if>
                     					<c:if test="${message.seRead == 1}">
                     						<td class="text-right text-muted bg-warning" id="messageContent">
-                    							<a class="text-muted" href="${contextPath}/message/readMessage.do?NO=${message.NO}">${message.content}</a>
+                    							<a class="text-muted" href="${contextPath}/message/readMessage.do?messageNO=send${message.NO}">${message.content}</a>
                     						</td>
                     					</c:if>
                     					<td style="width:20%">${message.writeDate}</td>
@@ -146,12 +146,12 @@
                     					<td style="width:10%">${message.receiveId}</td>
                     					<c:if test="${message.reRead == 0}">
 	                    					<td class="text-left text-info bg-light" id="messageContent">
-	                    						<a class="text-info" href="${contextPath}/message/readMessage.do?NO=${message.NO}">${message.content}</a>
+	                    						<a class="text-info" href="${contextPath}/message/readMessage.do?messageNO=receive${message.NO}">${message.content}</a>
 	                    					</td>
                     					</c:if>
                     					<c:if test="${message.reRead == 1}">
                     						<td class="text-left text-muted bg-light" id="messageContent">
-	                    						<a class="text-muted" href="${contextPath}/message/readMessage.do?NO=${message.NO}">${message.content}</a>
+	                    						<a class="text-muted" href="${contextPath}/message/readMessage.do?messageNO=receive${message.NO}">${message.content}</a>
 	                    					</td>
                     					</c:if>
                     					<td style="width:20%">${message.writeDate}</td>

@@ -54,6 +54,7 @@ public class AdminControllerImpl implements AdminController {
 	      mav.setViewName(viewName);
 	      return mav;
 	   }
+	
 	@RequestMapping(value="/admin/LoginLogForm.do", method= {RequestMethod.GET, RequestMethod.GET})
 	public ModelAndView LoginLog(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		List<LoginLogVO> LoginLog = adminService.LoginLog();
@@ -124,4 +125,13 @@ public class AdminControllerImpl implements AdminController {
 		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
+	
+	@RequestMapping(value="/common/about.do", method=RequestMethod.GET)
+	public ModelAndView about(HttpServletRequest request, HttpServletRequest response) throws Exception{
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
 }

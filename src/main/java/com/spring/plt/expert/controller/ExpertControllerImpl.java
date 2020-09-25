@@ -183,7 +183,7 @@ public class ExpertControllerImpl implements ExpertController {
 		expertService.deleteexpert(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main/main.do");
+		mav.setViewName("redirect:/expert/expertListForm.do");
 		return mav; 
 	}
 
@@ -205,6 +205,7 @@ public class ExpertControllerImpl implements ExpertController {
 		String detail = (String) expMap.get("expDetail");
 		String id = (String) expMap.get("id");
 		String message;
+		String referer = request.getHeader("Referer");
 		ResponseEntity resEnt = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
@@ -227,7 +228,7 @@ public class ExpertControllerImpl implements ExpertController {
 			session.setAttribute("expert", expertVO);
 			message = "<script>";
 			message += " alert('수정 완료');";
-			message += " location.href='"+request.getContextPath()+"/main/main.do';";
+			message += " history.go(-2);";  
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
@@ -260,6 +261,13 @@ public class ExpertControllerImpl implements ExpertController {
 		}
 		return imageFileName;
 	}
-	
+	@RequestMapping(value="expert/overlapCheck.do", method= RequestMethod.GET)
+	@ResponseBody
+	public int overlapCheck(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		System.out.println("1111");
+		int count = 0;
+		count = expertService.overlapCheck(id);
+		return count;
+	}
 	
 }

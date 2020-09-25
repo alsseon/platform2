@@ -12,18 +12,16 @@
 <head>
 <script src = "${contextPath}/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
-	function backToList(obj){
-		obj.action = "${contextPath}/notice/noticeList.do";
-		obj.submit();
-	}
 	function noticeCheck(){
 		var writeForm = document.writeForm;
+		var ckeditor = CKEDITOR.instances['description'];
+		console.log(ckeditor.getData());
 		if(writeForm.title.value==""){
 			alert("제목을 입력하세요");
 			writeForm.title.focus();
 			return false;
 		}
-		if(writeForm.content.value==""){
+		if(ckeditor.getData()==""){
 			alert("내용을 입력하세요");
 			writeForm.content.focus();
 			return false;
@@ -40,7 +38,7 @@
 		</c:if>
            <form name="writeForm" class="py-4" method="post" action="${contextPath}/notice/writeNotice.do" onsubmit="return noticeCheck()">
                <table class="table">
-                   <h2>공지사항 작성</h2>               
+                   <h2>공지사항 작성</h2>
                    <tr class="col-sm-12">
                        <td align="center">작성자</td>
                        <td><input name="writer" id="writer" type="text" class="form-control" value="관리자" readonly></td>
@@ -68,7 +66,7 @@
 				  </tr>
                </table>
 	           <button type="submit" class="btn btn-primary">글쓰기</button>               
-               <button class="btn btn-secondary" onClick = "backToList(this.form)">목록</button>
+               <a class="btn btn-secondary" href="${contextPath}/notice/noticeList.do">목록</a>
            </form>
         </div>
 	</div>

@@ -70,13 +70,18 @@ function execPostCode() {
 
 <meta charset="UTF-8">
 <title>스타트업 회원가입 폼</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+	var checked = false;
 	function joinCheck(){
 		var joinForm = document.joinForm;
 		if(joinForm.name.value==""||joinForm.pwd.value==""||joinForm.compName.value==""||joinForm.compCeoName.value==""||joinForm.compEmail.value==""
 				||joinForm.compBizNo.value==""||joinForm.compAddr.value==""||joinForm.compDetailAddr.value==""||joinForm.compTel.value==""||joinForm.compStart.value==""
 				||joinForm.compDetail.value==""||joinForm.compBizType.value==""||joinForm.compImg.value==""){
 			alert('입력되지 않은 사항이 있습니다.');
+			return false;
+		}else if(checked==false){
+			alert('아이디 중복체크를 해야 합니다.');
 			return false;
 		}
 	}
@@ -89,7 +94,7 @@ function execPostCode() {
 
 
 <header class="card-header">
-	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<a href="${contextPath}/common/loginForm.do" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">스타트업 회원가입</h4>
 </header>
 <article class="card-body">
@@ -97,7 +102,26 @@ function execPostCode() {
 
 		<div class="col form-group">
 			<label>아이디 </label>   
-		  	<input type="text" class="form-control" name="id">
+		  	<input type="text" class="form-control" id="id" name="id">
+		  	<div class="btn btn-secondary" onClick="overlapCheck()">중복 확인</div>
+		  	<script>
+		  	function overlapCheck(){
+				var id = document.getElementById('id').value;
+				$.ajax({
+					url:"${contextPath}/startup/overlapCheck.do",
+					type:"get",
+					data:{"id":id},
+					success:function(data){
+						if(data == 1){
+							alert('사용 불가능한 아이디입니다.')
+						}else if(data == 0){
+							alert('사용이 가능한 아이디입니다.')
+							checked = true;
+						}
+					}
+				})
+			}
+		  	</script>
 		</div> 
 		 
 		<div class="col form-group">
@@ -161,7 +185,6 @@ function execPostCode() {
 			      <option>패션의류</option>
 			      <option>홈인테리어</option>
 			      <option>도서</option>
-			      <option>식품</option>
 				  <option selected="">기타</option>
 			  </select>
 		</div>

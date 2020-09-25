@@ -17,11 +17,10 @@ public class StartUpServiceImpl implements StartUpService{
 	private StartUpDAO startUpDAO;
 	
 	@Override 
-	public StartUpVO login(StartUpVO startUpVO)  {
-		try {
+	public StartUpVO login(StartUpVO startUpVO) throws Exception {
+		StartUpVO startupMember = startUpDAO.loginById(startUpVO);
+		if(startupMember != null) {
 			startUpDAO.insertLoginLog(startUpVO);
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return startUpDAO.loginById(startUpVO);
 	}
@@ -53,6 +52,10 @@ public class StartUpServiceImpl implements StartUpService{
 		return startUpselect;
 	}
 	
-	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = startUpDAO.overlapCheck(id);
+		return count;
+	}
 
 }

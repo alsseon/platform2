@@ -61,4 +61,10 @@ public class ManufacDAOImpl implements ManufacDAO {
 	      sqlSession.insert("mapper.manufac.insertLoginLog", manufac);
 	}
 	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = sqlSession.selectOne("mapper.startup.overlapCheck", id);
+		return count;
+	}
+	
 }

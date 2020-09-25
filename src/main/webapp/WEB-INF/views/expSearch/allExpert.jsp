@@ -20,17 +20,21 @@
         <div class="row">
           <div class="col-lg-9 ftco-animate">
 					<div class="row con">
+					 
+					<div class="col-12">
 					<c:forEach var = "expert" items = "${expertList}">
 						<!--한칸-->
-		    			<div class="col-md-4 d-flex">
+		    			<div class="col-md-4 d-flex" style="float:left">
 		    				<div class="book-wrap">
 		    				<c:forEach var="expertImg" items="${expertImgList}">
 		    					<c:if test="${expert.id == expertImg.id}">
-			    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${expert.id}&imageFileName=${expertImg.imageFileName});">
+			    					<div class="img d-flex justify-content-end w-100" style="background-image: url(${contextPath}/download.do?id=${expertVO.id}&imageFileName=${expImageList[1].imageFileName})">
 			    						<div class="in-text">
+			    						
 			    							<a href="${contextPath}/scrap/scrapExpert.do?expId=${expert.id}&compId=${member.id}" class="icon d-flex align-items-center justify-content-center scrapClass" data-toggle="tooltip" data-placement="left" title="Scrap">
 			    								<span id="${expert.id}" class="flaticon-heart-1"></span>
 			    							</a>
+			    							
 			    							<a href="${contextPath }/expSearch/viewExpert.do?id=${expert.id}" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
 			    								<span class="flaticon-search"></span>
 			    							</a>
@@ -46,29 +50,30 @@
 		    			</div>
 						<!--한칸-->
 					</c:forEach>
-		    		</div>
-	    		<div class="row mt-5">
-		          <div class="col">
-		            <div class="block-27"><!--페이징처리-->
-		              <ul>
-             			<c:if test="${pageVO.startPage != 1}">
-               				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${pageVO.startPage -1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
-           				</c:if>
-           				<c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
-	               			<c:choose>
-	                			<c:when test="${idx == pageVO.nowPage }">
-	                 				<li class="active"><span> ${idx} </span></li>
-	                 			</c:when>
-	                 			<c:when test="${idx != pageVO.nowPage}">
-	                 				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
-	                			</c:when>
-	                  		</c:choose>
-            			</c:forEach>
-            			<c:if test="${pageVO.endPage != pageVO.lastPage }">
-                			<li><a href="${contextPath }/expSearch/allExpert.do?nowPage=${pageVO.endPage +1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
-            			</c:if>
-        			</ul>
-	            </div><!--페이징처리-->
+					</div>
+		    		<div class="row mt-5">
+			          <div class="col">
+			            <div class="block-27"><!--페이징처리-->
+			              <ul>
+	             			<c:if test="${pageVO.startPage != 1}">
+	               				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${pageVO.startPage -1}&cntPerPage=${pageVO.cntPerPage}">&lt;</a></li>
+	           				</c:if>
+	           				<c:forEach begin = "${pageVO.startPage}" end = "${pageVO.endPage}" var="idx">
+		               			<c:choose>
+		                			<c:when test="${idx == pageVO.nowPage }">
+		                 				<li class="active"><span> ${idx} </span></li>
+		                 			</c:when>
+		                 			<c:when test="${idx != pageVO.nowPage}">
+		                 				<li><a href="${contextPath}/expSearch/allExpert.do?nowPage=${idx}&cntPerPage=${pageVO.cntPerPage}"> ${idx} </a></li>
+		                			</c:when>
+		                  		</c:choose>
+	            			</c:forEach>
+	            			<c:if test="${pageVO.endPage != pageVO.lastPage }">
+	                			<li><a href="${contextPath }/expSearch/allExpert.do?nowPage=${pageVO.endPage +1}&cntPerPage=${pageVO.cntPerPage}">&gt;</a></li>
+	            			</c:if>
+	        			</ul>
+		            </div><!--페이징처리-->
+	            </div>
 	          </div>
 	        </div>
           </div> <!-- .col-md-8 -->
@@ -95,7 +100,7 @@
               <!-- <h5>전문가 이름 검색</h5> -->
               
               <div class="form-group" style="margin-top:10%">
-              	<input type="text" id="expertName" placeholder="전문가 이름 검색"/><span style="margin-left:7%"></span><button id="serchByName" class="btn btn-primary search">검색</button>
+              	<input type="text" id="expertName" placeholder="전문가 이름 검색" style="float:left; width:180px;"/><span style="margin-left:7%"></span><button id="serchByName" style="padding-left: 10px;" class="btn btn-primary search">검색</button>
               </div>
               <!-- <h5>전문가 이름 검색</h5> -->
             </div>
@@ -178,6 +183,9 @@
             		//객체가 data로 반환 된다.
             		//반환 된 객체의 정보를 담아 fixHtml함수를 이용해 화면에 그려낸다.
             		//data에 담겨져있는 id값으로 이미지 네임을 조회해여 fixHtml로 같이 넘겨준다.
+            		if(Object.keys(data).length == 0){
+            			alert("해당 데이터가 없습니다.")
+            		}
             		for(var i = 0 ; i<Object.keys(data).length; i++){
                 		var expert = data[i];
                 		var expertId = data[i].id
@@ -204,6 +212,9 @@
                 type:"GET",
                 data:{"name":select},
                 success:function(data){
+                	if(Object.keys(data).length == 0){
+            			alert("해당 데이터가 없습니다.")
+            		}
                 	for(var i = 0 ; i<Object.keys(data).length; i++){
                 		var expert = data[i];
                 		var expertId = expert.id

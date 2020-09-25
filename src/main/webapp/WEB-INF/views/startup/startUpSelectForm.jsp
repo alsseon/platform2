@@ -204,7 +204,8 @@ body > div > form > div:nth-child(2) > button{
 				<label for="cname">상세주소</label>
 				<input class="form-control"  value="${startUpVO.compDetailAddr}" name="compDetailAddr" id="compDetailAddr" type="text" value="상세주소"/>
 				
-				
+				<label for="cname">상세주소</label>
+				<input class="form-control"  value="${startUpVO.compBizType}" name="compBizType" id="compBizType" type="text" value="업종" readonly/>
 
     
 				<label for="cname">상세정보</label>

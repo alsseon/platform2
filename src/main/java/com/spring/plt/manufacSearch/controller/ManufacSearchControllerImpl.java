@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.plt.allUser.AllUserVO;
+import com.spring.plt.consulting.vo.ConsultingVO;
 import com.spring.plt.manufac.vo.ManufacVO;
 import com.spring.plt.manufacSearch.service.ManufacSearchService;
 import com.spring.plt.page.vo.PageVO;
+import com.spring.plt.quotation.vo.QuotationVO;
+import com.spring.plt.scrap.vo.ScrapVO;
 
 @Controller("manufacSearchController")
 public class ManufacSearchControllerImpl implements ManufacSearchController{
@@ -28,9 +33,13 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 	@Autowired
 	ManufacVO manufacVO;
 	
+	@Autowired
+	SqlSession sqlSession;
+	
 	@RequestMapping(value="/manufacSearch/allManufac")
 	@Override
-	public ModelAndView allManufac(PageVO pageVO, @RequestParam(value="nowPage", required = false) String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView allManufac(PageVO pageVO,
+			@RequestParam(value="nowPage", required = false) String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ManuFac Controller allManuFac");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
@@ -50,7 +59,9 @@ public class ManufacSearchControllerImpl implements ManufacSearchController{
 		List<ManufacVO> manufacList= new ArrayList<ManufacVO>();
 		manufacList = service.allManuFac(pageVO);
 		System.out.println("allmanufac manufacList: "+manufacList);
-		ModelAndView mav = new ModelAndView(viewName); 
+		ModelAndView mav = new ModelAndView(viewName);
+
+
 		mav.addObject("manufacList",manufacList);
 		mav.addObject("pageVO", pageVO);
 		return mav;

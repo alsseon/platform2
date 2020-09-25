@@ -73,6 +73,9 @@ function execPostCode() {
 				||joinForm.manuDetail.value==""||joinForm.manuBizType.value==""){
 			alert('입력되지 않은 사항이 있습니다.');
 			return false;
+		}else if(checked==false){
+			alert('아이디 중복체크를 해야 합니다.');
+			return false;
 		}
 	}
 </script>
@@ -87,7 +90,7 @@ function execPostCode() {
 
 
 <header class="card-header">
-	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<a href="${contextPath}/common/loginForm.do" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">제조업체 등록 신청</h4>
 </header>
 <article class="card-body">
@@ -95,7 +98,26 @@ function execPostCode() {
 
 		<div class="col form-group">
 			<label>아이디 </label>   
-		  	<input type="text" class="form-control" name="id">
+		  	<input type="text" class="form-control" id="id" name="id">
+		  	<div class="btn btn-secondary" onClick="overlapCheck()">중복 확인</div>
+		  	<script>
+		  	function overlapCheck(){
+				var id = document.getElementById('id').value;
+				$.ajax({
+					url:"${contextPath}/manufac/overlapCheck.do",
+					type:"get",
+					data:{"id":id},
+					success:function(data){
+						if(data == 1){
+							alert('사용 불가능한 아이디입니다.')
+						}else if(data == 0){
+							alert('사용이 가능한 아이디입니다.')
+							checked = true;
+						}
+					}
+				})
+			}
+		  	</script>
 		</div> 
 		 
 		<div class="col form-group">

@@ -33,7 +33,7 @@
         	<!-- 소개 사진 한칸 -->
           	<div class="col-lg-5 ftco-animate" style="height:500px">
 	          	<p>
-	              <img src="${contextPath }/resources/images/image_1.jpg" alt="" class="img-fluid">
+	              <img src="${contextPath}/download.do?id=${expertVO.id}&imageFileName=${expImageList[1].imageFileName}" alt="" class="img-fluid">
 	            </p>
            </div> <!-- .col-md-8 -->
            <!-- 소개 사진 한칸 -->
@@ -181,7 +181,7 @@
 	         <ul style="list-style: none;">
 	         	<c:if test="${userType eq 'startup' }">
 			         <li><a href="${contextPath}/startup/startUpSelectForm.do?id=${user.id}">내 정보 관리 <span class="fa fa-chevron-right"></span></a></li>
-			         <li><a  href="${contextPath}/scrap/printScrapAll.do">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
+			         <li><a  href="${contextPath}/scrap/printScrapAll.do?compId=${user.id}">스크랩 리스트<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/startuppage/manu_estilist.do?compId=${user.id}">견적 관리<span class="fa fa-chevron-right"></span></a></li>
 			         <li><a  href="${contextPath }/startuppage/consultinglist.do?compId=${user.id}">컨설팅 관리<span class="fa fa-chevron-right"></span></a></li>
 	         	</c:if>

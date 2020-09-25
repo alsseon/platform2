@@ -14,4 +14,5 @@ public interface ManufacService {
 	public ManufacVO manufacselect(String id) throws Exception;
 	public int deletemanufac(String id) throws Exception;
 	public int updatemanufac(Map<String, Object> manufacMap);
+	public int overlapCheck(String id) throws Exception;
 }

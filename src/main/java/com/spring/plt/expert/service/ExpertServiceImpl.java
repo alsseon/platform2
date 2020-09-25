@@ -20,7 +20,10 @@ public class ExpertServiceImpl implements ExpertService {
 	
 	@Override
 	public ExpertVO login(ExpertVO expertVO) throws Exception {
+		ExpertVO expertMember = expertDAO.loginById(expertVO);
+		if(expertMember != null) {
 		expertDAO.insertLoginLog(expertVO);
+		}
 		return expertDAO.loginById(expertVO);
 	}	
 		
@@ -59,6 +62,12 @@ public class ExpertServiceImpl implements ExpertService {
 		expMap.put("expertVO", expert);
 		expMap.put("imageFileList", imageFileList);
 		return expMap;
+	}
+	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = expertDAO.overlapCheck(id);
+		return count;
 	}
 	
 	

@@ -18,7 +18,10 @@ public class ManufacServiceImpl implements ManufacService {
 	
 	@Override
 	public ManufacVO login(ManufacVO manufacVO) throws Exception {
+		ManufacVO manufacMember = manufacDAO.loginById(manufacVO);		
+		if(manufacMember !=null) {			
 		manufacDAO.insertLoginLog(manufacVO);
+		}
 		return manufacDAO.loginById(manufacVO);
 	}
 	
@@ -51,6 +54,12 @@ public class ManufacServiceImpl implements ManufacService {
 	         e.printStackTrace();
 	      }
 	      return manufacDAO.updatemanufac(manufacMap);
+	}
+	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = manufacDAO.overlapCheck(id);
+		return count;
 	}
 
 
