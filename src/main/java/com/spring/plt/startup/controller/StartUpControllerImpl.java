@@ -1,7 +1,6 @@
 package com.spring.plt.startup.controller;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -175,7 +174,7 @@ public class StartUpControllerImpl implements StartUpController{
 		startUpService.deletestartUp(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main/main.do");
+		mav.setViewName("redirect:/startup/startUpListForm.do");
 		return mav; 
 	}
 
@@ -215,7 +214,7 @@ public class StartUpControllerImpl implements StartUpController{
 			}
 			message = "<script>";
 			message += " alert('업데이트 완료');";
-			message += " location.href='"+request.getContextPath()+"/main/main.do';";
+			message += " history.go(-2);"; 
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
@@ -237,6 +236,15 @@ public class StartUpControllerImpl implements StartUpController{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		return mav;
+	}
+	
+	@RequestMapping(value="startup/overlapCheck.do", method= RequestMethod.GET)
+	@ResponseBody
+	public int overlapCheck(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		System.out.println("1111");
+		int count = 0;
+		count = startUpService.overlapCheck(id);
+		return count;
 	}
 
 }

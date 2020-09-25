@@ -52,6 +52,12 @@ public class ManufacServiceImpl implements ManufacService {
 	      }
 	      return manufacDAO.updatemanufac(manufacMap);
 	}
+	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = manufacDAO.overlapCheck(id);
+		return count;
+	}
 
 
 }

@@ -158,7 +158,7 @@ public class ManufacControllerImpl implements ManufacController{
 		manufacService.deletemanufac(id);
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main/main.do");
+		mav.setViewName("redirect:/manufac/manufacListForm.do");
 		return mav; 
 	}
 
@@ -200,7 +200,7 @@ public class ManufacControllerImpl implements ManufacController{
 			}
 			message = "<script>";
 			message += " alert('수정 완료');";
-			message += " location.href='"+request.getContextPath()+"/main/main.do';";
+			message += " history.go(-2);"; 
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
@@ -222,6 +222,15 @@ public class ManufacControllerImpl implements ManufacController{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		return mav;
+	}
+	
+	@RequestMapping(value="manufac/overlapCheck.do", method= RequestMethod.GET)
+	@ResponseBody
+	public int overlapCheck(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		System.out.println("1111");
+		int count = 0;
+		count = manufacService.overlapCheck(id);
+		return count;
 	}
 	
 

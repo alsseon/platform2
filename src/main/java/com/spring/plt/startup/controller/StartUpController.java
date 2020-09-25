@@ -21,4 +21,5 @@ public interface StartUpController {
 	public ModelAndView deletestartUp(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity updatestartUp(MultipartHttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView startUpselect(@RequestParam("id")String id ,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public int overlapCheck(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

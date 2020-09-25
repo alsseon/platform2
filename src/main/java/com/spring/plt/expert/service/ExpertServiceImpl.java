@@ -61,6 +61,12 @@ public class ExpertServiceImpl implements ExpertService {
 		return expMap;
 	}
 	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = expertDAO.overlapCheck(id);
+		return count;
+	}
+	
 	
 	
 

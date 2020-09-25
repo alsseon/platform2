@@ -92,5 +92,11 @@ public class ExpertDAOImpl implements ExpertDAO {
 		sqlSession.insert("mapper.expert.insertLoginLog", expert);
 	}
 	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = sqlSession.selectOne("mapper.startup.overlapCheck", id);
+		return count;
+	}
+	
 
 }

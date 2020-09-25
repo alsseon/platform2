@@ -14,4 +14,5 @@ public interface StartUpService {
 	public int deletestartUp(String id) throws DataAccessException;
 	public int updatestartUp(Map compMap) throws Exception;
 	public StartUpVO startUpselect(String id) throws Exception;
+	public int overlapCheck(String id) throws Exception;
 }
