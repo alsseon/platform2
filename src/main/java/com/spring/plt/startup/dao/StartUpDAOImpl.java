@@ -59,4 +59,10 @@ public class StartUpDAOImpl implements StartUpDAO {
 		sqlSession.insert("mapper.startup.insertLoginLog", startup);
 	}
 	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = sqlSession.selectOne("mapper.startup.overlapCheck", id);
+		return count;
+	}
+	
 }

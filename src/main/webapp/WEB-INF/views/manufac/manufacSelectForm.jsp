@@ -170,6 +170,8 @@ body > div > form > div:nth-child(2) > button{
 				<label	for="email"><i class="fa fa-envelope"></i> 이메일</label>
 				<input type="text" name="manuEmail" value="${manufacVO.manuEmail}"><br>
 				
+				<label	for="email"><i class="fa fa-envelope"></i>업종</label>
+				<input type="text" name="manuBizType" value="${manufacVO.manuBizType}" readonly><br>
 				
 
 				<div class="row">

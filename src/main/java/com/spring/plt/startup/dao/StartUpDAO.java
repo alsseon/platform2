@@ -16,6 +16,7 @@ public interface StartUpDAO {
 	public int updatestartUp(Map compMap) throws Exception;
 	public void insertstartEdit(StartUpVO startup) throws Exception;
 	public void insertLoginLog(StartUpVO startUpVO) throws Exception;
+	public int overlapCheck(String id) throws Exception;
 }
 
 

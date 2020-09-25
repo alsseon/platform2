@@ -166,13 +166,14 @@ span.price {
           <h3>         　</h3>
             <label for="cname">비밀번호</label>
             <input type="text" name="pwd" placeholder="password"><br>
+            
             <label for="ccnum">전화번호</label>
             <input type="text" name="expTel" value="${expertVO.expTel}"><br>
 
             <div class="row">
               <div class="col-50">
                 <label for="expyear">업종</label>
-               <input type="text" name="expBizField" value="${expertVO.expBizField}"><br>
+               <input type="text" name="expBizField" value="${expertVO.expBizField}" readonly><br>
               </div>
               <div class="col-50">
                 <label for="cvv">경력</label>

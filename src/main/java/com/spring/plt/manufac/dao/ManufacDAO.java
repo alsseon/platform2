@@ -16,4 +16,5 @@ public interface ManufacDAO {
 	public int updatemanufac(Map<String, Object> manufacMap);
 	public void insertmanuEdit(ManufacVO manufac) throws Exception;
 	public void insertLoginLog(ManufacVO manufac) throws Exception;
+	public int overlapCheck(String id) throws Exception;
 }

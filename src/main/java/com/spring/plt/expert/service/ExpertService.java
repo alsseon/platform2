@@ -14,4 +14,5 @@ public interface ExpertService {
 	public int deleteexpert(String id) throws DataAccessException;
 	public int updateexpert(Map<String, Object> expMap) throws Exception;
 	public Map expertselect(String id) throws Exception;
+	public int overlapCheck(String id) throws Exception;
 }

@@ -69,5 +69,11 @@
   	]]> 
    </insert>
    
+   <select id="overlapCheck" parameterType="String" resultType="int">
+   	<![CDATA[
+   		select count(*) from alluser where id=#{id}
+   	]]>
+   </select>
+   
 </mapper>
 

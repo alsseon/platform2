@@ -52,6 +52,10 @@ public class StartUpServiceImpl implements StartUpService{
 		return startUpselect;
 	}
 	
-	
+	public int overlapCheck(String id) throws Exception{
+		int count = 0;
+		count = startUpDAO.overlapCheck(id);
+		return count;
+	}
 
 }
