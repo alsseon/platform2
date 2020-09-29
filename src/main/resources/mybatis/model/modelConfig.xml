@@ -29,5 +29,6 @@
 			<typeAlias type="com.spring.plt.page.vo.PageVO" alias="pageVO"/>
 			<typeAlias type="com.spring.plt.allUser.AllUserVO" alias="allUserVO"/>
 			<typeAlias type="com.spring.plt.map.vo.MapVO" alias="mapVO"/>
+			<typeAlias type="com.spring.plt.startupViewStatus.vo.StartupViewStatusVO" alias="startupViewStatusVO"/> 
 		</typeAliases>
 	</configuration>
